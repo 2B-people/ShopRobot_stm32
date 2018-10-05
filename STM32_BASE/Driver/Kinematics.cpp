@@ -38,7 +38,6 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
     }
     else
     {
-        return;
     }
 }
 
