@@ -455,7 +455,7 @@ bool I2Cdev::writeWords(uint8_t devAddr, uint8_t regAddr, uint8_t length, uint16
     #endif
     uint8_t status = 0;
     #if ((I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE && ARDUINO < 100) || I2CDEV_IMPLEMENTATION == I2CDEV_BUILTIN_NBWIRE)
-        Wire.beginTransmission(devAddr);
+				Wire.beginTransmission(devAddr);
         Wire.send(regAddr); // send address
     #elif (I2CDEV_IMPLEMENTATION == I2CDEV_ARDUINO_WIRE && ARDUINO >= 100)
         Wire.beginTransmission(devAddr);

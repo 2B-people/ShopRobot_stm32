@@ -1,11 +1,8 @@
 #include <stdio.h>
 #include "hardwareserial.h"
 #include "gy85.h"
-#include "motor.h"
-#include "encoder.h"
 #include "battery.h"
 #include "led.h"
-#include "PID.h"
 #include "Kinematics.h"
 #include <ros.h>
 #include <riki_msgs/Velocities.h>
