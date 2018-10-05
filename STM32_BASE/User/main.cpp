@@ -16,7 +16,7 @@
 #include <geometry_msgs/Vector3.h>
 #include <ros/time.h>
 
-int Motor::counts_per_rev_ = COUNTS_PER_REV;
+//int Motor::counts_per_rev_ = COUNTS_PER_REV;
 
 double required_angular_vel = 0;
 double required_linear_vel = 0;
@@ -35,7 +35,7 @@ bool accel, gyro, mag;
 // Encoder encoder2(ENCODER2, 0xffff, 0);
 
 Battery bat(25, 10.6, 12.6);
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, BASE_WIDTH, PWM_BITS);
+//Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, BASE_WIDTH, PWM_BITS);
 
 Gy85 imu;
 Led led;
@@ -64,17 +64,18 @@ void pid_callback(const riki_msgs::PID &pid)
 
 void command_callback(const geometry_msgs::Twist &cmd_msg)
 {
-    required_linear_vel = cmd_msg.linear.x;
-    required_angular_vel = cmd_msg.angular.z;
+    // TODO using our /cmd_msg
+    // required_linear_vel = cmd_msg.linear.x;
+    // required_angular_vel = cmd_msg.angular.z;
 
     previous_command_time = millis();
 }
 
 void move_base()
 {
-    Kinematics::output req_rpm;
+    //Kinematics::output req_rpm;
     //get the required rpm for each motor based on required velocities
-    req_rpm = kinematics.getRPM(required_linear_vel, 0.0, required_angular_vel);
+    //req_rpm = kinematics.getRPM(required_linear_vel, 0.0, required_angular_vel);
 
     //the required rpm is capped at -/+ MAX_RPM to prevent the PID from having too much error
     //the PWM value sent to the motor driver is the calculated PID based on required RPM vs measured RPM
@@ -86,17 +87,17 @@ void move_base()
 //berif: publish the linear msg to ROS 
 void publish_linear_velocity()
 {
-    // TODO
+    // TODO using kinematics to get 
     // motor1.updateSpeed(encoder1.read());
     // motor2.updateSpeed(encoder2.read());
 
-    Kinematics::velocities vel;
-    vel = kinematics.getVelocities(motor1.rpm, motor2.rpm);
+    // Kinematics::velocities vel;
+    // vel = kinematics.getVelocities(motor1.rpm, motor2.rpm);
 
-    //fill in the object
-    raw_vel_msg.linear_x = vel.linear_x;
-    raw_vel_msg.linear_y = 0.0;
-    raw_vel_msg.angular_z = vel.angular_z;
+    // //fill in the object
+    // raw_vel_msg.linear_x = vel.linear_x;
+    // raw_vel_msg.linear_y = 0.0;
+    // raw_vel_msg.angular_z = vel.angular_z;
 
     //publish raw_vel_msg object to ROS
     raw_vel_pub.publish(&raw_vel_msg);
