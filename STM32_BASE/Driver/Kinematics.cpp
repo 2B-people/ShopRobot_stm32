@@ -1,86 +1,63 @@
 #include "Kinematics.h"
 
-Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_width, int pwm_bits)
+Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b)
 {
-  wheel_diameter_ = wheel_diameter;
-  circumference_ = PI * wheel_diameter_;
-  max_rpm_ = motor_max_rpm;
-  base_width_ = base_width;
-  pwm_res_ = pow((float)2, pwm_bits) - 1;
+    this->max_rpm_ = motor_max_rpm;
+    this->circumference_ = PI * wheel_diameter;
+    this->base_a_ = base_a;
+    this->base_b_ = base_b;
 }
 
 Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angular_z)
 {
-  //convert m/s to m/min
-  linear_vel_x_mins_ = linear_x * 60;
-  linear_vel_y_mins_ = linear_y * 60;
+    // convert m/s to m/min
+    float linear_x_mins = linear_x * 60;
+    float linear_y_mins = linear_y * 60;
 
-  //convert rad/s to rad/min
-  angular_vel_z_mins_ = angular_z * 60;
+    // convert rad/s to rad/min
+    float angular_z_mins = angular_z * 60;
 
-  //Vt = ω * radius
-  tangential_vel_ = angular_vel_z_mins_ * base_width_;
+    this->speed[0] = linear_y_mins - linear_x_mins + angular_z_mins * (base_a_ + base_b_);
+    this->speed[1] = linear_y_mins + linear_x_mins - angular_z_mins * (base_a_ + base_b_);
+    this->speed[2] = linear_y_mins - linear_x_mins - angular_z_mins * (base_a_ + base_b_);
+    this->speed[3] = linear_y_mins + linear_x_mins + angular_z_mins * (base_a_ + base_b_);
 
-  x_rpm_ = linear_vel_x_mins_ / circumference_;
-  y_rpm_ = linear_vel_y_mins_ / circumference_;
-  tan_rpm_ = tangential_vel_ / circumference_;
+    Kinematics::output rpm;
 
-  Kinematics::output rpm;
+    rpm.motor1 = (int)(speed[0] / circumference_);
+    rpm.motor2 = (int)(speed[1] / circumference_);
+    rpm.motor3 = (int)(speed[2] / circumference_);
+    rpm.motor4 = (int)(speed[3] / circumference_);
 
-  //calculate for the target motor RPM and direction
-  //front-left motor
-  rpm.motor1 = x_rpm_ - y_rpm_ - tan_rpm_;
-  //rear-left motor
-  rpm.motor3 = x_rpm_ + y_rpm_ - tan_rpm_;
-
-  //front-right motor
-  rpm.motor2 = x_rpm_ + y_rpm_ + tan_rpm_;
-  //rear-right motor
-  rpm.motor4 = x_rpm_ - y_rpm_ + tan_rpm_;
-
-  return rpm;
+    if (rpm.motor1 <= max_rpm_ &&
+        rpm.motor2 <= max_rpm_ &&
+        rpm.motor3 <= max_rpm_ &&
+        rpm.motor4 <= max_rpm_)
+    {
+        return rpm;
+    }
+    else
+    {
+        return;
+    }
 }
 
-Kinematics::output Kinematics::getPWM(float linear_x, float linear_y, float angular_z)
+Kinematics::velocities Kinematics::getVelocities(int rpm_motor1, int rpm_motor2, int rpm_motor3, int rpm_motor4)
 {
-  Kinematics::output rpm;
-  Kinematics::output pwm;
+    Kinematics::velocities vel;
+    float motor_speed[4];
 
-  rpm = getRPM(linear_x, linear_y, angular_z);
+    motor_speed[0] = rpm_motor1 * circumference_;
+    motor_speed[1] = rpm_motor2 * circumference_;
+    motor_speed[2] = rpm_motor3 * circumference_;
+    motor_speed[3] = rpm_motor4 * circumference_;
 
-  //convert from RPM to PWM
-  //front-left motor
-  pwm.motor1 = rpmToPWM(rpm.motor1);
-  //rear-left motor
-  pwm.motor2 = rpmToPWM(rpm.motor2);
+    // get x,y linear ,m/s
+    vel.linear_y = (motor_speed[0] + motor_speed[1]) / 2 / 60;
+    vel.linear_x = (motor_speed[1] - motor_speed[2]) / 2 / 60;
 
-  //front-right motor
-  pwm.motor3 = rpmToPWM(rpm.motor3);
-  //rear-right motor
-  pwm.motor4 = rpmToPWM(rpm.motor4);
+    // get angular_z ,rad/s
+    vel.angular_z = (motor_speed[0] - motor_speed[2]) / 2 / 60 / (base_a_ + base_b_);
 
-  return pwm;
-}
-
-Kinematics::velocities Kinematics::getVelocities(int motor1, int motor2)
-{
-  Kinematics::velocities vel;
-
-  double average_rpm_x = (motor1 + motor2) / 2; // RPM
-  //convert revolutions per minute to revolutions per second
-  double average_rps_x = average_rpm_x / 60; // RPS
-  vel.linear_x = (average_rps_x * (wheel_diameter_ * PI)); // m/s
-
-  double average_rpm_a = (motor2 - motor1) / 2;
-  //convert revolutions per minute to revolutions per second
-  double average_rps_a = average_rpm_a / 60;
-  vel.angular_z =  (average_rps_a * (wheel_diameter_ * PI)) / base_width_;
-
-  return vel;
-}
-
-int Kinematics::rpmToPWM(int rpm)
-{
-  //remap scale of target RPM vs MAX_RPM to PWM
- return (((double) rpm / (double) max_rpm_) * 255);
+    return vel;
 }
