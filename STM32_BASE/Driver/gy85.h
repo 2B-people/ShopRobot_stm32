@@ -80,7 +80,7 @@ class Gy85 {
 
 		geometry_msgs::Vector3 raw_acceleration, raw_rotation, raw_magnetic_field;
 
-	private:
+	//private:
 		uint8_t gyro_buffer[6];
 		uint8_t acc_buffer[6];
 		uint8_t mag_buffer[6];
