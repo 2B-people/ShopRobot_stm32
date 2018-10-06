@@ -3,38 +3,77 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.20.0.39
-Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: 1 1, 1, LIC=50DWF-6MURU-8W02D-8QM5T-C2LW8-ZALFT
+IDE-Version: ¦ÌVision V5.23.0.0
+Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: nqq nqq09, nqq, LIC=ATTCX-HX8N7-H82FS-LT3PA-DYASJ-I9V6T
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain:       MDK-ARM Plus  Version: 5.23
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.05 update 1 (build 106)
-Assembler:       Armasm.exe V5.05 update 1 (build 106)
-Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
-Library Manager: ArmAr.exe V5.05 update 1 (build 106)
-Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
-CPU DLL:         SARMCM3.DLL V5.14.0.0
-Dialog DLL:      DCM.DLL V1.13.1.0
-Target DLL:      UL2CM3.DLL V1.155.0.0
-Dialog DLL:      TCM.DLL V1.14.4.0
+C Compiler:      Armcc.exe V5.06 update 4 (build 422)
+Assembler:       Armasm.exe V5.06 update 4 (build 422)
+Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
+Library Manager: ArmAr.exe V5.06 update 4 (build 422)
+Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
+CPU DLL:         SARMCM3.DLL V5.23
+Dialog DLL:      DCM.DLL V1.15.0.0
+Target DLL:      UL2CM3.DLL V1.159.7.0
+Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
-C:\Users\Tongw\Desktop\github\ShopRobot_stm32\STM32_BASE\Objects\ShopRobot.uvprojx
+C:\Users\nqq09\Desktop\Robot\ShopRobot_stm32\STM32_BASE\Objects\ShopRobot.uvprojx
 Project File Date:  10/06/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.05 update 1 (build 106)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'shopping_Helper'
+<<<<<<< HEAD
 ".\Objects\ShopRobot.axf" - 0 Error(s), 0 Warning(s).
+=======
+compiling Kinematics.cpp...
+..\Driver\Kinematics.cpp(42): warning:  #940-D: missing return statement at end of non-void function "Kinematics::getRPM" 
+  }
+..\Driver\Kinematics.cpp(62): warning:  #1-D: last line of file ends without a newline
+  }
+..\Driver\Kinematics.cpp: 2 warnings, 0 errors
+compiling I2Cdev.cpp...
+..\Bsp\Wire.h(108): warning:  #1300-D: process inherits implicit virtual
+      uint8_t process();
+..\Bsp\Wire.h(117): warning:  #1300-D: begin inherits implicit virtual
+      void begin(uint8_t = 0x00);
+..\RosLibs\geometry_msgs/Vector3.h(106): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "geometry_msgs/Vector3"; };
+..\RosLibs\geometry_msgs/Vector3.h(107): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "4a842b65f413084dc2b10fb484ea7f17"; };
+..\RosLibs\geometry_msgs/Vector3.h(112): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Driver\I2Cdev.h(260): warning:  #1-D: last line of file ends without a newline
+  #endif /* _I2CDEV_H_ */
+..\Driver\I2Cdev.cpp(180): error:  #20: identifier "Wire" is undefined
+      Wire.beginTransmission(devAddr);
+..\Driver\I2Cdev.cpp(237): error:  #20: identifier "Wire" is undefined
+      Wire.beginTransmission(devAddr);
+..\Driver\I2Cdev.cpp(411): error:  #20: identifier "Wire" is undefined
+          Wire.beginTransmission(devAddr);
+..\Driver\I2Cdev.cpp(458): error:  #20: identifier "Wire" is undefined
+  				Wire.beginTransmission(devAddr);
+..\Driver\I2Cdev.cpp(1171): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\Driver\I2Cdev.cpp: 7 warnings, 4 errors
+".\Objects\ShopRobot.axf" - 4 Error(s), 9 Warning(s).
+>>>>>>> 0fcbd9b651f8f2072271fec9b7fe1235e296a2d5
 
 <h2>Collection of Component include folders:</h2>
-  C:\Users\Tongw\Desktop\github\ShopRobot_stm32\STM32_BASE\Objects\RTE
+  .\RTE\_shopping_Helper
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
+<<<<<<< HEAD
 Build Time Elapsed:  00:00:00
+=======
+Target not created.
+Build Time Elapsed:  00:00:01
+>>>>>>> 0fcbd9b651f8f2072271fec9b7fe1235e296a2d5
 </pre>
 </body>
 </html>
