@@ -66,3 +66,5 @@
 .\objects\main.o: ..\RosLibs\riki_msgs/PID.h
 .\objects\main.o: ..\RosLibs\riki_msgs/Imu.h
 .\objects\main.o: ..\RosLibs\riki_msgs/Battery.h
+.\objects\main.o: ..\Driver\motor.h
+.\objects\main.o: ..\Driver\pid.h

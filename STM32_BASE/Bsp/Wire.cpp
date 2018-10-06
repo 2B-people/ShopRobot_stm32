@@ -180,7 +180,9 @@ uint8_t TwoWire::process() {
 }
 
 // TODO: Add in Error Handling if pins is out of range for other Maples
+//如果引脚超出其他Maples的范围，则添加错误处理
 // TODO: Make delays more capable
+//使延迟更有能力
 TwoWire::TwoWire(uint8_t delay) : i2c_delay(delay) {
 
 }

@@ -12,24 +12,23 @@
 #include <riki_msgs/Battery.h>
 #include <geometry_msgs/Vector3.h>
 #include <ros/time.h>
+#include "motor.h"
 
-//int Motor::counts_per_rev_ = COUNTS_PER_REV;
+Motor motor1(0x201);
+Motor motor2(0x202);
+Motor motor3(0x203);
+Motor motor4(0x204);
+
+
 
 double required_angular_vel = 0;
-double required_linear_vel = 0;
+double required_linear_vel_x = 0;
+double required_liner_vel_y=0;
 uint32_t previous_command_time = 0;
 
 bool is_first = true;
 bool accel, gyro, mag;
 
-// PID motor1_pid(-255, 255, K_P, K_I, K_D);
-// PID motor2_pid(-255, 255, K_P, K_I, K_D);
-
-// Motor motor1(MOTOR1, 254, 575);
-// Motor motor2(MOTOR2, 254, 575);
-
-// Encoder encoder1(ENCODER1, 0xffff, 0);
-// Encoder encoder2(ENCODER2, 0xffff, 0);
 
 Battery bat(25, 10.6, 12.6);
 //Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, BASE_WIDTH, PWM_BITS);
@@ -55,15 +54,18 @@ ros::Publisher raw_battery_pub("battery", &raw_battery_msg);
 void pid_callback(const riki_msgs::PID &pid)
 {
     // TODO using our PID function
-    //motor1_pid.updateConstants(pid.p, pid.i, pid.d);
-    //motor2_pid.updateConstants(pid.p, pid.i, pid.d);
+		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
 }
 
 void command_callback(const geometry_msgs::Twist &cmd_msg)
 {
     // TODO using our /cmd_msg
-    // required_linear_vel = cmd_msg.linear.x;
-    // required_angular_vel = cmd_msg.angular.z;
+     required_linear_vel_x = cmd_msg.linear.x;
+		 required_linear_vel_y = cmd_msg.linear.y;
+     required_angular_vel = cmd_msg.angular.z;
 
     previous_command_time = millis();
 }

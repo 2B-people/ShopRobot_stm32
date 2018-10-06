@@ -424,11 +424,6 @@
           <GroupName>Driver</GroupName>
           <Files>
             <File>
-              <FileName>sonar.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Driver\sonar.c</FilePath>
-            </File>
-            <File>
               <FileName>battery.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Driver\battery.cpp</FilePath>
@@ -437,11 +432,6 @@
               <FileName>gy85.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Driver\gy85.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>I2Cdev.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\Driver\I2Cdev.cpp</FilePath>
             </File>
             <File>
               <FileName>Kinematics.cpp</FileName>
@@ -457,6 +447,16 @@
               <FileName>servo.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\Driver\servo.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>PID.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Driver\PID.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>motor.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Driver\motor.cpp</FilePath>
             </File>
           </Files>
         </Group>

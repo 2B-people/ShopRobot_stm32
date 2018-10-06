@@ -6,6 +6,7 @@
 static __inline double ros_round(double val)
 {
     return (val> 0.0) ? floor(val+ 0.5) : ceil(val- 0.5);
+    //floor:向下取整 ceil :向上取整
 }
 
 #endif

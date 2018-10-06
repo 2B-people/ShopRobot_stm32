@@ -2,7 +2,7 @@
 
 void Gy85::init()
 {
-	//Wire.begin();
+	Wire.begin();
 }
 
 void Gy85::send_value(int dev_addr, uint8_t value)
@@ -29,7 +29,7 @@ void Gy85::write_to_register(int dev_addr, uint8_t reg_addr, uint8_t reg_value)
 	Wire.endTransmission();
 }
 
-bool Gy85::check_gyroscope()
+bool Gy85::check_gyroscope()//陀螺仪
 {
 	if((check_id(ITG3205_GYRO_ADDRESS, ITG3205_WHO_AM_I) & 0x7E) == ITG3205_GYRO_ADDRESS){
 		write_to_register(ITG3205_GYRO_ADDRESS, ITG3205_PWR_MGM, ITG3205_RESET);
@@ -43,7 +43,7 @@ bool Gy85::check_gyroscope()
 
 }
 
-void Gy85::measure_gyroscope()
+void Gy85::measure_gyroscope()//陀螺仪
 {
 	uint8_t gyro_read = 0;
 	send_value(ITG3205_GYRO_ADDRESS, 0x1D);
@@ -57,7 +57,7 @@ void Gy85::measure_gyroscope()
 	raw_rotation.z = (float)(GYRO_Z_INVERT*(int16_t)(((int)gyro_buffer[2*GYRO_Z_AXIS] <<8) | gyro_buffer[2*GYRO_Z_AXIS+1])) * ITG3205_SCALE;
 }
 
-bool Gy85::check_accelerometer()
+bool Gy85::check_accelerometer()//加速度计
 {
 	if (check_id(ADXL345_ACCELEROMETER_ADDRESS, ADXL345_DEVID) == ADXL345_DEVICE_ID){
 		write_to_register(ADXL345_ACCELEROMETER_ADDRESS,ADXL345_POWER_CTL,0x08);  //D3, enables measuring
@@ -69,7 +69,7 @@ bool Gy85::check_accelerometer()
 		return false;
 }
 
-void Gy85::measure_acceleration()
+void Gy85::measure_acceleration()//加速度计
 {
 	uint8_t acc_reads = 0;
 	send_value(ADXL345_ACCELEROMETER_ADDRESS, ADXL345_DATAX0);
@@ -85,7 +85,7 @@ void Gy85::measure_acceleration()
 
 }
 
-bool Gy85::check_magnetometer()
+bool Gy85::check_magnetometer()//磁力仪
 {
 	write_to_register(HMC5883L_MAG_ADDRESS,HMC5883L_MAG_REG_B,HMC5883L_MAG_GAIN);  //Sets the gain
 	write_to_register(HMC5883L_MAG_ADDRESS,HMC5883L_MAG_REG_A,0x18); //75Hz output
@@ -93,7 +93,7 @@ bool Gy85::check_magnetometer()
 	return true;;
 }
 
-void Gy85::measure_magnetometer()
+void Gy85::measure_magnetometer()//磁力仪
 {
 	uint8_t mag_reads = 0;
 	send_value(HMC5883L_MAG_ADDRESS,HMC5883L_MAG_DATAX0);
