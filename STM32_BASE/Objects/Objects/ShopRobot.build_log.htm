@@ -3,43 +3,34 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Tool Versions:</h2>
-IDE-Version: ¦ÌVision V5.23.0.0
-Copyright (C) 2017 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: nqq nqq09, nqq, LIC=ATTCX-HX8N7-H82FS-LT3PA-DYASJ-I9V6T
+IDE-Version: ¦ÌVision V5.20.0.39
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=50DWF-6MURU-8W02D-8QM5T-C2LW8-ZALFT
  
 Tool Versions:
-Toolchain:       MDK-ARM Plus  Version: 5.23
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
-C Compiler:      Armcc.exe V5.06 update 4 (build 422)
-Assembler:       Armasm.exe V5.06 update 4 (build 422)
-Linker/Locator:  ArmLink.exe V5.06 update 4 (build 422)
-Library Manager: ArmAr.exe V5.06 update 4 (build 422)
-Hex Converter:   FromElf.exe V5.06 update 4 (build 422)
-CPU DLL:         SARMCM3.DLL V5.23
-Dialog DLL:      DCM.DLL V1.15.0.0
-Target DLL:      UL2CM3.DLL V1.159.7.0
-Dialog DLL:      TCM.DLL V1.27.0.0
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      UL2CM3.DLL V1.155.0.0
+Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
-C:\Users\nqq09\Desktop\Robot\ShopRobot_stm32\STM32_BASE\Objects\ShopRobot.uvprojx
+C:\Users\Tongw\Desktop\github\ShopRobot_stm32\STM32_BASE\Objects\ShopRobot.uvprojx
 Project File Date:  10/06/2018
 
 <h2>Output:</h2>
-*** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
+*** Using Compiler 'V5.05 update 1 (build 106)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'shopping_Helper'
-<<<<<<< HEAD
-".\Objects\ShopRobot.axf" - 0 Error(s), 0 Warning(s).
-=======
-compiling Kinematics.cpp...
-..\Driver\Kinematics.cpp(42): warning:  #940-D: missing return statement at end of non-void function "Kinematics::getRPM" 
-  }
-..\Driver\Kinematics.cpp(62): warning:  #1-D: last line of file ends without a newline
-  }
-..\Driver\Kinematics.cpp: 2 warnings, 0 errors
-compiling I2Cdev.cpp...
-..\Bsp\Wire.h(108): warning:  #1300-D: process inherits implicit virtual
+compiling main.cpp...
+..\Bsp\Wire.h(111): warning:  #1300-D: process inherits implicit virtual
       uint8_t process();
-..\Bsp\Wire.h(117): warning:  #1300-D: begin inherits implicit virtual
+..\Bsp\Wire.h(120): warning:  #1300-D: begin inherits implicit virtual
       void begin(uint8_t = 0x00);
 ..\RosLibs\geometry_msgs/Vector3.h(106): warning:  #1300-D: getType inherits implicit virtual
       const char * getType(){ return "geometry_msgs/Vector3"; };
@@ -47,33 +38,112 @@ compiling I2Cdev.cpp...
       const char * getMD5(){ return "4a842b65f413084dc2b10fb484ea7f17"; };
 ..\RosLibs\geometry_msgs/Vector3.h(112): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Driver\I2Cdev.h(260): warning:  #1-D: last line of file ends without a newline
-  #endif /* _I2CDEV_H_ */
-..\Driver\I2Cdev.cpp(180): error:  #20: identifier "Wire" is undefined
-      Wire.beginTransmission(devAddr);
-..\Driver\I2Cdev.cpp(237): error:  #20: identifier "Wire" is undefined
-      Wire.beginTransmission(devAddr);
-..\Driver\I2Cdev.cpp(411): error:  #20: identifier "Wire" is undefined
-          Wire.beginTransmission(devAddr);
-..\Driver\I2Cdev.cpp(458): error:  #20: identifier "Wire" is undefined
-  				Wire.beginTransmission(devAddr);
-..\Driver\I2Cdev.cpp(1171): warning:  #1-D: last line of file ends without a newline
+..\RosLibs\std_msgs/Time.h(50): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "std_msgs/Time"; };
+..\RosLibs\std_msgs/Time.h(51): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "cd7166c74c552c311fbcc2fe5a7bc289"; };
+..\RosLibs\rosserial_msgs/TopicInfo.h(110): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "rosserial_msgs/TopicInfo"; };
+..\RosLibs\rosserial_msgs/TopicInfo.h(111): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "0ad51f88fc44892f8c10684077646005"; };
+..\RosLibs\rosserial_msgs/TopicInfo.h(116): warning:  #1-D: last line of file ends without a newline
   #endif
-..\Driver\I2Cdev.cpp: 7 warnings, 4 errors
-".\Objects\ShopRobot.axf" - 4 Error(s), 9 Warning(s).
->>>>>>> 0fcbd9b651f8f2072271fec9b7fe1235e296a2d5
+..\RosLibs\rosserial_msgs/Log.h(53): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "rosserial_msgs/Log"; };
+..\RosLibs\rosserial_msgs/Log.h(54): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "11abd731c25933261cd6183bd12d6295"; };
+..\RosLibs\rosserial_msgs/Log.h(59): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\RosLibs\rosserial_msgs/RequestParam.h(44): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return REQUESTPARAM; };
+..\RosLibs\rosserial_msgs/RequestParam.h(45): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "c1f3d28f1b044c871e6eff2e9fc3c667"; };
+..\RosLibs\rosserial_msgs/RequestParam.h(172): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return REQUESTPARAM; };
+..\RosLibs\rosserial_msgs/RequestParam.h(173): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "9f0e98bda65981986ddf53afa7a40e49"; };
+..\RosLibs\riki_msgs/Velocities.h(104): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "riki_msgs/Velocities"; };
+..\RosLibs\riki_msgs/Velocities.h(105): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "0ee8ad4cb7809be2d5a0a76352fea86a"; };
+..\RosLibs\riki_msgs/Velocities.h(110): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\RosLibs\geometry_msgs/Twist.h(35): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "geometry_msgs/Twist"; };
+..\RosLibs\geometry_msgs/Twist.h(36): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "9f195f881246fdfa2798d1d3eebca84a"; };
+..\RosLibs\geometry_msgs/Twist.h(41): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\RosLibs\riki_msgs/PID.h(104): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "riki_msgs/PID"; };
+..\RosLibs\riki_msgs/PID.h(105): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "a559df187bdf63f426d5f304b6b28bb4"; };
+..\RosLibs\riki_msgs/PID.h(110): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\RosLibs\riki_msgs/Imu.h(48): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "riki_msgs/Imu"; };
+..\RosLibs\riki_msgs/Imu.h(49): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "275110405f08e1b7c0c0f1aba3e19c67"; };
+..\RosLibs\riki_msgs/Imu.h(54): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\RosLibs\riki_msgs/Battery.h(56): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "riki_msgs/Battery"; };
+..\RosLibs\riki_msgs/Battery.h(57): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "da7225c3562dd2b9b88bf15aa7eb6a9e"; };
+..\RosLibs\riki_msgs/Battery.h(62): warning:  #1-D: last line of file ends without a newline
+  #endif
+..\User\main.cpp(58): error:  #135: class "riki_msgs::PID" has no member "p1"
+  		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+..\User\main.cpp(58): error:  #135: class "riki_msgs::PID" has no member "i1"
+  		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+..\User\main.cpp(58): error:  #135: class "riki_msgs::PID" has no member "d1"
+  		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+..\User\main.cpp(58): error:  #135: class "riki_msgs::PID" has no member "max"
+  		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+..\User\main.cpp(58): error:  #135: class "riki_msgs::PID" has no member "min"
+  		motor1.motor_PID.Set_PID(pid.p1, pid.i1, pid.d1,pid.max,pid.min);
+..\User\main.cpp(59): error:  #135: class "riki_msgs::PID" has no member "p2"
+  		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+..\User\main.cpp(59): error:  #135: class "riki_msgs::PID" has no member "i2"
+  		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+..\User\main.cpp(59): error:  #135: class "riki_msgs::PID" has no member "d2"
+  		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+..\User\main.cpp(59): error:  #135: class "riki_msgs::PID" has no member "max"
+  		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+..\User\main.cpp(59): error:  #135: class "riki_msgs::PID" has no member "min"
+  		motor2.motor_PID.Set_PID(pid.p2, pid.i2, pid.d2,pid.max,pid.min);
+..\User\main.cpp(60): error:  #135: class "riki_msgs::PID" has no member "p3"
+  		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+..\User\main.cpp(60): error:  #135: class "riki_msgs::PID" has no member "i3"
+  		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+..\User\main.cpp(60): error:  #135: class "riki_msgs::PID" has no member "d3"
+  		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+..\User\main.cpp(60): error:  #135: class "riki_msgs::PID" has no member "max"
+  		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+..\User\main.cpp(60): error:  #135: class "riki_msgs::PID" has no member "min"
+  		motor3.motor_PID.Set_PID(pid.p3, pid.i3, pid.d3,pid.max,pid.min);
+..\User\main.cpp(61): error:  #135: class "riki_msgs::PID" has no member "p4"
+  		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
+..\User\main.cpp(61): error:  #135: class "riki_msgs::PID" has no member "i4"
+  		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
+..\User\main.cpp(61): error:  #135: class "riki_msgs::PID" has no member "d4"
+  		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
+..\User\main.cpp(61): error:  #135: class "riki_msgs::PID" has no member "max"
+  		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
+..\User\main.cpp(61): error:  #135: class "riki_msgs::PID" has no member "min"
+  		motor4.motor_PID.Set_PID(pid.p4, pid.i4, pid.d4,pid.max,pid.min);
+..\User\main.cpp(77): error:  #20: identifier "getRPM" is undefined
+  		req_rpm=getRPM(required_linear_vel_x,  required_linear_vel_y,  required_angular_vel);
+..\User\main.cpp: 32 warnings, 21 errors
+".\Objects\ShopRobot.axf" - 21 Error(s), 32 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
-  .\RTE\_shopping_Helper
+  C:\Users\Tongw\Desktop\github\ShopRobot_stm32\STM32_BASE\Objects\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-<<<<<<< HEAD
-Build Time Elapsed:  00:00:00
-=======
 Target not created.
 Build Time Elapsed:  00:00:01
->>>>>>> 0fcbd9b651f8f2072271fec9b7fe1235e296a2d5
 </pre>
 </body>
 </html>

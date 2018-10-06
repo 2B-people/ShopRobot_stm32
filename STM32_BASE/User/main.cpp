@@ -161,7 +161,9 @@ void publish_imu()
 void stop_base()
 {
     // TODO repair we control funtion and variable
-    required_linear_vel = 0;
+    
+	required_linear_vel_x = 0;
+	required_linear_vel_y = 0;
     required_angular_vel = 0;
 }
 
@@ -196,7 +198,9 @@ int main(void)
 
     SystemInit();
     initialise();
-
+		CAN_Mode_Init();		//初始化CAN总线
+	
+	
     //motor1.init();
     //motor2.init();
     //encoder1.init();
