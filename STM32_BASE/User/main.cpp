@@ -23,7 +23,7 @@ Motor motor4(0x204);
 
 double required_angular_vel = 0;
 double required_linear_vel_x = 0;
-double required_liner_vel_y=0;
+double required_linear_vel_y=0;
 uint32_t previous_command_time = 0;
 
 bool is_first = true;
@@ -71,7 +71,7 @@ void command_callback(const geometry_msgs::Twist &cmd_msg)
 			previous_command_time = millis();
 }
 
-void move_base()		//ÔË¶¯Ñ§½âÎö
+void move_base()		//ï¿½Ë¶ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½
 {
     Kinematics::output req_rpm;		
 		req_rpm=getRPM(required_linear_vel_x,  required_linear_vel_y,  required_angular_vel);
