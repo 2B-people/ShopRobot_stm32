@@ -31,7 +31,8 @@ bool accel, gyro, mag;
 
 
 Battery bat(25, 10.6, 12.6);
-//Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, BASE_WIDTH, PWM_BITS);
+Kinematics kinematics( 500 , 0.50 , 0.30 , 0.30  );
+
 
 Gy85 imu;
 Led led;
@@ -66,21 +67,24 @@ void command_callback(const geometry_msgs::Twist &cmd_msg)
      required_linear_vel_x = cmd_msg.linear.x;
 		 required_linear_vel_y = cmd_msg.linear.y;
      required_angular_vel = cmd_msg.angular.z;
-
-    previous_command_time = millis();
+		
+			previous_command_time = millis();
 }
 
-void move_base()
+void move_base()		//运动学解析
 {
-    //Kinematics::output req_rpm;
-    //get the required rpm for each motor based on required velocities
-    //req_rpm = kinematics.getRPM(required_linear_vel, 0.0, required_angular_vel);
-
-    //the required rpm is capped at -/+ MAX_RPM to prevent the PID from having too much error
-    //the PWM value sent to the motor driver is the calculated PID based on required RPM vs measured RPM
-    //TODO add the dji motor pid set and rend encoder in here. 
-    //motor1.spin(motor1_pid.compute(constrain(req_rpm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
-    //motor2.spin(motor2_pid.compute(constrain(req_rpm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
+    Kinematics::output req_rpm;		
+		req_rpm=getRPM(required_linear_vel_x,  required_linear_vel_y,  required_angular_vel);
+		motor1.Set_Speed(req_rpm.motor1);
+		motor2.Set_Speed(req_rpm.motor1);
+		motor3.Set_Speed(req_rpm.motor1);
+		motor4.Set_Speed(req_rpm.motor1);
+		Set_CM_Speed(CAN1,
+		motor1.motor_PID.PID_calculate(motor1.Show_Target_Speed(),motor1.Show_Now_Speed()),
+		motor2.motor_PID.PID_calculate(motor2.Show_Target_Speed(),motor2.Show_Now_Speed()),
+		motor3.motor_PID.PID_calculate(motor3.Show_Target_Speed(),motor3.Show_Now_Speed()),
+		motor4.motor_PID.PID_calculate(motor4.Show_Target_Speed(),motor4.Show_Now_Speed()));
+	
 }
 
 //berif: publish the linear msg to ROS 
