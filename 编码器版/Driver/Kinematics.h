@@ -1,7 +1,7 @@
 #if !defined(KINEMATIVS_H)
 #define KINEMATIVS_H
 
-#define PI      3.1415926
+#define PI 3.1415926
 
 class Kinematics
 {
@@ -9,9 +9,11 @@ class Kinematics
     /* data */
     float circumference_;
     int max_rpm_;
-    int base_a_;
-    int base_b_;
+    float base_a_;
+    float base_b_;
+    int pwm_max_;
     float speed[4];
+    int rpmTopwm(int rpm);
 
   public:
     struct output
@@ -28,9 +30,13 @@ class Kinematics
         float angular_z;
     };
 
-    Kinematics(int motor_max_rpm, float wheel_diameter,float base_a, float base_b);
+    Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b);
+    Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b, int pwm_max);
+
     velocities getVelocities(int rpm_motor1, int rpm_motor2, int rpm_motor3, int rpm_motor4);
     output getRPM(float linear_x, float linear_y, float angular_z);
+    output getPWM(float linear_x, float linear_y, float angular_z);
+    
 };
 
 #endif // KINEMATIVS_H

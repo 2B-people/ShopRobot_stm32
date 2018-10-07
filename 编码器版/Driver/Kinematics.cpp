@@ -8,6 +8,15 @@ Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, fl
     this->base_b_ = base_b;
 }
 
+Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b, int pwm_max)
+{
+    this->max_rpm_ = motor_max_rpm;
+    this->circumference_ = PI * wheel_diameter;
+    this->base_a_ = base_a;
+    this->base_b_ = base_b;
+    this->pwm_max_ = pwm_max;
+}
+
 Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angular_z)
 {
     // convert m/s to m/min
@@ -39,6 +48,26 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
     else
     {
     }
+}
+
+Kinematics::output Kinematics::getPWM(float linear_x, float linear_y, float angular_z)
+{
+    Kinematics::output rpm;
+    Kinematics::output pwm;
+
+    rpm = getRPM(linear_x, linear_y, angular_z);
+    pwm.motor1 = rpmTopwm(rpm.motor1);
+    pwm.motor2 = rpmTopwm(rpm.motor2);
+    pwm.motor3 = rpmTopwm(rpm.motor3);
+    pwm.motor4 = rpmTopwm(rpm.motor4);
+
+    return pwm;
+}
+
+int Kinematics::rpmTopwm(int rpm)
+{
+  //remap scale of target RPM vs MAX_RPM to PWM
+  return (int)(((double)rpm / (double)max_rpm_) * pwm_max_);
 }
 
 Kinematics::velocities Kinematics::getVelocities(int rpm_motor1, int rpm_motor2, int rpm_motor3, int rpm_motor4)
