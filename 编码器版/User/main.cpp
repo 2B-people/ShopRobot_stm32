@@ -42,7 +42,7 @@ Encoder encoder2(ENCODER2, 0xffff, 0);
 Encoder encoder3(ENCODER3, 0xffff, 0);
 Encoder encoder4(ENCODER4, 0xffff, 0);
 Battery bat(25, 10.6, 12.6);
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER,0.6 ,0.6 ,899）;
+Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER,0.6 ,0.6 ,899);
 Gy85 imu;
 Led led;
 
@@ -63,10 +63,10 @@ ros::Publisher raw_battery_pub("battery", &raw_battery_msg);
 
 void pid_callback(const riki_msgs::PID &pid)
 {
-    motor1_pid.updateConstants(pid.p1, pid.i1, pid.d1, pid.max, pid.min);
-    motor2_pid.updateConstants(pid.p2, pid.i2, pid.d2, pid.max, pid.min);
-    motor3_pid.updateConstants(pid.p3, pid.i3, pid.d3, pid.max, pid.min);
-    motor4_pid.updateConstants(pid.p4, pid.i4, pid.d4, pid.max, pid.min);
+    motor1_pid.updateConstants(pid.p, pid.i, pid.d);
+    motor2_pid.updateConstants(pid.p, pid.i, pid.d);
+    motor3_pid.updateConstants(pid.p, pid.i, pid.d);
+    motor4_pid.updateConstants(pid.p, pid.i, pid.d);
 }
 
 void command_callback(const geometry_msgs::Twist &cmd_msg)
@@ -80,18 +80,34 @@ void command_callback(const geometry_msgs::Twist &cmd_msg)
 
 void move_base()
 {
-    Kinematics::output req_rpm;
-    req_rpm = getRPM(required_linear_vel_x, required_linear_vel_y, required_angular_vel);
-
-    motor1.spin(motor1_pid.compute(constrain(req_rpm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
-    motor2.spin(motor2_pid.compute(constrain(req_rpm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
-    motor3.spin(motor3_pid.compute(constrain(req_rpm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
-    motor4.spin(motor4_pid.compute(constrain(req_rpm.motor4, -MAX_RPM, MAX_RPM), motor4.rpm));
+    Kinematics::output pwm;
+    pwm=kinematics.getRPM((float)required_linear_vel_x, (float)required_linear_vel_y,(float) required_angular_vel);
+		
+		
+	
+	
+    motor1.spin(motor1_pid.compute(constrain(pwm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
+    motor2.spin(motor2_pid.compute(constrain(pwm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
+    motor3.spin(motor3_pid.compute(constrain(pwm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
+    motor4.spin(motor4_pid.compute(constrain(pwm.motor4, -MAX_RPM, MAX_RPM), motor4.rpm));
 }
 
 void publish_linear_velocity()
 {
 
+    motor1.updateSpeed(encoder1.read());
+    motor2.updateSpeed(encoder2.read());
+		motor3.updateSpeed(encoder3.read());
+    motor4.updateSpeed(encoder4.read());
+    Kinematics::velocities vel;
+    vel = kinematics.getVelocities(motor1.rpm, motor2.rpm, motor3.rpm, motor4.rpm);
+
+    //fill in the object
+    raw_vel_msg.linear_x = vel.linear_x;
+    raw_vel_msg.linear_y = vel.linear_y;
+    raw_vel_msg.angular_z = vel.angular_z;
+
+    //publish raw_vel_msg object to ROS
     raw_vel_pub.publish(&raw_vel_msg);
 }
 
@@ -152,6 +168,7 @@ void stop_base()
     required_linear_vel_x = 0;
     required_linear_vel_y = 0;
     required_angular_vel = 0;
+	
 }
 
 void publishBAT()
