@@ -90,56 +90,56 @@ typedef enum {
 }Motor_TypeDef; 
 
 #define MOTORn							4
-#define RIKI_MOTOR1_A_PIN           GPIO_Pin_5
-#define RIKI_MOTOR1_B_PIN           GPIO_Pin_4
-#define RIKI_MOTOR1_GPIO_PORT       GPIOA
-#define RIKI_MOTOR1_GPIO_CLK        RCC_APB2Periph_GPIOA
-
-#define RIKI_MOTOR2_A_PIN           GPIO_Pin_5
-#define RIKI_MOTOR2_B_PIN           GPIO_Pin_4
-#define RIKI_MOTOR2_GPIO_PORT       GPIOC
-#define RIKI_MOTOR2_GPIO_CLK        RCC_APB2Periph_GPIOC
-
-
-#define RIKI_MOTOR3_A_PIN           GPIO_Pin_1
-#define RIKI_MOTOR3_B_PIN           GPIO_Pin_0
-#define RIKI_MOTOR3_GPIO_PORT       GPIOB
-#define RIKI_MOTOR3_GPIO_CLK        RCC_APB2Periph_GPIOB
-
-#define RIKI_MOTOR4_A_PIN           GPIO_Pin_3
-#define RIKI_MOTOR4_B_PIN           GPIO_Pin_2
-#define RIKI_MOTOR4_GPIO_PORT       GPIOB
-#define RIKI_MOTOR4_GPIO_CLK        RCC_APB2Periph_GPIOB
 
 
 
+#define RIKI_MOTOR1_PWM1_PIN         GPIO_Pin_9
+#define RIKI_MOTOR1_PWM1_PORT        GPIOE
+#define RIKI_MOTOR1_PWM1_CLK         RCC_APB2Periph_GPIOE
+#define RIKI_MOTOR1_PWM1_TIM         TIM1
+#define RIKI_MOTOR1_PWM1_TIM_CLK     RCC_APB2Periph_TIM1
 
+#define RIKI_MOTOR2_PWM1_PIN         GPIO_Pin_11
+#define RIKI_MOTOR2_PWM1_PORT        GPIOE
+#define RIKI_MOTOR2_PWM1_CLK         RCC_APB2Periph_GPIOE
+#define RIKI_MOTOR2_PWM1_TIM         TIM1
+#define RIKI_MOTOR2_PWM1_TIM_CLK     RCC_APB2Periph_TIM1
 
+#define RIKI_MOTOR3_PWM1_PIN         GPIO_Pin_13
+#define RIKI_MOTOR3_PWM1_PORT        GPIOE
+#define RIKI_MOTOR3_PWM1_CLK         RCC_APB2Periph_GPIOE
+#define RIKI_MOTOR3_PWM1_TIM         TIM1
+#define RIKI_MOTOR3_PWM1_TIM_CLK     RCC_APB2Periph_TIM1
 
+#define RIKI_MOTOR4_PWM1_PIN         GPIO_Pin_14
+#define RIKI_MOTOR4_PWM1_PORT        GPIOE
+#define RIKI_MOTOR4_PWM1_CLK         RCC_APB2Periph_GPIOE
+#define RIKI_MOTOR4_PWM1_TIM         TIM1
+#define RIKI_MOTOR4_PWM1_TIM_CLK     RCC_APB2Periph_TIM1
 
-#define RIKI_MOTOR1_PWM_PIN         GPIO_Pin_9
-#define RIKI_MOTOR1_PWM_PORT        GPIOE
-#define RIKI_MOTOR1_PWM_CLK         RCC_APB2Periph_GPIOE
-#define RIKI_MOTOR1_PWM_TIM         TIM1
-#define RIKI_MOTOR1_PWM_TIM_CLK     RCC_APB2Periph_TIM1
+#define RIKI_MOTOR1_PWM2_PIN         GPIO_Pin_6
+#define RIKI_MOTOR1_PWM2_PORT        GPIOC
+#define RIKI_MOTOR1_PWM2_CLK         RCC_APB2Periph_GPIOC
+#define RIKI_MOTOR1_PWM2_TIM         TIM8
+#define RIKI_MOTOR1_PWM2_TIM_CLK     RCC_APB2Periph_TIM8
 
-#define RIKI_MOTOR2_PWM_PIN         GPIO_Pin_11
-#define RIKI_MOTOR2_PWM_PORT        GPIOE
-#define RIKI_MOTOR2_PWM_CLK         RCC_APB2Periph_GPIOE
-#define RIKI_MOTOR2_PWM_TIM         TIM1
-#define RIKI_MOTOR2_PWM_TIM_CLK     RCC_APB2Periph_TIM1
+#define RIKI_MOTOR2_PWM2_PIN         GPIO_Pin_7
+#define RIKI_MOTOR2_PWM2_PORT        GPIOC
+#define RIKI_MOTOR2_PWM2_CLK         RCC_APB2Periph_GPIOC
+#define RIKI_MOTOR2_PWM2_TIM         TIM8
+#define RIKI_MOTOR2_PWM2_TIM_CLK     RCC_APB2Periph_TIM8
 
-#define RIKI_MOTOR3_PWM_PIN         GPIO_Pin_13
-#define RIKI_MOTOR3_PWM_PORT        GPIOE
-#define RIKI_MOTOR3_PWM_CLK         RCC_APB2Periph_GPIOE
-#define RIKI_MOTOR3_PWM_TIM         TIM1
-#define RIKI_MOTOR3_PWM_TIM_CLK     RCC_APB2Periph_TIM1
+#define RIKI_MOTOR3_PWM2_PIN         GPIO_Pin_8
+#define RIKI_MOTOR3_PWM2_PORT        GPIOC
+#define RIKI_MOTOR3_PWM2_CLK         RCC_APB2Periph_GPIOC
+#define RIKI_MOTOR3_PWM2_TIM         TIM8
+#define RIKI_MOTOR3_PWM2_TIM_CLK     RCC_APB2Periph_TIM8
 
-#define RIKI_MOTOR4_PWM_PIN         GPIO_Pin_14
-#define RIKI_MOTOR4_PWM_PORT        GPIOE
-#define RIKI_MOTOR4_PWM_CLK         RCC_APB2Periph_GPIOE
-#define RIKI_MOTOR4_PWM_TIM         TIM1
-#define RIKI_MOTOR4_PWM_TIM_CLK     RCC_APB2Periph_TIM1
+#define RIKI_MOTOR4_PWM2_PIN         GPIO_Pin_9
+#define RIKI_MOTOR4_PWM2_PORT        GPIOC
+#define RIKI_MOTOR4_PWM2_CLK         RCC_APB2Periph_GPIOC
+#define RIKI_MOTOR4_PWM2_TIM         TIM8
+#define RIKI_MOTOR4_PWM2_TIM_CLK     RCC_APB2Periph_TIM8
 
 /** Encoder config **/
 typedef enum {
@@ -161,8 +161,8 @@ typedef enum {
 #define RIKI_ENCODER4_GPIO_CLK      RCC_APB2Periph_GPIOA
 
 
-#define RIKI_ENCODER3_A_PIN         GPIO_Pin_2
-#define RIKI_ENCODER3_B_PIN         GPIO_Pin_3
+#define RIKI_ENCODER3_A_PIN         GPIO_Pin_15		//A15
+#define RIKI_ENCODER3_B_PIN         GPIO_Pin_3		//B3
 #define RIKI_ENCODER3_GPIO_PORT     GPIOA
 #define RIKI_ENCODER3_GPIO_CLK      RCC_APB2Periph_GPIOA
 
@@ -178,12 +178,13 @@ typedef enum {
 #define RIKI_ENCODER1_GPIO_PORT     GPIOB
 #define RIKI_ENCODER1_GPIO_CLK      RCC_APB2Periph_GPIOB
 
-#define RIKI_ENCODER3_TIM           TIM2
-#define RIKI_ENCODER3_TIM_CLK       RCC_APB1Periph_TIM2
+
 
 #define RIKI_ENCODER4_TIM           TIM3
 #define RIKI_ENCODER4_TIM_CLK       RCC_APB1Periph_TIM3
 
+#define RIKI_ENCODER3_TIM           TIM2
+#define RIKI_ENCODER3_TIM_CLK       RCC_APB1Periph_TIM2
 
 #define RIKI_ENCODER2_TIM           TIM5
 #define RIKI_ENCODER2_TIM_CLK       RCC_APB1Periph_TIM5
