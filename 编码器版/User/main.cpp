@@ -81,7 +81,7 @@ void command_callback(const geometry_msgs::Twist &cmd_msg)
 void move_base()
 {
     Kinematics::output pwm;
-    pwm=kinematics.getRPM((float)required_linear_vel_x, (float)required_linear_vel_y,(float) required_angular_vel);
+    pwm=kinematics.getRPM(1.0, 0,0);
 		
 		
 	
@@ -230,6 +230,7 @@ int main(void)
 
     while (1)
     {
+			
         if ((millis() - previous_control_time) >= (1000 / COMMAND_RATE))
         {
             move_base();
