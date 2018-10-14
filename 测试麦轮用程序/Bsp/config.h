@@ -20,9 +20,9 @@
 #define COMMAND_RATE 15 //hz
 #define DEBUG_RATE 1
 
-#define K_P    0.1 // P constant
-#define K_I    0.2 // I constant
-#define K_D    0.2 // D constant
+#define K_P    3.0 // P constant
+#define K_I    0 // I constant
+#define K_D    0.03 // D constant
 /** motor param **/
 #define PWM_BITS        8
 #define MAX_RPM         366 //motor's maximum RPM

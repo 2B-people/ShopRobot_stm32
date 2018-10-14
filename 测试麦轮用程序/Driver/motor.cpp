@@ -134,12 +134,43 @@ void Motor::motor_pwm2_init()
 
 void Motor::spin(int pwm)
 {
-	if(pwm > 0){
-		TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], abs(pwm));
-		TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], 0);
-	}else if(pwm < 0) {
-		TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], abs(pwm));
-		TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], 0);
+	if(pwm > 0)
+	{
+		switch(this->motor)
+		{
+			case MOTOR1:
+				TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], abs(pwm));
+				TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], 0);	
+			break;
+			case MOTOR2:
+				TIM_SetCompare2(MOTOR_PWM1_TIM[this->motor], abs(pwm));
+				TIM_SetCompare2(MOTOR_PWM2_TIM[this->motor], 0);	
+			case MOTOR3:
+				TIM_SetCompare3(MOTOR_PWM1_TIM[this->motor], abs(pwm));
+				TIM_SetCompare3(MOTOR_PWM2_TIM[this->motor], 0);	
+			case MOTOR4:
+				TIM_SetCompare4(MOTOR_PWM1_TIM[this->motor], abs(pwm));
+				TIM_SetCompare4(MOTOR_PWM2_TIM[this->motor], 0);	
+		}
+	}
+	else if(pwm < 0) 
+	{
+		switch(this->motor)
+		{
+			case MOTOR1:
+				TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], abs(pwm));
+				TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], 0);	
+			break;
+			case MOTOR2:
+				TIM_SetCompare2(MOTOR_PWM2_TIM[this->motor], abs(pwm));
+				TIM_SetCompare2(MOTOR_PWM1_TIM[this->motor], 0);	
+			case MOTOR3:
+				TIM_SetCompare3(MOTOR_PWM2_TIM[this->motor], abs(pwm));
+				TIM_SetCompare3(MOTOR_PWM1_TIM[this->motor], 0);	
+			case MOTOR4:
+				TIM_SetCompare4(MOTOR_PWM2_TIM[this->motor], abs(pwm));
+				TIM_SetCompare4(MOTOR_PWM1_TIM[this->motor], 0);	
+		}
 	}
 }
 
