@@ -53,15 +53,14 @@ riki_msgs::Battery raw_battery_msg;
 
 void move_base()
 {
+
     Kinematics::output pwm;
     pwm=kinematics.getRPM(required_linear_vel_x, required_linear_vel_y,required_angular_vel);
 		
-		 motor1.updateSpeed(encoder1.read());
+		motor1.updateSpeed(encoder1.read());
     motor2.updateSpeed(encoder2.read());
 		motor3.updateSpeed(encoder3.read());
     motor4.updateSpeed(encoder4.read());
-	
-	
     motor1.spin(motor1_pid.compute(constrain(pwm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
     motor2.spin(motor2_pid.compute(constrain(pwm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
     motor3.spin(motor3_pid.compute(constrain(pwm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
@@ -84,41 +83,42 @@ void stop_base()
 
 
 
-
 int main(void)
 {
-    uint32_t previous_battery_debug_time = 0;
-    uint32_t previous_debug_time = 0;
-    uint32_t previous_imu_time = 0;
-    uint32_t previous_control_time = 0;
-    uint32_t publish_vel_time = 0;
-//    char battery_buffer[] = "The voltage is lower than 11.3V,Please charge! ";
+	uint32_t previous_control_time = 0;
+	
 
-    SystemInit();
-    initialise();
 
-    motor1.init();
-    motor2.init();
-    motor3.init();
-    motor4.init();
-    encoder1.init();
-    encoder2.init();
-    encoder3.init();
-    encoder4.init();
-    led.init();
+	SystemInit();
+	initialise();
+	
+  motor1.init();
+  motor2.init();
+	motor3.init();
+  motor4.init();
+	encoder1.init();
+  encoder2.init();
+	encoder3.init();
+  encoder4.init();
+/////////////////////////////////////////////////////////////这一部分放到类中就会卡死，属实玄学。/////////////////////////////////////
+	TIM_OCInitTypeDef  TIM_OCInitStructure;		
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 
+	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
+	TIM_OCInitStructure.TIM_Pulse = 0; 
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 
+	TIM_OC1Init(TIM1, &TIM_OCInitStructure);
+	TIM_OC1Init(TIM8, &TIM_OCInitStructure);
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    while (1)
-    {
-			
-        if ((millis() - previous_control_time) >= (1000 / COMMAND_RATE))
-        {
-            move_base();
-            previous_control_time = millis();
-        }
 
-        if ((millis() - previous_command_time) >= 400)
-        {
-            stop_base();
-        }
+
+
+	while(1)
+	{
+		if ((millis() - previous_control_time) >= (1000 / COMMAND_RATE))
+		{
+			 move_base();
+       previous_control_time = millis();
     }
+	}
 }

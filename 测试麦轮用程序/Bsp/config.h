@@ -1,3 +1,5 @@
+
+
 #ifndef _CONFIG_H_
 #define _CONFIG_H_
 
@@ -154,31 +156,25 @@ typedef enum {
 
 #define ENCODERn                    4
 
-
-#define RIKI_ENCODER4_A_PIN         GPIO_Pin_6
-#define RIKI_ENCODER4_B_PIN         GPIO_Pin_7
-#define RIKI_ENCODER4_GPIO_PORT     GPIOA
-#define RIKI_ENCODER4_GPIO_CLK      RCC_APB2Periph_GPIOA
-
-
-#define RIKI_ENCODER3_A_PIN         GPIO_Pin_15		//A15
-#define RIKI_ENCODER3_B_PIN         GPIO_Pin_3		//B3
-#define RIKI_ENCODER3_GPIO_PORT     GPIOA
-#define RIKI_ENCODER3_GPIO_CLK      RCC_APB2Periph_GPIOA
-
-
+#define RIKI_ENCODER1_A_PIN         GPIO_Pin_6
+#define RIKI_ENCODER1_B_PIN         GPIO_Pin_7
+#define RIKI_ENCODER1_GPIO_PORT     GPIOB
+#define RIKI_ENCODER1_GPIO_CLK      RCC_APB2Periph_GPIOB
 
 #define RIKI_ENCODER2_A_PIN         GPIO_Pin_0
 #define RIKI_ENCODER2_B_PIN         GPIO_Pin_1
 #define RIKI_ENCODER2_GPIO_PORT     GPIOA
 #define RIKI_ENCODER2_GPIO_CLK      RCC_APB2Periph_GPIOA
 
-#define RIKI_ENCODER1_A_PIN         GPIO_Pin_6
-#define RIKI_ENCODER1_B_PIN         GPIO_Pin_7
-#define RIKI_ENCODER1_GPIO_PORT     GPIOB
-#define RIKI_ENCODER1_GPIO_CLK      RCC_APB2Periph_GPIOB
+#define RIKI_ENCODER3_A_PIN         GPIO_Pin_15		//A15
+#define RIKI_ENCODER3_B_PIN         GPIO_Pin_3		//B3
+#define RIKI_ENCODER3_GPIO_PORT     GPIOA
+#define RIKI_ENCODER3_GPIO_CLK      RCC_APB2Periph_GPIOA
 
-
+#define RIKI_ENCODER4_A_PIN         GPIO_Pin_6
+#define RIKI_ENCODER4_B_PIN         GPIO_Pin_7
+#define RIKI_ENCODER4_GPIO_PORT     GPIOA
+#define RIKI_ENCODER4_GPIO_CLK      RCC_APB2Periph_GPIOA
 
 #define RIKI_ENCODER4_TIM           TIM3
 #define RIKI_ENCODER4_TIM_CLK       RCC_APB1Periph_TIM3
@@ -260,3 +256,5 @@ typedef enum {
 //#define RIKI_SONAR_TIM_IRQ          TIM6_IRQn
 
 #endif // _CONFIG_H_
+
+

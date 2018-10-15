@@ -331,7 +331,7 @@
             <v6Lto>0</v6Lto>
             <v6WtE>0</v6WtE>
             <VariousControls>
-              <MiscControls>--gnu</MiscControls>
+              <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD</Define>
               <Undefine></Undefine>
               <IncludePath>.\Bsp;.\Driver;.\Stm32Libs\STM32F10x_StdPeriph_Driver\inc;.\Stm32Libs\STM32F10x_StdPeriph_Driver;.\Stm32Libs\CMSIS_CM3;.\RosLibs;.\Stm32Libs\CMSIS\CM3\CoreSupport</IncludePath>

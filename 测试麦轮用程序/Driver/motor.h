@@ -5,6 +5,9 @@
 
 #define constrain(amt,low,high) \
 	((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 class Motor {
@@ -29,3 +32,7 @@ class Motor {
 };
 
 #endif //_MOTOR_H_
+
+#ifdef __cplusplus
+}
+#endif
