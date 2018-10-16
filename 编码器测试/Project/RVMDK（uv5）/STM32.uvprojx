@@ -399,14 +399,14 @@
               <FilePath>..\..\User\stm32f10x_conf.h</FilePath>
             </File>
             <File>
-              <FileName>stm32f10x_it.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\User\stm32f10x_it.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f10x_it.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\..\User\stm32f10x_it.h</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f10x_it.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\stm32f10x_it.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -57,10 +57,8 @@ void move_base()
     Kinematics::output pwm;
     pwm=kinematics.getRPM(required_linear_vel_x, required_linear_vel_y,required_angular_vel);
 		
-		motor1.updateSpeed(encoder1.read());
-    motor2.updateSpeed(encoder2.read());
-		motor3.updateSpeed(encoder3.read());
-    motor4.updateSpeed(encoder4.read());
+
+	
     motor1.spin(motor1_pid.compute(constrain(pwm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
     motor2.spin(motor2_pid.compute(constrain(pwm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
     motor3.spin(motor3_pid.compute(constrain(pwm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
@@ -86,7 +84,7 @@ void stop_base()
 int main(void)
 {
 	uint32_t previous_control_time = 0;
-	
+	uint32_t publish_vel_time=0;
 
 
 	SystemInit();
@@ -120,5 +118,14 @@ int main(void)
 			 move_base();
        previous_control_time = millis();
     }
+		
+		if ((millis() - publish_vel_time) >= (1000 / VEL_PUBLISH_RATE))
+		{
+			motor1.updateSpeed(encoder1.read());
+			motor2.updateSpeed(encoder2.read());
+			motor3.updateSpeed(encoder3.read());
+			motor4.updateSpeed(encoder4.read());
+			publish_vel_time = millis();
+		}
 	}
 }

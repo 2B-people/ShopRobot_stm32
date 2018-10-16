@@ -117,7 +117,7 @@ int32_t Encoder::read()
 	last_timer = timer_value;
 	position += (int32_t) last_timer_diff;
 
-	return position;
+	return (int32_t)position;
 }
 
 void Encoder::set_pos(int32_t pos)
