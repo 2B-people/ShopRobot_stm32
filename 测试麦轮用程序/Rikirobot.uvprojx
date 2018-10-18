@@ -509,11 +509,6 @@
           <GroupName>Driver</GroupName>
           <Files>
             <File>
-              <FileName>battery.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Driver\battery.cpp</FilePath>
-            </File>
-            <File>
               <FileName>encoder.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Driver\encoder.cpp</FilePath>
@@ -537,6 +532,11 @@
               <FileName>Kinematics.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Driver\Kinematics.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Driver\key.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -572,6 +572,11 @@
               <FileName>RingBuffer.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Bsp\RingBuffer.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>battery.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Driver\battery.cpp</FilePath>
             </File>
           </Files>
         </Group>

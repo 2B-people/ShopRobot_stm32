@@ -18,6 +18,7 @@
 
 #define IMU_PUBLISH_RATE 10 //hz
 #define VEL_PUBLISH_RATE 10 //hz
+#define SHOW_TEST_RATE 1//hz
 #define BAT_PUBLISH_RATE 0.2 //hz
 #define COMMAND_RATE 15 //hz
 #define DEBUG_RATE 1
@@ -27,9 +28,9 @@
 #define K_D    0.03 // D constant
 /** motor param **/
 #define PWM_BITS        8
-#define MAX_RPM         366 //motor's maximum RPM
-#define COUNTS_PER_REV  1560 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
-#define WHEEL_DIAMETER  0.068 //wheel's diameter in meters
+#define MAX_RPM         255 //motor's maximum RPM
+#define COUNTS_PER_REV  15000 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
+#define WHEEL_DIAMETER  0.05878 //wheel's diameter in meters
 
 #define BASE_WIDTH 0.186
 
@@ -233,9 +234,9 @@ typedef enum {
 //#define RIKI_SERVO2_TIM_CLK			RCC_APB1Periph_TIM2
 
 /** LED config **/
-#define RIKI_LED_PIN								GPIO_Pin_1
-#define RIKI_LED_GPIO_PORT					GPIOC
-#define RIKI_LED_GPIO_CLK						RCC_APB2Periph_GPIOC
+#define RIKI_LED_PIN								GPIO_Pin_5
+#define RIKI_LED_GPIO_PORT					GPIOB
+#define RIKI_LED_GPIO_CLK						RCC_APB2Periph_GPIOB
 
 
 /** volt adc config **/
