@@ -56,13 +56,16 @@ void move_base()
 
     Kinematics::output pwm;
     pwm=kinematics.getRPM(required_linear_vel_x, required_linear_vel_y,required_angular_vel);
-		
+		motor1.spin(100);
+		motor2.spin(100);		
+	  motor3.spin(100);		
+	  motor4.spin(100);
 
-	
-    motor1.spin(motor1_pid.compute(constrain(pwm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
-    motor2.spin(motor2_pid.compute(constrain(pwm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
-    motor3.spin(motor3_pid.compute(constrain(pwm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
-    motor4.spin(motor4_pid.compute(constrain(pwm.motor4, -MAX_RPM, MAX_RPM), motor4.rpm));
+//	
+//    motor1.spin(motor1_pid.compute(constrain(pwm.motor1, -MAX_RPM, MAX_RPM), motor1.rpm));
+//    motor2.spin(motor2_pid.compute(constrain(pwm.motor2, -MAX_RPM, MAX_RPM), motor2.rpm));
+//    motor3.spin(motor3_pid.compute(constrain(pwm.motor3, -MAX_RPM, MAX_RPM), motor3.rpm));
+//    motor4.spin(motor4_pid.compute(constrain(pwm.motor4, -MAX_RPM, MAX_RPM), motor4.rpm));
 }
 
 

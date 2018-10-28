@@ -28,7 +28,7 @@
 /** motor param **/
 #define PWM_BITS        8
 #define MAX_RPM         366 //motor's maximum RPM
-#define COUNTS_PER_REV  1560 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
+#define COUNTS_PER_REV  15000 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
 #define WHEEL_DIAMETER  0.068 //wheel's diameter in meters
 
 #define BASE_WIDTH 0.186
@@ -187,20 +187,6 @@ typedef enum {
 
 #define RIKI_ENCODER1_TIM           TIM4
 #define RIKI_ENCODER1_TIM_CLK       RCC_APB1Periph_TIM4
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /** I2C Config **/
 

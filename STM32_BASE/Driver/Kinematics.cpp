@@ -17,17 +17,17 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
     // convert rad/s to rad/min
     float angular_z_mins = angular_z * 60;
 
-    this->speed[0] = linear_y_mins - linear_x_mins + angular_z_mins * (base_a_ + base_b_);
-    this->speed[1] = linear_y_mins + linear_x_mins - angular_z_mins * (base_a_ + base_b_);
-    this->speed[2] = linear_y_mins - linear_x_mins - angular_z_mins * (base_a_ + base_b_);
-    this->speed[3] = linear_y_mins + linear_x_mins + angular_z_mins * (base_a_ + base_b_);
+    this->speed_[0] = linear_y_mins - linear_x_mins + angular_z_mins * (base_a_ + base_b_);
+    this->speed_[1] = linear_y_mins + linear_x_mins - angular_z_mins * (base_a_ + base_b_);
+    this->speed_[2] = linear_y_mins - linear_x_mins - angular_z_mins * (base_a_ + base_b_);
+    this->speed_[3] = linear_y_mins + linear_x_mins + angular_z_mins * (base_a_ + base_b_);
 
     Kinematics::output rpm;
 
-    rpm.motor1 = (int)(speed[0] / circumference_);
-    rpm.motor2 = (int)(speed[1] / circumference_);
-    rpm.motor3 = (int)(speed[2] / circumference_);
-    rpm.motor4 = (int)(speed[3] / circumference_);
+    rpm.motor1 = (int)(speed_[0] / circumference_);
+    rpm.motor2 = (int)(speed_[1] / circumference_);
+    rpm.motor3 = (int)(speed_[2] / circumference_);
+    rpm.motor4 = (int)(speed_[3] / circumference_);
 
     if (rpm.motor1 <= max_rpm_ &&
         rpm.motor2 <= max_rpm_ &&
@@ -38,6 +38,13 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
     }
     else
     {
+        rpm.motor1 = 0;
+        rpm.motor2 = 0;
+        rpm.motor3 = 0;
+        rpm.motor4 = 0;
+
+        return rpm;
+
     }
 }
 
