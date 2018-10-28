@@ -44,11 +44,8 @@ void Encoder::init()
 		TIM_TimeBaseInit(ENCODER_TIM[this->encoder], &TIM_TimeBaseStructure);
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
-		if(this->encoder == ENCODER1||this->encoder==ENCODER3){
-			TIM_EncoderInterfaceConfig(ENCODER_TIM[this->encoder], TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Falling);
-		} else {
-			TIM_EncoderInterfaceConfig(ENCODER_TIM[this->encoder], TIM_EncoderMode_TI12, TIM_ICPolarity_Falling, TIM_ICPolarity_Rising);
-		}
+			TIM_EncoderInterfaceConfig(ENCODER_TIM[this->encoder], TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Falling); 
+		
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 		TIM_ICStructInit(&TIM_ICInitStructure); 
 		TIM_ICInitStructure.TIM_ICFilter = 6; 
@@ -66,7 +63,9 @@ void Encoder::init()
 		GPIO_InitTypeDef GPIO_InitStructure; 
 		TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 		TIM_ICInitTypeDef TIM_ICInitStructure;
+		 
 
+		
 		RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
 		GPIO_InitStructure.GPIO_Pin = GPIO_Pin_15;
 		GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
@@ -80,33 +79,34 @@ void Encoder::init()
 		GPIO_Init(GPIOB, &GPIO_InitStructure);
 		
 		
-		RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE); 
-		GPIO_PinRemapConfig(GPIO_PartialRemap1_TIM2, ENABLE);
-		RCC_APB1PeriphClockCmd(ENCODER_TIM_CLK[this->encoder], ENABLE);
-		TIM_DeInit(ENCODER_TIM[this->encoder]);  
-		TIM_TimeBaseInit(ENCODER_TIM[this->encoder], &TIM_TimeBaseStructure); 
+		GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
+		RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+		RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+		//GPIO_AFIODeInit();
+		GPIO_PinRemapConfig(GPIO_FullRemap_TIM2, ENABLE);
+		TIM_DeInit(TIM2);   
 
 		TIM_TimeBaseStructure.TIM_Period = this->arr; 
 		TIM_TimeBaseStructure.TIM_Prescaler = this->psc;     //设置预分频：  
 		TIM_TimeBaseStructure.TIM_ClockDivision =TIM_CKD_DIV1;  //设置时钟分频系数：不分频 
 		TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;  //向上计数模式   
 
-		TIM_TimeBaseInit(ENCODER_TIM[this->encoder], &TIM_TimeBaseStructure);
+		TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
 	////////////////////////////////////////////////////////////////////////////////////////////////
 
-			TIM_EncoderInterfaceConfig(ENCODER_TIM[this->encoder], TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Falling);
+			TIM_EncoderInterfaceConfig(TIM2, TIM_EncoderMode_TI12, TIM_ICPolarity_Rising, TIM_ICPolarity_Falling);
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 		TIM_ICStructInit(&TIM_ICInitStructure); 
 		TIM_ICInitStructure.TIM_ICFilter = 6; 
-		TIM_ICInit(ENCODER_TIM[this->encoder], &TIM_ICInitStructure);
+		TIM_ICInit(TIM2, &TIM_ICInitStructure);
 		
-		TIM_ClearFlag(ENCODER_TIM[this->encoder], TIM_FLAG_Update); 
-		TIM_ITConfig(ENCODER_TIM[this->encoder], TIM_IT_Update, ENABLE); 
+		TIM_ClearFlag(TIM2, TIM_FLAG_Update); 
+		TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE); 
 
-		TIM_SetCounter(ENCODER_TIM[this->encoder], 0);
+		TIM_SetCounter(TIM2, 0);
 
-		TIM_Cmd(ENCODER_TIM[this->encoder], ENABLE); 
+		TIM_Cmd(TIM2, ENABLE); 
 	}
 }
 

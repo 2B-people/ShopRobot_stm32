@@ -115,6 +115,20 @@ void HardwareSerial::putstr(const char *str)
 	}
 }
 
+void HardwareSerial::putnum(int num,int len)
+{
+	if(num<0)
+	{
+		num=-num;
+		print("-");
+	}
+	for(int i=0;i<len;i++)
+	{
+		write(num%10+48);
+		num/=10;
+	}
+}
+
 void HardwareSerial::irq()
 {
 	uint8_t data;

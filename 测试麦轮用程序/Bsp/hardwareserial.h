@@ -17,7 +17,7 @@ public:
 	void print(const char *format, ...);
 	void putstr(const char *str);
 	void irq();
-
+	void putnum(int num,int len);
 protected:
 	RingBuffer rx_buffer;
 	Serial_TypeDef Serial;

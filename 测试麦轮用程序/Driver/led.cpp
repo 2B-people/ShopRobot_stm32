@@ -4,7 +4,7 @@
 void Led::init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RIKI_LED_GPIO_CLK, ENABLE);
+	RCC_APB1PeriphClockCmd(RIKI_LED_GPIO_CLK, ENABLE);
 
 	GPIO_InitStructure.GPIO_Pin     = RIKI_LED_PIN;
 	GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_Out_PP;
