@@ -20,20 +20,20 @@
 #define VEL_PUBLISH_RATE 10 //hz
 #define SHOW_TEST_RATE 1//hz
 #define BAT_PUBLISH_RATE 0.2 //hz
-#define COMMAND_RATE 15 //hz
+#define COMMAND_RATE 500 //hz
 #define DEBUG_RATE 1
 
-#define K_P    3.0 // P constant
-#define K_I    0 // I constant
-#define K_D    0.03 // D constant
+#define K_P    1.7	 // P constant
+#define K_I    0.017 // I constant
+#define K_D    0.0 // D constant
 /** motor param **/
 #define PWM_BITS        8
-#define MAX_RPM         255 //motor's maximum RPM
+#define MAX_RPM         15000 //motor's maximum RPM
 #define COUNTS_PER_REV  15000 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
 #define WHEEL_DIAMETER  0.05878 //wheel's diameter in meters
 
 #define BASE_WIDTH 0.186
-
+	
 #define 	USE_SERIAL1
 #define 	USE_SERIAL2
 #define 	USE_SERIAL3
@@ -166,7 +166,7 @@ typedef enum {
 #define RIKI_ENCODER2_B_PIN         GPIO_Pin_1
 #define RIKI_ENCODER2_GPIO_PORT     GPIOA
 #define RIKI_ENCODER2_GPIO_CLK      RCC_APB2Periph_GPIOA
-
+		
 #define RIKI_ENCODER3_A_PIN         GPIO_Pin_15		//A15
 #define RIKI_ENCODER3_B_PIN         GPIO_Pin_3		//B3
 #define RIKI_ENCODER3_GPIO_PORT     GPIOA

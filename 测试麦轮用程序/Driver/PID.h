@@ -22,6 +22,7 @@ class PID
     double integral_;
     double derivative_;
     double prev_error_;
+		double last_error_;
 };
 
 #endif
