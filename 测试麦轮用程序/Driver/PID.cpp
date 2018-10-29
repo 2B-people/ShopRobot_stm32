@@ -1,37 +1,32 @@
 #include "PID.h"
-
-PID::PID(float min_val, float max_val, float kp, float ki, float kd)
+PID::PID(float Kp,float Ki,float Kd,int16_t out_Max,int16_t out_Min)
 {
-  min_val_ = min_val;
-  max_val_ = max_val;
-  kp_ = kp;
-  ki_ = ki;
-  kd_ = kd;
+	this->Kp=Kp;
+	this->Ki=Ki;
+	this->Kd=Kd;
+	this->out_Max=out_Max;
+	this->out_Min=out_Min;
 }
 
-double PID::compute(float setpoint, float measured_value)
+void PID::Set_PID(float Kp,float Ki,float Kd,int16_t out_Max,int16_t out_Min)
 {
-  double error;
-  double pid;
-
-  //setpoint is constrained between min and max to prevent pid from having too much error
-  error = setpoint - measured_value;
-  integral_ += error;
-  derivative_ = error - prev_error_;
-
-  if(setpoint == 0 && error == 0){
-    integral_ = 0;
-  }
-
-  pid = (kp_ * error) + (ki_ * integral_) + (kd_ * derivative_);
-  prev_error_ = error;
-
-  return constrain(pid, min_val_, max_val_);
+	this->Kp=Kp;
+	this->Ki=Ki;
+	this->Kd=Kd;
 }
 
-void PID::updateConstants(float kp, float ki, float kd)
+int16_t PID::PID_calculate(int16_t target_speed,int16_t now_speed)
 {
-  kp_ = kp;
-  ki_ = ki;
-  kd_ = kd;
+	int16_t derror;
+	error_now=target_speed*1-now_speed;
+	error_sum+=error_now;
+	
+	derror=error_last-error_inter;
+	error_inter=error_last;
+	error_last=error_now;
+	pid_out=int32_t(error_now*Kp+error_sum*Ki+derror*Kd);
+	
+	if(pid_out<out_Min) pid_out=out_Min;
+	if(pid_out>out_Max) pid_out=out_Max;
+	return pid_out;
 }

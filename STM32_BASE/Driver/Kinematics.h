@@ -11,7 +11,7 @@ class Kinematics
     int max_rpm_;
     int base_a_;
     int base_b_;
-    float speed[4];
+    float speed_[4];
 
   public:
     struct output
@@ -27,7 +27,6 @@ class Kinematics
         float linear_y;
         float angular_z;
     };
-
     Kinematics(int motor_max_rpm, float wheel_diameter,float base_a, float base_b);
     velocities getVelocities(int rpm_motor1, int rpm_motor2, int rpm_motor3, int rpm_motor4);
     output getRPM(float linear_x, float linear_y, float angular_z);

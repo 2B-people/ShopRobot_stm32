@@ -1,38 +1,28 @@
 #ifndef _MOTOR_H_
 #define _MOTOR_H_
 
-#include "config.h"
+#include "pid.h"
+#include "stm32f10x.h"
 
-#define constrain(amt,low,high) \
-	((amt)<(low)?(low):((amt)>(high)?(high):(amt)))
-#ifdef __cplusplus
-extern "C" {
-#endif
+
+void CAN_Mode_Init(void);
+void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq);
 
 
 class Motor {
 	public:
-		int rpm;
-		static int counts_per_rev_;
-		Motor(Motor_TypeDef _motor, uint32_t _arr, uint32_t _psc);
-		void updateSpeed(long encoder_ticks);
-		void init();
-		void spin(int pwm);
-
+		Motor(int32_t id=0x201);	
+		void Set_Speed(int16_t target_speed);
+		void Get_Speed(int16_t now_speed);
+		int16_t Show_Now_Speed(void);
+		int16_t Show_Target_Speed(void);
+		PID motor_PID;
+	
+	
 	private:
-		Motor_TypeDef motor;
-		uint32_t arr;
-		uint32_t psc;
-
-		long prev_encoder_ticks_; 
-	 	unsigned long prev_update_time_; 
-
-		void motor_pwm1_init(); 
-		void motor_pwm2_init(); 
+		uint32_t id;
+		uint16_t now_speed;
+		uint16_t target_speed;
 };
 
 #endif //_MOTOR_H_
-
-#ifdef __cplusplus
-}
-#endif

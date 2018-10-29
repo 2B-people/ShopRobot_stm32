@@ -1,182 +1,162 @@
 #include "motor.h"
-
-GPIO_TypeDef* MOTOR_PWM1_PORT[MOTORn] = {RIKI_MOTOR1_PWM1_PORT, RIKI_MOTOR2_PWM1_PORT,RIKI_MOTOR3_PWM1_PORT, RIKI_MOTOR4_PWM1_PORT};
-TIM_TypeDef*  MOTOR_PWM1_TIM[MOTORn] = {RIKI_MOTOR1_PWM1_TIM, RIKI_MOTOR2_PWM1_TIM,RIKI_MOTOR3_PWM1_TIM, RIKI_MOTOR4_PWM1_TIM};
-const uint32_t  MOTOR_PWM1_PORT_CLK[MOTORn] = {RIKI_MOTOR1_PWM1_CLK, RIKI_MOTOR2_PWM1_CLK,RIKI_MOTOR3_PWM1_CLK, RIKI_MOTOR4_PWM1_CLK};
-const uint32_t  MOTOR_PWM1_TIM_CLK[MOTORn] = {RIKI_MOTOR1_PWM1_TIM_CLK, RIKI_MOTOR2_PWM1_TIM_CLK,RIKI_MOTOR3_PWM1_TIM_CLK, RIKI_MOTOR4_PWM1_TIM_CLK};
-const uint16_t  MOTOR_PWM1_PIN[MOTORn] = {RIKI_MOTOR1_PWM1_PIN, RIKI_MOTOR2_PWM1_PIN,RIKI_MOTOR3_PWM1_PIN, RIKI_MOTOR4_PWM1_PIN};
-
-GPIO_TypeDef* MOTOR_PWM2_PORT[MOTORn] = {RIKI_MOTOR1_PWM2_PORT, RIKI_MOTOR2_PWM2_PORT,RIKI_MOTOR3_PWM2_PORT, RIKI_MOTOR4_PWM2_PORT};
-TIM_TypeDef*  MOTOR_PWM2_TIM[MOTORn] = {RIKI_MOTOR1_PWM2_TIM, RIKI_MOTOR2_PWM2_TIM,RIKI_MOTOR3_PWM2_TIM, RIKI_MOTOR4_PWM2_TIM};
-const uint32_t  MOTOR_PWM2_PORT_CLK[MOTORn] = {RIKI_MOTOR1_PWM2_CLK, RIKI_MOTOR2_PWM2_CLK,RIKI_MOTOR3_PWM2_CLK, RIKI_MOTOR4_PWM2_CLK};
-const uint32_t  MOTOR_PWM2_TIM_CLK[MOTORn] = {RIKI_MOTOR1_PWM2_TIM_CLK, RIKI_MOTOR2_PWM2_TIM_CLK,RIKI_MOTOR3_PWM2_TIM_CLK, RIKI_MOTOR4_PWM2_TIM_CLK};
-const uint16_t  MOTOR_PWM2_PIN[MOTORn] = {RIKI_MOTOR1_PWM2_PIN, RIKI_MOTOR2_PWM2_PIN,RIKI_MOTOR3_PWM2_PIN, RIKI_MOTOR4_PWM2_PIN};
-
-Motor::Motor(Motor_TypeDef _motor, uint32_t _arr, uint32_t _psc)
+#include "stm32f10x.h"
+extern Motor motor1;
+extern Motor motor2;
+extern Motor motor3;
+extern Motor motor4;
+Motor::Motor(int32_t id)		//选择ID，默认为0x201
 {
-	motor = _motor;
-	arr = _arr;
-	psc = _psc;
+	this->id=id;
 }
 
-void Motor::init()
+
+void Motor::Set_Speed(int16_t target_speed)
 {
-	motor_pwm1_init();
-	motor_pwm2_init();
+	this->target_speed=target_speed;
 }
 
-void Motor::motor_pwm1_init()
+void Motor::Get_Speed(int16_t now_speed)
 {
-	//pwm value ((1 + psc)/72M)*(1+arr)
-	//eg: ((1+143)/72M)*(1+9999) = 0.02s --10000 count use 0.02s
-	//set arduino pwm value 490hz 255 count 
-	//((1 + 575)/72M)(1 + 254) = (1 / 490)
-	
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_BaseInitStructure;
-	TIM_OCInitTypeDef  TIM_OCInitStructure;
-	TIM_DeInit(TIM1); 
-	RCC_APB2PeriphClockCmd(MOTOR_PWM1_TIM_CLK[this->motor], ENABLE);
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);//端口重映射
-	RCC_APB2PeriphClockCmd(MOTOR_PWM1_PORT_CLK[this->motor], ENABLE);  //使能GPIO外设和AFIO复用功能模块时钟
-	/** init motor pwm gpio **/
-	GPIO_InitStructure.GPIO_Pin     = MOTOR_PWM1_PIN[this->motor];
-	GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF_PP;
-	GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
-	GPIO_Init(MOTOR_PWM1_PORT[this->motor], &GPIO_InitStructure);
-	
-	
-
-
-	GPIO_PinRemapConfig(GPIO_FullRemap_TIM1,ENABLE);  
-	
-	TIM_BaseInitStructure.TIM_Period                = this->arr;
-	TIM_BaseInitStructure.TIM_Prescaler             = this->psc;
-	TIM_BaseInitStructure.TIM_ClockDivision         = TIM_CKD_DIV1;
-	TIM_BaseInitStructure.TIM_CounterMode           = TIM_CounterMode_Up;
-	TIM_BaseInitStructure.TIM_RepetitionCounter     = 0;
-
-	TIM_TimeBaseInit(MOTOR_PWM1_TIM[this->motor] ,&TIM_BaseInitStructure); //根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
-
-
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_Pulse = 0; 
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 
-	
-	TIM_OC1PreloadConfig(MOTOR_PWM1_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC2PreloadConfig(MOTOR_PWM1_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC3PreloadConfig(MOTOR_PWM1_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC4PreloadConfig(MOTOR_PWM1_TIM[this->motor], TIM_OCPreload_Enable);
-	
-	TIM_ARRPreloadConfig(MOTOR_PWM1_TIM[this->motor], ENABLE);
-
-	TIM_CtrlPWMOutputs(MOTOR_PWM1_TIM[this->motor], ENABLE);
-	TIM_Cmd(MOTOR_PWM1_TIM[this->motor], ENABLE);
-
+	this->now_speed=now_speed;
 }
 
-void Motor::motor_pwm2_init()
+int16_t Motor::Show_Target_Speed(void)
 {
-	//pwm value ((1 + psc)/72M)*(1+arr)
-	//eg: ((1+143)/72M)*(1+9999) = 0.02s --10000 count use 0.02s
-	//set arduino pwm value 490hz 255 count 
-	//((1 + 575)/72M)(1 + 254) = (1 / 490)
-	GPIO_InitTypeDef GPIO_InitStructure;
-	TIM_TimeBaseInitTypeDef TIM_BaseInitStructure;
-	TIM_OCInitTypeDef  TIM_OCInitStructure;
-	TIM_DeInit(TIM8); 
-	RCC_APB2PeriphClockCmd(MOTOR_PWM2_TIM_CLK[this->motor], ENABLE);
-	RCC_APB2PeriphClockCmd(MOTOR_PWM2_PORT_CLK[this->motor], ENABLE);  //使能GPIO外设和AFIO复用功能模块时钟
-	/** init motor pwm gpio **/
-	GPIO_InitStructure.GPIO_Pin     = MOTOR_PWM2_PIN[this->motor];
-	GPIO_InitStructure.GPIO_Mode    = GPIO_Mode_AF_PP;
-	GPIO_InitStructure.GPIO_Speed   = GPIO_Speed_50MHz;
-	GPIO_Init(MOTOR_PWM2_PORT[this->motor], &GPIO_InitStructure);
-	
-	
-	TIM_BaseInitStructure.TIM_Period                = this->arr;
-	TIM_BaseInitStructure.TIM_Prescaler             = this->psc;
-	TIM_BaseInitStructure.TIM_ClockDivision         = TIM_CKD_DIV1;
-	TIM_BaseInitStructure.TIM_CounterMode           = TIM_CounterMode_Up;
-	TIM_BaseInitStructure.TIM_RepetitionCounter     = 0;
-
-	TIM_TimeBaseInit(MOTOR_PWM2_TIM[this->motor] ,&TIM_BaseInitStructure); //根据TIM_TimeBaseInitStruct中指定的参数初始化TIMx的时间基数单位
-
-
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; 
-	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-	TIM_OCInitStructure.TIM_Pulse = 0; 
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; 
-	
-	TIM_OC1PreloadConfig(MOTOR_PWM2_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC2PreloadConfig(MOTOR_PWM2_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC3PreloadConfig(MOTOR_PWM2_TIM[this->motor], TIM_OCPreload_Enable);
-	TIM_OC4PreloadConfig(MOTOR_PWM2_TIM[this->motor], TIM_OCPreload_Enable);
-	
-	TIM_ARRPreloadConfig(MOTOR_PWM2_TIM[this->motor], ENABLE);
-
-	TIM_CtrlPWMOutputs(MOTOR_PWM2_TIM[this->motor], ENABLE);
-	TIM_Cmd(MOTOR_PWM2_TIM[this->motor], ENABLE);
+	return (int16_t)target_speed;
 }
 
-void Motor::spin(int pwm)
+
+int16_t Motor::Show_Now_Speed(void)
 {
-	if(pwm > 0)
+	return (int16_t)now_speed;
+}
+
+
+
+
+
+
+
+
+void CAN_Mode_Init(void)
+{ 
+	GPIO_InitTypeDef 		GPIO_InitStructure; 
+	CAN_InitTypeDef        	CAN_InitStructure;
+	CAN_FilterInitTypeDef  	CAN_FilterInitStructure;
+	NVIC_InitTypeDef  		NVIC_InitStructure;
+
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);//使能PORTA时钟	                   											 
+
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN1, ENABLE);//使能CAN1时钟	
+
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_12;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;	//复用推挽
+	GPIO_Init(GPIOA, &GPIO_InitStructure);			//初始化IO
+
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;	//上拉输入
+	GPIO_Init(GPIOA, &GPIO_InitStructure);			//初始化IO
+
+	//CAN单元设置
+	CAN_InitStructure.CAN_TTCM=DISABLE;			//非时间触发通信模式  
+	CAN_InitStructure.CAN_ABOM=DISABLE;			//软件自动离线管理	 
+	CAN_InitStructure.CAN_AWUM=DISABLE;			//睡眠模式通过软件唤醒(清除CAN->MCR的SLEEP位)
+	CAN_InitStructure.CAN_NART=DISABLE;			//禁止报文自动传送 
+	CAN_InitStructure.CAN_RFLM=DISABLE;		 	//报文不锁定,新的覆盖旧的  
+	CAN_InitStructure.CAN_TXFP=ENABLE;			//优先级由报文标识符决定 
+	CAN_InitStructure.CAN_Mode=CAN_Mode_Normal;	        //模式设置： mode:0,普通模式;1,回环模式; 
+	//设置波特率
+	CAN_InitStructure.CAN_SJW=CAN_SJW_1tq;				//重新同步跳跃宽度(Tsjw)为tsjw+1个时间单位  CAN_SJW_1tq	 CAN_SJW_2tq CAN_SJW_3tq CAN_SJW_4tq
+	CAN_InitStructure.CAN_BS1=CAN_BS1_9tq; 			//Tbs1=tbs1+1个时间单位CAN_BS1_1tq ~CAN_BS1_16tq
+	CAN_InitStructure.CAN_BS2=CAN_BS2_8tq;				//Tbs2=tbs2+1个时间单位CAN_BS2_1tq ~	CAN_BS2_8tq
+	CAN_InitStructure.CAN_Prescaler=2;        //分频系数(Fdiv)为brp+1	
+	CAN_Init(CAN1, &CAN_InitStructure);        	//初始化CAN1 
+
+	CAN_FilterInitStructure.CAN_FilterNumber=0;	//过滤器0
+	CAN_FilterInitStructure.CAN_FilterMode=CAN_FilterMode_IdMask; 	//屏蔽位模式
+	CAN_FilterInitStructure.CAN_FilterScale=CAN_FilterScale_32bit; 	//32位宽 
+	CAN_FilterInitStructure.CAN_FilterIdHigh=0x0000;	//32位ID
+	CAN_FilterInitStructure.CAN_FilterIdLow=0x0000;
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh=0x0000;//32位MASK
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow=0x0000;
+	CAN_FilterInitStructure.CAN_FilterFIFOAssignment=CAN_Filter_FIFO0;//过滤器0关联到FIFO0
+	CAN_FilterInitStructure.CAN_FilterActivation=ENABLE;//激活过滤器0
+
+	CAN_FilterInit(&CAN_FilterInitStructure);			//滤波器初始化
+	
+	CAN_ITConfig(CAN1,CAN_IT_FMP0,ENABLE);				//FIFO0消息挂号中断允许.
+  CAN_ITConfig(CAN1,CAN_IT_TME,ENABLE);		    
+
+	NVIC_InitStructure.NVIC_IRQChannel = USB_LP_CAN1_RX0_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;     // 主优先级为1
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;            // 次优先级为0
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+
+	NVIC_InitStructure.NVIC_IRQChannel = USB_HP_CAN1_TX_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+	NVIC_Init(&NVIC_InitStructure);
+}   
+
+
+
+
+extern "C" void USB_LP_CAN1_RX0_IRQHandler(void) //CAN TX
+{
+	CanRxMsg rx_message;
+  if (CAN_GetITStatus(CAN1,CAN_IT_FMP0)!= RESET) 
 	{
-		switch(this->motor)
+		CAN_ClearITPendingBit(CAN1, CAN_IT_FMP0);
+		CAN_Receive(CAN1, CAN_FIFO0, &rx_message);  
+		switch(rx_message.StdId)
 		{
-			case MOTOR1:
-				TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], abs(pwm));
-				TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], 0);	
-			break;
-			case MOTOR2:
-				TIM_SetCompare2(MOTOR_PWM1_TIM[this->motor], abs(pwm));
-				TIM_SetCompare2(MOTOR_PWM2_TIM[this->motor], 0);	
-			case MOTOR3:
-				TIM_SetCompare3(MOTOR_PWM1_TIM[this->motor], abs(pwm));
-				TIM_SetCompare3(MOTOR_PWM2_TIM[this->motor], 0);	
-			case MOTOR4:
-				TIM_SetCompare4(MOTOR_PWM1_TIM[this->motor], abs(pwm));
-				TIM_SetCompare4(MOTOR_PWM2_TIM[this->motor], 0);	
-		}
-	}
-	else if(pwm < 0) 
-	{
-		switch(this->motor)
-		{
-			case MOTOR1:
-				TIM_SetCompare1(MOTOR_PWM2_TIM[this->motor], abs(pwm));
-				TIM_SetCompare1(MOTOR_PWM1_TIM[this->motor], 0);	
-			break;
-			case MOTOR2:
-				TIM_SetCompare2(MOTOR_PWM2_TIM[this->motor], abs(pwm));
-				TIM_SetCompare2(MOTOR_PWM1_TIM[this->motor], 0);	
-			case MOTOR3:
-				TIM_SetCompare3(MOTOR_PWM2_TIM[this->motor], abs(pwm));
-				TIM_SetCompare3(MOTOR_PWM1_TIM[this->motor], 0);	
-			case MOTOR4:
-				TIM_SetCompare4(MOTOR_PWM2_TIM[this->motor], abs(pwm));
-				TIM_SetCompare4(MOTOR_PWM1_TIM[this->motor], 0);	
+				case 0x201:
+				{
+					motor1.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
+				case 0x202:
+				{
+					motor2.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
+				case 0x203:
+				{
+					motor3.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
+				case 0x204:
+				{
+					motor4.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
 		}
 	}
 }
-
-
-void Motor::updateSpeed(long encoder_ticks)
+	    
+extern "C" void USB_HP_CAN1_TX_IRQHandler(void)
 {
-	//this function calculates the motor's RPM based on encoder ticks and delta time
-	unsigned long current_time = millis();
-	unsigned long dt = current_time - prev_update_time_;
+  if (CAN_GetITStatus(CAN1,CAN_IT_TME)!= RESET)    //if transmit mailbox is empty 
+  {
+	   CAN_ClearITPendingBit(CAN1,CAN_IT_TME);   
+  }
 
-	//convert the time from milliseconds to minutes
-	double dtm = (double)dt / 60000;
-	double delta_ticks = encoder_ticks - prev_encoder_ticks_;
-
-	//calculate wheel's speed (RPM)
-	rpm = (delta_ticks / counts_per_rev_) / dtm;
-
-	prev_update_time_ = current_time;
-	prev_encoder_ticks_ = encoder_ticks;
 }
 
+void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)
+{
+    CanTxMsg tx_message;
+    tx_message.StdId = 0x200;
+    tx_message.IDE = CAN_Id_Standard;
+    tx_message.RTR = CAN_RTR_Data;
+    tx_message.DLC = 0x08;
+    
+    tx_message.Data[0] = (uint8_t)(cm1_iq >> 8);
+    tx_message.Data[1] = (uint8_t)cm1_iq;
+    tx_message.Data[2] = (uint8_t)(cm2_iq >> 8);
+    tx_message.Data[3] = (uint8_t)cm2_iq;
+    tx_message.Data[4] = (uint8_t)(cm3_iq >> 8);
+    tx_message.Data[5] = (uint8_t)cm3_iq;
+    tx_message.Data[6] = (uint8_t)(cm4_iq >> 8);
+    tx_message.Data[7] = (uint8_t)cm4_iq;
+    CAN_Transmit(CANx,&tx_message);
+}

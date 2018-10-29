@@ -16,7 +16,7 @@ class Motor {
 		void Get_Speed(uint16_t now_speed);
 		uint16_t Show_Now_Speed(void);
 		uint16_t Show_Target_Speed(void);
-		PID motor_PID;
+		PID motor_PID(DELTA_PID,8000,0,0,2.5,0.08,0.1);
 	
 	
 	private:

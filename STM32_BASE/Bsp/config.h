@@ -24,12 +24,6 @@
 #define K_I    0.2 // I constant
 #define K_D    0.2 // D constant
 
-// /** motor param **/
-// #define PWM_BITS        8
-// #define MAX_RPM         366 //motor's maximum RPM
-// #define COUNTS_PER_REV  1560 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
-// #define WHEEL_DIAMETER  0.068 //wheel's diameter in meters
-
 #define BASE_WIDTH 0.186
 
 #define 	USE_SERIAL1
@@ -82,65 +76,6 @@ typedef enum {
 #define RIKI_SERIAL3_RX_PIN             GPIO_Pin_11
 #define RIKI_SERIAL3_NVIC				3
 
-// /** Motor Config **/ 
-// typedef enum {
-// 	MOTOR1 = 0,
-// 	MOTOR2 = 1,
-// 	MOTOR_END = 2
-// }Motor_TypeDef; 
-
-// #define MOTORn							2
-// #define RIKI_MOTOR1_A_PIN           GPIO_Pin_5
-// #define RIKI_MOTOR1_B_PIN           GPIO_Pin_4
-// #define RIKI_MOTOR1_GPIO_PORT       GPIOA
-// #define RIKI_MOTOR1_GPIO_CLK        RCC_APB2Periph_GPIOA
-
-// #define RIKI_MOTOR2_A_PIN           GPIO_Pin_5
-// #define RIKI_MOTOR2_B_PIN           GPIO_Pin_4
-// #define RIKI_MOTOR2_GPIO_PORT       GPIOC
-// #define RIKI_MOTOR2_GPIO_CLK        RCC_APB2Periph_GPIOC
-
-// #define RIKI_MOTOR1_PWM_PIN         GPIO_Pin_6
-// #define RIKI_MOTOR1_PWM_PORT        GPIOA
-// #define RIKI_MOTOR1_PWM_CLK         RCC_APB2Periph_GPIOA
-// #define RIKI_MOTOR1_PWM_TIM         TIM3
-// #define RIKI_MOTOR1_PWM_TIM_CLK     RCC_APB1Periph_TIM3
-
-// #define RIKI_MOTOR2_PWM_PIN         GPIO_Pin_7
-// #define RIKI_MOTOR2_PWM_PORT        GPIOA
-// #define RIKI_MOTOR2_PWM_CLK         RCC_APB2Periph_GPIOA
-// #define RIKI_MOTOR2_PWM_TIM         TIM3
-// #define RIKI_MOTOR2_PWM_TIM_CLK     RCC_APB1Periph_TIM3
-
-
-// /** Encoder config **/
-// typedef enum {
-// 	ENCODER1 = 0,
-// 	ENCODER2 = 1,
-// 	ENCODER_END = 2
-// }Encoder_TypeDef; 
-
-// #define ENCODERn 					2
-
-// #define ENCODERn                    2
-
-// #define RIKI_ENCODER2_A_PIN         GPIO_Pin_0
-// #define RIKI_ENCODER2_B_PIN         GPIO_Pin_1
-// #define RIKI_ENCODER2_GPIO_PORT     GPIOA
-// #define RIKI_ENCODER2_GPIO_CLK      RCC_APB2Periph_GPIOA
-
-// #define RIKI_ENCODER1_A_PIN         GPIO_Pin_6
-// #define RIKI_ENCODER1_B_PIN         GPIO_Pin_7
-// #define RIKI_ENCODER1_GPIO_PORT     GPIOB
-// #define RIKI_ENCODER1_GPIO_CLK      RCC_APB2Periph_GPIOB
-
-// #define RIKI_ENCODER2_TIM           TIM5
-// #define RIKI_ENCODER2_TIM_CLK       RCC_APB1Periph_TIM5
-
-// #define RIKI_ENCODER1_TIM           TIM4
-// #define RIKI_ENCODER1_TIM_CLK       RCC_APB1Periph_TIM4
-
-
 /** I2C Config **/
 
 #define RIKI_SDA_PIN                GPIO_Pin_9
@@ -148,28 +83,6 @@ typedef enum {
 #define RIKI_I2C_GPIO_PORT          GPIOB
 #define RIKI_I2C_GPIO_CLK           RCC_APB2Periph_GPIOB
 
-
-/** Servo Config **/
-typedef enum {
-	SERVO1 = 0,
-	SERVO2 = 1,
-	SERVO_END = 2
-}Servo_TypeDef; 
-
-#define SERVOn 					2
-#define MAX_ANGLE				270
-
-#define RIKI_SERVO1_PIN				GPIO_Pin_2
-#define RIKI_SERVO1_GPIO_PORT		GPIOA
-#define RIKI_SERVO1_GPIO_CLK		RCC_APB2Periph_GPIOA
-#define RIKI_SERVO1_TIM				TIM2
-#define RIKI_SERVO1_TIM_CLK			RCC_APB1Periph_TIM2
-
-#define RIKI_SERVO2_PIN				GPIO_Pin_3
-#define RIKI_SERVO2_GPIO_PORT		GPIOA
-#define RIKI_SERVO2_GPIO_CLK		RCC_APB2Periph_GPIOA
-#define RIKI_SERVO2_TIM				TIM2
-#define RIKI_SERVO2_TIM_CLK			RCC_APB1Periph_TIM2
 
 /** LED config **/
 #define RIKI_LED_PIN								GPIO_Pin_1

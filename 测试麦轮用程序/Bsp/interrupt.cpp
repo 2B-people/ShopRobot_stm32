@@ -12,23 +12,23 @@ HardwareSerial *Serial2=0 ;
 HardwareSerial *Serial3=0 ;
 #endif 
 
-void USART1_IRQHandler(void) 
-{
-#ifdef  USE_SERIAL1
-		Serial1->irq();
-#endif
-}
+//void USART1_IRQHandler(void) 
+//{
+//#ifdef  USE_SERIAL1
+//		Serial1->irq();
+//#endif
+//}
 
-void USART2_IRQHandler(void) 
-{
-#ifdef  USE_SERIAL2
-		Serial2->irq();
-#endif
-}
+//void USART2_IRQHandler(void) 
+//{
+//#ifdef  USE_SERIAL2
+//		Serial2->irq();
+//#endif
+//}
 
-void USART3_IRQHandler(void) 
-{
-#ifdef  USE_SERIAL3
-		Serial3->irq();
-#endif
-}
+//void USART3_IRQHandler(void) 
+//{
+//#ifdef  USE_SERIAL3
+//		Serial3->irq();
+//#endif
+//}
