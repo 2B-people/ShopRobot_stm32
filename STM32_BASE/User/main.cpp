@@ -6,12 +6,15 @@
 #include "led.h"
 #include "motor.h"
 #include "Kinematics.h"
+
+#include <shop_msgs/Imu.h>
+#include <shop_msgs/LaserDistance.h>
+#include <shop_msgs/Pid.h>
+#include <shop_msgs/Velocities.h>
+
 #include <ros.h>
 #include <ros/time.h>
-#include <riki_msgs/Velocities.h>
 #include <geometry_msgs/Twist.h>
-#include <riki_msgs/PID.h>
-#include <riki_msgs/Imu.h>
 #include <geometry_msgs/Vector3.h>
 
 
