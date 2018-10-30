@@ -76,29 +76,6 @@ int main(void)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void move_base()
 {
 
@@ -109,7 +86,7 @@ void move_base()
 		motor1.motor_PID.PID_calculate(required_rpm.motor1*COUNTS_PER_REV,motor1.Show_Now_Speed()),
 		motor2.motor_PID.PID_calculate(required_rpm.motor2*COUNTS_PER_REV,motor2.Show_Now_Speed()),
 		motor3.motor_PID.PID_calculate(required_rpm.motor3*COUNTS_PER_REV,motor3.Show_Now_Speed()),
-		motor4.motor_PID.PID_calculate(required_rpm.motor4*COUNTS_PER_REV,motor4.Show_Now_Speed()));//PIDµ÷ËÙ
+		motor4.motor_PID.PID_calculate(required_rpm.motor4*COUNTS_PER_REV,motor4.Show_Now_Speed()));//PIDï¿½ï¿½ï¿½ï¿½
 	
 
 		
