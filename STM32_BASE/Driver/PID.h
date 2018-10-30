@@ -1,12 +1,14 @@
 #ifndef __PID_H_
 #define __PID_H_
 
-#include "stm32f103.h"
+#include "config.h"
+
 
 class PID
 {
 public:
-  enum
+
+  enum PidTpyeDef
   {
     LLAST = 0,
     LAST,
@@ -15,12 +17,12 @@ public:
     DELTA_PID,
   };
   
-  PID(enum pid_mode, uint32_t output_max = 0, uint32_t integral_limit = 0, float output_deadband = 0, float kp, float ki, float kd);
+  PID(uint8_t pid_mode,  float kp, float ki, float kd,uint32_t output_max, uint32_t integral_limit, float output_deadband);
   void resetPid(float kp, float ki, float kd);
   float calcPid(float set, float get);
 
 private:
-  enum mode_;
+  PidTpyeDef pid_mode_;
 
   uint32_t output_max_;
   uint32_t integral_limit_;
@@ -31,12 +33,12 @@ private:
 
   float set_;
   float get_;
-  float err_[3] = {0, 0, 0};
+  float err_[3];
 
-  float pout_ = 0;
-  float iout_ = 0;
-  float dout_ = 0;
-  float out_ = 0;
+  float pout_ ;
+  float iout_ ;
+  float dout_ ;
+  float out_ ;
 
   float input_max_err_;   //input max err;
   float output_deadband_; //output deadband;

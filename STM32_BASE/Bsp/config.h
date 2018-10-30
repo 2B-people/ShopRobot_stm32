@@ -40,6 +40,18 @@
 
 #define SERIALn 3
 
+/** --------Serial Config-------- **/
+typedef enum {
+	SERIAL1 = 0,
+	SERIAL2 = 1,
+	SERIAL3 = 2,
+	SERIAL_END = 3
+}Serial_TypeDef; 
+
+
+
+
+
 /** -------USART Config---------- **/
 #define RIKI_SERIAL1 USART1
 #define RIKI_SERIAL1_IRQ USART1_IRQn

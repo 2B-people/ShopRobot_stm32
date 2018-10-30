@@ -10,13 +10,13 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3
 
 
 class Motor {
+	
 	public:
 		Motor(int32_t id=0x201);	
 		void Set_Speed(int16_t target_speed);
 		void Get_Speed(int16_t now_speed);
 		int16_t Show_Now_Speed(void);
 		int16_t Show_Target_Speed(void);
-		PID motor_PID;
 	
 	
 	private:

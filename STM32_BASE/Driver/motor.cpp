@@ -5,7 +5,7 @@ extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
 
-Motor::Motor(uint32_t id) //选择ID，默认为0x201
+Motor::Motor(uint32_t id):PID(2 ,K_P ,K_I ,K_D ,8000 ,1 ,1 )//选择ID，默认为0x201
 {
 	this->id = id;
 }
