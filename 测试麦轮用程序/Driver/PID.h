@@ -1,25 +1,49 @@
-#ifndef PID_H
-#define PID_H
-#include <stdint.h>
+#ifndef __PID_H_
+#define __PID_H_
+
+#include "config.h"
+
 
 class PID
 {
 public:
-  PID(float Kp=2.5,float Ki=0.08,float Kd=1,int16_t out_Max=8000,int16_t out_Min=-8000);
-	void Set_PID(float Kp=0.4,float Ki=0,float Kd=0,int16_t out_Max=1500,int16_t out_Min=-1500);
-	int16_t PID_calculate(int16_t target_speed,int16_t now_speed);	
-	float Kp;
-	float Ki;
-	float Kd;
-	int16_t error_now;
-	int16_t error_last;
-	int16_t error_inter;
-	int16_t error_sum;
-	int16_t pid_out;
-	int32_t pid_out_last;
-	int32_t pid_out_inter;
-	int16_t out_Max;
-	int16_t out_Min;
+
+  enum PidTpyeDef
+  {
+    LLAST = 0,
+    LAST,
+    NOW,
+    POSITON_PID,
+    DELTA_PID,
+  };
+  
+  PID(uint8_t pid_mode,  float kp, float ki, float kd,uint32_t output_max, uint32_t integral_limit, float output_deadband);
+  void resetPid(float kp, float ki, float kd);
+  float calcPid(float set, float get);
+
+private:
+  PidTpyeDef pid_mode_;
+
+  uint32_t output_max_;
+  uint32_t integral_limit_;
+
+  float kp_;
+  float ki_;
+  float kd_;
+
+  float set_;
+  float get_;
+  float err_[3];
+
+  float pout_ ;
+  float iout_ ;
+  float dout_ ;
+  float out_ ;
+
+  float input_max_err_;   //input max err;
+  float output_deadband_; //output deadband;
+
+  void adsLimit(float *a, float abs_max);
 };
 
-#endif
+#endif // __PID_H_
