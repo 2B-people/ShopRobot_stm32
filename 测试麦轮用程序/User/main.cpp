@@ -8,14 +8,13 @@
 #include "Kinematics.h"
 #include <riki_msgs/Velocities.h>
 #include <geometry_msgs/Twist.h>
-#include <riki_msgs/PID.h>
 #include <riki_msgs/Imu.h>
 #include <riki_msgs/Battery.h>
 #include <geometry_msgs/Vector3.h>
 #include "key.h"
 
-double required_angular_vel = 5;
-double required_linear_vel_x = 0;
+double required_angular_vel = 0;
+double required_linear_vel_x = 1;
 double required_linear_vel_y = 0;
 uint32_t previous_command_time = 0;
 

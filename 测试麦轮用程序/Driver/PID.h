@@ -5,7 +5,7 @@
 class PID
 {
 public:
-  PID(float Kp=0.4,float Ki=0,float Kd=0,int16_t out_Max=1500,int16_t out_Min=-1500);
+  PID(float Kp=2.5,float Ki=0.08,float Kd=1,int16_t out_Max=8000,int16_t out_Min=-8000);
 	void Set_PID(float Kp=0.4,float Ki=0,float Kd=0,int16_t out_Max=1500,int16_t out_Min=-1500);
 	int16_t PID_calculate(int16_t target_speed,int16_t now_speed);	
 	float Kp;
