@@ -22,12 +22,16 @@ Dialog DLL:      TCM.DLL V1.27.0.0
  
 <h2>Project:</h2>
 C:\Users\nqq09\Desktop\Robot\ShopRobot_stm32\STM32_BASE\Objects\ShopRobot.uvprojx
-Project File Date:  10/29/2018
+Project File Date:  10/30/2018
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'shopping_Helper'
-compiling pid.cpp...
+compiling interrupt.cpp...
+compiling hardwareserial.cpp...
+..\Bsp\hardwareserial.cpp(79): warning:  #68-D: integer conversion resulted in a change of sign
+      return -1 ;
+..\Bsp\hardwareserial.cpp: 1 warning, 0 errors
 compiling main.cpp...
 ..\Bsp\Wire.h(111): warning:  #1300-D: process inherits implicit virtual
       uint8_t process();
@@ -84,16 +88,26 @@ compiling main.cpp...
 ..\RosLibs\geometry_msgs/Twist.h(41): warning:  #1-D: last line of file ends without a newline
   #endif
 ..\User\main.cpp: 27 warnings, 0 errors
+compiling Wire.cpp...
+..\Bsp\Wire.h(111): warning:  #1300-D: process inherits implicit virtual
+      uint8_t process();
+..\Bsp\Wire.h(120): warning:  #1300-D: begin inherits implicit virtual
+      void begin(uint8_t = 0x00);
+..\Bsp\Wire.cpp: 2 warnings, 0 errors
+compiling WireBase.cpp...
+compiling led.cpp...
+compiling pid.cpp...
+compiling motor.cpp...
 linking...
-Program Size: Code=11662 RO-data=1282 RW-data=112 ZI-data=4568  
-".\Objects\ShopRobot.axf" - 0 Error(s), 27 Warning(s).
+Program Size: Code=11666 RO-data=1282 RW-data=112 ZI-data=4568  
+".\Objects\ShopRobot.axf" - 0 Error(s), 30 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_shopping_Helper
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>
