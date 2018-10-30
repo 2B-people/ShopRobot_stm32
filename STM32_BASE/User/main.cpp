@@ -117,5 +117,6 @@ int main(void)
             publisher_laser_scan();
             publish_scan_time = millis();
         }
+				        nh.spinOnce();
     }
 }
