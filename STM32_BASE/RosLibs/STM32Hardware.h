@@ -5,14 +5,14 @@ HardwareSerial Serial(SERIAL1);
 
 class STM32Hardware {
   public:
-  	STM32Hardware(SERIAL_CLASS* io , long baud= 115200){
+  	STM32Hardware(SERIAL_CLASS* io , long baud= 57600){
       iostream = io;
       baud_ = baud;
     }
     STM32Hardware()
     {
       iostream = &Serial;
-      baud_ = 115200;
+      baud_ = 57600;
     }
     STM32Hardware(STM32Hardware& h){
 	  this->iostream = iostream;

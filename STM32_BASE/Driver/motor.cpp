@@ -5,7 +5,7 @@ extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
 
-Motor::Motor(uint32_t id):PID(2 ,K_P ,K_I ,K_D ,8000 ,1 ,1 )//Ñ¡ÔñID£¬Ä¬ÈÏÎª0x201
+Motor::Motor(uint32_t id):PID(POSITON_PID ,K_P ,K_I ,K_D ,8000 ,1 ,1 )
 {
 	this->id = id;
 }

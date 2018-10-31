@@ -1,18 +1,18 @@
 #include <stdio.h>
-#include "millisecondtimer.h"
 #include "hardwareserial.h"
-#include "config.h"
 #include "gy85.h"
 #include "led.h"
 #include "motor.h"
 #include "Kinematics.h"
+
+#include <ros.h>
 
 #include <shop_msgs/Imu.h>
 #include <shop_msgs/LaserScan.h>
 #include <shop_msgs/Pid.h>
 #include <shop_msgs/Velocities.h>
 
-#include <ros.h>
+
 #include <ros/time.h>
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
@@ -83,10 +83,23 @@ void publisher_laser_scan()
     raw_larscan_pub.publish(&raw_scan_msg);
 }
 
+void print_debug()
+{
+    char buffer[50];
+		long a = 1;
+    sprintf(buffer, "Encoder Left:" );
+    nh.loginfo(buffer);
+    sprintf(buffer, "Encoder Right:" );
+    nh.loginfo(buffer);
+    //sprintf (buffer, "get line speed : %f, pwm: %d", required_linear_vel, pwm);
+    //nh->loginfo(buffer);
+}
+
 int main(void)
 {
     uint32_t publish_vel_time = 0;
     uint32_t publish_scan_time = 0;
+		uint32_t previous_debug_time = 0;
 
     SystemInit();
     initialise();
@@ -102,7 +115,8 @@ int main(void)
     {
         nh.spinOnce();
     }
-    nh.loginfo("Rikibase Connected!");
+    nh.loginfo("Shopbase Connected!");
+		led.on_off(true);
 
 
     while (1)
@@ -117,6 +131,11 @@ int main(void)
             publisher_laser_scan();
             publish_scan_time = millis();
         }
-				        nh.spinOnce();
+				  if ((millis() - previous_debug_time) >= (1000 / DEBUG_RATE))
+            {
+                print_debug();
+                previous_debug_time = millis();
+            }
+				nh.spinOnce();
     }
 }
