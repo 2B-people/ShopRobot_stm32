@@ -242,6 +242,42 @@ typedef enum {
 //#define RIKI_SONAR_TIM_CLK          RCC_APB1Periph_TIM6
 //#define RIKI_SONAR_TIM_IRQ          TIM6_IRQn
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif // _CONFIG_H_
 
 
