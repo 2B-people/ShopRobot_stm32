@@ -13,6 +13,7 @@
 #include <geometry_msgs/Vector3.h>
 #include "control.h"
 #include "timer.h"
+#include "remote.h"
 #ifdef __cplusplus
 extern "C" {
 #include "oled.h"
@@ -24,7 +25,7 @@ double required_angular_vel = 0;
 double required_linear_vel_x = 1;
 double required_linear_vel_y = 0;
 
-
+extern REMOTE RC_CtrlData;
 
 Battery bat(25, 10.6, 12.6);
 Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER,0.165 ,0.12 ,255);
@@ -39,7 +40,7 @@ Motor motor3(0x203);
 Motor motor4(0x204);
 
 
-extern int count;
+
 
 
 
@@ -64,14 +65,13 @@ int main(void)
 	CAN_Mode_Init();
 	OLED_Init();		
 	TIM5_Int_Init(71,9999);
+	RC_Init();
 	while(1)
 	{	
-		//move_base();
 		OLED_ShowNum(10,0,abs(-motor1.Show_Now_Speed()),4,12);
 		OLED_ShowNum(40,0,abs(motor2.Show_Now_Speed()),4,12);
 		OLED_ShowNum(10,2,abs(motor3.Show_Now_Speed()),4,12);
-		OLED_ShowNum(40,2,abs(-motor4.Show_Now_Speed()),4,12);
-		OLED_ShowNum(60,4,count,4,12);
+		OLED_ShowNum(40,2,abs(-motor4.Show_Now_Speed()),4,12);		
 	}
 }
 

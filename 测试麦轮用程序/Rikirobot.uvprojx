@@ -583,6 +583,11 @@
               <FileType>8</FileType>
               <FilePath>.\Bsp\timer.cpp</FilePath>
             </File>
+            <File>
+              <FileName>remote.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Bsp\remote.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
