@@ -54,7 +54,7 @@
 #define LOW  false
 
 #define I2C_DELAY(x) do{for(int i=0;i<x;i++) {asm volatile("nop");}}while(0)
-//asm：函数内部的参数翻译成汇编指令
+
 #define BUFFER_LENGTH 64
 
 
@@ -94,19 +94,16 @@ class TwoWire : public WireBase {
 
     /*
      * Shifts in the data through SDA and clocks SCL for the slave device
-     * 通过SDA移位数据并为从器件提供SCL时钟
      */
     uint8_t i2c_shift_in();
 
     /*
      * Shifts out the data through SDA and clocks SCL for the slave device
-     * 通过SDA移出数据并为从器件提供SCL时钟
      */
     void i2c_shift_out(uint8_t);
  protected:
     /*
      * Processes the incoming I2C message defined by WireBase
-     * 处理WireBase定义的传入I2C消息
      */
     uint8_t process();
  public:

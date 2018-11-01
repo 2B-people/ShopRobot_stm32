@@ -45,10 +45,10 @@
 #define WIRE_BUFSIZ 32
 
 /* return codes from endTransmission() */
-#define SUCCESS   0        /* 成功传送 */
-#define EDATA     1        /* 数据过多 */
-#define ENACKADDR 2        /* 在发送地址时收到了麻烦 */
-#define ENACKTRNS 3        /* 收到了传输数据的麻烦 */
+#define SUCCESS   0        /* transmission was successful */
+#define EDATA     1        /* too much data */
+#define ENACKADDR 2        /* received nack on transmit of address */
+#define ENACKTRNS 3        /* received nack on transmit of data */
 #define EOTHER    4        /* other error */
 
 typedef struct i2c_msg {
@@ -58,7 +58,7 @@ typedef struct i2c_msg {
 	uint16_t flags;
 
 	uint16_t length;              /**< Message length */
-	uint16_t xferred;             /**< Messages transferred （转入）*/
+	uint16_t xferred;             /**< Messages transferred */
 	uint8_t *data;                /**< Data */
 } i2c_msg;
 
