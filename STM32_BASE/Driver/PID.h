@@ -15,7 +15,7 @@ enum PidTpyeDef
 class PID
 {
 public:
-  PID(PidTpyeDef pid_mode, float kp, float ki, float kd, uint32_t output_max, uint32_t integral_limit, float output_deadband);
+  PID(PidTpyeDef pid_mode, float kp, float ki, float kd, uint32_t output_max,uint32_t input_max_err, uint32_t integral_limit, float output_deadband);
   void resetPid(float kp, float ki, float kd);
   float calcPid(float set, float get);
 
