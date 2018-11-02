@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ShopRobot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ShopRobot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Thu Nov 01 20:05:21 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Nov 02 22:17:14 2018
 <BR><P>
 <H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1235,7 +1235,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ec]"></a>publisher_debug()</STRONG> (Thumb, 270 bytes, Stack size 88 bytes, main.o(i._Z15publisher_debugv))
+<P><STRONG><a name="[ec]"></a>publisher_debug()</STRONG> (Thumb, 236 bytes, Stack size 88 bytes, main.o(i._Z15publisher_debugv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
 <LI>Call Chain = publisher_debug() &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -1709,11 +1709,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a0]"></a>main</STRONG> (Thumb, 312 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[a0]"></a>main</STRONG> (Thumb, 310 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
 <LI>Call Chain = main &rArr; publisher_debug() &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareSerial::begin(unsigned)
+<BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::on_off(bool)
+<LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareSerial::begin(unsigned)
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM5_Int_Init(unsigned short, unsigned short)
 <LI><a href="#[e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Mode_Init()
 <LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
@@ -1727,7 +1728,6 @@ Global Symbols
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_base
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initialise
-<LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::on_off(bool)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
@@ -1739,7 +1739,7 @@ Global Symbols
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_debug()
 </UL>
 
-<P><STRONG><a name="[d6]"></a>move_base</STRONG> (Thumb, 278 bytes, Stack size 56 bytes, control.o(i.move_base))
+<P><STRONG><a name="[d6]"></a>move_base</STRONG> (Thumb, 262 bytes, Stack size 56 bytes, control.o(i.move_base))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = move_base &rArr; Kinematics::getRPM(float, float, float) &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID::calcPid(float, float)

@@ -30,7 +30,6 @@ double required_linear_vel_y = 0;
 uint32_t previous_command_time = 0;
 
 Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12);
-Kinematics::output required_rpm;
 
 Led led;
 
@@ -103,26 +102,20 @@ void publisher_debug()
     nh.loginfo(buffer);
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);
-		sprintf(buffer, "getrpm:1:%d,2:%d,3:%d,4:%d",required_rpm.motor1,required_rpm.motor2,required_rpm.motor3,required_rpm.motor4);
-    nh.loginfo(buffer);	
     sprintf(buffer, "time:%d", millis());
     nh.loginfo(buffer);
-    
 }
-
 
 int main(void)
 {
-    uint32_t publish_vel_time = 0;
+		uint32_t publish_vel_time = 0;
     uint32_t publish_scan_time = 0;
     uint32_t previous_debug_time = 0;
-    uint32_t previous_control_time = 0;
 
     SystemInit();
     initialise();
-        NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-    
-	TIM5_Int_Init(71, 9999);
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
+    TIM5_Int_Init(71, 9999);
     CAN_Mode_Init();
 
     nh.initNode();
@@ -131,7 +124,7 @@ int main(void)
     nh.advertise(raw_larscan_pub);
     nh.subscribe(pid_sub);
     nh.subscribe(cmd_sub);
-
+	
     while (!nh.connected())
     {
         nh.spinOnce();

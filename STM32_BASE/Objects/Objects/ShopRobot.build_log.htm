@@ -27,14 +27,83 @@ Project File Date:  10/31/2018
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 4 (build 422)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'shopping_Helper'
-".\Objects\ShopRobot.axf" - 0 Error(s), 0 Warning(s).
+compiling hardwareserial.cpp...
+..\Bsp\hardwareserial.cpp(79): warning:  #68-D: integer conversion resulted in a change of sign
+      return -1 ;
+..\Bsp\hardwareserial.cpp: 1 warning, 0 errors
+compiling interrupt.cpp...
+compiling main.cpp...
+..\Bsp\Wire.h(108): warning:  #1300-D: process inherits implicit virtual
+      uint8_t process();
+..\Bsp\Wire.h(117): warning:  #1300-D: begin inherits implicit virtual
+      void begin(uint8_t = 0x00);
+..\RosLibs\geometry_msgs/Vector3.h(106): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "geometry_msgs/Vector3"; };
+..\RosLibs\geometry_msgs/Vector3.h(107): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "4a842b65f413084dc2b10fb484ea7f17"; };
+..\RosLibs\std_msgs/Time.h(50): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "std_msgs/Time"; };
+..\RosLibs\std_msgs/Time.h(51): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "cd7166c74c552c311fbcc2fe5a7bc289"; };
+..\RosLibs\rosserial_msgs/TopicInfo.h(110): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "rosserial_msgs/TopicInfo"; };
+..\RosLibs\rosserial_msgs/TopicInfo.h(111): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "0ad51f88fc44892f8c10684077646005"; };
+..\RosLibs\rosserial_msgs/Log.h(53): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "rosserial_msgs/Log"; };
+..\RosLibs\rosserial_msgs/Log.h(54): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "11abd731c25933261cd6183bd12d6295"; };
+..\RosLibs\rosserial_msgs/RequestParam.h(44): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return REQUESTPARAM; };
+..\RosLibs\rosserial_msgs/RequestParam.h(45): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "c1f3d28f1b044c871e6eff2e9fc3c667"; };
+..\RosLibs\rosserial_msgs/RequestParam.h(172): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return REQUESTPARAM; };
+..\RosLibs\rosserial_msgs/RequestParam.h(173): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "9f0e98bda65981986ddf53afa7a40e49"; };
+..\RosLibs\shop_msgs/Imu.h(50): warning:  #1300-D: getType inherits implicit virtual
+      const char *getType() { return "shop_msgs/Imu"; };
+..\RosLibs\shop_msgs/Imu.h(51): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char *getMD5() { return "275110405f08e1b7c0c0f1aba3e19c67"; };
+..\RosLibs\shop_msgs/LaserScan.h(154): warning:  #1300-D: getType inherits implicit virtual
+      const char *getType() { return "shop_msgs/LaserScan"; };
+..\RosLibs\shop_msgs/LaserScan.h(155): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char *getMD5() { return "7f6be2f540b5dd406a5e0a9932527631"; };
+..\RosLibs\shop_msgs/Pid.h(108): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "shop_msgs/Pid"; };
+..\RosLibs\shop_msgs/Pid.h(109): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "cccd09188ee638c943ed6be95f1812c9"; };
+..\RosLibs\shop_msgs/Velocities.h(108): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "shop_msgs/Velocities"; };
+..\RosLibs\shop_msgs/Velocities.h(109): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "0ee8ad4cb7809be2d5a0a76352fea86a"; };
+..\RosLibs\geometry_msgs/Twist.h(35): warning:  #1300-D: getType inherits implicit virtual
+      const char * getType(){ return "geometry_msgs/Twist"; };
+..\RosLibs\geometry_msgs/Twist.h(36): warning:  #1300-D: getMD5 inherits implicit virtual
+      const char * getMD5(){ return "9f195f881246fdfa2798d1d3eebca84a"; };
+..\User\main.cpp: 24 warnings, 0 errors
+compiling WireBase.cpp...
+compiling Wire.cpp...
+..\Bsp\Wire.h(108): warning:  #1300-D: process inherits implicit virtual
+      uint8_t process();
+..\Bsp\Wire.h(117): warning:  #1300-D: begin inherits implicit virtual
+      void begin(uint8_t = 0x00);
+..\Bsp\Wire.cpp: 2 warnings, 0 errors
+compiling led.cpp...
+compiling motor.cpp...
+compiling pid.cpp...
+compiling control.cpp...
+compiling timer.cpp...
+linking...
+Program Size: Code=21258 RO-data=1546 RW-data=128 ZI-data=4648  
+".\Objects\ShopRobot.axf" - 0 Error(s), 27 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   .\RTE\_shopping_Helper
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:07
 </pre>
 </body>
 </html>

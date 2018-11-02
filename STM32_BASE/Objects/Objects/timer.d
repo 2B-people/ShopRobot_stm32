@@ -30,3 +30,14 @@
 .\objects\timer.o: ..\Stm32Libs\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\timer.o: ..\Stm32Libs\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\objects\timer.o: ..\Driver\control.h
+.\objects\timer.o: ..\Driver\Kinematics.h
+.\objects\timer.o: ..\Driver\motor.h
+.\objects\timer.o: ..\Driver\pid.h
+.\objects\timer.o: ..\Bsp\config.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\timer.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\timer.o: ..\Bsp\millisecondtimer.h

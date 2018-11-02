@@ -1,8 +1,6 @@
 #include "control.h"
-#include "Kinematics.h"
-#include "motor.h"
 
-extern Kinematics::output required_rpm;
+extern Kinematics kinematics;
 extern double required_angular_vel;
 extern double required_linear_vel_x;
 extern double required_linear_vel_y;
@@ -10,11 +8,10 @@ extern Motor motor1;
 extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
-extern Kinematics kinematics;
 
 void move_base()
 {
-
+	Kinematics::output required_rpm;
 	required_rpm = kinematics.getRPM(required_linear_vel_x, required_linear_vel_y, required_angular_vel);
 
 	Set_CM_Speed(CAN1,

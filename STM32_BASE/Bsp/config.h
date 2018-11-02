@@ -91,9 +91,9 @@ typedef enum {
 
 
 /** LED config **/
-#define RIKI_LED_PIN								GPIO_Pin_1
-#define RIKI_LED_GPIO_PORT					GPIOC
-#define RIKI_LED_GPIO_CLK						RCC_APB2Periph_GPIOC
+#define RIKI_LED_PIN						GPIO_Pin_12
+#define RIKI_LED_GPIO_PORT					GPIOA
+#define RIKI_LED_GPIO_CLK						RCC_APB2Periph_GPIOA
 
 
 
