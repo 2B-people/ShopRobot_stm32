@@ -74,7 +74,8 @@ int main(void)
 		OLED_ShowNum(10,2,abs(motor3.Show_Now_Speed()),4,12);
 		OLED_ShowNum(40,2,abs(-motor4.Show_Now_Speed()),4,12);	
 
-
+	if(RC_CtrlData.ch0>1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
+		stop_base();
 	}
 }
 

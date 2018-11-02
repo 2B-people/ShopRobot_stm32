@@ -19,7 +19,7 @@ void RC_Init(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2,ENABLE);
  	USART_DeInit(USART2);  //复位串口1
 
-    //USART1_RX	  PA.3
+    //USART2_RX	  PA.3
     GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
     GPIO_Init(GPIOA, &GPIO_InitStructure);  //初始化PA10
@@ -99,30 +99,32 @@ void RemoteDataProcess(uint8_t *pData)
 	RC_CtrlData.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) &0x07FF;
 	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
 	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
-	if(RC_CtrlData.ch0<1400)
+	
+	
+	if(RC_CtrlData.ch0<1500||RC_CtrlData.ch0>500)
 		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0025;
 	else
 		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0045;
-	if(RC_CtrlData.ch1<1400)
+	if(RC_CtrlData.ch1<1400||RC_CtrlData.ch1>500)
 		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0025;
 	else
 		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0045;
 	
-	if(RC_CtrlData.ch2<1400)
-		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0025;
+	if(RC_CtrlData.ch2<1400||RC_CtrlData.ch2>500)
+		required_angular_vel =	-(double)(RC_CtrlData.ch2 -1024)*0.0025;
 	else
-		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0045;
+		required_angular_vel =	-(double)(RC_CtrlData.ch2 -1024)*0.0045;
 	
 	
 	
 	
-	if(RC_CtrlData.ch0>=1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
+	if(RC_CtrlData.ch0>1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
 		stop_base();
 	
-	if(required_linear_vel_x>=1.5)
-		required_linear_vel_x=1.5;
-	if(required_linear_vel_y>=2)
-		required_linear_vel_y=2;
+	if(required_linear_vel_x>=1)
+		required_linear_vel_x=1;
+	if(required_linear_vel_y>=1)
+		required_linear_vel_y=1;
 	if(required_angular_vel>=3)
 		required_angular_vel=3;
 }
