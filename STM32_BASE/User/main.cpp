@@ -18,6 +18,8 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 
+
+//Motor init
 Motor motor1(0x201);
 Motor motor2(0x202);
 Motor motor3(0x203);
