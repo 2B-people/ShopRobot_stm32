@@ -22,7 +22,7 @@ extern "C" {
 }
 #endif
 double required_angular_vel = 0;
-double required_linear_vel_x = 1;
+double required_linear_vel_x =0;
 double required_linear_vel_y = 0;
 
 extern REMOTE RC_CtrlData;
@@ -66,12 +66,15 @@ int main(void)
 	OLED_Init();		
 	TIM5_Int_Init(71,9999);
 	RC_Init();
+	usart.begin(115200);
 	while(1)
 	{	
 		OLED_ShowNum(10,0,abs(-motor1.Show_Now_Speed()),4,12);
 		OLED_ShowNum(40,0,abs(motor2.Show_Now_Speed()),4,12);
 		OLED_ShowNum(10,2,abs(motor3.Show_Now_Speed()),4,12);
-		OLED_ShowNum(40,2,abs(-motor4.Show_Now_Speed()),4,12);		
+		OLED_ShowNum(40,2,abs(-motor4.Show_Now_Speed()),4,12);	
+
+
 	}
 }
 
