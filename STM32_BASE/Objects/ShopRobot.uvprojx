@@ -444,6 +444,16 @@
               <FileType>8</FileType>
               <FilePath>..\Driver\pid.cpp</FilePath>
             </File>
+            <File>
+              <FileName>control.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Driver\control.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>timer.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Driver\timer.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

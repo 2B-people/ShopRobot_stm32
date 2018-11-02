@@ -46,6 +46,8 @@
 .\objects\main.o: ..\Driver\led.h
 .\objects\main.o: ..\Driver\motor.h
 .\objects\main.o: ..\Driver\pid.h
+.\objects\main.o: ..\Driver\timer.h
+.\objects\main.o: ..\Driver\control.h
 .\objects\main.o: ..\Driver\Kinematics.h
 .\objects\main.o: ..\RosLibs\ros.h
 .\objects\main.o: ..\RosLibs\ros/node_handle.h

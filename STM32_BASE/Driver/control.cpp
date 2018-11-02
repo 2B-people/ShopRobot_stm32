@@ -1,6 +1,7 @@
 #include "control.h"
 #include "Kinematics.h"
 #include "motor.h"
+
 extern Kinematics::output required_rpm;
 extern double required_angular_vel;
 extern double required_linear_vel_x;
@@ -10,6 +11,7 @@ extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
 extern Kinematics kinematics;
+
 void move_base()
 {
 
