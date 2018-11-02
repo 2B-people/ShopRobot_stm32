@@ -23,13 +23,12 @@ Motor motor2(0x202);
 Motor motor3(0x203);
 Motor motor4(0x204);
 
-float err1, err2, err3, err4;
 double required_angular_vel = 0;
 double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
 uint32_t previous_command_time = 0;
 
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12);
+Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12,COUNTS_PER_REV);
 
 Led led;
 
@@ -108,7 +107,7 @@ void publisher_debug()
 
 int main(void)
 {
-		uint32_t publish_vel_time = 0;
+    uint32_t publish_vel_time = 0;
     uint32_t publish_scan_time = 0;
     uint32_t previous_debug_time = 0;
 
@@ -124,7 +123,7 @@ int main(void)
     nh.advertise(raw_larscan_pub);
     nh.subscribe(pid_sub);
     nh.subscribe(cmd_sub);
-	
+
     while (!nh.connected())
     {
         nh.spinOnce();
