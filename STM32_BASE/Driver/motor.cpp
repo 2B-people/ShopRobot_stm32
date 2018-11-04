@@ -144,6 +144,10 @@ extern "C" void USB_HP_CAN1_TX_IRQHandler(void)
 
 void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)
 {
+		motor1.Set_Speed(cm1_iq);
+		motor2.Set_Speed(cm2_iq);
+		motor3.Set_Speed(cm3_iq);
+		motor4.Set_Speed(cm4_iq);
     CanTxMsg tx_message;
     tx_message.StdId = 0x200;
     tx_message.IDE = CAN_Id_Standard;

@@ -6,6 +6,7 @@
 #include "timer.h"
 #include "control.h"
 #include "Kinematics.h"
+#include "remote.h"
 
 #include <ros.h>
 
@@ -19,7 +20,8 @@
 #include <geometry_msgs/Vector3.h>
 
 
-//Motor init
+extern REMOTE RC_CtrlData;
+
 Motor motor1(0x201);
 Motor motor2(0x202);
 Motor motor3(0x203);
@@ -93,17 +95,19 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
-    sprintf(buffer, "motor1 speed :%d ,pidout:%lf", motor1.Show_Now_Speed(), err1);
+    sprintf(buffer, "motor1 speed :%d ,pidout:%lf", motor1.Show_Now_Speed(), motor1.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor2 speed :%d ,pidout:%lf", motor2.Show_Now_Speed(), err2);
+    sprintf(buffer, "motor2 speed :%d ,pidout:%lf", motor2.Show_Now_Speed(), motor2.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor3 speed :%d ,pidout:%lf", motor3.Show_Now_Speed(), err3);
+    sprintf(buffer, "motor3 speed :%d ,pidout:%lf", motor3.Show_Now_Speed(), motor3.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor4 speed :%d ,pidout:%lf", motor4.Show_Now_Speed(), err4);
+    sprintf(buffer, "motor4 speed :%d ,pidout:%lf", motor4.Show_Now_Speed(), motor4.Show_Target_Speed());
     nh.loginfo(buffer);
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);
     sprintf(buffer, "time:%d", millis());
+    nh.loginfo(buffer);
+	  sprintf(buffer, "Remote:CH0%d CH1%d CH2%d CH3%d S1%d S2%d", RC_CtrlData.ch0,RC_CtrlData.ch1,RC_CtrlData.ch2,RC_CtrlData.ch3,RC_CtrlData.s1,RC_CtrlData.s2);
     nh.loginfo(buffer);
 }
 
@@ -118,6 +122,7 @@ int main(void)
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     TIM5_Int_Init(71, 9999);
     CAN_Mode_Init();
+		RC_Init();
 
     nh.initNode();
     nh.advertise(raw_vel_pub);
