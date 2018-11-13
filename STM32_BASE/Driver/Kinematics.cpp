@@ -27,12 +27,12 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
 
     Kinematics::output rpm;
 
-    rpm.motor1 = -(int)(speed[0] / circumference_);
+    rpm.motor1 = -(int)(speed[0] / circumference_);//	速度/周长
     rpm.motor2 = (int)(speed[1] / circumference_);
     rpm.motor3 = (int)(speed[2] / circumference_);
     rpm.motor4 = -(int)(speed[3] / circumference_);
 
-    rpm.motor1 = rpm.motor1 * reduction_ratio_;
+    rpm.motor1 = rpm.motor1 * reduction_ratio_;			
     rpm.motor2 = rpm.motor2 * reduction_ratio_;
     rpm.motor3 = rpm.motor3 * reduction_ratio_;
     rpm.motor4 = rpm.motor4 * reduction_ratio_;

@@ -4,7 +4,7 @@ extern Motor motor1;
 extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
-Motor::Motor(int32_t id):PID(POSITON_PID,2.5,0.8,0.01,7000,0,0,0)		//选择ID，默认为0x201
+Motor::Motor(int32_t id):PID(POSITON_PID,K_P,K_I,K_D,MAX_RPM,0,0,0)		//选择ID，默认为0x201
 {
 	this->id=id;
 }

@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include "hardwareserial.h"
-#include "gy85.h"
 #include "led.h"
 #include "motor.h"
 #include "timer.h"
@@ -32,8 +31,7 @@ double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
 uint32_t previous_command_time = 0;
 
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12,COUNTS_PER_REV);
-
+Kinematics kinematics( MAX_RPM , WHEEL_DIAMETER , LENGTH_A , LENGTH_B ,COUNTS_PER_REV ); 
 Led led;
 
 void pid_callback(const shop_msgs::Pid &pid);
@@ -95,13 +93,13 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
-    sprintf(buffer, "motor1 speed :%d ,pidout:%lf", motor1.Show_Now_Speed(), motor1.Show_Target_Speed());
+    sprintf(buffer, "motor1 speed :%d ,pidout:%d", motor1.Show_Now_Speed(), motor1.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor2 speed :%d ,pidout:%lf", motor2.Show_Now_Speed(), motor2.Show_Target_Speed());
+    sprintf(buffer, "motor2 speed :%d ,pidout:%d", motor2.Show_Now_Speed(), motor2.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor3 speed :%d ,pidout:%lf", motor3.Show_Now_Speed(), motor3.Show_Target_Speed());
+    sprintf(buffer, "motor3 speed :%d ,pidout:%d", motor3.Show_Now_Speed(), motor3.Show_Target_Speed());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor4 speed :%d ,pidout:%lf", motor4.Show_Now_Speed(), motor4.Show_Target_Speed());
+    sprintf(buffer, "motor4 speed :%d ,pidout:%d", motor4.Show_Now_Speed(), motor4.Show_Target_Speed());
     nh.loginfo(buffer);
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);
@@ -154,7 +152,7 @@ int main(void)
             publisher_laser_scan();
             publish_scan_time = millis();
         }
-        if (DEBUG)
+        if (DEBUG)		//ต๗สิ
         {
             if ((millis() - previous_debug_time) >= (1000 / DEBUG_RATE))
             {

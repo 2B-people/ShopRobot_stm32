@@ -20,16 +20,18 @@
 #define COMMAND_RATE 15		 //hz
 #define DEBUG_RATE 1
 
-#define K_P 1.7   // P constant
-#define K_I 0.017 // I constant
-#define K_D 0.0   // D constant
+#define K_P 2.5   // P constant
+#define K_I 0.8 // I constant
+#define K_D 0.01   // D constant
+
 /** motor param **/
 #define PWM_BITS 8
-#define MAX_RPM 15000		 //motor's maximum RPM
-#define COUNTS_PER_REV 19	//wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
-#define WHEEL_DIAMETER 0.127 //wheel's diameter in meters
+#define MAX_RPM 8000		 //motor's maximum RPM最大转速
+#define COUNTS_PER_REV 19	//wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)减速比
+#define LENGTH_A 0.165
+#define LENGTH_B 0.12
+#define WHEEL_DIAMETER 0.127 //wheel's diameter in meters直径
 
-#define BASE_WIDTH 0.186
 
 #define USE_SERIAL1
 #define USE_SERIAL2

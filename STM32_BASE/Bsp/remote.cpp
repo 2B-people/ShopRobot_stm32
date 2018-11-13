@@ -9,6 +9,7 @@ DMA_InitTypeDef DMA_InitStructure;
 extern double required_angular_vel;
 extern double required_linear_vel_x ;
 extern double required_linear_vel_y ;
+extern uint32_t previous_command_time;
 void RC_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -93,6 +94,7 @@ void RemoteDataProcess(uint8_t *pData)
 	{
 		return;
 	}
+	previous_command_time = millis();
 	RC_CtrlData.ch0 = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;
 	RC_CtrlData.ch1 = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5))& 0x07FF;
 	RC_CtrlData.ch2 = (((int16_t)pData[2] >> 6) | ((int16_t)pData[3] << 2) |((int16_t)pData[4] << 10)) & 0x07FF;

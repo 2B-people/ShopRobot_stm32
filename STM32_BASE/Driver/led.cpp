@@ -15,7 +15,7 @@ void Led::init()
 void Led::on_off(bool status)
 {
 	if(status == true){
-		GPIO_SetBits(RIKI_LED_GPIO_PORT, RIKI_LED_PIN);
+		GPIO_SetBits(RIKI_LED_GPIO_PORT, RIKI_LED_PIN);					//高电平点亮
 	}else{
 		GPIO_ResetBits(RIKI_LED_GPIO_PORT, RIKI_LED_PIN);
 	}
