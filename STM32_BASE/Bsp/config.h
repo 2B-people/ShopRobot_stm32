@@ -31,15 +31,13 @@
 #define LENGTH_A 0.165
 #define LENGTH_B 0.12
 #define WHEEL_DIAMETER 0.127 //wheel's diameter in meters÷±æ∂
-
-
+#define YT_WHELL_DIAMETER 1
+#define YT_MAX_RPM 600
 #define USE_SERIAL1
 #define USE_SERIAL2
 #define USE_SERIAL3
-#define USE_MOTOR1
-#define USE_MOTOR2
-#define USE_ENCODER1
-#define USE_ENCODER2
+
+
 #define USE_I2C
 #define USE_SERVO1
 #define USE_SERVO2

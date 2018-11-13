@@ -4,6 +4,8 @@ extern Motor motor1;
 extern Motor motor2;
 extern Motor motor3;
 extern Motor motor4;
+extern Motor yt_motor1;
+extern Motor yt_motor2;
 Motor::Motor(int32_t id):PID(POSITON_PID,K_P,K_I,K_D,MAX_RPM,0,0,0)		//Ñ¡ÔñID£¬Ä¬ÈÏÎª0x201
 {
 	this->id=id;
@@ -129,6 +131,14 @@ extern "C" void USB_LP_CAN1_RX0_IRQHandler(void) //CAN TX
 				{
 					motor4.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
 				}break;
+				case 0x205:
+				{
+					yt_motor1.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
+				case 0x206:
+				{
+					yt_motor2.Get_Speed((rx_message.Data[2]<<8)|rx_message.Data[3]);
+				}break;
 		}
 	}
 }
@@ -163,4 +173,28 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3
     tx_message.Data[6] = (uint8_t)(cm4_iq >> 8);
     tx_message.Data[7] = (uint8_t)cm4_iq;
     CAN_Transmit(CANx,&tx_message);
+}
+
+void Set_YT_Speed(CAN_TypeDef *CANx, int16_t yt1_iq ,int16_t yt2_iq)
+{
+		yt_motor1.Set_Speed(yt1_iq);
+		yt_motor2.Set_Speed(yt2_iq);
+		CanTxMsg tx_message;
+		tx_message.StdId =0x1FF; 
+		tx_message.IDE = CAN_Id_Standard;
+		tx_message.RTR = CAN_RTR_Data;
+		tx_message.DLC = 0x08;
+
+		tx_message.Data[0] = (uint8_t)(yt1_iq >> 8);
+		tx_message.Data[1] = (uint8_t)(yt1_iq);
+
+		tx_message.Data[2] = (uint8_t)(yt2_iq >> 8);
+		tx_message.Data[3] = (uint8_t)(yt2_iq);
+
+		tx_message.Data[4] =  0x00;
+		tx_message.Data[5] =  0x00;
+
+		tx_message.Data[6] =  0x00;
+		tx_message.Data[7] =  0x00;
+		CAN_Transmit(CANx,&tx_message);
 }

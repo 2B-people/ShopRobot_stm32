@@ -34,6 +34,7 @@ extern "C" void TIM5_IRQHandler(void)   //TIM3ÖÐ¶Ï
 		{
 			TIM_ClearITPendingBit(TIM5, TIM_IT_Update  );  
 			move_base();
+			yt_move_base();
 		}
 }
 

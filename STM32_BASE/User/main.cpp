@@ -25,10 +25,15 @@ Motor motor1(0x201);
 Motor motor2(0x202);
 Motor motor3(0x203);
 Motor motor4(0x204);
+Motor yt_motor1(0x205);
+Motor yt_motor2(0x206);
+
 
 double required_angular_vel = 0;
 double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
+double required_pitch = 0;
+double required_yaw = 0;
 uint32_t previous_command_time = 0;
 
 Kinematics kinematics( MAX_RPM , WHEEL_DIAMETER , LENGTH_A , LENGTH_B ,COUNTS_PER_REV ); 
@@ -100,6 +105,10 @@ void publisher_debug()
     sprintf(buffer, "motor3 speed :%d ,pidout:%d", motor3.Show_Now_Speed(), motor3.Show_Target_Speed());
     nh.loginfo(buffer);
     sprintf(buffer, "motor4 speed :%d ,pidout:%d", motor4.Show_Now_Speed(), motor4.Show_Target_Speed());
+    nh.loginfo(buffer);
+	  sprintf(buffer, "yt_motor1 speed :%d ,pidout:%d", yt_motor1.Show_Now_Speed(), yt_motor1.Show_Target_Speed());
+    nh.loginfo(buffer);
+	  sprintf(buffer, "yt_motor2 speed :%d ,pidout:%d", yt_motor2.Show_Now_Speed(), yt_motor2.Show_Target_Speed());
     nh.loginfo(buffer);
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);

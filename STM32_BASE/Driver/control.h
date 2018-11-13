@@ -10,7 +10,7 @@ extern "C"
 {
     void move_base();
     void stop_base();
-
+		void 	yt_move_base();
 #endif //__cplusplus
 
 #ifdef __cplusplus
