@@ -13,6 +13,7 @@
 ".\objects\pid.o"
 ".\objects\control.o"
 ".\objects\timer.o"
+".\objects\las_measure.o"
 ".\objects\misc.o"
 ".\objects\stm32f10x_adc.o"
 ".\objects\stm32f10x_bkp.o"

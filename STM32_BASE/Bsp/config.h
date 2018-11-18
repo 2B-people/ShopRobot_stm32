@@ -93,4 +93,20 @@ typedef enum
 #define RIKI_LED_GPIO_PORT GPIOA
 #define RIKI_LED_GPIO_CLK RCC_APB2Periph_GPIOA
 
+/** LASER config **/
+#define CHOSE_LAS_PIN1         GPIO_Pin_0
+#define CHOSE_LAS_PORT1        GPIOB
+#define CHOSE_LAS_CLK1         RCC_APB2Periph_GPIOB
+
+#define CHOSE_LAS_PIN2         GPIO_Pin_1
+#define CHOSE_LAS_PORT2        GPIOB
+#define CHOSE_LAS_CLK2         RCC_APB2Periph_GPIOB
+typedef enum
+{
+	FORWARD=1,
+	BACK=2,
+	LEFT=3,
+	RIGHT=4
+}direction;
+
 #endif // _CONFIG_H_

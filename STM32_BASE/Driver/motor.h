@@ -14,16 +14,16 @@ class Motor:public PID {
 	
 	public:
 		Motor(int32_t id);	
-		void Set_Speed(int16_t target_speed);
+		void Set_Output(int16_t output);
 		void Get_Speed(int16_t now_speed);
 		int16_t Show_Now_Speed(void);
-		int16_t Show_Target_Speed(void);
+		int16_t Show_Output(void);
 		
 	
 	private:
 		uint32_t id;
 		uint16_t now_speed;
-		uint16_t target_speed;
+		uint16_t output;
 };
 
 #endif //_MOTOR_H_

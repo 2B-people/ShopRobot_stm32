@@ -458,6 +458,11 @@
               <FileType>8</FileType>
               <FilePath>..\Driver\timer.cpp</FilePath>
             </File>
+            <File>
+              <FileName>las_measure.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\Driver\las_measure.cpp</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

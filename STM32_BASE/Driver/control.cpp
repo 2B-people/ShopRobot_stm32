@@ -43,7 +43,10 @@ void 	yt_move_base()
 	if(_yt_motor2>=YT_MAX_RPM)
 		_yt_motor2=0;
 	
-	Set_YT_Speed(CAN1,
-	yt_motor1.calcPid(_yt_motor1,yt_motor1.Show_Now_Speed()),
-	yt_motor2.calcPid(_yt_motor2,yt_motor2.Show_Now_Speed()));
+//	Set_YT_Speed(CAN1,
+//	yt_motor1.calcPid(_yt_motor1,yt_motor1.Show_Now_Speed()),
+//	yt_motor2.calcPid(_yt_motor2,yt_motor2.Show_Now_Speed()));
+		Set_YT_Speed(CAN1,
+	yt_motor1.calcPid(300,yt_motor1.Show_Now_Speed()),
+	yt_motor2.calcPid(300,yt_motor2.Show_Now_Speed()));
 }

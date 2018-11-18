@@ -6,7 +6,7 @@
 #include "control.h"
 #include "Kinematics.h"
 #include "remote.h"
-
+#include "las_measure.h"
 #include <ros.h>
 
 #include <shop_msgs/Imu.h>
@@ -33,7 +33,7 @@ double required_angular_vel = 0;
 double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
 double required_pitch = 0;
-double required_yaw = 0;
+double required_yaw = 10;
 uint32_t previous_command_time = 0;
 
 Kinematics kinematics( MAX_RPM , WHEEL_DIAMETER , LENGTH_A , LENGTH_B ,COUNTS_PER_REV ); 
@@ -98,24 +98,26 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
-    sprintf(buffer, "motor1 speed :%d ,pidout:%d", motor1.Show_Now_Speed(), motor1.Show_Target_Speed());
+    sprintf(buffer, "motor1 speed :%d ,pidout:%d", motor1.Show_Now_Speed(), motor1.Show_Output());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor2 speed :%d ,pidout:%d", motor2.Show_Now_Speed(), motor2.Show_Target_Speed());
+    sprintf(buffer, "motor2 speed :%d ,pidout:%d", motor2.Show_Now_Speed(), motor2.Show_Output());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor3 speed :%d ,pidout:%d", motor3.Show_Now_Speed(), motor3.Show_Target_Speed());
+    sprintf(buffer, "motor3 speed :%d ,pidout:%d", motor3.Show_Now_Speed(), motor3.Show_Output());
     nh.loginfo(buffer);
-    sprintf(buffer, "motor4 speed :%d ,pidout:%d", motor4.Show_Now_Speed(), motor4.Show_Target_Speed());
+    sprintf(buffer, "motor4 speed :%d ,pidout:%d", motor4.Show_Now_Speed(), motor4.Show_Output());
     nh.loginfo(buffer);
-	  sprintf(buffer, "yt_motor1 speed :%d ,pidout:%d", yt_motor1.Show_Now_Speed(), yt_motor1.Show_Target_Speed());
+	  sprintf(buffer, "yuntai1 speed :%d ,pidout:%d", yt_motor1.Show_Now_Speed(), yt_motor1.Show_Output());
     nh.loginfo(buffer);
-	  sprintf(buffer, "yt_motor2 speed :%d ,pidout:%d", yt_motor2.Show_Now_Speed(), yt_motor2.Show_Target_Speed());
+	  sprintf(buffer, "yuntai2 speed :%d ,pidout:%d", yt_motor2.Show_Now_Speed(), yt_motor2.Show_Output());
     nh.loginfo(buffer);
-    sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
+    sprintf(buffer, "speed_x:%lf speed_y:%lf speed_z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);
     sprintf(buffer, "time:%d", millis());
     nh.loginfo(buffer);
 	  sprintf(buffer, "Remote:CH0%d CH1%d CH2%d CH3%d S1%d S2%d", RC_CtrlData.ch0,RC_CtrlData.ch1,RC_CtrlData.ch2,RC_CtrlData.ch3,RC_CtrlData.s1,RC_CtrlData.s2);
     nh.loginfo(buffer);
+		sprintf(buffer, "FORWARD:%d BACK:%d LEFT:%d RIGHT:%d ",las_data(FORWARD),las_data(BACK),las_data(LEFT),las_data(RIGHT));
+		nh.loginfo(buffer);
 }
 
 int main(void)
@@ -130,6 +132,7 @@ int main(void)
     TIM5_Int_Init(71, 9999);
     CAN_Mode_Init();
 		RC_Init();
+		las_Init();
 
     nh.initNode();
     nh.advertise(raw_vel_pub);
@@ -137,7 +140,9 @@ int main(void)
     nh.advertise(raw_larscan_pub);
     nh.subscribe(pid_sub);
     nh.subscribe(cmd_sub);
-
+		
+		yt_motor1.resetPid(3,0.03,0);
+		yt_motor2.resetPid(3,0.03,1);
     while (!nh.connected())
     {
         nh.spinOnce();
