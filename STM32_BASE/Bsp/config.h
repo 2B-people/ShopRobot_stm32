@@ -20,24 +20,24 @@
 #define COMMAND_RATE 15		 //hz
 #define DEBUG_RATE 1
 
-#define K_P 1.7   // P constant
-#define K_I 0.017 // I constant
-#define K_D 0.0   // D constant
+#define K_P 2.5   // P constant
+#define K_I 0.8 // I constant
+#define K_D 0.01   // D constant
+
 /** motor param **/
 #define PWM_BITS 8
-#define MAX_RPM 15000		 //motor's maximum RPM
-#define COUNTS_PER_REV 19	//wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)
-#define WHEEL_DIAMETER 0.127 //wheel's diameter in meters
-
-#define BASE_WIDTH 0.186
-
+#define MAX_RPM 8000		 //motor's maximum RPM最大转速
+#define COUNTS_PER_REV 19	//wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)减速比
+#define LENGTH_A 0.165
+#define LENGTH_B 0.12
+#define WHEEL_DIAMETER 0.127 //wheel's diameter in meters直径
+#define YT_WHELL_DIAMETER 1
+#define YT_MAX_RPM 600
 #define USE_SERIAL1
 #define USE_SERIAL2
 #define USE_SERIAL3
-#define USE_MOTOR1
-#define USE_MOTOR2
-#define USE_ENCODER1
-#define USE_ENCODER2
+
+
 #define USE_I2C
 #define USE_SERVO1
 #define USE_SERVO2
@@ -92,5 +92,21 @@ typedef enum
 #define RIKI_LED_PIN GPIO_Pin_12
 #define RIKI_LED_GPIO_PORT GPIOA
 #define RIKI_LED_GPIO_CLK RCC_APB2Periph_GPIOA
+
+/** LASER config **/
+#define CHOSE_LAS_PIN1         GPIO_Pin_0
+#define CHOSE_LAS_PORT1        GPIOB
+#define CHOSE_LAS_CLK1         RCC_APB2Periph_GPIOB
+
+#define CHOSE_LAS_PIN2         GPIO_Pin_1
+#define CHOSE_LAS_PORT2        GPIOB
+#define CHOSE_LAS_CLK2         RCC_APB2Periph_GPIOB
+typedef enum
+{
+	FORWARD=1,
+	BACK=2,
+	LEFT=3,
+	RIGHT=4
+}direction;
 
 #endif // _CONFIG_H_

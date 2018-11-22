@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include "hardwareserial.h"
-#include "gy85.h"
 #include "led.h"
 #include "motor.h"
 #include "timer.h"
 #include "control.h"
 #include "Kinematics.h"
-
+#include "remote.h"
+#include "las_measure.h"
 #include <ros.h>
 
 #include <shop_msgs/Imu.h>
@@ -18,19 +18,34 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 
+<<<<<<< HEAD
 //Motor init
+=======
+
+extern REMOTE RC_CtrlData;
+
+>>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
 Motor motor1(0x201);
 Motor motor2(0x202);
 Motor motor3(0x203);
 Motor motor4(0x204);
+Motor yt_motor1(0x205);
+Motor yt_motor2(0x206);
+
 
 double required_angular_vel = 0;
 double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
+double required_pitch = 0;
+double required_yaw = 10;
 uint32_t previous_command_time = 0;
 
+<<<<<<< HEAD
 Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12, COUNTS_PER_REV);
 
+=======
+Kinematics kinematics( MAX_RPM , WHEEL_DIAMETER , LENGTH_A , LENGTH_B ,COUNTS_PER_REV ); 
+>>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
 Led led;
 
 void pid_callback(const shop_msgs::Pid &pid);
@@ -92,10 +107,30 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
+<<<<<<< HEAD
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
+=======
+    sprintf(buffer, "motor1 speed :%d ,pidout:%d", motor1.Show_Now_Speed(), motor1.Show_Output());
+    nh.loginfo(buffer);
+    sprintf(buffer, "motor2 speed :%d ,pidout:%d", motor2.Show_Now_Speed(), motor2.Show_Output());
+    nh.loginfo(buffer);
+    sprintf(buffer, "motor3 speed :%d ,pidout:%d", motor3.Show_Now_Speed(), motor3.Show_Output());
+    nh.loginfo(buffer);
+    sprintf(buffer, "motor4 speed :%d ,pidout:%d", motor4.Show_Now_Speed(), motor4.Show_Output());
+    nh.loginfo(buffer);
+	  sprintf(buffer, "yuntai1 speed :%d ,pidout:%d", yt_motor1.Show_Now_Speed(), yt_motor1.Show_Output());
+    nh.loginfo(buffer);
+	  sprintf(buffer, "yuntai2 speed :%d ,pidout:%d", yt_motor2.Show_Now_Speed(), yt_motor2.Show_Output());
+    nh.loginfo(buffer);
+    sprintf(buffer, "speed_x:%lf speed_y:%lf speed_z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
+>>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
     nh.loginfo(buffer);
     sprintf(buffer, "time:%d", millis());
     nh.loginfo(buffer);
+	  sprintf(buffer, "Remote:CH0%d CH1%d CH2%d CH3%d S1%d S2%d", RC_CtrlData.ch0,RC_CtrlData.ch1,RC_CtrlData.ch2,RC_CtrlData.ch3,RC_CtrlData.s1,RC_CtrlData.s2);
+    nh.loginfo(buffer);
+		sprintf(buffer, "FORWARD:%d BACK:%d LEFT:%d RIGHT:%d ",las_data(FORWARD),las_data(BACK),las_data(LEFT),las_data(RIGHT));
+		nh.loginfo(buffer);
 }
 
 int main(void)
@@ -109,6 +144,8 @@ int main(void)
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
     TIM5_Int_Init(71, 9999);
     CAN_Mode_Init();
+		RC_Init();
+		las_Init();
 
     nh.initNode();
     nh.advertise(raw_vel_pub);
@@ -116,7 +153,9 @@ int main(void)
     nh.advertise(raw_larscan_pub);
     nh.subscribe(pid_sub);
     nh.subscribe(cmd_sub);
-
+		
+		yt_motor1.resetPid(3,0.03,0);
+		yt_motor2.resetPid(3,0.03,1);
     while (!nh.connected())
     {
         nh.spinOnce();
@@ -136,11 +175,15 @@ int main(void)
             publisher_laser_scan();
             publish_scan_time = millis();
         }
+<<<<<<< HEAD
         if ((millis() - previous_command_time) >= 400)
         {
             stop_base();
         }
         if (DEBUG)
+=======
+        if (DEBUG)		//ต๗สิ
+>>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
         {
             if ((millis() - previous_debug_time) >= (1000 / DEBUG_RATE))
             {

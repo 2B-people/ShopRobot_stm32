@@ -6,6 +6,7 @@
 ".\objects\ringbuffer.o"
 ".\objects\wire.o"
 ".\objects\wirebase.o"
+".\objects\remote.o"
 ".\objects\kinematics.o"
 ".\objects\led.o"
 ".\objects\motor.o"
