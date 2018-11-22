@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ShopRobot.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ShopRobot.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Fri Nov 02 22:17:14 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sun Nov 04 17:50:04 2018
 <BR><P>
 <H3>Maximum Stack Usage =        320 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -325,7 +325,7 @@ Global Symbols
 <P><STRONG><a name="[164]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[9f]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; publisher_debug() &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1235,15 +1235,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ec]"></a>publisher_debug()</STRONG> (Thumb, 236 bytes, Stack size 88 bytes, main.o(i._Z15publisher_debugv))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
+<P><STRONG><a name="[ec]"></a>publisher_debug()</STRONG> (Thumb, 68 bytes, Stack size 80 bytes, main.o(i._Z15publisher_debugv))
+<BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
 <LI>Call Chain = publisher_debug() &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Show_Now_Speed()
+<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1251,25 +1249,25 @@ Global Symbols
 <P><STRONG><a name="[57]"></a>command_callback(const geometry_msgs::Twist&)</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, main.o(i._Z16command_callbackRKN13geometry_msgs5TwistE))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = command_callback(const geometry_msgs::Twist&) &rArr; __aeabi_f2d
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
-<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
+<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(i.__sti___8_main_cpp_Serial)
 </UL>
-<P><STRONG><a name="[f1]"></a>publisher_laser_scan()</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i._Z20publisher_laser_scanv))
+<P><STRONG><a name="[f0]"></a>publisher_laser_scan()</STRONG> (Thumb, 28 bytes, Stack size 8 bytes, main.o(i._Z20publisher_laser_scanv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = publisher_laser_scan() &rArr; ros::Publisher::publish(const ros::Msg*)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Publisher::publish(const ros::Msg*)
+<BR>[Calls]<UL><LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Publisher::publish(const ros::Msg*)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[f3]"></a>publisher_linear_velocities()</STRONG> (Thumb, 76 bytes, Stack size 40 bytes, main.o(i._Z27publisher_linear_velocitiesv))
+<P><STRONG><a name="[f2]"></a>publisher_linear_velocities()</STRONG> (Thumb, 76 bytes, Stack size 40 bytes, main.o(i._Z27publisher_linear_velocitiesv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = publisher_linear_velocities() &rArr; Kinematics::getVelocities(int, int, int, int) &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::getVelocities(int, int, int, int)
-<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Publisher::publish(const ros::Msg*)
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Show_Now_Speed()
+<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Show_Now_Speed()
+<LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::getVelocities(int, int, int, int)
+<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Publisher::publish(const ros::Msg*)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1291,10 +1289,10 @@ Global Symbols
 <LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fsub
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
+<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
 </UL>
 
-<P><STRONG><a name="[fc]"></a>Kinematics::getRPM(float, float, float)</STRONG> (Thumb, 310 bytes, Stack size 64 bytes, kinematics.o(i._ZN10Kinematics6getRPMEfff))
+<P><STRONG><a name="[fc]"></a>Kinematics::getRPM(float, float, float)</STRONG> (Thumb, 360 bytes, Stack size 64 bytes, kinematics.o(i._ZN10Kinematics6getRPMEfff))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = Kinematics::getRPM(float, float, float) &rArr; __aeabi_fmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
@@ -1306,17 +1304,17 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_base
 </UL>
 
-<P><STRONG><a name="[fe]"></a>Kinematics::Kinematics(int, float, float, float)</STRONG> (Thumb, 54 bytes, Stack size 40 bytes, kinematics.o(i._ZN10KinematicsC1Eifff))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Kinematics::Kinematics(int, float, float, float) &rArr; __aeabi_dmul
+<P><STRONG><a name="[fe]"></a>Kinematics::Kinematics(int, float, float, float, int)</STRONG> (Thumb, 58 bytes, Stack size 40 bytes, kinematics.o(i._ZN10KinematicsC1Eifffi))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = Kinematics::Kinematics(int, float, float, float, int) &rArr; __aeabi_dmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+<BR>[Calls]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
 <LI><a href="#[ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sti___8_main_cpp_Serial
 </UL>
 
-<P><STRONG><a name="[178]"></a>Kinematics::Kinematics__sub_object(int, float, float, float)</STRONG> (Thumb, 0 bytes, Stack size 40 bytes, kinematics.o(i._ZN10KinematicsC1Eifff), UNUSED)
+<P><STRONG><a name="[178]"></a>Kinematics::Kinematics__sub_object(int, float, float, float, int)</STRONG> (Thumb, 0 bytes, Stack size 40 bytes, kinematics.o(i._ZN10KinematicsC1Eifffi), UNUSED)
 
 <P><STRONG><a name="[108]"></a>RingBuffer::store_char(unsigned char)</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ringbuffer.o(i._ZN10RingBuffer10store_charEh))
 <BR><BR>[Called By]<UL><LI><a href="#[d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareSerial::irq()
@@ -1335,7 +1333,7 @@ Global Symbols
 <P><STRONG><a name="[103]"></a>STM32Hardware::time()</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, main.o(i._ZN13STM32Hardware4timeEv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = STM32Hardware::time()
 </UL>
-<BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
+<BR>[Calls]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
 </UL>
 <BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::syncTime(unsigned char*)
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::spinOnce()
@@ -1467,7 +1465,7 @@ Global Symbols
 <P><STRONG><a name="[69]"></a>rosserial_msgs::TopicInfo::getType()</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, main.o(i._ZN14rosserial_msgs9TopicInfo7getTypeEv))
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.constdata__ZTVN14rosserial_msgs9TopicInfoE)
 </UL>
-<P><STRONG><a name="[111]"></a>Led::on_off(bool)</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, led.o(i._ZN3Led6on_offEb))
+<P><STRONG><a name="[111]"></a>Led::on_off(bool)</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, led.o(i._ZN3Led6on_offEb))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Led::on_off(bool)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
@@ -1530,11 +1528,11 @@ Global Symbols
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sti___8_main_cpp_Serial
 </UL>
 
-<P><STRONG><a name="[f2]"></a>ros::Publisher::publish(const ros::Msg*)</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, main.o(i._ZN3ros9Publisher7publishEPKNS_3MsgE))
+<P><STRONG><a name="[f1]"></a>ros::Publisher::publish(const ros::Msg*)</STRONG> (Thumb, 20 bytes, Stack size 16 bytes, main.o(i._ZN3ros9Publisher7publishEPKNS_3MsgE))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ros::Publisher::publish(const ros::Msg*)
 </UL>
-<BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_laser_scan()
+<BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_laser_scan()
 </UL>
 
 <P><STRONG><a name="[121]"></a>ros::Publisher::Publisher(const char*, ros::Msg*, int)</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, main.o(i._ZN3ros9PublisherC1EPKcPNS_3MsgEi))
@@ -1543,9 +1541,8 @@ Global Symbols
 
 <P><STRONG><a name="[17e]"></a>ros::Publisher::Publisher__sub_object(const char*, ros::Msg*, int)</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, main.o(i._ZN3ros9PublisherC1EPKcPNS_3MsgEi), UNUSED)
 
-<P><STRONG><a name="[ee]"></a>Motor::Show_Now_Speed()</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, motor.o(i._ZN5Motor14Show_Now_SpeedEv))
-<BR><BR>[Called By]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_debug()
+<P><STRONG><a name="[f3]"></a>Motor::Show_Now_Speed()</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, motor.o(i._ZN5Motor14Show_Now_SpeedEv))
+<BR><BR>[Called By]<UL><LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_base
 </UL>
 
@@ -1710,7 +1707,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[a0]"></a>main</STRONG> (Thumb, 310 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 216 + Unknown Stack Size
 <LI>Call Chain = main &rArr; publisher_debug() &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::on_off(bool)
@@ -1721,31 +1718,31 @@ Global Symbols
 <LI><a href="#[123]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_PriorityGroupConfig
 <LI><a href="#[124]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::advertise(ros::Publisher&)
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::spinOnce()
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
-<LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
-<LI><a href="#[f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_laser_scan()
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
+<LI><a href="#[f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_linear_velocities()
+<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_laser_scan()
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_debug()
 <LI><a href="#[125]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stop_base
-<LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
+<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;millis
 <LI><a href="#[122]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initialise
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[f0]"></a>millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, millisecondtimer.o(i.millis))
+<P><STRONG><a name="[ee]"></a>millis</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, millisecondtimer.o(i.millis))
 <BR><BR>[Called By]<UL><LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STM32Hardware::time()
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command_callback(const geometry_msgs::Twist&)
 <LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_debug()
 </UL>
 
-<P><STRONG><a name="[d6]"></a>move_base</STRONG> (Thumb, 262 bytes, Stack size 56 bytes, control.o(i.move_base))
+<P><STRONG><a name="[d6]"></a>move_base</STRONG> (Thumb, 230 bytes, Stack size 56 bytes, control.o(i.move_base))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = move_base &rArr; Kinematics::getRPM(float, float, float) &rArr; __aeabi_fmul
 </UL>
-<BR>[Calls]<UL><LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID::calcPid(float, float)
+<BR>[Calls]<UL><LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Show_Now_Speed()
+<LI><a href="#[114]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID::calcPid(float, float)
 <LI><a href="#[dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Set_CM_Speed(CAN_TypeDef*, short, short, short, short)
 <LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::getRPM(float, float, float)
-<LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Show_Now_Speed()
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2f
 <LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
@@ -1843,10 +1840,10 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Msg::Msg__sub_object()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::publish(int, const ros::Msg*)
-<LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
+<LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)
 </UL>
 
-<P><STRONG><a name="[ef]"></a>ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, main.o(t._ZN3ros11NodeHandle_I13STM32HardwareLi25ELi25ELi1024ELi1024EE7loginfoEPKc))
+<P><STRONG><a name="[ed]"></a>ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*)</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, main.o(t._ZN3ros11NodeHandle_I13STM32HardwareLi25ELi25ELi1024ELi1024EE7loginfoEPKc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::loginfo(const char*) &rArr; ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::log(char, const char*)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::log(char, const char*)
@@ -1881,10 +1878,10 @@ Global Symbols
 <P><STRONG><a name="[12d]"></a>ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::syncTime(unsigned char*)</STRONG> (Thumb, 154 bytes, Stack size 40 bytes, main.o(t._ZN3ros11NodeHandle_I13STM32HardwareLi25ELi25ELi1024ELi1024EE8syncTimeEPh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::syncTime(unsigned char*) &rArr; ros::normalizeSecNSec(unsigned long&, unsigned long&)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std_msgs::Time::Time()
+<BR>[Calls]<UL><LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::normalizeSecNSec(unsigned long&, unsigned long&)
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std_msgs::Time::Time()
 <LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;std_msgs::Time::deserialize(unsigned char*)
 <LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STM32Hardware::time()
-<LI><a href="#[12e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::normalizeSecNSec(unsigned long&, unsigned long&)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::spinOnce()
 </UL>
@@ -1906,7 +1903,7 @@ Global Symbols
 <P><STRONG><a name="[100]"></a>__aeabi_d2f</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, d2f.o(x$fpl$d2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2f
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float)
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float, int)
 <LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_base
 </UL>
 
@@ -1918,7 +1915,7 @@ Global Symbols
 <P><STRONG><a name="[ff]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float)
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float, int)
 </UL>
 
 <P><STRONG><a name="[132]"></a>_dmul</STRONG> (Thumb, 332 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul), UNUSED)
@@ -1936,12 +1933,11 @@ Global Symbols
 <LI><a href="#[132]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_dmul
 </UL>
 
-<P><STRONG><a name="[ed]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
+<P><STRONG><a name="[ef]"></a>__aeabi_f2d</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_f2d
 </UL>
-<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float)
+<BR>[Called By]<UL><LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float, int)
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;command_callback(const geometry_msgs::Twist&)
-<LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;publisher_debug()
 </UL>
 
 <P><STRONG><a name="[134]"></a>_f2d</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, f2d.o(x$fpl$f2d), UNUSED)
@@ -2105,18 +2101,18 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[87]"></a>__sti___8_main_cpp_Serial</STRONG> (Thumb, 276 bytes, Stack size 16 bytes, main.o(i.__sti___8_main_cpp_Serial))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = __sti___8_main_cpp_Serial &rArr; Kinematics::Kinematics(int, float, float, float) &rArr; __aeabi_dmul
+<P><STRONG><a name="[87]"></a>__sti___8_main_cpp_Serial</STRONG> (Thumb, 280 bytes, Stack size 16 bytes, main.o(i.__sti___8_main_cpp_Serial))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = __sti___8_main_cpp_Serial &rArr; Motor::Motor(int) &rArr; PID::PID(PidTpyeDef, float, float, float, unsigned, unsigned, unsigned, float)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareSerial::HardwareSerial(Serial_TypeDef)
-<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float)
+<BR>[Calls]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Motor(int)
+<LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HardwareSerial::HardwareSerial(Serial_TypeDef)
+<LI><a href="#[fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Kinematics::Kinematics(int, float, float, float, int)
 <LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::NodeHandle_&lang;STM32Hardware, (int)25, (int)25, (int)1024, (int)1024&rang;::NodeHandle_()
 <LI><a href="#[120]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Subscriber&lang;shop_msgs::Pid&rang;::Subscriber(const char*, void(*)(const shop_msgs::Pid&), int)
 <LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Subscriber&lang;geometry_msgs::Twist&rang;::Subscriber(const char*, void(*)(const geometry_msgs::Twist&), int)
 <LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Publisher::Publisher(const char*, ros::Msg*, int)
 <LI><a href="#[105]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ros::Msg::Msg__sub_object()
 <LI><a href="#[104]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;geometry_msgs::Vector3::Vector3()
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor::Motor(int)
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_atexit
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.init_array)

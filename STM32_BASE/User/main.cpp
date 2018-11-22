@@ -18,7 +18,6 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 
-
 //Motor init
 Motor motor1(0x201);
 Motor motor2(0x202);
@@ -30,7 +29,7 @@ double required_linear_vel_x = 0;
 double required_linear_vel_y = 0;
 uint32_t previous_command_time = 0;
 
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12,COUNTS_PER_REV);
+Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12, COUNTS_PER_REV);
 
 Led led;
 
@@ -93,14 +92,6 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
-    sprintf(buffer, "motor1 speed :%d ,pidout:%lf", motor1.Show_Now_Speed(), err1);
-    nh.loginfo(buffer);
-    sprintf(buffer, "motor2 speed :%d ,pidout:%lf", motor2.Show_Now_Speed(), err2);
-    nh.loginfo(buffer);
-    sprintf(buffer, "motor3 speed :%d ,pidout:%lf", motor3.Show_Now_Speed(), err3);
-    nh.loginfo(buffer);
-    sprintf(buffer, "motor4 speed :%d ,pidout:%lf", motor4.Show_Now_Speed(), err4);
-    nh.loginfo(buffer);
     sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
     nh.loginfo(buffer);
     sprintf(buffer, "time:%d", millis());
@@ -140,14 +131,14 @@ int main(void)
             publisher_linear_velocities();
             publish_vel_time = millis();
         }
-        if ((millis() - previous_command_time) >= 400)
-        {
-            stop_base();
-        }
         if ((millis() - publish_scan_time) >= (1000 / VEL_PUBLISH_RATE))
         {
             publisher_laser_scan();
             publish_scan_time = millis();
+        }
+        if ((millis() - previous_command_time) >= 400)
+        {
+            stop_base();
         }
         if (DEBUG)
         {
