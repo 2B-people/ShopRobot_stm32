@@ -9,7 +9,6 @@ DMA_InitTypeDef DMA_InitStructure;
 extern double required_angular_vel;
 extern double required_linear_vel_x ;
 extern double required_linear_vel_y ;
-extern uint32_t previous_command_time;
 void RC_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -94,23 +93,22 @@ void RemoteDataProcess(uint8_t *pData)
 	{
 		return;
 	}
-	previous_command_time = millis();
 	RC_CtrlData.ch0 = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;
 	RC_CtrlData.ch1 = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5))& 0x07FF;
 	RC_CtrlData.ch2 = (((int16_t)pData[2] >> 6) | ((int16_t)pData[3] << 2) |((int16_t)pData[4] << 10)) & 0x07FF;
 	RC_CtrlData.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) &0x07FF;
 	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
 	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
-	if(RC_CtrlData.ch0<1400)
+	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)
 		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0025;
 	else
 		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0045;
-	if(RC_CtrlData.ch1<1400)
+	if(RC_CtrlData.ch1<1400&&RC_CtrlData.ch1>600)
 		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0025;
 	else
 		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0045;
 	
-	if(RC_CtrlData.ch2<1400)
+	if(RC_CtrlData.ch2<1400&&RC_CtrlData.ch2>600)
 		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0025;
 	else
 		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0045;
@@ -118,15 +116,24 @@ void RemoteDataProcess(uint8_t *pData)
 	
 	
 	
-	if(RC_CtrlData.ch0>=1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
+	if(RC_CtrlData.ch0>=1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||
+		RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||
+	RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
 		stop_base();
 	
-	if(required_linear_vel_x>=1.5)
-		required_linear_vel_x=1.5;
+	if(required_linear_vel_x>=1.8)
+		required_linear_vel_x=1.8;
 	if(required_linear_vel_y>=2)
 		required_linear_vel_y=2;
-	if(required_angular_vel>=3)
-		required_angular_vel=3;
+	if(required_angular_vel>=3.5)
+		required_angular_vel=3.5;
+	
+		if(required_linear_vel_x<=-1.8)
+		required_linear_vel_x=-1.8;
+	if(required_linear_vel_y<=-2)
+		required_linear_vel_y=-2;
+	if(required_angular_vel<=-3.5)
+		required_angular_vel=-3.5;
 }
 
 

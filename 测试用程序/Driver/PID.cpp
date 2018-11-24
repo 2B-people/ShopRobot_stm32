@@ -9,20 +9,14 @@ void absLimit(float *a, float abs_max)
         *a = -abs_max;
 }
 
-PID::PID(uint8_t pid_mode, float kp, float ki, float kd,uint32_t output_max, uint32_t integral_limit, float output_deadband)
-{
-   if(pid_mode == 1)
-	 {
-		 	pid_mode_ = POSITON_PID;
-	 }
-else{
-			 	pid_mode_ = DELTA_PID;
-}
+PID::PID(PidTpyeDef pid_mode, float kp, float ki, float kd, uint32_t output_max,uint32_t input_max_err, uint32_t integral_limit, float output_deadband)
+{   
+    pid_mode_ = pid_mode;
 
-		input_max_err_ = 0;
     output_max_ = output_max;
     integral_limit_ = integral_limit;
     output_deadband_ = output_deadband;
+    input_max_err_ = input_max_err;
 
     kp_ = kp;
     ki_ = ki;

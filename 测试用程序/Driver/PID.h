@@ -3,21 +3,19 @@
 
 #include "config.h"
 
+enum PidTpyeDef
+{
+  LLAST = 0,
+  LAST,
+  NOW,
+  POSITON_PID,
+  DELTA_PID,
+};
 
 class PID
 {
 public:
-
-  enum PidTpyeDef
-  {
-    LLAST = 0,
-    LAST,
-    NOW,
-    POSITON_PID,
-    DELTA_PID,
-  };
-  
-  PID(uint8_t pid_mode,  float kp, float ki, float kd,uint32_t output_max, uint32_t integral_limit, float output_deadband);
+  PID(PidTpyeDef pid_mode, float kp, float ki, float kd, uint32_t output_max,uint32_t input_max_err, uint32_t integral_limit, float output_deadband);
   void resetPid(float kp, float ki, float kd);
   float calcPid(float set, float get);
 
@@ -35,10 +33,10 @@ private:
   float get_;
   float err_[3];
 
-  float pout_ ;
-  float iout_ ;
-  float dout_ ;
-  float out_ ;
+  float pout_;
+  float iout_;
+  float dout_;
+  float out_;
 
   float input_max_err_;   //input max err;
   float output_deadband_; //output deadband;
