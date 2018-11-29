@@ -1,5 +1,5 @@
 #include "led.h"
-void Led_init()
+void Led_init()		
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(RIKI_LED_GPIO_CLK, ENABLE);
@@ -10,7 +10,7 @@ void Led_init()
 	GPIO_Init(RIKI_LED_GPIO_PORT, &GPIO_InitStructure);
 }
 
-void LED_On_Off(char status)
+void LED_On_Off(char status)				
 {
 	if(status == True){
 		GPIO_SetBits(RIKI_LED_GPIO_PORT, RIKI_LED_PIN);					//高电平点亮

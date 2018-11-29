@@ -18,8 +18,8 @@
 
 
 #define K_P 2.5   // P constant
-#define K_I 0.8 // I constant
-#define K_D 0.01   // D constant
+#define K_I 0.08 // I constant
+#define K_D 0.1   // D constant
 
 #define YT_KP 3
 #define YT_KI 0

@@ -1,7 +1,7 @@
 #include "include.h"
 
 double required_angular_vel = 0;
-double required_linear_vel_x =0;
+double required_linear_vel_x =1;
 double required_linear_vel_y = 0;
 double required_pitch ;
 double required_yaw ;
@@ -18,23 +18,24 @@ int main()
 	RC_Init();
 	las_Init();
 	usart1_Init(115200);
+	PID_init();
 	while(1)
 	{	
-		if ((millis() - publish_vel_time) >= (1000 / VEL_PUBLISH_RATE))
-		{
-			publish_vel();
-			publish_vel_time=millis();
-		}
-		
-		if ((millis() - publish_las_time) >= (1000 / LAS_PUBLISH_RATE))
-		{
-			publish_las();
-			publish_las_time=millis();
-		}
-		if ((millis() - publish_remote_time) >= (1000 / REMOTE_PUBLISH_RATE))
-		{
-			publish_remote();
-			publish_remote_time=millis();
-		}
+//		if ((millis() - publish_vel_time) >= (1000 / VEL_PUBLISH_RATE))
+//		{
+//			publish_vel();
+//			publish_vel_time=millis();
+//		}
+//		
+//		if ((millis() - publish_las_time) >= (1000 / LAS_PUBLISH_RATE))
+//		{
+//			publish_las();
+//			publish_las_time=millis();
+//		}
+//		if ((millis() - publish_remote_time) >= (1000 / REMOTE_PUBLISH_RATE))
+//		{
+//			publish_remote();
+//			publish_remote_time=millis();
+//		}
 	}
 }

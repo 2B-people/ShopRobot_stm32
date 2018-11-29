@@ -23,13 +23,14 @@ struct PID_member
 void PID_init()
 {
 	s_PIDcm1.Kp=K_P;
+
 	s_PIDcm1.Ki=K_I;
 	s_PIDcm1.Kd=K_D;
 	
 	s_PIDcm2.Kp=K_P;
 	s_PIDcm2.Ki=K_I;
 	s_PIDcm2.Kd=K_D;
-	
+
 	s_PIDcm3.Kp=K_P;
 	s_PIDcm3.Ki=K_I;
 	s_PIDcm3.Kd=K_D;
@@ -72,7 +73,9 @@ void CM1speedPID_Calculation()
 void CM2speedPID_Calculation()
 {	
 	int16_t derror,error_sum_out;
+		
 	s_PIDcm2.error_now=motor2.target_speed*c-motor2.now_speed;
+
 	s_PIDcm2.error_sum+=s_PIDcm2.error_now;
         error_sum_out=s_PIDcm2.error_sum;
 
@@ -86,6 +89,7 @@ void CM2speedPID_Calculation()
 	s_PIDcm2.error_inter=s_PIDcm2.error_last;
 	s_PIDcm2.error_last=s_PIDcm2.error_now;
 	s_PIDcm2.pid_out=s_PIDcm2.error_now*s_PIDcm2.Kp+error_sum_out*s_PIDcm2.Ki+derror*s_PIDcm2.Kd;
+
 	if(s_PIDcm2.pid_out<-8000) s_PIDcm2.pid_out=-8000;
 	if(s_PIDcm2.pid_out>8000) s_PIDcm2.pid_out=8000;
 
@@ -143,4 +147,5 @@ void CMControl()
   CM1speedPID_Calculation();
   CM3speedPID_Calculation();
   Set_CM_Speed(CAN1,s_PIDcm1.pid_out,s_PIDcm2.pid_out,s_PIDcm3.pid_out,s_PIDcm4.pid_out);
+	// Set_CM_Speed(CAN1,500,500,500,500);
 }

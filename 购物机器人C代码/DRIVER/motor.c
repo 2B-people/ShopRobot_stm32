@@ -71,7 +71,7 @@ void CAN_Mode_Init(void)
 
 
 
-void USB_LP_CAN1_RX0_IRQHandler(void) //CAN RX
+void USB_LP_CAN1_RX0_IRQHandler(void) //该函数用于接受CAN总线数据并转换为电机RPM
 {
 	CanRxMsg rx_message;
   if (CAN_GetITStatus(CAN1,CAN_IT_FMP0)!= RESET) 
@@ -117,7 +117,7 @@ void USB_HP_CAN1_TX_IRQHandler(void)
 
 }
 
-void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)
+void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)		//设置电机速度
 {
 	  CanTxMsg tx_message;
 		motor1.output=cm1_iq;
@@ -140,7 +140,7 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3
     CAN_Transmit(CANx,&tx_message);
 }
 
-void Set_YT_Speed(CAN_TypeDef *CANx, int16_t yt1_iq ,int16_t yt2_iq)
+void Set_YT_Speed(CAN_TypeDef *CANx, int16_t yt1_iq ,int16_t yt2_iq)		//设置云台电机速度
 {
 
 		CanTxMsg tx_message;

@@ -25,16 +25,16 @@ void get_RPM()
 		motor3.target_speed*=COUNTS_PER_REV;
 		motor4.target_speed*=COUNTS_PER_REV;
 
-    if (motor1.target_speed >= MAX_RPM ||
-        motor2.target_speed >= MAX_RPM ||
-        motor3.target_speed >= MAX_RPM ||
-        motor4.target_speed >= MAX_RPM)
-    {
-      motor1.target_speed=  0;
-			motor2.target_speed=  0;
-			motor3.target_speed=  0;
-			motor4.target_speed=  0;
-    }
+//    if (motor1.target_speed >= MAX_RPM ||
+//        motor2.target_speed >= MAX_RPM ||
+//        motor3.target_speed >= MAX_RPM ||
+//        motor4.target_speed >= MAX_RPM)
+//    {
+//      motor1.target_speed=  0;
+//			motor2.target_speed=  0;
+//			motor3.target_speed=  0;
+//			motor4.target_speed=  0;
+//    }
 }
 
 void stop_base()
