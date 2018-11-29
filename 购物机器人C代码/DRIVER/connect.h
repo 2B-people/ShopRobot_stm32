@@ -17,11 +17,14 @@ typedef struct
 	int8_t Date_3;
 	int8_t Date_4;
 }Connect_Typedef;
+
+
 enum
 {
 	SVEL=1,
 	SREMOTE,
-	SLAS
+	SLAS,
+	SSTATE
 };	
 extern Connect_TypedefU unsigned_connet;
 extern Connect_Typedef signed_connet;
@@ -41,6 +44,9 @@ void Send_Message32(Connect_Typedef *co);
 void publish_vel(void);
 void publish_remote(void);
 void publish_las(void);
+void publish_state(void);
+
+
 #define MSG_vel_x         0X01
 #define MSG_vel_y         0X02
 #define MSG_vel_z         0X03
@@ -54,4 +60,5 @@ void publish_las(void);
 #define MSG_remote_ch3    0x0A   //Ò£¿ØÆ÷ch3
 #define MSG_remote_s1     0x0B   //Ò£¿ØÆ÷s1
 #define MSG_remote_s2     0x0C   //Ò£¿ØÆ÷s2
+
 #endif

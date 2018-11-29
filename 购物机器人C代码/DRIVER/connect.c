@@ -93,6 +93,9 @@ void Send_Begin(uint8_t STA)
 		case SLAS:
 			usart1_write(0x34);	SEND_STA=True;
 			break;
+		case SSTATE:
+			usart1_write(0x31);	SEND_STA=True;
+			break;
 		default:
 			SEND_STA=False;break;
 	}
@@ -166,6 +169,17 @@ void publish_las(void)
 		Set_TypeU(&unsigned_connet,MSG_distance_r);
 		Set_Datau16(&unsigned_connet,(uint16_t)Distance_R);
 		Send_MessageU16(&unsigned_connet);		
+	}
+	Send_End();
+}
+void publish_state(void)
+{
+	Send_Begin(SSTATE);
+	if(SEND_STA)
+	{
+		Set_TypeU(&unsigned_connet,IsFinsh);
+		Set_Datau16(&unsigned_connet,(uint16_t)IsFinsh);
+		Send_MessageU16(&unsigned_connet);
 	}
 	Send_End();
 }

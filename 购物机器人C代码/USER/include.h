@@ -19,6 +19,6 @@ extern double required_linear_vel_x ;
 extern double required_linear_vel_y ;
 extern double required_pitch ;
 extern double required_yaw ;
-
+extern uint8_t IsFinsh;
 #endif
 

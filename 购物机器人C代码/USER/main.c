@@ -5,6 +5,7 @@ double required_linear_vel_x =1;
 double required_linear_vel_y = 0;
 double required_pitch ;
 double required_yaw ;
+uint8_t IsFinsh;
 uint32_t publish_las_time = 0;
 uint32_t publish_vel_time = 0;
 uint32_t publish_remote_time = 0;
