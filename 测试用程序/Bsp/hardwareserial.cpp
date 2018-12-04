@@ -30,9 +30,12 @@ void HardwareSerial::begin(uint32_t baud)
 	USART_InitTypeDef USART_InitStructure;
 	NVIC_InitTypeDef  NVIC_InitStructure;
   
-	if(this->Serial == SERIAL1) {
+	if(this->Serial == SERIAL1)
+	{
 		RCC_APB2PeriphClockCmd(SERIAL_USART_CLK[this->Serial]|SERIAL_PORT_CLK[this->Serial], ENABLE);	
-	} else {
+	} 
+	else
+	{
 		RCC_APB1PeriphClockCmd(SERIAL_USART_CLK[this->Serial], ENABLE); 
 		RCC_APB2PeriphClockCmd(SERIAL_PORT_CLK[this->Serial], ENABLE); 
 	}
@@ -115,24 +118,11 @@ void HardwareSerial::putstr(const char *str)
 	}
 }
 
-void HardwareSerial::putnum(int num,int len)
-{
-	if(num<0)
-	{
-		num=-num;
-		print("-");
-	}
-	for(int i=0;i<len;i++)
-	{
-		write(num%10+48);
-		num/=10;
-	}
-}
-
 void HardwareSerial::irq()
 {
 	uint8_t data;
-	if (USART_GetITStatus(SERIAL_USART[Serial], USART_IT_RXNE) != RESET) {
+	if (USART_GetITStatus(SERIAL_USART[Serial], USART_IT_RXNE) != RESET) 
+	{
 		data = USART_ReceiveData(SERIAL_USART[Serial]);
 		rx_buffer.store_char(data) ;  
 		USART_ClearITPendingBit(SERIAL_USART[Serial], USART_IT_RXNE);    

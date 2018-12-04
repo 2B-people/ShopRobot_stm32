@@ -1,9 +1,12 @@
 #include "las_measure.h"
 #include "config.h"
+#include "HardwareSerial.h"
 uint16_t USART_RX_STA=0;
 uint16_t USART_RX_NUM=0;
 uint16_t Distance;
 uint8_t MEASURE_BUF[5];
+extern HardwareSerial usart1;
+
 void las_Init()
 {
 		USART_InitTypeDef USART_InitStructure;  
@@ -68,28 +71,26 @@ void las_Init()
 }
 void changeDirection(direction dir)//用数据选择器选择串口的接口来选择激光测距
 {
-	USART_Cmd(USART3, DISABLE);
 	switch(dir)
 	{
-		case forward:
+		case FORWARD:
 			GPIO_ResetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
 			GPIO_ResetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);		//00
 			break;
-		case back:
+		case BACK:
 			GPIO_ResetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
 			GPIO_SetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//01
 			break;
-		case left:
+		case LEFT:
 			GPIO_SetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
 			GPIO_ResetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//10
 			break;
-		case right:
+		case RIGHT:
 			GPIO_SetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
 			GPIO_SetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//11
 			break;
 	}
-	USART_RX_STA=0;
-	USART_Cmd(USART3, ENABLE);
+	//USART_RX_STA=0;
 }
 
 void las_measure()
@@ -97,11 +98,11 @@ void las_measure()
 	uint16_t distance;
 	uint16_t strength;
 	uint8_t mode;
+	while(USART_RX_STA!=0);
 	while(USART_RX_STA==0x2000);//等待接受数据结束
 	distance&=0X0000;
 	distance|=((uint16_t(MEASURE_BUF[0]))&0x00FF);
 	distance|=(((uint16_t(MEASURE_BUF[1]))<<8)&0xFF00);
-	
 	strength&=0X0000;
 	strength|=((uint16_t(MEASURE_BUF[2]))&0x00FF);
 	strength|=(((uint16_t(MEASURE_BUF[3]))<<8)&0xFF00);
@@ -111,6 +112,7 @@ void las_measure()
 	
 	if(strength>20&&strength<2000)		//只有当信号在一定强度内，数据才是可信的
 		Distance=distance;
+	
 }
 
 
@@ -119,6 +121,7 @@ uint16_t las_data(direction dir)
 {
 	changeDirection(dir);
 	las_measure();
+
 	return Distance;
 }
 
@@ -129,7 +132,7 @@ uint16_t las_data(direction dir)
 extern "C" void USART3_IRQHandler(void)                    //串口3中断服务程序
 {
     uint8_t Res;
-    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断
+    if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)  //接收中断
 		{
 			Res=USART_ReceiveData(USART3);
 			if((USART_RX_STA&0x2000)!=0)		//接受距离数据

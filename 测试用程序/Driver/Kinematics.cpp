@@ -1,21 +1,15 @@
 #include "Kinematics.h"
 
-Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b)
+Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b, int reduction_ratio)
 {
     this->max_rpm_ = motor_max_rpm;
     this->circumference_ = PI * wheel_diameter;
     this->base_a_ = base_a;
     this->base_b_ = base_b;
+    this->reduction_ratio_ = reduction_ratio;
 }
 
-Kinematics::Kinematics(int motor_max_rpm, float wheel_diameter, float base_a, float base_b, int pwm_max)
-{
-    this->max_rpm_ = motor_max_rpm;
-    this->circumference_ = PI * wheel_diameter;
-    this->base_a_ = base_a;
-    this->base_b_ = base_b;
-    this->pwm_max_ = pwm_max;
-}
+
 
 Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angular_z)
 {
@@ -33,10 +27,15 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
 
     Kinematics::output rpm;
 
-    rpm.motor1 = -(int)(speed[0] / circumference_);
+    rpm.motor1 = -(int)(speed[0] / circumference_);//	速度/周长
     rpm.motor2 = (int)(speed[1] / circumference_);
     rpm.motor3 = (int)(speed[2] / circumference_);
     rpm.motor4 = -(int)(speed[3] / circumference_);
+
+    rpm.motor1 = rpm.motor1 * reduction_ratio_;			
+    rpm.motor2 = rpm.motor2 * reduction_ratio_;
+    rpm.motor3 = rpm.motor3 * reduction_ratio_;
+    rpm.motor4 = rpm.motor4 * reduction_ratio_;
 
     if (rpm.motor1 <= max_rpm_ &&
         rpm.motor2 <= max_rpm_ &&
@@ -47,6 +46,12 @@ Kinematics::output Kinematics::getRPM(float linear_x, float linear_y, float angu
     }
     else
     {
+        rpm.motor1 = 0;
+        rpm.motor2 = 0;
+        rpm.motor3 = 0;
+        rpm.motor4 = 0;
+
+        return rpm;
     }
 }
 

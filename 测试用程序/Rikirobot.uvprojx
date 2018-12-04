@@ -574,11 +574,6 @@
               <FilePath>.\Bsp\RingBuffer.cpp</FilePath>
             </File>
             <File>
-              <FileName>battery.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>.\Driver\battery.cpp</FilePath>
-            </File>
-            <File>
               <FileName>hardwareserial.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>.\Bsp\hardwareserial.cpp</FilePath>

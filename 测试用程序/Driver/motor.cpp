@@ -6,15 +6,15 @@ extern Motor motor3;
 extern Motor motor4;
 extern Motor yt_motor1;
 extern Motor yt_motor2;
-Motor::Motor(int32_t id):PID(1,2.5,0.8,0.01,8000,0,0)		//选择ID，默认为0x201
+Motor::Motor(int32_t id):PID(POSITON_PID,K_P,K_I,K_D,MAX_RPM,0,0,0)		//选择ID，默认为0x201
 {
 	this->id=id;
 }
 
 
-void Motor::Set_Speed(int16_t target_speed)
+void Motor::Set_Output(int16_t output_speed)
 {
-	this->target_speed=target_speed;
+	this->output=output_speed;
 }
 
 void Motor::Get_Speed(int16_t now_speed)
@@ -22,9 +22,9 @@ void Motor::Get_Speed(int16_t now_speed)
 	this->now_speed=now_speed;
 }
 
-int16_t Motor::Show_Target_Speed(void)
+int16_t Motor::Show_Output(void)
 {
-	return (int16_t)target_speed;
+	return (int16_t)output;
 }
 
 
@@ -106,7 +106,7 @@ void CAN_Mode_Init(void)
 
 
 
-extern "C" void USB_LP_CAN1_RX0_IRQHandler(void) //CAN TX
+extern "C" void USB_LP_CAN1_RX0_IRQHandler(void) //CAN RX
 {
 	CanRxMsg rx_message;
   if (CAN_GetITStatus(CAN1,CAN_IT_FMP0)!= RESET) 
@@ -154,7 +154,10 @@ extern "C" void USB_HP_CAN1_TX_IRQHandler(void)
 
 void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3_iq, int16_t cm4_iq)
 {
-		//3510电机
+		motor1.Set_Output(cm1_iq);
+		motor2.Set_Output(cm2_iq);
+		motor3.Set_Output(cm3_iq);
+		motor4.Set_Output(cm4_iq);
     CanTxMsg tx_message;
     tx_message.StdId = 0x200;
     tx_message.IDE = CAN_Id_Standard;
@@ -170,10 +173,12 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq, int16_t cm3
     tx_message.Data[6] = (uint8_t)(cm4_iq >> 8);
     tx_message.Data[7] = (uint8_t)cm4_iq;
     CAN_Transmit(CANx,&tx_message);
-	
 }
+
 void Set_YT_Speed(CAN_TypeDef *CANx, int16_t yt1_iq ,int16_t yt2_iq)
 {
+		yt_motor1.Set_Output(yt1_iq);
+		yt_motor2.Set_Output(yt2_iq);
 		CanTxMsg tx_message;
 		tx_message.StdId =0x1FF; 
 		tx_message.IDE = CAN_Id_Standard;
