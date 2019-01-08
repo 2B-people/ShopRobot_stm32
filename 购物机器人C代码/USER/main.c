@@ -22,21 +22,21 @@ int main()
 	PID_init();
 	while(1)
 	{	
-//		if ((millis() - publish_vel_time) >= (1000 / VEL_PUBLISH_RATE))
-//		{
-//			publish_vel();
-//			publish_vel_time=millis();
-//		}
-//		
-//		if ((millis() - publish_las_time) >= (1000 / LAS_PUBLISH_RATE))
-//		{
-//			publish_las();
-//			publish_las_time=millis();
-//		}
-//		if ((millis() - publish_remote_time) >= (1000 / REMOTE_PUBLISH_RATE))
-//		{
-//			publish_remote();
-//			publish_remote_time=millis();
-//		}
+		if ((millis() - publish_vel_time) >= (1000 / VEL_PUBLISH_RATE))
+		{
+			publish_vel();
+			publish_vel_time=millis();
+		}
+		
+		if ((millis() - publish_las_time) >= (1000 / LAS_PUBLISH_RATE))
+		{
+			publish_las();
+			publish_las_time=millis();
+		}
+		if ((millis() - publish_remote_time) >= (1000 / REMOTE_PUBLISH_RATE))
+		{
+			publish_remote();
+			publish_remote_time=millis();
+		}
 	}
 }
