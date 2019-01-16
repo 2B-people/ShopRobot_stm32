@@ -15,6 +15,7 @@
 #include "usart1.h"
 #include "plan.h"
 #include "oled.h"
+#include "bottom_sensor.h"
 
 typedef enum
 {

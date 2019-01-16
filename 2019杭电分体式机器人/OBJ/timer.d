@@ -49,5 +49,9 @@
 ..\obj\timer.o: ..\DRIVER\las_masure.h
 ..\obj\timer.o: ..\DRIVER\usart1.h
 ..\obj\timer.o: ..\DRIVER\plan.h
+<<<<<<< HEAD
 ..\obj\timer.o: ..\DRIVER\OLED\oled.h
 ..\obj\timer.o: ..\SYSTEM\sys\sys.h
+=======
+..\obj\timer.o: ..\DRIVER\bottom_sensor.h
+>>>>>>> dfbf8e9927c72b95362da51f02da578b10bd9d00

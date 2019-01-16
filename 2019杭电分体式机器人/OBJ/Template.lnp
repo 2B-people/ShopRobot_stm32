@@ -37,7 +37,11 @@
 "..\obj\las_masure.o"
 "..\obj\usart1.o"
 "..\obj\plan.o"
+<<<<<<< HEAD
 "..\obj\oled.o"
+=======
+"..\obj\bottom_sensor.o"
+>>>>>>> dfbf8e9927c72b95362da51f02da578b10bd9d00
 --ro-base 0x08000000 --entry 0x08000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\Template.map" -o ..\OBJ\Template.axf
