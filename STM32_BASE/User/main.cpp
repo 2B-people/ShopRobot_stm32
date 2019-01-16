@@ -18,13 +18,9 @@
 #include <geometry_msgs/Twist.h>
 #include <geometry_msgs/Vector3.h>
 
-<<<<<<< HEAD
-//Motor init
-=======
 
 extern REMOTE RC_CtrlData;
 
->>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
 Motor motor1(0x201);
 Motor motor2(0x202);
 Motor motor3(0x203);
@@ -40,12 +36,7 @@ double required_pitch = 0;
 double required_yaw = 10;
 uint32_t previous_command_time = 0;
 
-<<<<<<< HEAD
-Kinematics kinematics(MAX_RPM, WHEEL_DIAMETER, 0.165, 0.12, COUNTS_PER_REV);
-
-=======
 Kinematics kinematics( MAX_RPM , WHEEL_DIAMETER , LENGTH_A , LENGTH_B ,COUNTS_PER_REV ); 
->>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
 Led led;
 
 void pid_callback(const shop_msgs::Pid &pid);
@@ -107,9 +98,6 @@ void publisher_laser_scan()
 void publisher_debug()
 {
     char buffer[50];
-<<<<<<< HEAD
-    sprintf(buffer, "x:%lf y:%lf z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
-=======
     sprintf(buffer, "motor1 speed :%d ,pidout:%d", motor1.Show_Now_Speed(), motor1.Show_Output());
     nh.loginfo(buffer);
     sprintf(buffer, "motor2 speed :%d ,pidout:%d", motor2.Show_Now_Speed(), motor2.Show_Output());
@@ -123,7 +111,6 @@ void publisher_debug()
 	  sprintf(buffer, "yuntai2 speed :%d ,pidout:%d", yt_motor2.Show_Now_Speed(), yt_motor2.Show_Output());
     nh.loginfo(buffer);
     sprintf(buffer, "speed_x:%lf speed_y:%lf speed_z:%lf", required_linear_vel_x, required_linear_vel_y, required_angular_vel);
->>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
     nh.loginfo(buffer);
     sprintf(buffer, "time:%d", millis());
     nh.loginfo(buffer);
@@ -175,15 +162,7 @@ int main(void)
             publisher_laser_scan();
             publish_scan_time = millis();
         }
-<<<<<<< HEAD
-        if ((millis() - previous_command_time) >= 400)
-        {
-            stop_base();
-        }
-        if (DEBUG)
-=======
         if (DEBUG)		//ต๗สิ
->>>>>>> 761295df55f029b71e50e3c7a828e62fcaa1142f
         {
             if ((millis() - previous_debug_time) >= (1000 / DEBUG_RATE))
             {

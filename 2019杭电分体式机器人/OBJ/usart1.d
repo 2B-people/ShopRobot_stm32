@@ -49,3 +49,5 @@
 ..\obj\usart1.o: ..\DRIVER\las_masure.h
 ..\obj\usart1.o: ..\DRIVER\usart1.h
 ..\obj\usart1.o: ..\DRIVER\plan.h
+..\obj\usart1.o: ..\DRIVER\OLED\oled.h
+..\obj\usart1.o: ..\SYSTEM\sys\sys.h

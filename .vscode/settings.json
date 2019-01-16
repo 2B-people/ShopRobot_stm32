@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "millisecondtimer.h": "c",
+        "misc.h": "c"
+    }
+}

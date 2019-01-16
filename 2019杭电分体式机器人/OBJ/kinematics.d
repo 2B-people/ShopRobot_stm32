@@ -49,3 +49,5 @@
 ..\obj\kinematics.o: ..\DRIVER\las_masure.h
 ..\obj\kinematics.o: ..\DRIVER\usart1.h
 ..\obj\kinematics.o: ..\DRIVER\plan.h
+..\obj\kinematics.o: ..\DRIVER\OLED\oled.h
+..\obj\kinematics.o: ..\SYSTEM\sys\sys.h

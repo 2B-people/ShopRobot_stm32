@@ -14,13 +14,15 @@
 #include "las_masure.h"
 #include "usart1.h"
 #include "plan.h"
+#include "oled.h"
+
 typedef enum
 {
 	positive_x,
 	positive_y,
 	negative_x,
 	negative_y
-}ORIENTATION;		//³µÉí³¯Ïò
+}ORIENTATION;		//
 
 extern double required_vel ;
 extern uint8_t IsControlFinsh;
