@@ -141,7 +141,8 @@ void CM4speedPID_Calculation()
 
 void CMControl()
 {
-	get_RPM();
+	if(!IsRotate)//Î´ÔÚÐý×ªÊ±
+		get_RPM();
   CM2speedPID_Calculation();
 //  CM4speedPID_Calculation();
   CM1speedPID_Calculation();

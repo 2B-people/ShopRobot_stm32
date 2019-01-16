@@ -51,4 +51,15 @@
 #define CHOSE_LAS_PORT2        GPIOB
 #define CHOSE_LAS_CLK2         RCC_APB2Periph_GPIOB		//接数据选择器
 
+
+/**bottom_sensor config**/
+#define infrared_PIN1          GPIO_Pin_2
+#define infrared_PORT1          GPIOE
+#define infrared_CLK1          RCC_APB2Periph_GPIOE
+
+#define infrared_PIN2          GPIO_Pin_3
+#define infrared_PORT2          GPIOE
+#define infrared_CLK2          RCC_APB2Periph_GPIOE
+
+
 #endif // _CONFIG_H_

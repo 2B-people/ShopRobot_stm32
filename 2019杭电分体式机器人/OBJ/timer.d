@@ -49,3 +49,4 @@
 ..\obj\timer.o: ..\DRIVER\las_masure.h
 ..\obj\timer.o: ..\DRIVER\usart1.h
 ..\obj\timer.o: ..\DRIVER\plan.h
+..\obj\timer.o: ..\DRIVER\bottom_sensor.h

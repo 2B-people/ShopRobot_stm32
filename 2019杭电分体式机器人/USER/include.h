@@ -14,6 +14,7 @@
 #include "las_masure.h"
 #include "usart1.h"
 #include "plan.h"
+#include "bottom_sensor.h"
 typedef enum
 {
 	positive_x,

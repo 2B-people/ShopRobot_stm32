@@ -49,3 +49,4 @@
 ..\obj\remote.o: ..\DRIVER\las_masure.h
 ..\obj\remote.o: ..\DRIVER\usart1.h
 ..\obj\remote.o: ..\DRIVER\plan.h
+..\obj\remote.o: ..\DRIVER\bottom_sensor.h

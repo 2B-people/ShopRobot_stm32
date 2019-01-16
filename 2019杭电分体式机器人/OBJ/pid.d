@@ -49,3 +49,4 @@
 ..\obj\pid.o: ..\DRIVER\las_masure.h
 ..\obj\pid.o: ..\DRIVER\usart1.h
 ..\obj\pid.o: ..\DRIVER\plan.h
+..\obj\pid.o: ..\DRIVER\bottom_sensor.h

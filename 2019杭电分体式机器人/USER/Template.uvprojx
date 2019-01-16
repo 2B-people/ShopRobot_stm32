@@ -598,6 +598,11 @@
               <FileType>1</FileType>
               <FilePath>..\DRIVER\plan.c</FilePath>
             </File>
+            <File>
+              <FileName>bottom_sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\bottom_sensor.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

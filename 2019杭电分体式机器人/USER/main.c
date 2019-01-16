@@ -28,6 +28,7 @@ int main()
 	//las_Init();
 	usart1_Init(115200);
 	PID_init();
+	infrared_Init();
 	while(1)
 	{	
 		if(IsStop)
