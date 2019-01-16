@@ -49,9 +49,6 @@
 ..\obj\remote.o: ..\DRIVER\las_masure.h
 ..\obj\remote.o: ..\DRIVER\usart1.h
 ..\obj\remote.o: ..\DRIVER\plan.h
-<<<<<<< HEAD
 ..\obj\remote.o: ..\DRIVER\OLED\oled.h
 ..\obj\remote.o: ..\SYSTEM\sys\sys.h
-=======
 ..\obj\remote.o: ..\DRIVER\bottom_sensor.h
->>>>>>> dfbf8e9927c72b95362da51f02da578b10bd9d00

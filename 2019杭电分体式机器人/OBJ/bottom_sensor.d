@@ -49,4 +49,6 @@
 ..\obj\bottom_sensor.o: ..\DRIVER\las_masure.h
 ..\obj\bottom_sensor.o: ..\DRIVER\usart1.h
 ..\obj\bottom_sensor.o: ..\DRIVER\plan.h
+..\obj\bottom_sensor.o: ..\DRIVER\OLED\oled.h
+..\obj\bottom_sensor.o: ..\SYSTEM\sys\sys.h
 ..\obj\bottom_sensor.o: ..\DRIVER\bottom_sensor.h

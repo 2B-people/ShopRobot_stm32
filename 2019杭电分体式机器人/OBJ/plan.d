@@ -49,9 +49,6 @@
 ..\obj\plan.o: ..\DRIVER\las_masure.h
 ..\obj\plan.o: ..\DRIVER\usart1.h
 ..\obj\plan.o: ..\DRIVER\plan.h
-<<<<<<< HEAD
 ..\obj\plan.o: ..\DRIVER\OLED\oled.h
 ..\obj\plan.o: ..\SYSTEM\sys\sys.h
-=======
 ..\obj\plan.o: ..\DRIVER\bottom_sensor.h
->>>>>>> dfbf8e9927c72b95362da51f02da578b10bd9d00

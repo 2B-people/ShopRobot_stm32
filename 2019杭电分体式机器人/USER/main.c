@@ -23,7 +23,7 @@ int main()
 	initialise();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	CAN_Mode_Init();
-	TIM5_Int_Init(71, 9999); //100HZ		PID调速
+	//TIM5_Int_Init(71, 9999); //100HZ		PID调速
 	// TIM6_Int_Init(71, 999);  //10HZ		路径规划
 
 	RC_Init();
