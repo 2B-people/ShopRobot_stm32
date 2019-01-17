@@ -65,6 +65,6 @@ void TIM6_IRQHandler(void)   //TIM3ÖÐ¶Ï
 	 if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM6, TIM_IT_Update  );  
-			move_control();
+			//move_control();
 		}
 }

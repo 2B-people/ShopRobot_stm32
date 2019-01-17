@@ -596,7 +596,7 @@
       <GroupNumber>6</GroupNumber>
       <FileNumber>32</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>..\DRIVER\led.c</PathWithFileName>
@@ -683,8 +683,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\DRIVER\plan.c</PathWithFileName>
-      <FilenameWithoutPath>plan.c</FilenameWithoutPath>
+      <PathWithFileName>..\DRIVER\bottom_sensor.c</PathWithFileName>
+      <FilenameWithoutPath>bottom_sensor.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -695,8 +695,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\DRIVER\bottom_sensor.c</PathWithFileName>
-      <FilenameWithoutPath>bottom_sensor.c</FilenameWithoutPath>
+      <PathWithFileName>..\DRIVER\OLED\oled.c</PathWithFileName>
+      <FilenameWithoutPath>oled.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -707,8 +707,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\DRIVER\OLED\oled.c</PathWithFileName>
-      <FilenameWithoutPath>oled.c</FilenameWithoutPath>
+      <PathWithFileName>..\DRIVER\huidu.c</PathWithFileName>
+      <FilenameWithoutPath>huidu.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

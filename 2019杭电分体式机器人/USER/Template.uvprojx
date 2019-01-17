@@ -595,11 +595,6 @@
               <FilePath>..\DRIVER\usart1.c</FilePath>
             </File>
             <File>
-              <FileName>plan.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\DRIVER\plan.c</FilePath>
-            </File>
-            <File>
               <FileName>bottom_sensor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\DRIVER\bottom_sensor.c</FilePath>
@@ -608,6 +603,11 @@
               <FileName>oled.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\DRIVER\OLED\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>huidu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\huidu.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -47,7 +47,7 @@
 ..\obj\main.o: ..\DRIVER\remote.h
 ..\obj\main.o: ..\DRIVER\las_masure.h
 ..\obj\main.o: ..\DRIVER\usart1.h
-..\obj\main.o: ..\DRIVER\plan.h
 ..\obj\main.o: ..\DRIVER\OLED\oled.h
 ..\obj\main.o: ..\SYSTEM\sys\sys.h
 ..\obj\main.o: ..\DRIVER\bottom_sensor.h
+..\obj\main.o: ..\DRIVER\huidu.h

@@ -14,10 +14,8 @@ typedef struct
 }pid;
 void PID_init(void);
 
-
+void HuiduPidCalcuation(void);
 void CM2speedPID_Calculation(void);
-void CM4speedPID_Calculation(void);
 void CM1speedPID_Calculation(void);
-void CM3speedPID_Calculation(void);
 void CMControl(void);
 #endif

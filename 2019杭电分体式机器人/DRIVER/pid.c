@@ -2,10 +2,7 @@
 #define c 1
 extern Motor motor1;
 extern Motor motor2;
-//extern Motor motor3;
-//extern Motor motor4;
-extern Motor yt_motor1;
-extern Motor yt_motor2;
+
 struct PID_member
 {
 	float Kp;
@@ -18,12 +15,11 @@ struct PID_member
 	int16_t pid_out;
 	int32_t pid_out_last;
 	int32_t pid_out_inter;
-} s_PIDcm1, s_PIDcm2, s_PIDcm3, s_PIDcm4, ytPID1, ytPID2;
+} s_PIDcm1, s_PIDcm2, huidu_PID;
 
 void PID_init()
 {
 	s_PIDcm1.Kp = K_P;
-
 	s_PIDcm1.Ki = K_I;
 	s_PIDcm1.Kd = K_D;
 
@@ -31,21 +27,31 @@ void PID_init()
 	s_PIDcm2.Ki = K_I;
 	s_PIDcm2.Kd = K_D;
 
-	s_PIDcm3.Kp = K_P;
-	s_PIDcm3.Ki = K_I;
-	s_PIDcm3.Kd = K_D;
+	huidu_PID.Kp = K_P;
+	huidu_PID.Ki = K_I;
+	huidu_PID.Kd = K_D;
+}
 
-	s_PIDcm4.Kp = K_P;
-	s_PIDcm4.Ki = K_I;
-	s_PIDcm4.Kd = K_D;
+void HuiduPidCalcuation()
+{
+	int16_t derror, error_sum_out;
+	huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
+	huidu_PID.error_sum += huidu_PID.error_now;
+	error_sum_out = huidu_PID.error_sum;
 
-	ytPID1.Kp = YT_KP;
-	ytPID1.Ki = YT_KI;
-	ytPID1.Kd = YT_KD;
+	//        if(error_sum_out>12500)
+	//          error_sum_out=12500;
+	//        if(error_sum_out<-12500)
+	//          error_sum_out=-12500;
 
-	ytPID2.Kp = YT_KP;
-	ytPID2.Ki = YT_KI;
-	ytPID2.Kd = YT_KD;
+	derror = huidu_PID.error_last - huidu_PID.error_inter;
+	huidu_PID.error_inter = huidu_PID.error_last;
+	huidu_PID.error_last = huidu_PID.error_now;
+	huidu_PID.pid_out = huidu_PID.error_now * huidu_PID.Kp + error_sum_out * huidu_PID.Ki + derror * huidu_PID.Kd;
+	if (huidu_PID.pid_out < -1000)
+		huidu_PID.pid_out = -1000;
+	if (huidu_PID.pid_out > 1000)
+		huidu_PID.pid_out = 1000;
 }
 
 void CM1speedPID_Calculation()
@@ -95,57 +101,30 @@ void CM2speedPID_Calculation()
 		s_PIDcm2.pid_out = 8000;
 }
 
-//void CM3speedPID_Calculation()
-//{
-//	int32_t derror, error_sum_out;
-//	s_PIDcm3.error_now = motor3.target_speed * c - motor3.now_speed;
-//	s_PIDcm3.error_sum += s_PIDcm3.error_now;
-//	error_sum_out = s_PIDcm3.error_sum;
-
-//	//        if(error_sum_out>12500)
-//	//          error_sum_out=12500;
-//	//        if(error_sum_out<-12500)
-//	//          error_sum_out=-12500;
-
-//	derror = s_PIDcm3.error_last - s_PIDcm3.error_inter;
-//	s_PIDcm3.error_inter = s_PIDcm3.error_last;
-//	s_PIDcm3.error_last = s_PIDcm3.error_now;
-//	s_PIDcm3.pid_out = s_PIDcm3.error_now * s_PIDcm3.Kp + error_sum_out * s_PIDcm3.Ki + derror * s_PIDcm3.Kd;
-//	if (s_PIDcm3.pid_out < -8000)
-//		s_PIDcm3.pid_out = -8000;
-//	if (s_PIDcm3.pid_out > 8000)
-//		s_PIDcm3.pid_out = 8000;
-//}
-
-//void CM4speedPID_Calculation()
-//{
-//	int32_t derror, error_sum_out;
-//	s_PIDcm4.error_now = motor4.target_speed * c - motor4.now_speed;
-//	s_PIDcm4.error_sum += s_PIDcm4.error_now;
-//	error_sum_out = s_PIDcm4.error_sum;
-
-//	//        if(error_sum_out>12500)
-//	//          error_sum_out=12500;
-//	//        if(error_sum_out<-12500)
-//	//          error_sum_out=-12500;
-
-//	derror = s_PIDcm4.error_last - s_PIDcm4.error_inter;
-//	s_PIDcm4.error_inter = s_PIDcm4.error_last;
-//	s_PIDcm4.error_last = s_PIDcm4.error_now;
-//	s_PIDcm4.pid_out = s_PIDcm4.error_now * s_PIDcm4.Kp + error_sum_out * s_PIDcm4.Ki + derror * s_PIDcm4.Kd;
-//	if (s_PIDcm4.pid_out < -8000)
-//		s_PIDcm4.pid_out = -8000;
-//	if (s_PIDcm4.pid_out > 8000)
-//		s_PIDcm4.pid_out = 8000;
-//}
-
 void CMControl()
 {
-	get_RPM();
-	CM2speedPID_Calculation();
-	//  CM4speedPID_Calculation();
-	CM1speedPID_Calculation();
-	//  CM3speedPID_Calculation();
-	Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
-	// Set_CM_Speed(CAN1,500,500,500,500);
+	if (isHd)
+	{
+		adcjihe();
+		HuiduPidCalcuation();
+		motor1.target_speed = get_RPM(required_vel) + huidu_PID.pid_out;
+		motor2.target_speed = get_RPM(required_vel) - huidu_PID.pid_out;
+		CM2speedPID_Calculation();
+		//  CM4speedPID_Calculation();
+		CM1speedPID_Calculation();
+		//  CM3speedPID_Calculation();
+		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
+		// Set_CM_Speed(CAN1,500,500,500,500);
+	}
+	else
+	{
+		motor1.target_speed = get_RPM(required_vel);
+		motor2.target_speed = get_RPM(required_vel);
+		CM2speedPID_Calculation();
+		//  CM4speedPID_Calculation();
+		CM1speedPID_Calculation();
+		//  CM3speedPID_Calculation();
+		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
+		// Set_CM_Speed(CAN1,500,500,500,500);
+	}
 }

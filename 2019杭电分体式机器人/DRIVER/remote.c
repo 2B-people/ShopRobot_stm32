@@ -94,8 +94,7 @@ void RemoteDataProcess(uint8_t *pData)
 	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
 	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
 	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)
-		required_vel=(double)(RC_CtrlData.ch0 -1024)*0.0025;
-	
+		required_vel=(double)(RC_CtrlData.ch0 -1024)*0.0025;	
 	
 	
 //	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)

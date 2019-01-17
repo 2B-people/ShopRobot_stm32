@@ -146,6 +146,6 @@ void CMControl()
   CM4speedPID_Calculation();
   CM1speedPID_Calculation();
   CM3speedPID_Calculation();
-  Set_CM_Speed(CAN1,s_PIDcm1.pid_out,s_PIDcm2.pid_out,s_PIDcm3.pid_out,s_PIDcm4.pid_out);
-	// Set_CM_Speed(CAN1,500,500,500,500);
+  //Set_CM_Speed(CAN1,s_PIDcm1.pid_out,s_PIDcm2.pid_out,s_PIDcm3.pid_out,s_PIDcm4.pid_out);
+	 Set_CM_Speed(CAN1,500,500,500,500);
 }

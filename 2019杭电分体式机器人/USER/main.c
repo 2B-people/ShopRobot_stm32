@@ -1,6 +1,6 @@
 #include "include.h"
 
-double required_vel = 0;
+double required_vel = 0.0;
 uint8_t IsControlFinsh;			  //是否完成指定任务
 uint8_t IsStop;					  //是否接到急停状态信号的标志
 uint8_t position;				  //当前区域，分为八块
@@ -10,6 +10,7 @@ uint8_t orientation = positive_x; //当前车的朝向，默认开始为x正方向
 uint8_t target_position_x = 0;	//目标横坐标
 uint8_t target_position_y = 3;	//目标纵坐标
 uint8_t stopping;				  //车身是否仍然处于急停状态的标志
+uint8_t isHd = 1;
 
 //uint32_t publish_las_time = 0;
 //uint32_t publish_vel_time = 0;
@@ -32,6 +33,7 @@ int main()
 	//las_Init();
 	usart1_Init(115200);
 	PID_init();
+	huiductrlinit();
 
 	while (1)
 	{
