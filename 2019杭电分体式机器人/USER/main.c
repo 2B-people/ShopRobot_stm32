@@ -24,8 +24,8 @@ int main()
 	initialise();
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	CAN_Mode_Init();
-	//TIM5_Int_Init(71, 9999); //100HZ		PID调速
-	// TIM6_Int_Init(71, 999);  //10HZ		路径规划
+	TIM5_Int_Init(71, 9999); //100HZ		PID调速
+	TIM6_Int_Init(71, 999);  //10HZ		路径规划
 
 	RC_Init();
 	OLED_Init(); 
@@ -35,28 +35,24 @@ int main()
 	PID_init();
 	huiductrlinit();
 
-	while (1)
-	{
 
-	}
-
-	// while (1)
-	// {
-	// 	if (IsStop)
-	// 	{
-	// 		TIM_Cmd(TIM6, DISABLE);
-	// 		required_vel -= 0.005;
-	// 		if (required_vel <= 0)
-	// 			required_vel = 0;
-	// 		stopping = 1;
-	// 	}
-	// 	else
-	// 	{
-	// 		if (stopping)
-	// 		{
-	// 			TIM_Cmd(TIM6, ENABLE);
-	// 			stopping = 0;
-	// 		}
-	// 	}
-	// }
+ while (1)
+ {
+ 	if (IsStop)
+ 	{
+ 		TIM_Cmd(TIM6, DISABLE);
+ 		required_vel -= 0.005;
+ 		if (required_vel <= 0)
+ 			required_vel = 0;
+ 		stopping = 1;
+ 	}
+ 	else
+ 	{
+ 		if (stopping)
+ 		{
+ 			TIM_Cmd(TIM6, ENABLE);
+ 			stopping = 0;
+ 		}
+ 	}
+ }
 }
