@@ -334,7 +334,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\SYSTEM;..\DRIVER</IncludePath>
+              <IncludePath>..\USER;..\CORE;..\STM32F10x_FWLib\inc;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\SYSTEM;..\DRIVER;..\DRIVER\OLED</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -594,14 +594,24 @@
               <FilePath>..\DRIVER\usart1.c</FilePath>
             </File>
             <File>
-              <FileName>plan.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\DRIVER\plan.c</FilePath>
-            </File>
-            <File>
               <FileName>bottom_sensor.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\DRIVER\bottom_sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\OLED\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>huidu.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\huidu.c</FilePath>
+            </File>
+            <File>
+              <FileName>plan.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\plan.c</FilePath>
             </File>
           </Files>
         </Group>

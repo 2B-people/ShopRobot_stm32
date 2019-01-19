@@ -57,7 +57,6 @@ void TIM5_IRQHandler(void)   //TIM3ÖÐ¶Ï
 		{
 			TIM_ClearITPendingBit(TIM5, TIM_IT_Update  );  
 			CMControl();
-			usart1_print("%d\n",motor1.now_speed);
 		}
 }
 
@@ -66,6 +65,6 @@ void TIM6_IRQHandler(void)   //TIM3ÖÐ¶Ï
 	 if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM6, TIM_IT_Update  );  
-			move_control();
+			//move_control();
 		}
 }

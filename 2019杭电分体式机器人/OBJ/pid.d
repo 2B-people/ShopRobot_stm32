@@ -49,4 +49,7 @@
 ..\obj\pid.o: ..\DRIVER\las_masure.h
 ..\obj\pid.o: ..\DRIVER\usart1.h
 ..\obj\pid.o: ..\DRIVER\plan.h
+..\obj\pid.o: ..\DRIVER\OLED\oled.h
+..\obj\pid.o: ..\SYSTEM\sys\sys.h
 ..\obj\pid.o: ..\DRIVER\bottom_sensor.h
+..\obj\pid.o: ..\DRIVER\huidu.h
