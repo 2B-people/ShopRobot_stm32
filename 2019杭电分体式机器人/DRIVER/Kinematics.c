@@ -4,8 +4,8 @@ void get_RPM()
 {
 		float circumference_=PI*WHEEL_DIAMETER;
 		float liner_vel = required_vel * 60;		//将速度转为m/min
-		motor1.target_speed=liner_vel/circumference_;
-		motor2.target_speed=liner_vel/circumference_;//将速度转换为轮子转速
+		motor1.target_speed=liner_vel*COUNTS_PER_REV/circumference_;
+		motor2.target_speed=liner_vel*COUNTS_PER_REV/circumference_;//将速度转换为轮子转速,单位为rpm
 //		float linear_x_mins = required_linear_vel_x * 60;
 //    float linear_y_mins = required_linear_vel_y * 60;
 //    float angular_z_mins = required_angular_vel * 60;

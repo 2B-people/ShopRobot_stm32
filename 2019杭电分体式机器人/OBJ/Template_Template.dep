@@ -1,5 +1,5 @@
 Dependencies for Project 'Template', Target 'Template': (DO NOT MODIFY !)
-F (.\main.c)(0x5C1F4DBB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5C334F7A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (include.h)(0x5C1F4D97)
 I (stm32f10x.h)(0x4D783CB4)
 I (..\CORE\core_cm3.h)(0x4D523B58)
@@ -810,7 +810,7 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_spi.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x504F415E)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x4D783BB4)
-F (..\README.TXT)(0x550AA0CA)()
+F (..\README.TXT)(0x5C3EBE90)()
 F (..\DRIVER\motor.c)(0x5C137E23)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\motor.o --omf_browse ..\obj\motor.crf --depend ..\obj\motor.d)
 I (..\DRIVER\motor.h)(0x5C137E24)
 I (..\USER\include.h)(0x5C1F4D97)
@@ -955,7 +955,7 @@ I (..\DRIVER\las_masure.h)(0x5BF8EC62)
 I (..\DRIVER\usart1.h)(0x5BF7EB6D)
 I (..\DRIVER\plan.h)(0x5C1F4F08)
 I (..\DRIVER\bottom_sensor.h)(0x5C1F4D44)
-F (..\DRIVER\Kinematics.c)(0x5C137D41)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
+F (..\DRIVER\Kinematics.c)(0x5C42AD1A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
 I (..\DRIVER\kinematics.h)(0x5BF7EB2E)
 I (..\USER\include.h)(0x5C1F4D97)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -1003,7 +1003,7 @@ I (..\DRIVER\las_masure.h)(0x5BF8EC62)
 I (..\DRIVER\usart1.h)(0x5BF7EB6D)
 I (..\DRIVER\plan.h)(0x5C1F4F08)
 I (..\DRIVER\bottom_sensor.h)(0x5C1F4D44)
-F (..\DRIVER\timer.c)(0x5C1F4B85)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
+F (..\DRIVER\timer.c)(0x5C42A9A6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
 I (..\DRIVER\timer.h)(0x5BF7E59F)
 I (..\USER\include.h)(0x5C1F4D97)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
@@ -1195,7 +1195,7 @@ I (..\DRIVER\remote.h)(0x5BF8EA19)
 I (..\DRIVER\las_masure.h)(0x5BF8EC62)
 I (..\DRIVER\plan.h)(0x5C1F4F08)
 I (..\DRIVER\bottom_sensor.h)(0x5C1F4D44)
-F (..\DRIVER\plan.c)(0x5C334ED5)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
+F (..\DRIVER\plan.c)(0x5C42AD1A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER-I C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
 I (..\DRIVER\plan.h)(0x5C1F4F08)
 I (..\USER\include.h)(0x5C1F4D97)
 I (..\USER\stm32f10x.h)(0x4D783CB4)
