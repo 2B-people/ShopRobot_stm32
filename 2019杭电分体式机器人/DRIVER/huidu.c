@@ -1,23 +1,9 @@
 #include "include.h"
 
 u16 localnum = 0;
-u16 ADC_ConvertedValue[2];
-u16 ADC_JIHE[2]; //0为左边，1为右路；
-u16 ADC_jihe[2][20] = {0};
-
-void huidu_init(void)
-{
-    GPIO_InitTypeDef GPIO_InitStructure;
-
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPU;
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
-}
+u16 ADC_ConvertedValue[NOFCHANEL];
+u16 ADC_JIHE[NOFCHANEL]; //0为左边，1为右路；
+u16 ADC_jihe[NOFCHANEL][20] = {0};
 
 //ADC采集用
 
@@ -29,7 +15,7 @@ void ADC_GPIO_Init(void)
     RCC_APB2PeriphClockCmd(ADC_GPIO_CLK, ENABLE);
 
     //配置ADC_IO引脚模式
-    GPIO_InitStructure.GPIO_Pin = ADC_PIN1 | ADC_PIN2;
+    GPIO_InitStructure.GPIO_Pin = ADC_PIN1 | ADC_PIN2| ADC_PIN3| ADC_PIN4;
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
 
     //初始化ADC IO
@@ -96,6 +82,10 @@ void ADCx_Mode_Init(void)
                              ADC_SampleTime_71Cycles5);
     ADC_RegularChannelConfig(ADCx, ADC_CHANNEL2, 2,
                              ADC_SampleTime_71Cycles5);
+	  ADC_RegularChannelConfig(ADCx, ADC_CHANNEL3, 3,
+                             ADC_SampleTime_71Cycles5);
+    ADC_RegularChannelConfig(ADCx, ADC_CHANNEL4, 4,
+                             ADC_SampleTime_71Cycles5);
     //使能ADC DMA请求
     ADC_DMACmd(ADCx, ENABLE);
     //开启ADC，并开始转换
@@ -117,7 +107,7 @@ void ADCx_Mode_Init(void)
 void adcjihe(void) //ADC集合
 {
     char i;
-    u32 sum1 = 0, sum2 = 0;
+    u32 sum1 = 0, sum2 = 0 ,sum3=0 ,sum4=0;
     //if (pidjud)
     {
         for (i = 19; i > 0; i--)
@@ -126,20 +116,28 @@ void adcjihe(void) //ADC集合
             {
                 ADC_jihe[0][i] = ADC_ConvertedValue[0];
                 ADC_jihe[1][i] = ADC_ConvertedValue[1];
+								ADC_jihe[2][i] = ADC_ConvertedValue[2];
+                ADC_jihe[3][i] = ADC_ConvertedValue[3];
             }
             else
             {
                 ADC_jihe[0][i] = ADC_jihe[0][i - 1];
                 ADC_jihe[1][i] = ADC_jihe[1][i - 1];
+								ADC_jihe[2][i] = ADC_jihe[2][i - 1];
+                ADC_jihe[3][i] = ADC_jihe[3][i - 1];
             }
         }
         for (i = 1; i < 20; i++)
         {
             sum1 += ADC_jihe[0][i];
             sum2 += ADC_jihe[1][i];
+						sum3 += ADC_jihe[2][i];
+            sum4 += ADC_jihe[3][i];
         }
         ADC_JIHE[0] = (u16)(sum1 / 19.0);
         ADC_JIHE[1] = (u16)(sum2 / 19.0);
+				ADC_JIHE[2] = (u16)(sum3 / 19.0);
+        ADC_JIHE[3] = (u16)(sum4 / 19.0);
     }
 }
 
@@ -147,12 +145,13 @@ void adcjihe1(void)
 {
     ADC_JIHE[0] = ADC_ConvertedValue[0];
     ADC_JIHE[1] = ADC_ConvertedValue[1];
+	  ADC_JIHE[2] = ADC_ConvertedValue[2];
+    ADC_JIHE[3] = ADC_ConvertedValue[3];
 }
 
 
 void huiductrlinit(void)
 {
-    huidu_init();
     ADC_GPIO_Init();
     ADCx_Mode_Init();
 }
