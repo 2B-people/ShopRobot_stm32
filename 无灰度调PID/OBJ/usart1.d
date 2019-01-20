@@ -47,3 +47,4 @@
 ..\obj\usart1.o: ..\DRIVER\usart1.h
 ..\obj\usart1.o: ..\DRIVER\OLED\oled.h
 ..\obj\usart1.o: ..\SYSTEM\sys\sys.h
+..\obj\usart1.o: ..\DRIVER\key.h

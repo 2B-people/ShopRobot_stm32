@@ -1,4 +1,7 @@
 #include "pid.h"
+double K_P=2.5;
+double K_I=0.08;
+double K_D=0.1;
 #define c 1
 extern Motor motor1;
 extern Motor motor2;

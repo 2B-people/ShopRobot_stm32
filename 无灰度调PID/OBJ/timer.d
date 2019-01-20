@@ -47,3 +47,4 @@
 ..\obj\timer.o: ..\DRIVER\usart1.h
 ..\obj\timer.o: ..\DRIVER\OLED\oled.h
 ..\obj\timer.o: ..\SYSTEM\sys\sys.h
+..\obj\timer.o: ..\DRIVER\key.h

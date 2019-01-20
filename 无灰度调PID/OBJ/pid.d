@@ -47,3 +47,4 @@
 ..\obj\pid.o: ..\DRIVER\usart1.h
 ..\obj\pid.o: ..\DRIVER\OLED\oled.h
 ..\obj\pid.o: ..\SYSTEM\sys\sys.h
+..\obj\pid.o: ..\DRIVER\key.h

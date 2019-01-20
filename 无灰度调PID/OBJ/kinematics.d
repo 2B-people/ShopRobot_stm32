@@ -47,3 +47,4 @@
 ..\obj\kinematics.o: ..\DRIVER\usart1.h
 ..\obj\kinematics.o: ..\DRIVER\OLED\oled.h
 ..\obj\kinematics.o: ..\SYSTEM\sys\sys.h
+..\obj\kinematics.o: ..\DRIVER\key.h

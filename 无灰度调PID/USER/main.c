@@ -30,7 +30,7 @@ int main()
 	OLED_Clear();
 	usart1_Init(115200);
 	PID_init();
-
+	KEY_Init();
 
  while (1)
  {
@@ -39,5 +39,14 @@ int main()
 		OLED_ShowNum(0,2,K_D*100,3,16);
 	 	OLED_ShowNum(0,3,motor1.now_speed*100,3,16);
 	  OLED_ShowNum(0,4,motor2.now_speed*100,3,16);
+		switch(KEY_Scan(0))
+		{
+			case KEY1_PRES:K_P+=0.01;break;
+			case KEY2_PRES:K_I+=0.01;break;
+			case KEY3_PRES:K_D+=0.01;break;
+			case KEY4_PRES:K_P-=0.01;break;
+			case KEY5_PRES:K_I-=0.01;break;
+			case KEY6_PRES:K_D-=0.01;break;
+		}
  }
 }

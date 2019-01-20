@@ -588,6 +588,11 @@
               <FileType>1</FileType>
               <FilePath>..\DRIVER\OLED\oled.c</FilePath>
             </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\key.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

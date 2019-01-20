@@ -47,3 +47,4 @@
 ..\obj\motor.o: ..\DRIVER\usart1.h
 ..\obj\motor.o: ..\DRIVER\OLED\oled.h
 ..\obj\motor.o: ..\SYSTEM\sys\sys.h
+..\obj\motor.o: ..\DRIVER\key.h
