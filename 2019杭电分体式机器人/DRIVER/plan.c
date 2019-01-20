@@ -13,7 +13,7 @@ uint8_t IsRotate;
 
 the position division
 
-
+postive_y
 -----------------
 |                |
 |  3  4     5    | 
@@ -23,7 +23,7 @@ the position division
 |   |----|       |
 |                |
 |  1  8     7    |
-|----------------
+|----------------     postive_x
 
 */
 void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐标
@@ -43,15 +43,13 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 					}
 					break;
 				case negative_x:
-					ROTATE(1);
-					ROTATE(1);
 					if(_target_position_x-position_x>1)
-						required_vel=fast_vel;
+						required_vel=-fast_vel;
 					else
 					{
-						required_vel-=down_vel;
-						if(required_vel<=slow_vel) 
-							required_vel=slow_vel;
+						required_vel+=down_vel;
+						if(required_vel>=(-slow_vel)) 
+							required_vel=(-slow_vel);
 					}
 					break;
 				case positive_y:
@@ -83,15 +81,13 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 		switch(orientation)
 		{
 			case positive_x:
-				ROTATE(0);
-				ROTATE(0);
 				if(position_x-_target_position_x>1)
-					required_vel=fast_vel;
+					required_vel=-fast_vel;
 				else
 				{
-					required_vel-=down_vel;
-					if(required_vel<=slow_vel)
-						required_vel=slow_vel;
+						required_vel+=down_vel;
+						if(required_vel>=(-slow_vel)) 
+							required_vel=(-slow_vel);
 				}
 				break;
 			case negative_x:
@@ -165,15 +161,13 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case negative_y:
-				ROTATE(1);
-				ROTATE(1);
 				if(_target_position_y-position_y>1)
-					required_vel=fast_vel;
+					required_vel=-fast_vel;
 				else
 				{
-					required_vel-=down_vel;
-					if(required_vel<=slow_vel)
-						required_vel=slow_vel;
+						required_vel+=down_vel;
+						if(required_vel>=(-slow_vel)) 
+							required_vel=(-slow_vel);
 				}
 				break;
 		}
@@ -205,15 +199,14 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case positive_y:
-				ROTATE(0);
-				ROTATE(0);
+
 				if(position_y-_target_position_y>1)
-					required_vel=fast_vel;
+					required_vel=-fast_vel;
 				else
 				{
-					required_vel-=down_vel;
-					if(required_vel<=slow_vel)
-						required_vel=slow_vel;
+						required_vel+=down_vel;
+						if(required_vel>=(-slow_vel)) 
+							required_vel=(-slow_vel);
 				}
 				break;
 			case negative_y:
