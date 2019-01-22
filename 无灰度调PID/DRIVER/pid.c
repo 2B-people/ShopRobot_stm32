@@ -1,8 +1,7 @@
 #include "pid.h"
-double K_P=2.5;
-double K_I=0.08;
-double K_D=0.1;
+
 #define c 1
+#define PidMax 1500
 extern Motor motor1;
 extern Motor motor2;
 
@@ -73,10 +72,10 @@ void CM1speedPID_Calculation()
 	s_PIDcm1.error_inter = s_PIDcm1.error_last;
 	s_PIDcm1.error_last = s_PIDcm1.error_now;
 	s_PIDcm1.pid_out = s_PIDcm1.error_now * s_PIDcm1.Kp + error_sum_out * s_PIDcm1.Ki + derror * s_PIDcm1.Kd;
-	if (s_PIDcm1.pid_out < -8000)
-		s_PIDcm1.pid_out = -8000;
-	if (s_PIDcm1.pid_out > 8000)
-		s_PIDcm1.pid_out = 8000;
+	if (s_PIDcm1.pid_out < -PidMax)
+		s_PIDcm1.pid_out = -PidMax;
+	if (s_PIDcm1.pid_out > PidMax)
+		s_PIDcm1.pid_out = PidMax;
 }
 
 void CM2speedPID_Calculation()
@@ -98,17 +97,17 @@ void CM2speedPID_Calculation()
 	s_PIDcm2.error_last = s_PIDcm2.error_now;
 	s_PIDcm2.pid_out = s_PIDcm2.error_now * s_PIDcm2.Kp + error_sum_out * s_PIDcm2.Ki + derror * s_PIDcm2.Kd;
 
-	if (s_PIDcm2.pid_out < -8000)
-		s_PIDcm2.pid_out = -8000;
-	if (s_PIDcm2.pid_out > 8000)
-		s_PIDcm2.pid_out = 8000;
+	if (s_PIDcm2.pid_out < -PidMax)
+		s_PIDcm2.pid_out = -PidMax;
+	if (s_PIDcm2.pid_out > PidMax)
+		s_PIDcm2.pid_out = PidMax;
 }
 
 void CMControl()
 {
 		motor1.target_speed=get_RPM(required_vel);
 		motor2.target_speed=get_RPM(required_vel);
-		CM2speedPID_Calculation();
 		CM1speedPID_Calculation();
+		CM2speedPID_Calculation();
 		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
 }

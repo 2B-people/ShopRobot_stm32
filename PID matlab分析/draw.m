@@ -4,7 +4,7 @@ data=importdata('data.txt');
 time=0:0.02:0.02*(length(data)-1);
 plot(time,data);
 hold on;
-setting=ones(1,length(data))*                 0.25                                                *19*60/0.127/3.14159;
+setting=ones(1,length(data))*                 0.25                                                *19*60/0.055/3.14159;
 plot(time,setting);
 plot(time,setting,'-.');
 hold off;

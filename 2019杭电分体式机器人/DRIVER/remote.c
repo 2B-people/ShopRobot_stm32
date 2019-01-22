@@ -93,45 +93,9 @@ void RemoteDataProcess(uint8_t *pData)
 	RC_CtrlData.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) &0x07FF;
 	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
 	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
-	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)
-		required_vel=(double)(RC_CtrlData.ch0 -1024)*0.0025;	
-	
-	
 //	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)
-//		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0025;
-//	else
-//		required_linear_vel_x =	(double)(RC_CtrlData.ch0 -1024)*0.0045;
-//	if(RC_CtrlData.ch1<1400&&RC_CtrlData.ch1>600)
-//		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0025;
-//	else
-//		required_linear_vel_y =	(double)(RC_CtrlData.ch1 -1024)*0.0045;
-//	
-//	if(RC_CtrlData.ch2<1400&&RC_CtrlData.ch2>600)
-//		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0025;
-//	else
-//		required_angular_vel =	(double)(RC_CtrlData.ch2 -1024)*0.0045;
-//	
-//	
-//	
-//	
-//	if(RC_CtrlData.ch0>=1684||RC_CtrlData.ch1>1684||RC_CtrlData.ch2>1684||
-//		RC_CtrlData.ch3>1684||RC_CtrlData.s1>3||RC_CtrlData.s2>3||RC_CtrlData.ch0<364||
-//	RC_CtrlData.ch1<364||RC_CtrlData.ch2<364||RC_CtrlData.ch3<364||RC_CtrlData.s1<1||RC_CtrlData.s2<1)
-//		stop_base();
-//	
-//	if(required_linear_vel_x>=1.8)
-//		required_linear_vel_x=1.8;
-//	if(required_linear_vel_y>=2)
-//		required_linear_vel_y=2;
-//	if(required_angular_vel>=3.5)
-//		required_angular_vel=3.5;
-//	
-//		if(required_linear_vel_x<=-1.8)
-//		required_linear_vel_x=-1.8;
-//	if(required_linear_vel_y<=-2)
-//		required_linear_vel_y=-2;
-//	if(required_angular_vel<=-3.5)
-//		required_angular_vel=-3.5;
+//		required_vel=(double)(RC_CtrlData.ch0 -1024)*0.0025;	
+
 }
 
 
@@ -139,15 +103,7 @@ void DMA1_Channel6_IRQHandler(void)
 {
     if(DMA_GetITStatus(DMA1_IT_TC6)) //通道5传输完成中断TC 还有传输 过半中断HT 错误中断TE 全局中断GL
      {
-//       MYDMA_Disable(DMA1_Channel5);
         DMA_ClearITPendingBit(DMA1_IT_GL6);    //清除全部中断标志
-//			DMA_InitStructure.DMA_BufferSize = 18u; 
-//		       
-
-//			DMA_InitStructure.DMA_MemoryBaseAddr = (u32)&sbus_rx_buffer[0];
-//			DMA_Init(DMA1_Channel5, &DMA_InitStructure);
 				RemoteDataProcess(sbus_rx_buffer);
-		
-
      }
 }

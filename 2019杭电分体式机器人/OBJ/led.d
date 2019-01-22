@@ -53,3 +53,4 @@
 ..\obj\led.o: ..\SYSTEM\sys\sys.h
 ..\obj\led.o: ..\DRIVER\bottom_sensor.h
 ..\obj\led.o: ..\DRIVER\huidu.h
+..\obj\led.o: ..\DRIVER\key.h

@@ -5,6 +5,7 @@ Motor motor3;
 Motor motor4;
 Motor yt_motor1;
 Motor yt_motor2;
+
 void CAN_Mode_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;

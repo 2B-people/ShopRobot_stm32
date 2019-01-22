@@ -53,3 +53,4 @@
 ..\obj\usart1.o: ..\SYSTEM\sys\sys.h
 ..\obj\usart1.o: ..\DRIVER\bottom_sensor.h
 ..\obj\usart1.o: ..\DRIVER\huidu.h
+..\obj\usart1.o: ..\DRIVER\key.h

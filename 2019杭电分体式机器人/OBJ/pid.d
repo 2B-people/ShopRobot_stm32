@@ -53,3 +53,4 @@
 ..\obj\pid.o: ..\SYSTEM\sys\sys.h
 ..\obj\pid.o: ..\DRIVER\bottom_sensor.h
 ..\obj\pid.o: ..\DRIVER\huidu.h
+..\obj\pid.o: ..\DRIVER\key.h

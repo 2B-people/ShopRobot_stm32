@@ -17,7 +17,7 @@
 #include "oled.h"
 #include "bottom_sensor.h"
 #include "huidu.h"
-
+#include "key.h"
 typedef enum
 {
 	positive_x,

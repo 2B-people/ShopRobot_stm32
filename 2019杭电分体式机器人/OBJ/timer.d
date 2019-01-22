@@ -53,3 +53,4 @@
 ..\obj\timer.o: ..\SYSTEM\sys\sys.h
 ..\obj\timer.o: ..\DRIVER\bottom_sensor.h
 ..\obj\timer.o: ..\DRIVER\huidu.h
+..\obj\timer.o: ..\DRIVER\key.h

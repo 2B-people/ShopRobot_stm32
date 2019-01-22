@@ -53,3 +53,4 @@
 ..\obj\remote.o: ..\SYSTEM\sys\sys.h
 ..\obj\remote.o: ..\DRIVER\bottom_sensor.h
 ..\obj\remote.o: ..\DRIVER\huidu.h
+..\obj\remote.o: ..\DRIVER\key.h

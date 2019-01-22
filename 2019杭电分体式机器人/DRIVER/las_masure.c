@@ -1,10 +1,6 @@
 #include "las_masure.h"
 uint16_t USART_RX_STA=0;
 uint16_t USART_RX_NUM=0;
-uint16_t Distance_F;
-uint16_t Distance_B;
-uint16_t Distance_L;
-uint16_t Distance_R;
 uint8_t MEASURE_BUF[5];
 void las_Init()
 {
@@ -27,19 +23,6 @@ void las_Init()
     GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  
     GPIO_Init(GPIOB, &GPIO_InitStructure);  
 	
-		// 串口选择1
-		RCC_APB2PeriphClockCmd(CHOSE_LAS_CLK1,ENABLE);
-    GPIO_InitStructure.GPIO_Pin = CHOSE_LAS_PIN1;  
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  
-    GPIO_Init(CHOSE_LAS_PORT1, &GPIO_InitStructure); 
-		
-			// 串口选择2
-		RCC_APB2PeriphClockCmd(CHOSE_LAS_CLK2,ENABLE);
-    GPIO_InitStructure.GPIO_Pin = CHOSE_LAS_PIN2;  
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;  
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;  
-    GPIO_Init(CHOSE_LAS_PORT2, &GPIO_InitStructure); 
 		
     //配置串口  
     USART_InitStructure.USART_BaudRate = 115200;  
@@ -68,31 +51,9 @@ void las_Init()
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
     NVIC_Init(&NVIC_InitStructure);       
 }
-void changeDirection(direction dir)//用数据选择器选择串口的接口来选择激光测距
-{
-	switch(dir)
-	{
-		case FORWARD:
-			GPIO_ResetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
-			GPIO_ResetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);		//00
-			break;
-		case BACK:
-			GPIO_ResetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
-			GPIO_SetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//01
-			break;
-		case LEFT:
-			GPIO_SetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
-			GPIO_ResetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//10
-			break;
-		case RIGHT:
-			GPIO_SetBits(CHOSE_LAS_PORT1,CHOSE_LAS_PIN1);
-			GPIO_SetBits(CHOSE_LAS_PORT2,CHOSE_LAS_PIN2);			//11
-			break;
-	}
-	//USART_RX_STA=0;
-}
 
-void las_data(direction dir)
+
+uint16_t las_measure()
 {
 	uint16_t distance;
 	uint16_t strength;
@@ -111,31 +72,11 @@ void las_data(direction dir)
 	
 	if(strength>20&&strength<2000)		//只有当信号在一定强度内，数据才是可信的
 	{
-		switch(dir)
-		{
-			case FORWARD:
-				Distance_F=distance;break;
-			case BACK:
-				Distance_B=distance;break;
-			case LEFT:
-				Distance_L=distance;break;
-			case RIGHT:
-				Distance_R=distance;break;
-		}
+		return distance;
 	}
+	return -1;
+}
 	
-}
-
-
-
-void las_measure(direction dir)
-{
-	changeDirection(dir);
-	las_data(dir);
-}
-
-
-
 
 
 void USART3_IRQHandler(void)                    //串口3中断服务程序

@@ -53,3 +53,4 @@
 ..\obj\kinematics.o: ..\SYSTEM\sys\sys.h
 ..\obj\kinematics.o: ..\DRIVER\bottom_sensor.h
 ..\obj\kinematics.o: ..\DRIVER\huidu.h
+..\obj\kinematics.o: ..\DRIVER\key.h

@@ -3,5 +3,8 @@
 #include "include.h"
 #define infrared1  GPIO_ReadInputDataBit(infrared_PORT1,infrared_PIN1)
 #define infrared2  GPIO_ReadInputDataBit(infrared_PORT2,infrared_PIN2)
+#define infrared3  GPIO_ReadInputDataBit(infrared_PORT3,infrared_PIN3)
+#define infrared4  GPIO_ReadInputDataBit(infrared_PORT4,infrared_PIN4)
 void infrared_Init(void);
+void ChangeCoordinate(void);
 #endif

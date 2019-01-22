@@ -1,7 +1,5 @@
 #include "plan.h"
-#define fast_vel 2.0		//一般情况下车速
-#define slow_vel 0.5		//车子还在运行状态的最低车速
-#define down_vel 0.005	//达到最后一格时，每个周期减下的速度
+
 #define rotate_vel 0.5 //旋转速度
 //一开始以线性关系减速，在最后一刻急停。
 uint8_t IsMoveFinsh;

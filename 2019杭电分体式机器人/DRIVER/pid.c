@@ -1,7 +1,9 @@
 #include "pid.h"
 #define c 1
-extern Motor motor1;
-extern Motor motor2;
+#define MaxPid 1500
+#define IsHD
+
+
 
 struct PID_member
 {
@@ -70,10 +72,10 @@ void CM1speedPID_Calculation()
 	s_PIDcm1.error_inter = s_PIDcm1.error_last;
 	s_PIDcm1.error_last = s_PIDcm1.error_now;
 	s_PIDcm1.pid_out = s_PIDcm1.error_now * s_PIDcm1.Kp + error_sum_out * s_PIDcm1.Ki + derror * s_PIDcm1.Kd;
-	if (s_PIDcm1.pid_out < -8000)
-		s_PIDcm1.pid_out = -8000;
-	if (s_PIDcm1.pid_out > 8000)
-		s_PIDcm1.pid_out = 8000;
+	if (s_PIDcm1.pid_out < -MaxPid)
+		s_PIDcm1.pid_out = -MaxPid;
+	if (s_PIDcm1.pid_out > MaxPid)
+		s_PIDcm1.pid_out = MaxPid;
 }
 
 void CM2speedPID_Calculation()
@@ -95,30 +97,26 @@ void CM2speedPID_Calculation()
 	s_PIDcm2.error_last = s_PIDcm2.error_now;
 	s_PIDcm2.pid_out = s_PIDcm2.error_now * s_PIDcm2.Kp + error_sum_out * s_PIDcm2.Ki + derror * s_PIDcm2.Kd;
 
-	if (s_PIDcm2.pid_out < -8000)
-		s_PIDcm2.pid_out = -8000;
-	if (s_PIDcm2.pid_out > 8000)
-		s_PIDcm2.pid_out = 8000;
+	if (s_PIDcm2.pid_out < -MaxPid)
+		s_PIDcm2.pid_out = -MaxPid;
+	if (s_PIDcm2.pid_out > MaxPid)
+		s_PIDcm2.pid_out = MaxPid;
 }
 
 void CMControl()
 {
 	if(!IsRotate)
 	{
-		if (isHd)
-		{
-			adcjihe();
-			HuiduPidCalcuation();
-			motor1.target_speed = get_RPM(required_vel) + huidu_PID.pid_out;
-			motor2.target_speed = get_RPM(required_vel) - huidu_PID.pid_out;
-		}
-		else
-		{
 			motor1.target_speed = get_RPM(required_vel);
 			motor2.target_speed = get_RPM(required_vel);
-		}
+#ifdef IsHD
+			adcjihe();
+			HuiduPidCalcuation();
+			motor1.target_speed += huidu_PID.pid_out;
+			motor2.target_speed -= huidu_PID.pid_out;
+#endif
 	}
-		CM2speedPID_Calculation();
 		CM1speedPID_Calculation();
+		CM2speedPID_Calculation();
 		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
 }

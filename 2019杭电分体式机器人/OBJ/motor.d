@@ -53,3 +53,4 @@
 ..\obj\motor.o: ..\SYSTEM\sys\sys.h
 ..\obj\motor.o: ..\DRIVER\bottom_sensor.h
 ..\obj\motor.o: ..\DRIVER\huidu.h
+..\obj\motor.o: ..\DRIVER\key.h

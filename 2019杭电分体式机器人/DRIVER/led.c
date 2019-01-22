@@ -1,6 +1,5 @@
 #include "led.h"
-#include "sys.h"
-void Led_init()
+void Ledbeep_init()
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
 	RCC_APB2PeriphClockCmd(LED_GPIO_CLK, ENABLE);
@@ -8,6 +7,12 @@ void Led_init()
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(LED_GPIO_PORT, &GPIO_InitStructure);
+	
+	RCC_APB2PeriphClockCmd(BEEP_CLK, ENABLE);
+	GPIO_InitStructure.GPIO_Pin = BEEP_PIN ;
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(BEEP_PORT, &GPIO_InitStructure);
 }
 
 void LED_On_Off(char status, uint16_t LED_Pin)
@@ -21,6 +26,19 @@ void LED_On_Off(char status, uint16_t LED_Pin)
 		GPIO_ResetBits(GPIOC, LED_Pin);
 	}
 }
+
+void Beep_On_Off(char status)
+{
+	if (status == True)
+	{
+		GPIO_SetBits(BEEP_PORT,BEEP_PIN); //∏ﬂµÁ∆ΩΩ–
+	}
+	else
+	{
+		GPIO_ResetBits(BEEP_PORT, BEEP_PIN);
+	}
+}
+
 void SW_LED(char led_nemberx, char status)
 {
 	switch (led_nemberx)

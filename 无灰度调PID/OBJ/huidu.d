@@ -46,3 +46,4 @@
 ..\obj\huidu.o: ..\DRIVER\usart1.h
 ..\obj\huidu.o: ..\DRIVER\OLED\oled.h
 ..\obj\huidu.o: ..\SYSTEM\sys\sys.h
+..\obj\huidu.o: ..\DRIVER\key.h

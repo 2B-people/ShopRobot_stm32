@@ -16,9 +16,10 @@
 #define REMOTE_PUBLISH_RATE 10 //10HZ
 #define PI 3.1415926
 
-//#define K_P 2.5  // P constant
-//#define K_I 0.08 // I constant
-//#define K_D 0.1  // D constant
+extern double K_P;
+extern double K_I;
+extern double K_D;
+
 
 
 #define True 1
@@ -65,8 +66,8 @@
 
 /**key config**/
 #define key_PIN1          GPIO_Pin_4
-#define key_PIN2          GPIO_Pin_5
-#define key_PIN3          GPIO_Pin_6
+#define key_PIN2          GPIO_Pin_3
+#define key_PIN3          GPIO_Pin_2
 #define key_PIN4          GPIO_Pin_7
 #define key_PIN5          GPIO_Pin_8
 #define key_PIN6          GPIO_Pin_9

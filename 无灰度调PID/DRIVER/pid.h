@@ -13,9 +13,6 @@ typedef struct
 	float integral; //定义积分值
 }pid;
 
-extern double K_P;
-extern double K_I;
-extern double K_D;
 
 
 void PID_init(void);

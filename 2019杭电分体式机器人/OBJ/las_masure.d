@@ -53,3 +53,4 @@
 ..\obj\las_masure.o: ..\SYSTEM\sys\sys.h
 ..\obj\las_masure.o: ..\DRIVER\bottom_sensor.h
 ..\obj\las_masure.o: ..\DRIVER\huidu.h
+..\obj\las_masure.o: ..\DRIVER\key.h
