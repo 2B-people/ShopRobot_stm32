@@ -236,13 +236,13 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 			motor1.target_speed=-COUNTS_PER_REV*(rotate_vel*60/(PI*WHEEL_DIAMETER));
 			motor2.target_speed=COUNTS_PER_REV*rotate_vel*60/(PI*WHEEL_DIAMETER);
 			delay(30);
-			while(infrared1==0&&infrared2==0);
+			while(infrared1==0&&infrared2==0&&infrared3==0&&infrared4==0);
 			break;
 		case 1:
 			motor1.target_speed=COUNTS_PER_REV*rotate_vel*60/(PI*WHEEL_DIAMETER);
 			motor2.target_speed=-COUNTS_PER_REV*(rotate_vel*60/(PI*WHEEL_DIAMETER));
 			delay(30);
-			while(infrared1==0&&infrared2==0);
+			while(infrared1==0&&infrared2==0&&infrared3==0&&infrared4==0);
 			break;
 	}
 	IsRotate=0;
@@ -250,73 +250,202 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 
 void move_control(void)//路径规划
 {
-	if(position_x<=3&&position_y<=3&&target_position_x>=3&&target_position_y>=6)
-	{
-		MOVE(position_x,target_position_y);
+	if(position_x<=3&&position_y<=3)
 		position=1;
-	}
-	else if(position_x<=3&&position_y<=6&&(position_y>=6||position_y<=3))
-	{
-		MOVE(position_x,target_position_y);
+	else if(position_x<=2&&position_y>=4&&position_y<=6)
 		position=2;
-	}
-	else if(position_x<=3&&position_y<=6&&position_y>=3&&target_position_x>=6&&target_position_y>=3&&target_position_y<=6)
-	{
-		if(position_y==3||position_y==4)
-			MOVE(position_x,2);
-		else
-			MOVE(position_x,7);
-		position=2;
-	}
-	if(position_x<=3&&position_y>=6&&target_position_x>=3&&target_position_y<=3)
-	{
-		MOVE(position_x,target_position_y);
+	else if(position_x<=3&&position_y>=7)
 		position=3;
-	}
-	else if(position_x<=6&&position_x>=3&&position_y>=6&&target_position_x>=3&&target_position_x<=6&&target_position_y<=3)
-	{
-		if(position_x==3||position_x==4)
-			MOVE(2,position_y);
-		else
-			MOVE(7,position_y);
+	else if(position_x>=4&&position_x<=6&&position_y>=7)
 		position=4;
-	}
-	else if(position_x>=6&&position_y>=6&&target_position_x>=3&&target_position_x<=6&&target_position_y<=3)
-	{
-		MOVE(position_x,target_position_y);
+	else if(position_x>=7&&position_y>=7)
 		position=5;
-	}
-	else if(position_x>=6&&position_y<=3&&target_position_x>=3&&target_position_x<=6&&target_position_y>=6)
-	{
-		MOVE(position_x,target_position_y);
+	else if(position_x>=7&&position_y>=4&&position_y<=6)
+		position=6;
+	else if(position_x>=7&&position_y<=3)
 		position=7;
-	}
-	else if(position_x>=6&&position_y>=3&&position_y<=6&&target_position_x<=3&&target_position_y>=3&&target_position_y<=6)
-	{
-		if(position_y==3||position_y==4)
-			MOVE(position_x,2);
-		else
-			MOVE(position_x,7);
-		position=6;
-	}
-	else if(position_x>=6&&position_y>=3&&position_y<=6&&(target_position_y>=6||target_position_y<=3))
-	{
-		MOVE(position_x,target_position_y);
-		position=6;
-	}
-	else if(position_x>=3&&position_x<=6&&position_y<=3&&target_position_y>=6&&target_position_x<=6&&target_position_x>=3)
-	{
-		if(position_x==3||position_y==4)
-			MOVE(2,position_y);
-		else
-			MOVE(7,position_y);
+	else if(position_x>=4&&position_x<=6&&position_y<=2)
 		position=8;
-	}
-	else
+	
+	
+	if(target_position_x<=3&&target_position_y<=3)
+		target_position=1;
+	else if(target_position_x<=2&&target_position_y>=4&&target_position_y<=6)
+		target_position=2;
+	else if(target_position_x<=3&&target_position_y>=7)
+		target_position=3;
+	else if(target_position_x>=4&&target_position_x<=6&&target_position_y>=7)
+		target_position=4;
+	else if(target_position_x>=7&&target_position_y>=7)
+		target_position=5;
+	else if(target_position_x>=7&&target_position_y>=4&&target_position_y<=6)
+		target_position=6;
+	else if(target_position_x>=7&&target_position_y<=3)
+		target_position=7;
+	else if(target_position_x>=4&&target_position_x<=6&&target_position_y<=2)
+		target_position=8;
+	
+	switch(position)
 	{
-		MOVE(target_position_x,position_y);
-		MOVE(position_x,target_position_y);
+		case 1:
+		{
+			if(position_y==3)
+			{
+				switch(target_position)
+				{
+					case 6:MOVE(position_x,2);MOVE(target_position_x,target_position_y);break;
+					default:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				}
+			}
+			else if(position_x==3)
+			{
+				switch(target_position)
+				{
+					case 4:MOVE(2,position_y);MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+					default:MOVE(target_position_x,target_position_y);break;
+				}
+			}
+			else
+			{
+				switch(target_position)
+				{
+					case 1:MOVE(target_position_x,target_position_y);break;
+					case 2:MOVE(target_position_x,target_position_y);break;
+					case 3:MOVE(target_position_x,target_position_y);break;
+					case 4:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+					case 5:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+					case 6:MOVE(target_position_x,target_position_y);break;
+					case 7:MOVE(target_position_x,target_position_y);break;
+					case 8:MOVE(target_position_x,target_position_y);break;
+				}
+			}
+			break;
+		}
+		case 2:
+		{
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(position_x,7);MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 3:
+		{
+			if(position_x==3)
+			{
+				switch(target_position)
+				{
+					case 8:MOVE(2,position_y);MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+					default:MOVE(target_position_x,target_position_y);break;
+				}
+			}
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 4:
+		{
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(7,position_y);MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 5:
+		{
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 6:
+		{
+			if(position_y==3)
+			{
+				switch(target_position)				
+				{
+					case 2:MOVE(position_x,2);MOVE(target_position_x,target_position_y);break;
+					default:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				}
+			}
+			switch(target_position)
+			{
+				case 1:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(position_x,7);MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 7:
+		{
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
+		case 8:
+		{
+			switch(target_position)
+			{
+				case 1:MOVE(target_position_x,target_position_y);break;
+				case 2:MOVE(target_position_x,target_position_y);break;
+				case 3:MOVE(target_position_x,target_position_y);break;
+				case 4:MOVE(target_position_x,target_position_y);break;
+				case 5:MOVE(target_position_x,target_position_y);break;
+				case 6:MOVE(target_position_x,target_position_y);break;
+				case 7:MOVE(target_position_x,target_position_y);break;
+				case 8:MOVE(7,position_y);MOVE(position_x,target_position_y);MOVE(target_position_x,target_position_y);break;
+			}
+			break;
+		}
 	}
+	
+
+
 	IsMoveFinsh=0;
 	if(position_x==target_position_x&&position_y==target_position_y)
 	{

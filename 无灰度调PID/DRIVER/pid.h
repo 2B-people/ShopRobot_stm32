@@ -13,7 +13,21 @@ typedef struct
 	float integral; //定义积分值
 }pid;
 
+struct PID_member
+{
+	double Kp;
+	double Ki;
+	double Kd;
+	int16_t error_now;
+	int16_t error_last;
+	int16_t error_inter;
+	int16_t error_sum;
+	int16_t pid_out;
+	int16_t pid_out_last;
+	int16_t pid_out_inter;
+};
 
+extern struct PID_member s_PIDcm1, s_PIDcm2, huidu_PID;
 
 void PID_init(void);
 

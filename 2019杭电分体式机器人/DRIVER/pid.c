@@ -1,7 +1,7 @@
 #include "pid.h"
 #define c 1
 #define MaxPid 1500
-#define IsHD
+//#define IsHD
 
 
 
@@ -37,14 +37,13 @@ void PID_init()
 void HuiduPidCalcuation()
 {
 	int16_t derror, error_sum_out;
-	huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
+	if(required_vel>0)
+		huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
+	else
+		huidu_PID.error_now = ADC_JIHE[2] - ADC_JIHE[3];
 	huidu_PID.error_sum += huidu_PID.error_now;
 	error_sum_out = huidu_PID.error_sum;
 
-	//        if(error_sum_out>12500)
-	//          error_sum_out=12500;
-	//        if(error_sum_out<-12500)
-	//          error_sum_out=-12500;
 
 	derror = huidu_PID.error_last - huidu_PID.error_inter;
 	huidu_PID.error_inter = huidu_PID.error_last;
@@ -105,6 +104,20 @@ void CM2speedPID_Calculation()
 
 void CMControl()
 {
+	if(required_vel==0)
+	{
+		s_PIDcm1.error_sum=0;
+		s_PIDcm2.error_sum=0;
+	}
+	else if(required_vel>MaxVel)
+	{
+		required_vel=MaxVel;
+	}
+	else if(required_vel<=MaxVel)
+	{
+		required_vel=-MaxVel;
+	}
+	
 	if(!IsRotate)
 	{
 			motor1.target_speed = get_RPM(required_vel);
@@ -119,4 +132,5 @@ void CMControl()
 		CM1speedPID_Calculation();
 		CM2speedPID_Calculation();
 		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);
+
 }

@@ -29,6 +29,7 @@ typedef enum
 extern double required_vel ;
 extern uint8_t IsControlFinsh;
 extern uint8_t position;
+extern uint8_t target_position;
 extern uint8_t position_x;
 extern uint8_t position_y;
 extern uint8_t target_position_x;
