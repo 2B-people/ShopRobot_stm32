@@ -15,8 +15,8 @@ struct PID_member
 	int16_t error_inter;
 	int16_t error_sum;
 	int16_t pid_out;
-	int32_t pid_out_last;
-	int32_t pid_out_inter;
+	int16_t pid_out_last;
+	int16_t pid_out_inter;
 } s_PIDcm1, s_PIDcm2, huidu_PID;
 
 void PID_init()
