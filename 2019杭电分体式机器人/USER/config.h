@@ -19,9 +19,9 @@
 #define K_D 0.02  // D constant
 
 
-#define hK_P 0.45  // P constant
+#define hK_P 0.40  // P constant
 #define hK_I 0.1 // I constant
-#define hK_D 0  // D constant
+#define hK_D 0.01  // D constant
 
 
 #define MaxVel (1.20)
@@ -46,9 +46,14 @@
 /** LED config **/
 #define LED_PIN1 GPIO_Pin_0
 #define LED_PIN2 GPIO_Pin_1
-#define LED_PIN3 GPIO_Pin_2
 #define LED_GPIO_PORT GPIOC
 #define LED_GPIO_CLK RCC_APB2Periph_GPIOC
+
+
+
+#define LED_GPIO_PORT3 GPIOF
+#define LED_PIN3 GPIO_Pin_10
+#define LED_GPIO_CLK3 RCC_APB2Periph_GPIOF
 
 
 /**BEEP config**/
@@ -59,19 +64,19 @@
 
 
 /**bottom_sensor config**/
-#define infrared_PIN1          GPIO_Pin_2
-#define infrared_PORT1          GPIOE
-#define infrared_CLK1          RCC_APB2Periph_GPIOE
+#define infrared_PIN1          GPIO_Pin_0
+#define infrared_PORT1          GPIOB
+#define infrared_CLK1          RCC_APB2Periph_GPIOB
 
-#define infrared_PIN2          GPIO_Pin_3
-#define infrared_PORT2          GPIOE
-#define infrared_CLK2          RCC_APB2Periph_GPIOE
+#define infrared_PIN2          GPIO_Pin_1
+#define infrared_PORT2          GPIOB
+#define infrared_CLK2          RCC_APB2Periph_GPIOB
 
-#define infrared_PIN3          GPIO_Pin_6
+#define infrared_PIN3          GPIO_Pin_2
 #define infrared_PORT3          GPIOB
 #define infrared_CLK3         RCC_APB2Periph_GPIOB
 
-#define infrared_PIN4          GPIO_Pin_7
+#define infrared_PIN4          GPIO_Pin_3
 #define infrared_PORT4          GPIOB
 #define infrared_CLK4          RCC_APB2Periph_GPIOB
 
@@ -87,14 +92,14 @@
 //转化通道个数
 #define       NOFCHANEL                    4
 
-#define       ADC_PIN1                     GPIO_Pin_0
-#define       ADC_CHANNEL1                 ADC_Channel_10
-#define       ADC_PIN2                     GPIO_Pin_1
-#define       ADC_CHANNEL2                 ADC_Channel_11
-#define       ADC_PIN3                     GPIO_Pin_2
-#define       ADC_CHANNEL3                 ADC_Channel_12
-#define       ADC_PIN4                     GPIO_Pin_3
-#define       ADC_CHANNEL4                 ADC_Channel_13
+#define       ADC_PIN1                     GPIO_Pin_2
+#define       ADC_CHANNEL1                 ADC_Channel_12
+#define       ADC_PIN2                     GPIO_Pin_3
+#define       ADC_CHANNEL2                 ADC_Channel_13
+#define       ADC_PIN3                     GPIO_Pin_4
+#define       ADC_CHANNEL3                 ADC_Channel_14
+#define       ADC_PIN4                     GPIO_Pin_5
+#define       ADC_CHANNEL4                 ADC_Channel_15
 
 //ADC1对应DMA1通道1，ADC3对应DMA2通道5，ADC2没有DMA功能
 #define       ADC_DMA_CHANNEL              DMA1_Channel1
@@ -105,11 +110,11 @@
 
 /**key config**/
 #define key_PIN1          GPIO_Pin_4
-#define key_PIN2          GPIO_Pin_3
-#define key_PIN3          GPIO_Pin_2
+#define key_PIN2          GPIO_Pin_5
+#define key_PIN3          GPIO_Pin_6
 #define key_PIN4          GPIO_Pin_7
 #define key_PIN5          GPIO_Pin_8
-#define key_PIN6          GPIO_Pin_9
+#define key_PIN6          GPIO_Pin_1
 
 #define key_PORT          GPIOE
 #define key_CLK         RCC_APB2Periph_GPIOE

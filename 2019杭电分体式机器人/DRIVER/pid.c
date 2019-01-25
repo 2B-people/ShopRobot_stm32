@@ -36,10 +36,10 @@ void HuiduPidCalcuation()
 	huidu_PID.error_inter = huidu_PID.error_last;
 	huidu_PID.error_last = huidu_PID.error_now;
 	huidu_PID.pid_out = huidu_PID.error_now * huidu_PID.Kp + error_sum_out * huidu_PID.Ki + derror * huidu_PID.Kd;
-	if (huidu_PID.pid_out < -500)
-		huidu_PID.pid_out = -500;
-	if (huidu_PID.pid_out > 500)
-		huidu_PID.pid_out = 500;
+	if (huidu_PID.pid_out < -700)
+		huidu_PID.pid_out = -700;
+	if (huidu_PID.pid_out > 700)
+		huidu_PID.pid_out = 700;
 }
 
 void CM1speedPID_Calculation()

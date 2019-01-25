@@ -1336,15 +1336,15 @@ Removing Unused input sections from the image.
     Removing stm32f10x_wwdg.o(i.WWDG_SetWindowValue), (40 bytes).
     Removing led.o(i.Beep_On_Off), (36 bytes).
     Removing led.o(i.LED_On_Off), (36 bytes).
-    Removing led.o(i.Ledbeep_init), (84 bytes).
+    Removing led.o(i.Ledbeep_init), (124 bytes).
     Removing led.o(i.SW_LED), (72 bytes).
     Removing kinematics.o(i.stop_base), (16 bytes).
     Removing timer.o(i.TIM6_Int_Init), (96 bytes).
     Removing remote.o(i.RC_Init), (268 bytes).
     Removing las_masure.o(i.las_Init), (180 bytes).
     Removing las_masure.o(i.las_measure), (100 bytes).
-    Removing bottom_sensor.o(i.ChangeCoordinate), (316 bytes).
-    Removing bottom_sensor.o(i.infrared_Init), (124 bytes).
+    Removing bottom_sensor.o(i.ChangeCoordinate), (312 bytes).
+    Removing bottom_sensor.o(i.infrared_Init), (120 bytes).
     Removing bottom_sensor.o(.data), (1 bytes).
     Removing oled.o(i.Delay_1ms), (26 bytes).
     Removing oled.o(i.Delay_50ms), (22 bytes).
@@ -1356,10 +1356,10 @@ Removing Unused input sections from the image.
     Removing oled.o(i.fill_picture), (64 bytes).
     Removing oled.o(.data), (896 bytes).
     Removing plan.o(i.MOVE), (1328 bytes).
-    Removing plan.o(i.ROTATE), (196 bytes).
+    Removing plan.o(i.ROTATE), (192 bytes).
     Removing plan.o(i.move_control), (2196 bytes).
 
-455 unused section(s) (total 21745 bytes) removed from the image.
+455 unused section(s) (total 21773 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1782,18 +1782,18 @@ Image Symbol Table
     i.IIC_Wait_Ack                           0x08002a3c   Section        0  oled.o(i.IIC_Wait_Ack)
     i.KEY_Init                               0x08002a54   Section        0  key.o(i.KEY_Init)
     i.KEY_Scan                               0x08002a7c   Section        0  key.o(i.KEY_Scan)
-    i.MemManage_Handler                      0x08002b90   Section        0  stm32f10x_it.o(i.MemManage_Handler)
-    i.NMI_Handler                            0x08002b94   Section        0  stm32f10x_it.o(i.NMI_Handler)
-    i.NVIC_Init                              0x08002b98   Section        0  misc.o(i.NVIC_Init)
-    i.NVIC_PriorityGroupConfig               0x08002c08   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
-    i.OLED_Clear                             0x08002c1c   Section        0  oled.o(i.OLED_Clear)
-    i.OLED_Init                              0x08002c5c   Section        0  oled.o(i.OLED_Init)
-    i.OLED_Set_Pos                           0x08002d6c   Section        0  oled.o(i.OLED_Set_Pos)
-    i.OLED_ShowChar                          0x08002d94   Section        0  oled.o(i.OLED_ShowChar)
-    i.OLED_ShowNum                           0x08002e38   Section        0  oled.o(i.OLED_ShowNum)
-    i.OLED_ShowString                        0x08002ec0   Section        0  oled.o(i.OLED_ShowString)
-    i.OLED_WR_Byte                           0x08002efa   Section        0  oled.o(i.OLED_WR_Byte)
-    i.PID_init                               0x08002f14   Section        0  pid.o(i.PID_init)
+    i.MemManage_Handler                      0x08002b8c   Section        0  stm32f10x_it.o(i.MemManage_Handler)
+    i.NMI_Handler                            0x08002b90   Section        0  stm32f10x_it.o(i.NMI_Handler)
+    i.NVIC_Init                              0x08002b94   Section        0  misc.o(i.NVIC_Init)
+    i.NVIC_PriorityGroupConfig               0x08002c04   Section        0  misc.o(i.NVIC_PriorityGroupConfig)
+    i.OLED_Clear                             0x08002c18   Section        0  oled.o(i.OLED_Clear)
+    i.OLED_Init                              0x08002c58   Section        0  oled.o(i.OLED_Init)
+    i.OLED_Set_Pos                           0x08002d68   Section        0  oled.o(i.OLED_Set_Pos)
+    i.OLED_ShowChar                          0x08002d90   Section        0  oled.o(i.OLED_ShowChar)
+    i.OLED_ShowNum                           0x08002e34   Section        0  oled.o(i.OLED_ShowNum)
+    i.OLED_ShowString                        0x08002ebc   Section        0  oled.o(i.OLED_ShowString)
+    i.OLED_WR_Byte                           0x08002ef6   Section        0  oled.o(i.OLED_WR_Byte)
+    i.PID_init                               0x08002f10   Section        0  pid.o(i.PID_init)
     i.PendSV_Handler                         0x08002f60   Section        0  stm32f10x_it.o(i.PendSV_Handler)
     i.RCC_AHBPeriphClockCmd                  0x08002f64   Section        0  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
     i.RCC_APB1PeriphClockCmd                 0x08002f84   Section        0  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
@@ -2189,19 +2189,19 @@ Image Symbol Table
     IIC_Stop                                 0x08002a1d   Thumb Code    28  oled.o(i.IIC_Stop)
     IIC_Wait_Ack                             0x08002a3d   Thumb Code    20  oled.o(i.IIC_Wait_Ack)
     KEY_Init                                 0x08002a55   Thumb Code    34  key.o(i.KEY_Init)
-    KEY_Scan                                 0x08002a7d   Thumb Code   266  key.o(i.KEY_Scan)
-    MemManage_Handler                        0x08002b91   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
-    NMI_Handler                              0x08002b95   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
-    NVIC_Init                                0x08002b99   Thumb Code   100  misc.o(i.NVIC_Init)
-    NVIC_PriorityGroupConfig                 0x08002c09   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
-    OLED_Clear                               0x08002c1d   Thumb Code    62  oled.o(i.OLED_Clear)
-    OLED_Init                                0x08002c5d   Thumb Code   268  oled.o(i.OLED_Init)
-    OLED_Set_Pos                             0x08002d6d   Thumb Code    40  oled.o(i.OLED_Set_Pos)
-    OLED_ShowChar                            0x08002d95   Thumb Code   154  oled.o(i.OLED_ShowChar)
-    OLED_ShowNum                             0x08002e39   Thumb Code   136  oled.o(i.OLED_ShowNum)
-    OLED_ShowString                          0x08002ec1   Thumb Code    58  oled.o(i.OLED_ShowString)
-    OLED_WR_Byte                             0x08002efb   Thumb Code    24  oled.o(i.OLED_WR_Byte)
-    PID_init                                 0x08002f15   Thumb Code    44  pid.o(i.PID_init)
+    KEY_Scan                                 0x08002a7d   Thumb Code   262  key.o(i.KEY_Scan)
+    MemManage_Handler                        0x08002b8d   Thumb Code     4  stm32f10x_it.o(i.MemManage_Handler)
+    NMI_Handler                              0x08002b91   Thumb Code     2  stm32f10x_it.o(i.NMI_Handler)
+    NVIC_Init                                0x08002b95   Thumb Code   100  misc.o(i.NVIC_Init)
+    NVIC_PriorityGroupConfig                 0x08002c05   Thumb Code    10  misc.o(i.NVIC_PriorityGroupConfig)
+    OLED_Clear                               0x08002c19   Thumb Code    62  oled.o(i.OLED_Clear)
+    OLED_Init                                0x08002c59   Thumb Code   268  oled.o(i.OLED_Init)
+    OLED_Set_Pos                             0x08002d69   Thumb Code    40  oled.o(i.OLED_Set_Pos)
+    OLED_ShowChar                            0x08002d91   Thumb Code   154  oled.o(i.OLED_ShowChar)
+    OLED_ShowNum                             0x08002e35   Thumb Code   136  oled.o(i.OLED_ShowNum)
+    OLED_ShowString                          0x08002ebd   Thumb Code    58  oled.o(i.OLED_ShowString)
+    OLED_WR_Byte                             0x08002ef7   Thumb Code    24  oled.o(i.OLED_WR_Byte)
+    PID_init                                 0x08002f11   Thumb Code    44  pid.o(i.PID_init)
     PendSV_Handler                           0x08002f61   Thumb Code     2  stm32f10x_it.o(i.PendSV_Handler)
     RCC_AHBPeriphClockCmd                    0x08002f65   Thumb Code    26  stm32f10x_rcc.o(i.RCC_AHBPeriphClockCmd)
     RCC_APB1PeriphClockCmd                   0x08002f85   Thumb Code    26  stm32f10x_rcc.o(i.RCC_APB1PeriphClockCmd)
@@ -2519,22 +2519,22 @@ Memory Map of the image
     0x08002a1c   0x00000020   Code   RO         3621    i.IIC_Stop          oled.o
     0x08002a3c   0x00000018   Code   RO         3622    i.IIC_Wait_Ack      oled.o
     0x08002a54   0x00000028   Code   RO         3833    i.KEY_Init          key.o
-    0x08002a7c   0x00000114   Code   RO         3834    i.KEY_Scan          key.o
-    0x08002b90   0x00000004   Code   RO          190    i.MemManage_Handler  stm32f10x_it.o
-    0x08002b94   0x00000002   Code   RO          191    i.NMI_Handler       stm32f10x_it.o
-    0x08002b96   0x00000002   PAD
-    0x08002b98   0x00000070   Code   RO          361    i.NVIC_Init         misc.o
-    0x08002c08   0x00000014   Code   RO          362    i.NVIC_PriorityGroupConfig  misc.o
-    0x08002c1c   0x0000003e   Code   RO         3623    i.OLED_Clear        oled.o
-    0x08002c5a   0x00000002   PAD
-    0x08002c5c   0x00000110   Code   RO         3627    i.OLED_Init         oled.o
-    0x08002d6c   0x00000028   Code   RO         3629    i.OLED_Set_Pos      oled.o
-    0x08002d94   0x000000a4   Code   RO         3631    i.OLED_ShowChar     oled.o
-    0x08002e38   0x00000088   Code   RO         3632    i.OLED_ShowNum      oled.o
-    0x08002ec0   0x0000003a   Code   RO         3633    i.OLED_ShowString   oled.o
-    0x08002efa   0x00000018   Code   RO         3634    i.OLED_WR_Byte      oled.o
-    0x08002f12   0x00000002   PAD
-    0x08002f14   0x0000004c   Code   RO         3413    i.PID_init          pid.o
+    0x08002a7c   0x00000110   Code   RO         3834    i.KEY_Scan          key.o
+    0x08002b8c   0x00000004   Code   RO          190    i.MemManage_Handler  stm32f10x_it.o
+    0x08002b90   0x00000002   Code   RO          191    i.NMI_Handler       stm32f10x_it.o
+    0x08002b92   0x00000002   PAD
+    0x08002b94   0x00000070   Code   RO          361    i.NVIC_Init         misc.o
+    0x08002c04   0x00000014   Code   RO          362    i.NVIC_PriorityGroupConfig  misc.o
+    0x08002c18   0x0000003e   Code   RO         3623    i.OLED_Clear        oled.o
+    0x08002c56   0x00000002   PAD
+    0x08002c58   0x00000110   Code   RO         3627    i.OLED_Init         oled.o
+    0x08002d68   0x00000028   Code   RO         3629    i.OLED_Set_Pos      oled.o
+    0x08002d90   0x000000a4   Code   RO         3631    i.OLED_ShowChar     oled.o
+    0x08002e34   0x00000088   Code   RO         3632    i.OLED_ShowNum      oled.o
+    0x08002ebc   0x0000003a   Code   RO         3633    i.OLED_ShowString   oled.o
+    0x08002ef6   0x00000018   Code   RO         3634    i.OLED_WR_Byte      oled.o
+    0x08002f0e   0x00000002   PAD
+    0x08002f10   0x00000050   Code   RO         3413    i.PID_init          pid.o
     0x08002f60   0x00000002   Code   RO          192    i.PendSV_Handler    stm32f10x_it.o
     0x08002f62   0x00000002   PAD
     0x08002f64   0x00000020   Code   RO         1931    i.RCC_AHBPeriphClockCmd  stm32f10x_rcc.o
@@ -2675,7 +2675,7 @@ Image component sizes
 
          0          0          0          0          0         32   core_cm3.o
        644         34          0         18        160       3019   huidu.o
-       316         16          0          1          0       1198   key.o
+       312         16          0          1          0       1198   key.o
         80         14          0          0          0        634   kinematics.o
        148         16          0          9          0       1208   las_masure.o
        580         94          0         19          0      59236   main.o
@@ -2683,7 +2683,7 @@ Image component sizes
        132         22          0          0          0       1575   misc.o
        478         30          0         24          0       3538   motor.o
       1046         30       2072          0          0       9312   oled.o
-      1072        108          0          0         84       3706   pid.o
+      1076        112          0          0         84       3706   pid.o
          0          0          0          2          0        279   plan.o
        136          8          0          0         72       2254   remote.o
         64         26        304          0       1536        812   startup_stm32f10x_hd.o
@@ -2700,7 +2700,7 @@ Image component sizes
        260         14          0          0          0       2908   usart1.o
 
     ----------------------------------------------------------------------
-      9566        630       2410        120       1852     374969   Object Totals
+      9566        634       2410        120       1852     374969   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          2          3          0          0   (incl. Padding)
 
@@ -2828,9 +2828,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     19726       1178       2926        120       1952     372709   Grand Totals
-     19726       1178       2926        120       1952     372709   ELF Image Totals
-     19726       1178       2926        120          0          0   ROM Totals
+     19726       1182       2926        120       1952     372709   Grand Totals
+     19726       1182       2926        120       1952     372709   ELF Image Totals
+     19726       1182       2926        120          0          0   ROM Totals
 
 ==============================================================================
 
