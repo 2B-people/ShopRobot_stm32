@@ -1,7 +1,7 @@
 #include "pid.h"
 
 #define c 1
-#define PidMax 1000
+#define PidMax 1500
 extern Motor motor1;
 extern Motor motor2;
 
@@ -90,6 +90,10 @@ void CM2speedPID_Calculation()
 
 void CMControl()
 {
+	if(required_vel>1.2)
+		required_vel=1.2;
+	else if(required_vel<-1.2)
+		required_vel=-1.2;
 		motor1.target_speed=get_RPM(required_vel);
 		motor2.target_speed=get_RPM(required_vel);
 		CM1speedPID_Calculation();

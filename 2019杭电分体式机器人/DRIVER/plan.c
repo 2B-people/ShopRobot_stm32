@@ -1,9 +1,8 @@
 #include "plan.h"
 
-#define rotate_vel 0.5 //旋转速度
 //一开始以线性关系减速，在最后一刻急停。
-uint8_t IsMoveFinsh;
-uint8_t IsRotate;
+uint8_t IsMoveFinsh=0;
+uint8_t IsRotate=0;
 
 
 
@@ -233,14 +232,14 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 	switch(Clockwise)
 	{
 		case 0:
-			motor1.target_speed=-COUNTS_PER_REV*(rotate_vel*60/(PI*WHEEL_DIAMETER));
-			motor2.target_speed=COUNTS_PER_REV*rotate_vel*60/(PI*WHEEL_DIAMETER);
+			motor1.target_speed=1000;
+			motor2.target_speed=-1000;
 			delay(30);
 			while(infrared1==0&&infrared2==0&&infrared3==0&&infrared4==0);
 			break;
 		case 1:
-			motor1.target_speed=COUNTS_PER_REV*rotate_vel*60/(PI*WHEEL_DIAMETER);
-			motor2.target_speed=-COUNTS_PER_REV*(rotate_vel*60/(PI*WHEEL_DIAMETER));
+			motor1.target_speed=-1000;
+			motor2.target_speed=1000;
 			delay(30);
 			while(infrared1==0&&infrared2==0&&infrared3==0&&infrared4==0);
 			break;

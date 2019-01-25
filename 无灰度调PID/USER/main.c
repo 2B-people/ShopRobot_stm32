@@ -1,6 +1,6 @@
 #include "include.h"
-
-double required_vel = 0.3;
+#include "math.h"
+double required_vel = 0.8;
 uint8_t IsControlFinsh;			  //是否完成指定任务
 uint8_t IsStop;					  //是否接到急停状态信号的标志
 uint8_t position;				  //当前区域，分为八块
@@ -14,7 +14,7 @@ uint8_t isHd = 1;
 
 
 double K_P=2.475;
-double K_I=0.029;
+double K_I=0.030;
 double K_D=0.02;
 
 
@@ -46,22 +46,22 @@ int main()
 		OLED_ShowString(0, 2, "I", 16);
 		OLED_ShowNum(16,2,s_PIDcm2.Ki*1000,4,16);
 		OLED_ShowString(0, 4, "V", 16);
-		OLED_ShowNum(16,4,required_vel*1000,4,16);
+		OLED_ShowNum(16,4,abs(required_vel*1000),4,16);
 		OLED_ShowString(50, 0, "M1", 16);
-	 	OLED_ShowNum(76,0,motor1.now_speed,4,16);
+	 	OLED_ShowNum(76,0,abs(motor1.now_speed),4,16);
 		OLED_ShowString(50, 2, "M2", 16);
-	  OLED_ShowNum(76,2,motor2.now_speed,4,16);
+	  OLED_ShowNum(76,2,abs(motor2.now_speed),4,16);
 		OLED_ShowString(0, 6, "S", 16);
-	  OLED_ShowNum(16,6,motor2.target_speed,4,16);
+	  OLED_ShowNum(16,6,abs(motor2.target_speed),4,16);
 	 	OLED_ShowString(50, 4, "T1", 16);
-	 	OLED_ShowNum(76,4,(int32_t)s_PIDcm1.pid_out,4,16);
+	 	OLED_ShowNum(76,4,abs((int32_t)s_PIDcm1.pid_out),4,16);
 		OLED_ShowString(50, 6, "T2", 16);
-	  OLED_ShowNum(76,6,(int32_t)s_PIDcm2.pid_out,4,16);
+	  OLED_ShowNum(76,6,abs((int32_t)s_PIDcm2.pid_out),4,16);
 		switch(KEY_Scan(1))
 		{
-			case KEY1_PRES:required_vel+=0.005;break;
-			case KEY2_PRES:required_vel-=0.005;break;
-			case KEY3_PRES:s_PIDcm2.Kd+=0.01;break;
+			case KEY1_PRES:required_vel+=0.05;break;
+			case KEY2_PRES:required_vel-=0.05;break;
+			case KEY3_PRES:required_vel=0;break;
 			case KEY4_PRES:K_P-=0.01;break;
 			case KEY5_PRES:K_I-=0.01;break;
 			case KEY6_PRES:K_D-=0.01;break;

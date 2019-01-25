@@ -141,13 +141,7 @@ void adcjihe(void) //ADC集合
     }
 }
 
-void adcjihe1(void)
-{
-    ADC_JIHE[0] = ADC_ConvertedValue[0];
-    ADC_JIHE[1] = ADC_ConvertedValue[1];
-	  ADC_JIHE[2] = ADC_ConvertedValue[2];
-    ADC_JIHE[3] = ADC_ConvertedValue[3];
-}
+
 
 
 void huiductrlinit(void)

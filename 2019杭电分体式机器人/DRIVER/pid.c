@@ -1,23 +1,10 @@
 #include "pid.h"
 #define c 1
 #define MaxPid 1500
-//#define IsHD
+#define IsHD
 
 
-
-struct PID_member
-{
-	float Kp;
-	float Ki;
-	float Kd;
-	int16_t error_now;
-	int16_t error_last;
-	int16_t error_inter;
-	int16_t error_sum;
-	int16_t pid_out;
-	int16_t pid_out_last;
-	int16_t pid_out_inter;
-} s_PIDcm1, s_PIDcm2, huidu_PID;
+struct PID_member s_PIDcm1, s_PIDcm2, huidu_PID;
 
 void PID_init()
 {
@@ -29,15 +16,15 @@ void PID_init()
 	s_PIDcm2.Ki = K_I;
 	s_PIDcm2.Kd = K_D;
 
-	huidu_PID.Kp = K_P;
-	huidu_PID.Ki = K_I;
-	huidu_PID.Kd = K_D;
+	huidu_PID.Kp = hK_P;
+	huidu_PID.Ki = hK_I;
+	huidu_PID.Kd = hK_D;
 }
 
 void HuiduPidCalcuation()
 {
 	int16_t derror, error_sum_out;
-	if(required_vel>0)
+	if(required_vel<0)
 		huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
 	else
 		huidu_PID.error_now = ADC_JIHE[2] - ADC_JIHE[3];
@@ -49,10 +36,10 @@ void HuiduPidCalcuation()
 	huidu_PID.error_inter = huidu_PID.error_last;
 	huidu_PID.error_last = huidu_PID.error_now;
 	huidu_PID.pid_out = huidu_PID.error_now * huidu_PID.Kp + error_sum_out * huidu_PID.Ki + derror * huidu_PID.Kd;
-	if (huidu_PID.pid_out < -1000)
-		huidu_PID.pid_out = -1000;
-	if (huidu_PID.pid_out > 1000)
-		huidu_PID.pid_out = 1000;
+	if (huidu_PID.pid_out < -500)
+		huidu_PID.pid_out = -500;
+	if (huidu_PID.pid_out > 500)
+		huidu_PID.pid_out = 500;
 }
 
 void CM1speedPID_Calculation()
@@ -70,7 +57,7 @@ void CM1speedPID_Calculation()
 	derror = s_PIDcm1.error_last - s_PIDcm1.error_inter;
 	s_PIDcm1.error_inter = s_PIDcm1.error_last;
 	s_PIDcm1.error_last = s_PIDcm1.error_now;
-	s_PIDcm1.pid_out = s_PIDcm1.error_now * s_PIDcm1.Kp + error_sum_out * s_PIDcm1.Ki + derror * s_PIDcm1.Kd;
+	s_PIDcm1.pid_out = (int16_t) ((double)s_PIDcm1.error_now * s_PIDcm1.Kp + error_sum_out * s_PIDcm1.Ki + derror * s_PIDcm1.Kd);
 	if (s_PIDcm1.pid_out < -MaxPid)
 		s_PIDcm1.pid_out = -MaxPid;
 	if (s_PIDcm1.pid_out > MaxPid)
@@ -94,7 +81,7 @@ void CM2speedPID_Calculation()
 	derror = s_PIDcm2.error_last - s_PIDcm2.error_inter;
 	s_PIDcm2.error_inter = s_PIDcm2.error_last;
 	s_PIDcm2.error_last = s_PIDcm2.error_now;
-	s_PIDcm2.pid_out = s_PIDcm2.error_now * s_PIDcm2.Kp + error_sum_out * s_PIDcm2.Ki + derror * s_PIDcm2.Kd;
+	s_PIDcm2.pid_out = (int16_t) ((double)s_PIDcm2.error_now * s_PIDcm2.Kp + error_sum_out * s_PIDcm2.Ki + derror * s_PIDcm2.Kd);
 
 	if (s_PIDcm2.pid_out < -MaxPid)
 		s_PIDcm2.pid_out = -MaxPid;
@@ -109,11 +96,11 @@ void CMControl()
 		s_PIDcm1.error_sum=0;
 		s_PIDcm2.error_sum=0;
 	}
-	else if(required_vel>MaxVel)
+	if(required_vel>=MaxVel)
 	{
 		required_vel=MaxVel;
 	}
-	else if(required_vel<=MaxVel)
+	else if(required_vel<=-MaxVel)
 	{
 		required_vel=-MaxVel;
 	}
@@ -125,8 +112,11 @@ void CMControl()
 #ifdef IsHD
 			adcjihe();
 			HuiduPidCalcuation();
-			motor1.target_speed += huidu_PID.pid_out;
-			motor2.target_speed -= huidu_PID.pid_out;
+			if(required_vel!=0)
+			{
+				motor1.target_speed += huidu_PID.pid_out;
+				motor2.target_speed -= huidu_PID.pid_out;
+			}
 #endif
 	}
 		CM1speedPID_Calculation();
