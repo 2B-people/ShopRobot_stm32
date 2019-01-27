@@ -23,13 +23,27 @@ void Ledbeep_init()
 
 void LED_On_Off(char status, uint16_t LED_Pin)
 {
-	if (status == True)
+	if(LED_Pin!=LED_PIN3)
 	{
-		GPIO_SetBits(GPIOC,LED_Pin); //高电平点亮
+		if (status == False)
+		{
+			GPIO_SetBits(LED_GPIO_PORT,LED_Pin); //高电平点亮
+		}
+		else
+		{
+			GPIO_ResetBits(LED_GPIO_PORT, LED_Pin);
+		}
 	}
 	else
 	{
-		GPIO_ResetBits(GPIOC, LED_Pin);
+		if (status == False)
+		{
+			GPIO_SetBits(LED_GPIO_PORT3,LED_Pin); //高电平点亮
+		}
+		else
+		{
+			GPIO_ResetBits(LED_GPIO_PORT3, LED_Pin);
+		}
 	}
 }
 
@@ -50,13 +64,13 @@ void SW_LED(char led_nemberx, char status)
 	switch (led_nemberx)
 	{
 	case 1:
-		LED_On_Off(status,GPIO_Pin_0);
+		LED_On_Off(status,LED_PIN1);
 		 break;
 	case 2:
-		LED_On_Off(status,GPIO_Pin_1);
+		LED_On_Off(status,LED_PIN2);
 		 break;	
 	case 3:
-		LED_On_Off(status,GPIO_Pin_3);
+		LED_On_Off(status,LED_PIN3);
 		break;
 	default:
 		printf("error!");

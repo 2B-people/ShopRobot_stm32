@@ -105,4 +105,5 @@ void begin(void)
 	position_y=2;
 	target_position_x=0;
 	target_position_y=3;
+	path_cal();
 }

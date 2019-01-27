@@ -1,5 +1,4 @@
 #include "kinematics.h"
-//float speed[4];
 double get_RPM(double liner_vel_in)
 {
 		float circumference_=PI*WHEEL_DIAMETER;
@@ -10,6 +9,5 @@ double get_RPM(double liner_vel_in)
 
 void stop_base()
 {
-	required_vel=0;
-	
+	required_vel=0;	
 }
