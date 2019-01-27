@@ -1,6 +1,8 @@
 ..\obj\remote.o: ..\DRIVER\remote.c
 ..\obj\remote.o: ..\DRIVER\remote.h
 ..\obj\remote.o: ..\USER\include.h
+..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\remote.o: ..\USER\stm32f10x.h
 ..\obj\remote.o: ..\CORE\core_cm3.h
 ..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,10 +35,8 @@
 ..\obj\remote.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\remote.o: ..\USER\config.h
 ..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\remote.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\remote.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\remote.o: ..\DRIVER\motor.h
@@ -54,3 +54,4 @@
 ..\obj\remote.o: ..\DRIVER\bottom_sensor.h
 ..\obj\remote.o: ..\DRIVER\huidu.h
 ..\obj\remote.o: ..\DRIVER\key.h
+..\obj\remote.o: ..\DRIVER\queue.h

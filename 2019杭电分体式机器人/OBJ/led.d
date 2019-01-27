@@ -1,6 +1,8 @@
 ..\obj\led.o: ..\DRIVER\led.c
 ..\obj\led.o: ..\DRIVER\led.h
 ..\obj\led.o: ..\USER\include.h
+..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\led.o: ..\USER\stm32f10x.h
 ..\obj\led.o: ..\CORE\core_cm3.h
 ..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,10 +35,8 @@
 ..\obj\led.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\led.o: ..\USER\config.h
 ..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\led.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\led.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\led.o: ..\DRIVER\motor.h
@@ -54,3 +54,4 @@
 ..\obj\led.o: ..\DRIVER\bottom_sensor.h
 ..\obj\led.o: ..\DRIVER\huidu.h
 ..\obj\led.o: ..\DRIVER\key.h
+..\obj\led.o: ..\DRIVER\queue.h

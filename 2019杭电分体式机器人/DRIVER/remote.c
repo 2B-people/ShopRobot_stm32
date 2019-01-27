@@ -52,7 +52,7 @@ void RC_Init(void)
 		DMA_Init(DMA1_Channel6, &DMA_InitStructure);  //根据DMA_InitStruct中指定的参数初始化DMA的通道USART1_Tx_DMA_Channel所标识的寄存器
 		DMA_ClearFlag(DMA1_FLAG_TC5); //清除DMA接收完成标志
 		DMA_ITConfig(DMA1_Channel6, DMA_IT_TC, ENABLE);//DMA5传输完成中断
-		USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE);//使能USART1的接收DMA请求
+		USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE);//使能USART2的接收DMA请求
 		
 
 	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel6_IRQn;
@@ -60,7 +60,6 @@ void RC_Init(void)
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x02;
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
-			//DMA_Cmd(DMA1_Channel5, ENABLE); //正式允许DMA
 	DMA_Cmd(DMA1_Channel6, ENABLE);         	
 		
 		

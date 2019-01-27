@@ -1,6 +1,8 @@
 ..\obj\plan.o: ..\DRIVER\plan.c
 ..\obj\plan.o: ..\DRIVER\plan.h
 ..\obj\plan.o: ..\USER\include.h
+..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\plan.o: ..\USER\stm32f10x.h
 ..\obj\plan.o: ..\CORE\core_cm3.h
 ..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,10 +35,8 @@
 ..\obj\plan.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\plan.o: ..\USER\config.h
 ..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\plan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\plan.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\plan.o: ..\DRIVER\motor.h
@@ -54,3 +54,4 @@
 ..\obj\plan.o: ..\DRIVER\bottom_sensor.h
 ..\obj\plan.o: ..\DRIVER\huidu.h
 ..\obj\plan.o: ..\DRIVER\key.h
+..\obj\plan.o: ..\DRIVER\queue.h

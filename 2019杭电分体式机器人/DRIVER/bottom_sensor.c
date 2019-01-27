@@ -26,9 +26,9 @@ void infrared_Init(void)
 void ChangeCoordinate()
 {
 	static uint8_t flag=0;
-	if(flag==0&&!(infrared1||infrared2||infrared3||infrared4))
+	if(flag==0&&infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
 		flag=1;
-	if(flag==1&&(infrared1||infrared2||infrared3||infrared4))
+	if(flag==1&&(infrared1==WHITE||infrared2==WHITE||infrared3==WHITE||infrared4==WHITE))
 	{
 		switch(orientation)
 		{
@@ -41,3 +41,22 @@ void ChangeCoordinate()
 	}
 }
 
+void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
+{
+	required_vel=0;
+	IsRotate=1;	//停止pid调速，先进行旋转
+	switch(Clockwise)
+	{
+		case 0:
+			motor1.target_speed=1000;
+			motor2.target_speed=-1000;
+			break;
+		case 1:
+			motor1.target_speed=-1000;
+			motor2.target_speed=1000;
+			break;
+	}
+	delay(30);
+	while(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK);
+	IsRotate=0;
+}

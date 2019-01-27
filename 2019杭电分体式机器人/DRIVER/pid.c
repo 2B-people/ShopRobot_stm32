@@ -1,7 +1,7 @@
 #include "pid.h"
 #define c 1
 #define MaxPid 1500
-#define IsHD
+
 
 
 struct PID_member s_PIDcm1, s_PIDcm2, huidu_PID;
@@ -48,12 +48,6 @@ void CM1speedPID_Calculation()
 	s_PIDcm1.error_now = motor1.target_speed * c - motor1.now_speed;
 	s_PIDcm1.error_sum += s_PIDcm1.error_now;
 	error_sum_out = s_PIDcm1.error_sum;
-
-	//        if(error_sum_out>12500)
-	//          error_sum_out=12500;
-	//        if(error_sum_out<-12500)
-	//          error_sum_out=-12500;
-
 	derror = s_PIDcm1.error_last - s_PIDcm1.error_inter;
 	s_PIDcm1.error_inter = s_PIDcm1.error_last;
 	s_PIDcm1.error_last = s_PIDcm1.error_now;
@@ -72,11 +66,6 @@ void CM2speedPID_Calculation()
 
 	s_PIDcm2.error_sum += s_PIDcm2.error_now;
 	error_sum_out = s_PIDcm2.error_sum;
-
-	//        if(error_sum_out>12500)
-	//          error_sum_out=12500;
-	//        if(error_sum_out<-12500)
-	//          error_sum_out=-12500;
 
 	derror = s_PIDcm2.error_last - s_PIDcm2.error_inter;
 	s_PIDcm2.error_inter = s_PIDcm2.error_last;
@@ -109,15 +98,16 @@ void CMControl()
 	{
 			motor1.target_speed = get_RPM(required_vel);
 			motor2.target_speed = get_RPM(required_vel);
-#ifdef IsHD
 			adcjihe();
-			HuiduPidCalcuation();
-			if(required_vel!=0)
+			if(IsHD)
 			{
-				motor1.target_speed += huidu_PID.pid_out;
-				motor2.target_speed -= huidu_PID.pid_out;
+					HuiduPidCalcuation();
+					if(required_vel!=0)
+					{
+						motor1.target_speed += huidu_PID.pid_out;
+						motor2.target_speed -= huidu_PID.pid_out;
+					}
 			}
-#endif
 	}
 		CM1speedPID_Calculation();
 		CM2speedPID_Calculation();

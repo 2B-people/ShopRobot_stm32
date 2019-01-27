@@ -1,5 +1,7 @@
 ..\obj\main.o: main.c
 ..\obj\main.o: include.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\main.o: stm32f10x.h
 ..\obj\main.o: ..\CORE\core_cm3.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -32,10 +34,8 @@
 ..\obj\main.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\main.o: config.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\main.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\main.o: ..\DRIVER\motor.h
@@ -53,3 +53,4 @@
 ..\obj\main.o: ..\DRIVER\bottom_sensor.h
 ..\obj\main.o: ..\DRIVER\huidu.h
 ..\obj\main.o: ..\DRIVER\key.h
+..\obj\main.o: ..\DRIVER\queue.h

@@ -618,6 +618,11 @@
               <FileType>1</FileType>
               <FilePath>..\DRIVER\key.c</FilePath>
             </File>
+            <File>
+              <FileName>queue.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\DRIVER\queue.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

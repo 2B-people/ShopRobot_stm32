@@ -1,6 +1,8 @@
 ..\obj\las_masure.o: ..\DRIVER\las_masure.c
 ..\obj\las_masure.o: ..\DRIVER\las_masure.h
 ..\obj\las_masure.o: ..\USER\include.h
+..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\las_masure.o: ..\USER\stm32f10x.h
 ..\obj\las_masure.o: ..\CORE\core_cm3.h
 ..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,10 +35,8 @@
 ..\obj\las_masure.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\las_masure.o: ..\USER\config.h
 ..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\las_masure.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\las_masure.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\las_masure.o: ..\DRIVER\motor.h
@@ -54,3 +54,4 @@
 ..\obj\las_masure.o: ..\DRIVER\bottom_sensor.h
 ..\obj\las_masure.o: ..\DRIVER\huidu.h
 ..\obj\las_masure.o: ..\DRIVER\key.h
+..\obj\las_masure.o: ..\DRIVER\queue.h

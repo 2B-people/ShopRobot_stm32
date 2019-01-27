@@ -1,6 +1,8 @@
 ..\obj\bottom_sensor.o: ..\DRIVER\bottom_sensor.c
 ..\obj\bottom_sensor.o: ..\DRIVER\bottom_sensor.h
 ..\obj\bottom_sensor.o: ..\USER\include.h
+..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\bottom_sensor.o: ..\USER\stm32f10x.h
 ..\obj\bottom_sensor.o: ..\CORE\core_cm3.h
 ..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -33,10 +35,8 @@
 ..\obj\bottom_sensor.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\bottom_sensor.o: ..\USER\config.h
 ..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\bottom_sensor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\bottom_sensor.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\bottom_sensor.o: ..\DRIVER\motor.h
@@ -54,3 +54,4 @@
 ..\obj\bottom_sensor.o: ..\DRIVER\bottom_sensor.h
 ..\obj\bottom_sensor.o: ..\DRIVER\huidu.h
 ..\obj\bottom_sensor.o: ..\DRIVER\key.h
+..\obj\bottom_sensor.o: ..\DRIVER\queue.h

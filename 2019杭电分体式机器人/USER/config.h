@@ -10,7 +10,7 @@
 #include <math.h>
 #include "stm32f10x.h"
 #include "millisecondtimer.h"
-
+#define ID 1  //车辆编号
 
 #define PI 3.1415926
 
@@ -31,6 +31,9 @@
 #define slow_vel (0.2)		//车子还在运行状态的最低车速
 #define down_vel (0.05)	//达到最后一格时，每个周期减下的速度
 
+
+#define BLACK 0
+#define WHITE 1
 
 
 
