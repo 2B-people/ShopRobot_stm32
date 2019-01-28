@@ -19,6 +19,11 @@ void Ledbeep_init()
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(BEEP_PORT, &GPIO_InitStructure);
+	
+	LED_On_Off(False,LED_PIN1);
+	LED_On_Off(False,LED_PIN2);
+	LED_On_Off(False,LED_PIN3);
+	Beep_On_Off(False);
 }
 
 void LED_On_Off(char status, uint16_t LED_Pin)
@@ -59,22 +64,4 @@ void Beep_On_Off(char status)
 	}
 }
 
-void SW_LED(char led_nemberx, char status)
-{
-	switch (led_nemberx)
-	{
-	case 1:
-		LED_On_Off(status,LED_PIN1);
-		 break;
-	case 2:
-		LED_On_Off(status,LED_PIN2);
-		 break;	
-	case 3:
-		LED_On_Off(status,LED_PIN3);
-		break;
-	default:
-		printf("error!");
-		break;
-	}
-}
 

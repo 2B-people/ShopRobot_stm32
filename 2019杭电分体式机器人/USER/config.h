@@ -15,7 +15,7 @@
 #define PI 3.1415926
 
 #define K_P 2.475  // P constant
-#define K_I 0.029 // I constant
+#define K_I 0.035 // I constant
 #define K_D 0.02  // D constant
 
 
@@ -112,12 +112,12 @@
 
 
 /**key config**/
-#define key_PIN1          GPIO_Pin_4
-#define key_PIN2          GPIO_Pin_5
-#define key_PIN3          GPIO_Pin_6
-#define key_PIN4          GPIO_Pin_7
-#define key_PIN5          GPIO_Pin_8
-#define key_PIN6          GPIO_Pin_1
+#define key_PIN1          GPIO_Pin_4		//中
+#define key_PIN2          GPIO_Pin_5		//左
+#define key_PIN3          GPIO_Pin_6		//下
+#define key_PIN4          GPIO_Pin_7		//右
+#define key_PIN5          GPIO_Pin_8		//上
+#define key_PIN6          GPIO_Pin_1		//独立
 
 #define key_PORT          GPIOE
 #define key_CLK         RCC_APB2Periph_GPIOE

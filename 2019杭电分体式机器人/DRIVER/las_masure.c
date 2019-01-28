@@ -2,6 +2,8 @@
 uint16_t USART_RX_STA=0;
 uint16_t USART_RX_NUM=0;
 uint8_t MEASURE_BUF[5];
+uint8_t Distance_data[5];
+uint8_t las_mode;
 void las_Init()
 {
 		USART_InitTypeDef USART_InitStructure;  
@@ -53,43 +55,45 @@ void las_Init()
 }
 
 
-uint16_t las_measure()
+void las_measure()
 {
-	uint16_t distance;
-	uint16_t strength;
-	uint8_t mode;
-	while(USART_RX_STA!=0);
-	while(USART_RX_STA==0x2000);//等待接受数据结束
+	static uint16_t distance;
+	static uint16_t strength;
 	distance&=0X0000;
-	distance|=(((uint16_t)MEASURE_BUF[0])&0x00FF);
-	distance|=((((uint16_t)MEASURE_BUF[1])<<8)&0xFF00);
+	distance|=(((uint16_t)Distance_data[0])&0x00FF);
+	distance|=((((uint16_t)Distance_data[1])<<8)&0xFF00);
 	strength&=0X0000;
-	strength|=(((uint16_t)MEASURE_BUF[2])&0x00FF);
-	strength|=((((uint16_t)MEASURE_BUF[3])<<8)&0xFF00);
+	strength|=(((uint16_t)Distance_data[2])&0x00FF);
+	strength|=((((uint16_t)Distance_data[3])<<8)&0xFF00);
 	
-	mode&=0x00;
-	mode|=MEASURE_BUF[4];		//0x02近距离 0x07远距离
+	las_mode&=0x00;
+	las_mode|=Distance_data[4];		//0x02近距离 0x07远距离
 	
-	if(strength>20&&strength<2000)		//只有当信号在一定强度内，数据才是可信的
-	{
-		return distance;
-	}
-	return -1;
+	//if(strength>20&&strength<2000)		//只有当信号在一定强度内，数据才是可信的
+	//{
+		Distance=distance;
+	//}
 }
 	
 
 
 void USART3_IRQHandler(void)                    //串口3中断服务程序
 {
-    uint8_t Res;
+    static uint8_t Res;
     if(USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)  //接收中断
 		{
+			
 			Res=USART_ReceiveData(USART3);
 			if((USART_RX_STA&0x2000)!=0)		//接受距离数据
 			{
 				MEASURE_BUF[USART_RX_NUM++]=Res;
 				if(USART_RX_NUM==5)
 				{
+					Distance_data[0]=MEASURE_BUF[0];
+					Distance_data[1]=MEASURE_BUF[1];
+					Distance_data[2]=MEASURE_BUF[2];
+					Distance_data[3]=MEASURE_BUF[3];
+					Distance_data[4]=MEASURE_BUF[4];
 					USART_RX_NUM=0;
 					USART_RX_STA=0;
 				}

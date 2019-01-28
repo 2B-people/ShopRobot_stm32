@@ -27,18 +27,23 @@ Project File Date:  01/27/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 1 (build 106)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Template'
-compiling led.c...
+compiling main.c...
+main.c(12): warning:  #68-D: integer conversion resulted in a change of sign
+  uint8_t position_x = -1;			  //当前横坐标
+main.c(13): warning:  #68-D: integer conversion resulted in a change of sign
+  uint8_t position_y = -1;			  //当前纵坐标
+main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=16542 RO-data=2410 RW-data=136 ZI-data=6488  
+Program Size: Code=13182 RO-data=2410 RW-data=152 ZI-data=1952  
 FromELF: creating hex file...
-"..\OBJ\Template.axf" - 0 Error(s), 0 Warning(s).
+"..\OBJ\Template.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人\USER\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>

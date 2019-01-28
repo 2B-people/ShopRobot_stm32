@@ -40,5 +40,6 @@ extern uint8_t target_position_y;
 extern uint8_t orientation;
 extern uint8_t IsHD;
 extern uint8_t Obstacle;
+extern uint16_t Distance;
 #endif
 

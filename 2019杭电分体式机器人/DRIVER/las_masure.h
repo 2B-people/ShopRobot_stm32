@@ -4,6 +4,6 @@
 
 
 void las_Init(void);
-uint16_t las_measure(void);
-
+void las_measure(void);
+extern uint8_t las_mode;
 #endif
