@@ -1,10 +1,10 @@
 ..\obj\huidu.o: ..\DRIVER\huidu.c
 ..\obj\huidu.o: ..\USER\include.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\huidu.o: ..\USER\stm32f10x.h
 ..\obj\huidu.o: ..\CORE\core_cm3.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\huidu.o: ..\USER\system_stm32f10x.h
 ..\obj\huidu.o: ..\USER\stm32f10x_conf.h
 ..\obj\huidu.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -33,10 +33,10 @@
 ..\obj\huidu.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\huidu.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\huidu.o: ..\USER\config.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\huidu.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\huidu.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\huidu.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\huidu.o: ..\DRIVER\motor.h
 ..\obj\huidu.o: ..\USER\include.h
@@ -54,3 +54,4 @@
 ..\obj\huidu.o: ..\DRIVER\huidu.h
 ..\obj\huidu.o: ..\DRIVER\key.h
 ..\obj\huidu.o: ..\DRIVER\queue.h
+..\obj\huidu.o: ..\DRIVER\arm.h

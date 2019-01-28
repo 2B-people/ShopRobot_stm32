@@ -1,11 +1,11 @@
 ..\obj\key.o: ..\DRIVER\key.c
 ..\obj\key.o: ..\DRIVER\key.h
 ..\obj\key.o: ..\USER\include.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\key.o: ..\USER\stm32f10x.h
 ..\obj\key.o: ..\CORE\core_cm3.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\key.o: ..\USER\system_stm32f10x.h
 ..\obj\key.o: ..\USER\stm32f10x_conf.h
 ..\obj\key.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -34,10 +34,10 @@
 ..\obj\key.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\key.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\key.o: ..\USER\config.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\key.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\key.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\key.o: ..\DRIVER\motor.h
 ..\obj\key.o: ..\USER\include.h
@@ -55,3 +55,4 @@
 ..\obj\key.o: ..\DRIVER\huidu.h
 ..\obj\key.o: ..\DRIVER\key.h
 ..\obj\key.o: ..\DRIVER\queue.h
+..\obj\key.o: ..\DRIVER\arm.h

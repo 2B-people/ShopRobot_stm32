@@ -1,11 +1,11 @@
 ..\obj\kinematics.o: ..\DRIVER\Kinematics.c
 ..\obj\kinematics.o: ..\DRIVER\kinematics.h
 ..\obj\kinematics.o: ..\USER\include.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\kinematics.o: ..\USER\stm32f10x.h
 ..\obj\kinematics.o: ..\CORE\core_cm3.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\kinematics.o: ..\USER\system_stm32f10x.h
 ..\obj\kinematics.o: ..\USER\stm32f10x_conf.h
 ..\obj\kinematics.o: ..\STM32F10x_FWLib\inc\stm32f10x_adc.h
@@ -34,10 +34,10 @@
 ..\obj\kinematics.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\kinematics.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\kinematics.o: ..\USER\config.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-..\obj\kinematics.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\errno.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\kinematics.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\kinematics.o: ..\SYSTEM\millisecondtimer.h
 ..\obj\kinematics.o: ..\DRIVER\motor.h
 ..\obj\kinematics.o: ..\USER\include.h
@@ -55,3 +55,4 @@
 ..\obj\kinematics.o: ..\DRIVER\huidu.h
 ..\obj\kinematics.o: ..\DRIVER\key.h
 ..\obj\kinematics.o: ..\DRIVER\queue.h
+..\obj\kinematics.o: ..\DRIVER\arm.h

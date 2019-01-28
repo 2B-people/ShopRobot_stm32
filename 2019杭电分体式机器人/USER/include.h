@@ -22,6 +22,8 @@
 #include "huidu.h"
 #include "key.h"
 #include "queue.h"
+#include "arm.h"
+
 typedef enum
 {
 	positive_x,
