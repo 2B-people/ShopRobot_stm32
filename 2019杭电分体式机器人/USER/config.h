@@ -122,6 +122,25 @@
 #define key_PORT          GPIOE
 #define key_CLK         RCC_APB2Periph_GPIOE
 
+/*duoji config*/
+#define duoji_PIN1          GPIO_Pin_0
+#define duoji_PORT1          GPIOA
+#define duoji_CLK1          RCC_APB2Periph_GPIOA
 
+#define duoji_PIN2          GPIO_Pin_1
+#define duoji_PORT2          GPIOA
+#define duoji_CLK2          RCC_APB2Periph_GPIOA
+
+#define duoji_PIN3          GPIO_Pin_2
+#define duoji_PORT3          GPIOA
+#define duoji_CLK3         RCC_APB2Periph_GPIOA
+
+#define duoji_PIN4          GPIO_Pin_8
+#define duoji_PORT4          GPIOB
+#define duoji_CLK4          RCC_APB2Periph_GPIOB
+
+#define duoji_PIN5         GPIO_Pin_9
+#define duoji_PORT5          GPIOB
+#define duoji_CLK5          RCC_APB2Periph_GPIOB
 
 #endif // _CONFIG_H_
