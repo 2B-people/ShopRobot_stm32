@@ -61,8 +61,6 @@ int main()
 				OLED_ShowNum(16,0,position_x,3,16);		//X坐标
 				OLED_ShowString(0, 2, "Y", 16);
 				OLED_ShowNum(16,2,position_y,3,16);		//Y坐标
-				OLED_ShowString(0, 4, "V", 16);	
-				OLED_ShowNum(16,4,(abs)(required_vel*100),3,16);		//车辆速度	
 				OLED_ShowString(0, 4, "D", 16);	
 				OLED_ShowNum(16,4,Distance,3,16);				
 				OLED_ShowString(0, 6, "V", 16);	

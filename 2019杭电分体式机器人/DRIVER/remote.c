@@ -50,7 +50,7 @@ void RC_Init(void)
 		DMA_InitStructure.DMA_Priority = DMA_Priority_VeryHigh; //DMA通道 x拥有中优先级 
 		DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;  //DMA通道x没有设置为内存到内存传输
 		DMA_Init(DMA1_Channel6, &DMA_InitStructure);  //根据DMA_InitStruct中指定的参数初始化DMA的通道USART1_Tx_DMA_Channel所标识的寄存器
-		DMA_ClearFlag(DMA1_FLAG_TC5); //清除DMA接收完成标志
+		DMA_ClearFlag(DMA1_FLAG_TC6); //清除DMA接收完成标志
 		DMA_ITConfig(DMA1_Channel6, DMA_IT_TC, ENABLE);//DMA5传输完成中断
 		USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE);//使能USART2的接收DMA请求
 		

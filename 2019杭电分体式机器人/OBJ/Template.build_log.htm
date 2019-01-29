@@ -27,14 +27,14 @@ Project File Date:  01/28/2019
 <h2>Output:</h2>
 *** Using Compiler 'V5.05 update 1 (build 106)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Template'
-compiling las_masure.c...
-..\DRIVER\las_masure.c(13): warning:  #177-D: variable "DMA_InitStructure" was declared but never referenced
-  		DMA_InitTypeDef DMA_InitStructure;	
-..\DRIVER\las_masure.c(150): warning:  #1-D: last line of file ends without a newline
-  //}
-..\DRIVER\las_masure.c: 2 warnings, 0 errors
+compiling main.c...
+main.c(17): warning:  #68-D: integer conversion resulted in a change of sign
+  uint8_t position_x = -1;			  //当前横坐标
+main.c(18): warning:  #68-D: integer conversion resulted in a change of sign
+  uint8_t position_y = -1;			  //当前纵坐标
+main.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=14758 RO-data=2410 RW-data=160 ZI-data=1952  
+Program Size: Code=20510 RO-data=2926 RW-data=156 ZI-data=1948  
 FromELF: creating hex file...
 "..\OBJ\Template.axf" - 0 Error(s), 2 Warning(s).
 
