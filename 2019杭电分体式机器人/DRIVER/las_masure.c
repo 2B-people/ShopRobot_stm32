@@ -3,12 +3,15 @@ uint16_t USART_RX_STA=0;
 uint16_t USART_RX_NUM=0;
 uint8_t MEASURE_BUF[5];
 uint8_t Distance_data[5];
+uint8_t USART3_BUFF[8];
 uint8_t las_mode;
 void las_Init()
 {
 		USART_InitTypeDef USART_InitStructure;  
     NVIC_InitTypeDef NVIC_InitStructure;   
     GPIO_InitTypeDef GPIO_InitStructure;    //声明一个结构体变量，用来初始化GPIO  
+		DMA_InitTypeDef DMA_InitStructure;	
+
     //使能串口的RCC时钟  
     RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB , ENABLE); //使能UART3所在GPIOB的时钟  
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART3, ENABLE);  
@@ -34,14 +37,6 @@ void las_Init()
     USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;  
     USART_InitStructure.USART_Mode = USART_Mode_Rx ;//只需要接受，不需要发送  
 
-
-    // Configure USART3   
-    USART_Init(USART3, &USART_InitStructure);//配置串口3 
-    // Enable USART3 Receive interrupts 使能串口接收中断  
-    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);  
-    // Enable the USART3   
-    USART_Cmd(USART3, ENABLE);//使能串口3  
-
     //串口中断配置  
     //Configure the NVIC Preemption Priority Bits     
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  
@@ -52,6 +47,37 @@ void las_Init()
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;        //子优先级2
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;  
     NVIC_Init(&NVIC_InitStructure);       
+		
+		
+		 // Configure USART3   
+    USART_Init(USART3, &USART_InitStructure);//配置串口3 
+    // Enable USART3 Receive interrupts 使能串口接收中断  
+    USART_ITConfig(USART3, USART_IT_RXNE, ENABLE);  
+    // Enable the USART3   
+    USART_Cmd(USART3, ENABLE);//使能串口3  
+		
+		
+//		RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);                      //使能DMA1时钟  
+//		DMA_DeInit(DMA1_Channel3);                                              //初始化DMA1通道3  串口3接收通道
+//		DMA_InitStructure.DMA_PeripheralBaseAddr = (u32)&USART3->DR;                  //串口3接收数据的地址
+//		DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)USART3_BUFF;      //数据存放的复制
+//		DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;                      //数据传送方向  串口3作为数据源
+//		DMA_InitStructure.DMA_BufferSize = 8;                    //接收数据个数       
+//		DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;        //外围设备 串口3 地址不递增
+//		DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                 // DMA存储地址递增
+//		DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_Byte; //外围设备 串口3 数据宽度 8bits
+//		DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_Byte;         //DMA存储 数据宽度 8bits
+//		DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;                         //循环获取数据
+//		DMA_InitStructure.DMA_Priority = DMA_Priority_Medium;                   //串口3通道优先为中等
+//		DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;                            //关闭内存到内存
+//		DMA_Init(DMA1_Channel3, &DMA_InitStructure);
+//		 
+//		 
+//		USART_DMACmd(USART3, USART_DMAReq_Rx, ENABLE);  //使能串口3 DMA功能
+//		DMA_Cmd(DMA1_Channel3, ENABLE);
+
+		
+		
 }
 
 
@@ -75,7 +101,6 @@ void las_measure()
 	//}
 }
 	
-
 
 void USART3_IRQHandler(void)                    //串口3中断服务程序
 {
@@ -108,3 +133,18 @@ void USART3_IRQHandler(void)                    //串口3中断服务程序
 		USART_ClearITPendingBit(USART3, USART_IT_RXNE);
 
 }
+//void DMA1_Channel3_IRQHandler(void)
+//{
+//    if(DMA_GetITStatus(DMA1_IT_TC3)) //通道5传输完成中断TC 还有传输 过半中断HT 错误中断TE 全局中断GL
+//     {
+//        DMA_ClearITPendingBit(DMA1_IT_GL3);    //清除全部中断标志
+//				DMA_Cmd(DMA1_Channel3, DISABLE);
+//				Distance_data[0]=USART3_BUFF[2];
+//				Distance_data[1]=USART3_BUFF[3];
+//				Distance_data[2]=USART3_BUFF[4];
+//				Distance_data[3]=USART3_BUFF[5];
+//				Distance_data[4]=USART3_BUFF[6];
+//				las_measure();
+//			 DMA_Cmd(DMA1_Channel3, ENABLE);
+//     }
+//}
