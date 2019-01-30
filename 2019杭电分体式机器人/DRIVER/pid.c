@@ -24,7 +24,7 @@ void PID_init()
 void HuiduPidCalcuation()
 {
 	int16_t derror, error_sum_out;
-	if(required_vel<0)
+	if(required_vel>0)
 		huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
 	else
 		huidu_PID.error_now = ADC_JIHE[2] - ADC_JIHE[3];
@@ -35,11 +35,12 @@ void HuiduPidCalcuation()
 	derror = huidu_PID.error_last - huidu_PID.error_inter;
 	huidu_PID.error_inter = huidu_PID.error_last;
 	huidu_PID.error_last = huidu_PID.error_now;
-	huidu_PID.pid_out = huidu_PID.error_now * huidu_PID.Kp + error_sum_out * huidu_PID.Ki + derror * huidu_PID.Kd;
-	if (huidu_PID.pid_out < -700)
-		huidu_PID.pid_out = -700;
-	if (huidu_PID.pid_out > 700)
-		huidu_PID.pid_out = 700;
+	huidu_PID.pid_out = (int16_t) ((double)huidu_PID.error_now * huidu_PID.Kp + error_sum_out * huidu_PID.Ki + derror * huidu_PID.Kd);
+	if (huidu_PID.pid_out < -600)
+		huidu_PID.pid_out = -600;
+	if (huidu_PID.pid_out > 600)
+		huidu_PID.pid_out = 600;
+
 }
 
 void CM1speedPID_Calculation()
@@ -80,11 +81,11 @@ void CM2speedPID_Calculation()
 
 void CMControl()
 {
-	if(required_vel==0)
-	{
-		s_PIDcm1.error_sum=0;
-		s_PIDcm2.error_sum=0;
-	}
+//	if(required_vel==0)
+//	{
+//		s_PIDcm1.error_sum=0;
+//		s_PIDcm2.error_sum=0;
+//	}
 	if(required_vel>=MaxVel)
 	{
 		required_vel=MaxVel;
@@ -92,12 +93,13 @@ void CMControl()
 	else if(required_vel<=-MaxVel)
 	{
 		required_vel=-MaxVel;
-	}
+	}	
 	
-	if(!IsRotate)
-	{
-			motor1.target_speed = get_RPM(required_vel);
-			motor2.target_speed = get_RPM(required_vel);
+			if(IsRotate==0)
+			{
+				motor1.target_speed = get_RPM(required_vel);
+				motor2.target_speed = get_RPM(required_vel);
+			}
 			adcjihe();
 			if(IsHD)
 			{
@@ -106,9 +108,10 @@ void CMControl()
 					{
 						motor1.target_speed += huidu_PID.pid_out;
 						motor2.target_speed -= huidu_PID.pid_out;
+						
 					}
 			}
-	}
+	
 		CM1speedPID_Calculation();
 		CM2speedPID_Calculation();
 		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);

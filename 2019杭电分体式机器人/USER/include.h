@@ -27,9 +27,9 @@
 typedef enum
 {
 	positive_x,
-	positive_y,
+	negative_y,
 	negative_x,
-	negative_y
+	positive_y
 }ORIENTATION;		
 
 extern double required_vel ;
@@ -43,5 +43,6 @@ extern uint8_t orientation;
 extern uint8_t IsHD;
 extern uint8_t Obstacle;
 extern uint16_t Distance;
+extern uint8_t IsStop;
 #endif
 

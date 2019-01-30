@@ -10,5 +10,7 @@ void show(int8_t x, int8_t y);
 void path_cal(void);
 void path_Init(void);
 void move_base(void);
+extern int8_t nextx;
+extern int8_t nexty;
 #endif
 

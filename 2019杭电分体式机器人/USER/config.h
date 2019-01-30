@@ -20,14 +20,14 @@
 
 
 #define hK_P 0.40  // P constant
-#define hK_I 0.1 // I constant
-#define hK_D 0.01  // D constant
+#define hK_I 0 // I constant
+#define hK_D 0  // D constant
 
 
-#define MaxVel (1.20)
+#define MaxVel (0.65)
 
 
-#define fast_vel (0.7)		//一般情况下车速
+#define fast_vel (0.3)		//一般情况下车速
 #define slow_vel (0.2)		//车子还在运行状态的最低车速
 #define down_vel (0.05)	//达到最后一格时，每个周期减下的速度
 
@@ -41,8 +41,8 @@
 #define False 0
 
 /** motor param **/
-#define MAX_RPM 8000      //motor's maximum RPM最大转速
-#define COUNTS_PER_REV 19 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)减速比
+#define MAX_RPM 8500      //motor's maximum RPM最大转速
+#define COUNTS_PER_REV 36 //wheel encoder's no of ticks per rev(gear_ratio * pulse_per_rev)减速比
 #define WHEEL_DIAMETER 0.055 //wheel's diameter in meters直径
 
 

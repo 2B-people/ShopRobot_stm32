@@ -2,7 +2,42 @@
 uint8_t sbus_rx_buffer[RC_FRAME_LENGTH]; //double sbus rx buffer to save data
 REMOTE RC_CtrlData;
 DMA_InitTypeDef DMA_InitStructure;
-extern double required_vel;
+uint8_t IsRemote=0;
+
+
+
+
+
+
+/******************************************************************************
+* @fn RemoteDataProcess
+** @brief resolution rc protocol data.
+* @pData a point to rc receive buffer.
+* @return None.
+* @note RC_CtrlData is a global variable.you can deal with it in other place.
+*/
+void RemoteDataProcess(uint8_t *pData)
+{
+	if(pData == NULL)
+	{
+		return;
+	}
+	RC_CtrlData.ch0 = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;
+	RC_CtrlData.ch1 = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5))& 0x07FF;
+	RC_CtrlData.ch2 = (((int16_t)pData[2] >> 6) | ((int16_t)pData[3] << 2) |((int16_t)pData[4] << 10)) & 0x07FF;
+	RC_CtrlData.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) &0x07FF;
+	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
+	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
+
+	
+}
+
+
+
+
+
+
+
 void RC_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -55,16 +90,16 @@ void RC_Init(void)
 		USART_DMACmd(USART2,USART_DMAReq_Rx,ENABLE);//使能USART2的接收DMA请求
 		
 
-	NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel6_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x02;
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x02;
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-	NVIC_Init(&NVIC_InitStructure);
-	DMA_Cmd(DMA1_Channel6, ENABLE);         	
+		NVIC_InitStructure.NVIC_IRQChannel = DMA1_Channel6_IRQn;
+		NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0x02;
+		NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0x02;
+		NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+		NVIC_Init(&NVIC_InitStructure);
+		DMA_Cmd(DMA1_Channel6, ENABLE);         	
 		
 		
 		
-		
+		IsRemote=1;
 		
 		
 		
@@ -73,29 +108,6 @@ void RC_Init(void)
 		
 }
 
-/******************************************************************************
-* @fn RemoteDataProcess
-** @brief resolution rc protocol data.
-* @pData a point to rc receive buffer.
-* @return None.
-* @note RC_CtrlData is a global variable.you can deal with it in other place.
-*/
-void RemoteDataProcess(uint8_t *pData)
-{
-	if(pData == NULL)
-	{
-		return;
-	}
-	RC_CtrlData.ch0 = ((int16_t)pData[0] | ((int16_t)pData[1] << 8)) & 0x07FF;
-	RC_CtrlData.ch1 = (((int16_t)pData[1] >> 3) | ((int16_t)pData[2] << 5))& 0x07FF;
-	RC_CtrlData.ch2 = (((int16_t)pData[2] >> 6) | ((int16_t)pData[3] << 2) |((int16_t)pData[4] << 10)) & 0x07FF;
-	RC_CtrlData.ch3 = (((int16_t)pData[4] >> 1) | ((int16_t)pData[5]<<7)) &0x07FF;
-	RC_CtrlData.s1 = ((pData[5] >> 4) & 0x000C) >> 2;
-	RC_CtrlData.s2 = ((pData[5] >> 4) & 0x0003);
-//	if(RC_CtrlData.ch0<1400&&RC_CtrlData.ch0>600)
-//		required_vel=(double)(RC_CtrlData.ch0 -1024)*0.0025;	
-
-}
 
 
 void DMA1_Channel6_IRQHandler(void)

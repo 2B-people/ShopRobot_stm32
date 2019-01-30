@@ -89,7 +89,6 @@ void las_measure(uint8_t *Distance_data)
 	if(strength>20&&strength<2000&&distance>=30&&distance<=1200)		//只有当信号在一定强度内，数据才是可信的
 	{
 		Distance=distance;
-		usart1_print("%d\n",Distance);
 	}
 }
 	
@@ -127,9 +126,10 @@ void las_measure(uint8_t *Distance_data)
 //}
 void DMA1_Channel3_IRQHandler(void)
 {
-		    if(DMA_GetITStatus(DMA1_IT_TC3)) //通道5传输完成中断TC 还有传输 过半中断HT 错误中断TE 全局中断GL
+		  if(DMA_GetITStatus(DMA1_IT_TC3)) //通道5传输完成中断TC 还有传输 过半中断HT 错误中断TE 全局中断GL
      {
         DMA_ClearITPendingBit(DMA1_IT_GL3);    //清除全部中断标志
 				las_measure(USART3_BUFF);
      }
 }
+

@@ -24,7 +24,7 @@ typedef __packed struct
 
 
 extern REMOTE RC_CtrlData;
-
+extern uint8_t IsRemote;
 void RC_Init(void);
 void RemoteDataProcess( uint8_t *pData);
 

@@ -23,7 +23,7 @@
 #define __OLED_H			  	 
 #include "sys.h"
 #include "stdlib.h"	    	
-
+#include "include.h"
 #define SIZE 8
 #define XLevelL		0x00
 #define XLevelH		0x10
@@ -70,6 +70,7 @@ void Write_IIC_Data(unsigned char IIC_Data);
 void Write_IIC_Byte(unsigned char IIC_Byte);
 
 void IIC_Wait_Ack(void);
+void OLED_SHOW_MANU(void);
 #endif  
 	 
 

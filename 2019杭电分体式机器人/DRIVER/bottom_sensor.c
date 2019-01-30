@@ -27,9 +27,13 @@ void ChangeCoordinate()
 {
 	static uint8_t flag=0;
 	if(flag==0&&infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
-		flag=1;
-	if(flag==1&&(infrared1==WHITE||infrared2==WHITE||infrared3==WHITE||infrared4==WHITE))
 	{
+		Beep_On_Off(False);
+		flag=1;
+	}
+	if(flag==1&&((infrared1==WHITE&&infrared2==WHITE)||(infrared3==WHITE&&infrared4==WHITE)))
+	{
+		Beep_On_Off(True);
 		switch(orientation)
 		{
 			case positive_x:if(required_vel>0) position_x+=1;else position_x-=1;break;
@@ -44,19 +48,30 @@ void ChangeCoordinate()
 void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 {
 	required_vel=0;
+	
 	IsRotate=1;	//停止pid调速，先进行旋转
+	motor1.target_speed = get_RPM(required_vel);
+	motor2.target_speed = get_RPM(required_vel);
 	switch(Clockwise)
 	{
 		case 0:
-			motor1.target_speed=1000;
-			motor2.target_speed=-1000;
+			motor1.target_speed=-get_RPM(0.2);
+			motor2.target_speed=get_RPM(0.2);
+		if(orientation!=0)
+			orientation--;
+		else
+			orientation=3;
 			break;
 		case 1:
-			motor1.target_speed=-1000;
-			motor2.target_speed=1000;
+			motor1.target_speed=get_RPM(0.2);
+			motor2.target_speed=-get_RPM(0.2);
+		if(orientation!=3)
+			orientation++;
+		else
+			orientation=0;
 			break;
 	}
-	delay(30);
-	while(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK);
+	delay(610);
 	IsRotate=0;
+	
 }

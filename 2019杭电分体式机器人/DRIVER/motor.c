@@ -80,12 +80,12 @@ void USB_LP_CAN1_RX0_IRQHandler(void) //¸Ãº¯ÊıÓÃÓÚ½ÓÊÜCAN×ÜÏßÊı¾İ²¢×ª»»Îªµç»úRPM
 		{
 		case 0x201:
 		{
-			motor1.now_speed = -((rx_message.Data[2] << 8) | rx_message.Data[3]);
+			motor1.now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);
 		}
 		break;
 		case 0x202:
 		{
-			motor2.now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);
+			motor2.now_speed = -((rx_message.Data[2] << 8) | rx_message.Data[3]);
 		}
 		break;
 			//				case 0x203:
@@ -130,8 +130,8 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq) //ÉèÖÃµç»úË
 
 	tx_message.Data[0] = (uint8_t)(-cm1_iq >> 8);
 	tx_message.Data[1] = (uint8_t)-cm1_iq;
-	tx_message.Data[2] = (uint8_t)(cm2_iq >> 8);
-	tx_message.Data[3] = (uint8_t)cm2_iq;
+	tx_message.Data[2] = (uint8_t)(-cm2_iq >> 8);
+	tx_message.Data[3] = (uint8_t)-cm2_iq;
 	//    tx_message.Data[4] = (uint8_t)(cm3_iq >> 8);
 	//    tx_message.Data[5] = (uint8_t)cm3_iq;
 	//    tx_message.Data[6] = (uint8_t)(cm4_iq >> 8);

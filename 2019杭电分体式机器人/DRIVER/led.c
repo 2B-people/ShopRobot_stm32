@@ -32,7 +32,7 @@ void LED_On_Off(char status, uint16_t LED_Pin)
 	{
 		if (status == False)
 		{
-			GPIO_SetBits(LED_GPIO_PORT,LED_Pin); //高电平点亮
+			GPIO_SetBits(LED_GPIO_PORT,LED_Pin); //低电平点亮
 		}
 		else
 		{
@@ -43,7 +43,7 @@ void LED_On_Off(char status, uint16_t LED_Pin)
 	{
 		if (status == False)
 		{
-			GPIO_SetBits(LED_GPIO_PORT3,LED_Pin); //高电平点亮
+			GPIO_SetBits(LED_GPIO_PORT3,LED_Pin); //低电平点亮
 		}
 		else
 		{

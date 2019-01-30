@@ -1,45 +1,173 @@
-//////////////////////////////////////////////////////////////////////////////////
-//±¾³ÌÐòÖ»¹©Ñ§Ï°Ê¹ÓÃ£¬Î´¾­×÷ÕßÐí¿É£¬²»µÃÓÃÓÚÆäËüÈÎºÎÓÃÍ¾
-//ÖÐ¾°Ô°µç×Ó
-//µêÆÌµØÖ·£ºhttp://shop73023976.taobao.com/?spm=2013.1.0.0.M4PqC2
-//
-//  ÎÄ ¼þ Ãû   : main.c
-//  °æ ±¾ ºÅ   : v2.0
-//  ×÷    Õß   : Evk123
-//  Éú³ÉÈÕÆÚ   : 2014-0101
-//  ×î½üÐÞ¸Ä   :
-//  ¹¦ÄÜÃèÊö   : 0.69´çOLED ½Ó¿ÚÑÝÊ¾Àý³Ì(STM32F103ZEÏµÁÐIIC)
-//              ËµÃ÷:
-//              ----------------------------------------------------------------
-//              GND   µçÔ´µØ
-//              VCC   ½Ó5V»ò3.3vµçÔ´
 //              SCL   ½ÓPD6£¨SCL£©
 //              SDA   ½ÓPD7£¨SDA£©
-//              ----------------------------------------------------------------
-//Copyright(C) ÖÐ¾°Ô°µç×Ó2014/3/16
-//All rights reserved
-//////////////////////////////////////////////////////////////////////////////////£
-
+//////////key_PIN1   	//ÖÐ
+//////////key_PIN2  	//×ó
+//////////key_PIN3  	//ÏÂ
+//////////key_PIN4  	//ÓÒ
+//////////key_PIN5  	//ÉÏ
+//////////key_PIN6  	//¶ÀÁ¢
 #include "oled.h"
 #include "stdlib.h"
 #include "oledfont.h"
 #include "millisecondtimer.h"
-//OLEDµÄÏÔ´æ
-//´æ·Å¸ñÊ½ÈçÏÂ.
-//[0]0 1 2 3 ... 127
-//[1]0 1 2 3 ... 127
-//[2]0 1 2 3 ... 127
-//[3]0 1 2 3 ... 127
-//[4]0 1 2 3 ... 127
-//[5]0 1 2 3 ... 127
-//[6]0 1 2 3 ... 127
-//[7]0 1 2 3 ... 127
-/**********************************************
-//IIC Start
-**********************************************/
-/**********************************************
-//IIC Start
-**********************************************/
+void OLED_SHOW_MANU()
+{
+	static uint8_t manu=5;
+	static uint8_t key;
+	
+  if(manu==1)				//µ×²ã×´Ì¬
+	 {
+		OLED_ShowString(0, 0, "X", 16);
+		OLED_ShowNum(16,0,position_x,3,16);		//X×ø±ê
+		OLED_ShowString(0, 2, "Y", 16);
+		OLED_ShowNum(16,2,position_y,3,16);		//Y×ø±ê
+		OLED_ShowString(0, 4, "D", 16);	
+		OLED_ShowNum(16,4,Distance,3,16);				
+		OLED_ShowString(0, 6, "V", 16);	
+		if(required_vel<0)
+			OLED_ShowChar(10,6,'-',16);
+		else
+			OLED_ShowChar(10,6,' ',16);
+		OLED_ShowNum(16,6,(abs)(required_vel*100),3,16);	
+		OLED_ShowString(50, 0, "M1", 16);
+		if(motor1.target_speed<0)
+			OLED_ShowChar(70,0,'-',16);
+		else
+			OLED_ShowChar(70,0,' ',16);
+		OLED_ShowNum(76,0,(abs)(motor1.target_speed),4,16);//µç»ú1ËÙ¶È
+		OLED_ShowString(50, 2, "M2", 16);
+		if(motor2.target_speed<0)
+			OLED_ShowChar(70,2,'-',16);
+		else
+			OLED_ShowChar(70,2,' ',16);
+		OLED_ShowNum(76,2,(abs)(motor2.target_speed),4,16);//µç»ú2ËÙ¶È
+		OLED_ShowString(50, 4, "H1", 16);
+		OLED_ShowNum(76,4, ADC_JIHE[0],4,16);			//»Ò¶È1Öµ
+		OLED_ShowString(50, 6, "H2", 16);
+		OLED_ShowNum(76,6, ADC_JIHE[1],4,16);			//»Ò¶È2Öµ
+		key=KEY_Scan(0);
+		switch(key)
+		{
+			case KEY1_PRES:required_vel=0;break;
+			case KEY5_PRES:required_vel+=0.1;break;
+			case KEY3_PRES:required_vel-=0.1;break;
+			case KEY4_PRES:OLED_Clear();manu=2;break;
+			case KEY6_PRES:ROTATE(1);break;
+		}
+	 }
+	 
+	 else if(manu==2)		//Ò£¿ØÆ÷×´Ì¬
+	 {
+		OLED_ShowString(0, 0, "C0", 16);
+		OLED_ShowNum(25,0,RC_CtrlData.ch0,4,16);		
+		OLED_ShowString(0, 2, "C1", 16);
+		OLED_ShowNum(25,2,RC_CtrlData.ch1,4,16);		
+		OLED_ShowString(0, 4, "C2", 16);	
+		OLED_ShowNum(25,4,RC_CtrlData.ch2,4,16);		
+		OLED_ShowString(0, 6, "C3", 16);	
+		OLED_ShowNum(25,6,RC_CtrlData.ch3,4,16);		
+		OLED_ShowString(80, 0, "S1", 16);
+		OLED_ShowNum(106,0,RC_CtrlData.s1,1,16);
+		OLED_ShowString(80, 2, "S2", 16);
+		 OLED_ShowNum(106,2,RC_CtrlData.s2,1,16);
+		key=KEY_Scan(0);
+		switch(key)
+		{
+			case KEY1_PRES:required_vel=0;break;
+			case KEY5_PRES:required_vel+=0.1;break;
+			case KEY3_PRES:required_vel-=0.1;break;
+			case KEY2_PRES:OLED_Clear();manu=1;break;
+			case KEY4_PRES:OLED_Clear();manu=3;break;
+			case KEY6_PRES:ROTATE(1);break;
+		}
+	 }
+	 
+	 else if(manu==3)			//¿ØÖÆ²ÎÊý×´Ì¬
+	 {
+		OLED_ShowString(0, 0, "stop", 16);
+		OLED_ShowNum(50,0,IsStop,1,16);		
+		OLED_ShowString(0, 2, "hd", 16);
+		OLED_ShowNum(50,2,IsHD,1,16);		
+		OLED_ShowString(0, 4, "Mofi", 16);	
+		OLED_ShowNum(50,4,IsMoveFinsh,1,16);		
+		OLED_ShowString(0, 6, "Rota", 16);	
+		OLED_ShowNum(50,6,IsRotate,1,16);		
+		OLED_ShowString(70, 0, "Remo", 16);
+		OLED_ShowNum(120,0,IsRemote,1,16);
+		key=KEY_Scan(0);
+		switch(key)
+		{
+			case KEY1_PRES:required_vel=0;break;
+			case KEY5_PRES:required_vel+=0.1;break;
+			case KEY3_PRES:required_vel-=0.1;break;
+			case KEY2_PRES:OLED_Clear();manu=2;break;
+			case KEY4_PRES:OLED_Clear();manu=4;break;
+			case KEY6_PRES:ROTATE(1);break;
+		}
+	 }
+	 
+	 else if(manu==4)
+	 {
+		 OLED_ShowString(0, 0, "B1", 16);
+		 OLED_ShowNum(35,0,infrared1,1,16);
+		 OLED_ShowString(0, 2, "B2", 16);
+	   OLED_ShowNum(35,2,infrared2,1,16);
+		 OLED_ShowString(0, 4, "B3", 16);
+		 OLED_ShowNum(35,4,infrared3,1,16);
+		 OLED_ShowString(0, 6, "B4", 16);
+		 OLED_ShowNum(35,6,infrared4,1,16);
+		 OLED_ShowString(50, 0, "H1", 16);
+		 OLED_ShowNum(76,0, ADC_JIHE[0],4,16);			//»Ò¶È1Öµ
+		 OLED_ShowString(50, 2, "H2", 16);
+		 OLED_ShowNum(76,2, ADC_JIHE[1],4,16);			//»Ò¶È2Öµ
+		 OLED_ShowString(50, 4, "H3", 16);
+		 OLED_ShowNum(76,4, ADC_JIHE[2],4,16);			//»Ò¶È1Öµ
+		 OLED_ShowString(50, 6, "H4", 16);
+		 OLED_ShowNum(76,6, ADC_JIHE[3],4,16);			//»Ò¶È2Öµ		 
+		 key=KEY_Scan(0);
+			switch(key)
+			{
+				case KEY1_PRES:required_vel=0;break;
+				case KEY5_PRES:required_vel+=0.1;break;
+				case KEY3_PRES:required_vel-=0.1;break;
+				case KEY2_PRES:OLED_Clear();manu=3;break;
+				case KEY4_PRES:OLED_Clear();manu=5;break;
+				case KEY6_PRES:ROTATE(1);break;
+			}
+	 }
+	 
+	 else if(manu==5)
+	 {
+		 OLED_ShowString(0, 0, "X", 16);
+		 OLED_ShowNum(35,0,position_x,1,16);
+		 OLED_ShowString(0, 2, "Y", 16);
+	   OLED_ShowNum(35,2,position_y,1,16);
+		 OLED_ShowString(0, 4, "TX", 16);
+		 OLED_ShowNum(35,4,target_position_x,1,16);
+		 OLED_ShowString(0, 6, "TY", 16);
+		 OLED_ShowNum(35,6,target_position_y,1,16);
+		 OLED_ShowString(50, 0, "NX", 16);
+		 OLED_ShowNum(76,0, nextx,4,16);			
+		 OLED_ShowString(50, 2, "NY", 16);
+		 OLED_ShowNum(76,2, nexty,4,16);			
+		 OLED_ShowString(50, 4, "Ob", 16);
+		 OLED_ShowNum(76,4, Obstacle,4,16);			
+		 OLED_ShowString(50, 6, "Or", 16);
+		 OLED_ShowNum(76,6, orientation,4,16);			
+		 	key=KEY_Scan(0);
+			switch(key)
+			{
+				case KEY1_PRES:position_x=0;position_y=0;break;
+				case KEY5_PRES:position_y+=1;break;
+				case KEY3_PRES:position_y-=1;break;
+				case KEY2_PRES:position_x-=1;break;
+				case KEY4_PRES:position_x+=1;break;
+				case KEY6_PRES:OLED_Clear();manu=1;break;
+			}
+	 }
+	 
+}
+
 void IIC_Start()
 {
 
@@ -401,3 +529,4 @@ void OLED_Init(void)
 
 	OLED_WR_Byte(0xAF, OLED_CMD); //--turn on oled panel
 }
+

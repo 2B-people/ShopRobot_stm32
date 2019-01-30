@@ -41,7 +41,7 @@ void TIM6_Int_Init(uint16_t arr,uint16_t psc)
 
 //	//中断优先级NVIC设置
 	NVIC_InitStructure.NVIC_IRQChannel = TIM6_IRQn;  //TIM3中断
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;  //先占优先级0级
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;  //先占优先级0级
 	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;  //从优先级3级
 	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE; //IRQ通道被使能
 	NVIC_Init(&NVIC_InitStructure);  //初始化NVIC寄存器
@@ -58,7 +58,7 @@ void TIM5_IRQHandler(void)   //TIM3中断
 			TIM_ClearITPendingBit(TIM5, TIM_IT_Update  );  
 			adcjihe();
 			CMControl();
-			//ChangeCoordinate();
+			
 		}
 }
 
@@ -67,6 +67,10 @@ void TIM6_IRQHandler(void)   //TIM3中断
 	 if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM6, TIM_IT_Update  );  
-			//move_base();
+//			if(position_x==target_position_x&&position_y==target_position_y)
+//			{
+//				required_vel=0;
+//			}
+			ChangeCoordinate();
 		}
 }
