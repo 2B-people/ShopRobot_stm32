@@ -19,7 +19,7 @@
 #define K_D 0.02  // D constant
 
 
-#define hK_P 0.40  // P constant
+#define hK_P 0.5  // P constant
 #define hK_I 0 // I constant
 #define hK_D 0  // D constant
 

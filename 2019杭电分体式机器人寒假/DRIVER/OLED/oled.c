@@ -12,7 +12,7 @@
 #include "millisecondtimer.h"
 void OLED_SHOW_MANU()
 {
-	static uint8_t manu=5;
+	static uint8_t manu=1;
 	static uint8_t key;
 	
 	switch(manu)

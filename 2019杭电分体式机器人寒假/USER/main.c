@@ -9,7 +9,7 @@
 //////////key_PIN6  	//独立
 
 
-double required_vel = 0;
+double required_vel = 0.3;
 uint8_t IsControlFinsh;			  //是否完成指定任务
 uint8_t IsStop=0;					  //是否接到急停状态信号的标志
 
@@ -43,15 +43,15 @@ int main()
 		KEY_Init();
 		OLED_Clear();
 		path_Init();
-			
+		path_cal();	
 	
    	TIM5_Int_Init(35, 999); //1000HZ		PID调速
-		TIM7_Int_Init(35,9999);	//100HZ,    确定速度		
-		begin();
+		TIM7_Int_Init(35,999);	//100HZ,    确定速度		
+		//begin();
 		TIM6_Int_Init(359, 9999);  //10HZ		路径规划，确定nextx,nexty
 	 while(1)
 	 {
-			remoteAction();
+			//remoteAction();
 			MOVE(nextx,nexty);
 			waitingStop();	
 	 }

@@ -72,7 +72,7 @@ void TIM7_Int_Init(uint16_t arr,uint16_t psc)
 	NVIC_Init(&NVIC_InitStructure);  //初始化NVIC寄存器
 
 
-	TIM_Cmd(TIM6, ENABLE);  //使能TIMx					 
+	TIM_Cmd(TIM7, ENABLE);  //使能TIMx					 
 }
 //定时器3中断服务程序
 void TIM5_IRQHandler(void)   //TIM3中断

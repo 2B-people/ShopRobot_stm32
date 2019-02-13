@@ -47,7 +47,7 @@ void decideSpeed(void)
 		motor1.target_speed = get_RPM(required_vel);
 		motor2.target_speed = get_RPM(required_vel);
 	}
-	if(IsHD)
+	if(IsHD&&IsRotate==0)
 	{
 			adcjihe();											//adc采样量化
 			HuiduPidCalcuation();						//根据adc数值

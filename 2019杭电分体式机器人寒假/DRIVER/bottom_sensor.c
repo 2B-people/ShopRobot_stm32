@@ -70,6 +70,8 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 		break;
 	}
 	delay(610);
+	motor1.target_speed=get_RPM(required_vel);
+	motor2.target_speed=get_RPM(required_vel);
 	IsRotate=0;
 	
 }
