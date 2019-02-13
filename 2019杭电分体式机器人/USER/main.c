@@ -22,6 +22,7 @@ uint8_t target_position_y = 0;	//目标纵坐标
 uint8_t IsHD=1;									//是否使用模拟灰度。
 uint8_t Obstacle=0;						//障碍物位置
 uint16_t Distance=0;					//激光雷达测距结果
+uint8_t stopping=0;				  //车身是否停止
 void begin(void);
 int main()
 {
@@ -52,7 +53,8 @@ int main()
 	 while(1)
 	 {
 			//remoteAction();
-			MOVE(nextx,nexty);
+		 	if(!stopping&&!IsRemote)
+				MOVE(nextx,nexty);
 			waitingStop();	
 	 }
 	 

@@ -9,17 +9,14 @@ double get_RPM(double liner_vel_in)
 
 void waitingStop()
 {
-	static uint8_t stopping=0;				  //车身是否停止
+
 	if((!stopping)||required_vel==0)
 			{
 				OLED_SHOW_MANU();
 			}		 		
 			if (IsStop)											//接收到停止信号
 			{
-				if(required_vel>0)
-					required_vel -= down_vel;		//减速直至速度为0
-				else if(required_vel<0)
-					required_vel += down_vel;		//减速直至速度为0
+				required_vel=0;
 				stopping = 1;
 			}
 			else if(stopping)								//接收到开始信号

@@ -44,5 +44,6 @@ extern uint8_t IsHD;
 extern uint8_t Obstacle;
 extern uint16_t Distance;
 extern uint8_t IsStop;
+extern uint8_t stopping;
 #endif
 

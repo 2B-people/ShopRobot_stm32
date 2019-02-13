@@ -495,7 +495,6 @@ void move_base()
 		IsMoveFinsh=1;
 		nextx=target_position_x;
 		nexty=target_position_y;
-		required_vel=0;
 	}
 	else
 		IsMoveFinsh=0;

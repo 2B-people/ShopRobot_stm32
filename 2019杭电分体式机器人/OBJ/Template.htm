@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Feb 13 09:55:09 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Feb 13 10:07:29 2019
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -907,7 +907,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a1]"></a>OLED_SHOW_MANU</STRONG> (Thumb, 2010 bytes, Stack size 24 bytes, oled.o(i.OLED_SHOW_MANU))
+<P><STRONG><a name="[a1]"></a>OLED_SHOW_MANU</STRONG> (Thumb, 1998 bytes, Stack size 24 bytes, oled.o(i.OLED_SHOW_MANU))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROTATE
@@ -1393,7 +1393,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[57]"></a>main</STRONG> (Thumb, 140 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[57]"></a>main</STRONG> (Thumb, 152 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = main &rArr; waitingStop &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
@@ -1424,7 +1424,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[ba]"></a>move_base</STRONG> (Thumb, 924 bytes, Stack size 0 bytes, plan.o(i.move_base))
+<P><STRONG><a name="[ba]"></a>move_base</STRONG> (Thumb, 916 bytes, Stack size 0 bytes, plan.o(i.move_base))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 </UL>
 
@@ -1482,14 +1482,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[da]"></a>waitingStop</STRONG> (Thumb, 116 bytes, Stack size 8 bytes, kinematics.o(i.waitingStop))
+<P><STRONG><a name="[da]"></a>waitingStop</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, kinematics.o(i.waitingStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = waitingStop &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dsub
-<LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
-<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
-<LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
-<LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
+<BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1509,8 +1505,7 @@ Global Symbols
 <P><STRONG><a name="[85]"></a>__aeabi_dadd</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, daddsub_clz.o(x$fpl$dadd))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_dadd
 </UL>
-<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HuiduPidCalcuation
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CM2speedPID_Calculation
@@ -1593,8 +1588,7 @@ Global Symbols
 <P><STRONG><a name="[8d]"></a>__aeabi_cdcmple</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dleqf.o(x$fpl$dleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_cdcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeCoordinate
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideSpeed
@@ -1646,8 +1640,7 @@ Global Symbols
 <P><STRONG><a name="[8c]"></a>__aeabi_cdrcmple</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, drleqf.o(x$fpl$drleqf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __aeabi_cdrcmple
 </UL>
-<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ChangeCoordinate
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;decideSpeed
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HuiduPidCalcuation
@@ -1660,8 +1653,7 @@ Global Symbols
 <P><STRONG><a name="[9c]"></a>__aeabi_dsub</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, daddsub_clz.o(x$fpl$dsub))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dsub
 </UL>
-<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
+<BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MOVE
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
 </UL>
 

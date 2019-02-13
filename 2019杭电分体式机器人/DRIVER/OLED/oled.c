@@ -16,8 +16,8 @@ void OLED_SHOW_MANU()
 	static uint8_t key;
 	
 	switch(manu)
-  {				//底层状态
-		case 1:
+  {				
+		case 1:			//速度坐标界面
 	 {
 		OLED_ShowString(0, 0, "X", 16);
 		OLED_ShowNum(16,0,position_x,3,16);		//X坐标
@@ -59,7 +59,7 @@ void OLED_SHOW_MANU()
 		break;
 	 }
 	 
-	 case 2:		//遥控器状态
+	 case 2:		//遥控器界面
 	 {
 		OLED_ShowString(0, 0, "C0", 16);
 		OLED_ShowNum(25,0,RC_CtrlData.ch0,4,16);		
@@ -86,7 +86,7 @@ void OLED_SHOW_MANU()
 		break;
 	 }
 	 
-		case 3:			//控制参数状态
+		case 3:			//控制参数界面
 	 {
 		OLED_ShowString(0, 0, "stop", 16);
 		OLED_ShowNum(50,0,IsStop,1,16);		
@@ -111,7 +111,7 @@ void OLED_SHOW_MANU()
 		break;
 	 }
 	 
-		case 4:
+		case 4:		//底层灰度界面
 	 {
 		 OLED_ShowString(0, 0, "B1", 16);
 		 OLED_ShowNum(35,0,infrared1,1,16);
@@ -141,8 +141,8 @@ void OLED_SHOW_MANU()
 			}
 			break;
 	 }
-	 
-		case 5:
+		
+		case 5:				//路径规划界面
 	 {
 		 OLED_ShowString(0, 0, "X", 16);
 		 OLED_ShowNum(35,0,position_x,1,16);
@@ -163,12 +163,11 @@ void OLED_SHOW_MANU()
 		 	key=KEY_Scan(0);
 			switch(key)
 			{
-				case KEY1_PRES:position_x=target_position_x;position_y=target_position_y;break;
-				case KEY5_PRES:position_y+=1;break;
-				case KEY3_PRES:position_y-=1;break;
-				case KEY2_PRES:position_x-=1;break;
-				case KEY4_PRES:position_x+=1;break;
-				case KEY6_PRES:OLED_Clear();manu=1;break;
+				case KEY1_PRES:required_vel=0;break;
+				case KEY5_PRES:required_vel+=0.1;break;
+				case KEY3_PRES:required_vel-=0.1;break;
+				case KEY2_PRES:OLED_Clear();manu=4;break;
+				case KEY6_PRES:ROTATE(1);break;
 			}
 			break;
 	 }

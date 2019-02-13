@@ -34,7 +34,7 @@ void remoteAction()
 {
 	if(RC_CtrlData.ch0>=364&&RC_CtrlData.ch0<=1684)
 	{
-		
+		IsRemote=1;
 		required_vel=(double)(RC_CtrlData.ch1 -1024)*0.00092;	
 		motor1.target_speed=get_RPM(required_vel);
 		motor2.target_speed=get_RPM(required_vel);
