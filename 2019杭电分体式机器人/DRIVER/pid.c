@@ -24,10 +24,7 @@ void PID_init()
 void HuiduPidCalcuation()
 {
 	int16_t derror, error_sum_out;
-	if(required_vel>0)
-		huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
-	else
-		huidu_PID.error_now = ADC_JIHE[2] - ADC_JIHE[3];
+	huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
 	huidu_PID.error_sum += huidu_PID.error_now;
 	error_sum_out = huidu_PID.error_sum;
 

@@ -51,13 +51,15 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 					}
 					break;
 				case negative_x:
+					ROTATE(1);
+					ROTATE(1);
 					if(_target_position_x-position_x>1)
-						required_vel=-fast_vel;
+						required_vel=fast_vel;
 					else if(_target_position_x-position_x==1)
 					{
-						required_vel+=down_vel;
-						if(required_vel>=(-slow_vel)) 
-							required_vel=(-slow_vel);
+						required_vel-=down_vel;
+						if(required_vel<=slow_vel)
+							required_vel=slow_vel;
 					}
 					break;
 				case positive_y:
@@ -89,13 +91,15 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 		switch(orientation)
 		{
 			case positive_x:
+				ROTATE(1);
+				ROTATE(1);
 				if(position_x-_target_position_x>1)
-					required_vel=-fast_vel;
+					required_vel=fast_vel;
 				else if(_target_position_x-position_x==-1)
 				{
-						required_vel+=down_vel;
-						if(required_vel>=(-slow_vel)) 
-							required_vel=(-slow_vel);
+						required_vel-=down_vel;
+						if(required_vel<=slow_vel)
+							required_vel=slow_vel;
 				}
 				break;
 			case negative_x:
@@ -169,13 +173,15 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case negative_y:
+				ROTATE(1);
+				ROTATE(1);
 				if(_target_position_y-position_y>1)
-					required_vel=-fast_vel;
+					required_vel=fast_vel;
 				else if(_target_position_y-position_y==1)
 				{
-						required_vel+=down_vel;
-						if(required_vel>=(-slow_vel)) 
-							required_vel=(-slow_vel);
+						required_vel-=down_vel;
+						if(required_vel<=slow_vel)
+							required_vel=slow_vel;
 				}
 				break;
 		}
@@ -207,14 +213,15 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case positive_y:
-
+				ROTATE(1);
+				ROTATE(1);
 				if(position_y-_target_position_y>1)
-					required_vel=-fast_vel;
+					required_vel=fast_vel;
 				else if(_target_position_y-position_y==-1)
 				{
-						required_vel+=down_vel;
-						if(required_vel>=(-slow_vel)) 
-							required_vel=(-slow_vel);
+						required_vel-=down_vel;
+						if(required_vel<=slow_vel)
+							required_vel=slow_vel;
 				}
 				break;
 			case negative_y:

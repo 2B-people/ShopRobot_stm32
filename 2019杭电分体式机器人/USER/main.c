@@ -47,7 +47,7 @@ int main()
 		path_cal();	
 	
    	TIM5_Int_Init(35, 999); //1000HZ		PID调速
-		TIM7_Int_Init(35,999);	//100HZ,    确定速度		
+		TIM7_Int_Init(35,999);	//1000HZ,    确定速度		
 		//begin();
 		TIM6_Int_Init(359, 9999);  //10HZ		路径规划，确定nextx,nexty
 	 while(1)
