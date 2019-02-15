@@ -299,6 +299,7 @@ void show(int8_t x, int8_t y)
 
 void path_Init(void)
 {
+	memset(vis, 0, sizeof(vis));
 	memset(prex, -1, sizeof(prex));
 	memset(prey, -1, sizeof(prey));
 	memset(next_x, -1, sizeof(next_x));
@@ -514,16 +515,15 @@ void move_base()
 
 void begin(void)
 {
-	
 	required_vel=0.3;
-	while(infrared1==BLACK||infrared2==BLACK||infrared3==BLACK||infrared4==BLACK);
+	while((infrared1==BLACK&&infrared2==BLACK)||(infrared3==BLACK&&infrared4==BLACK));
 	required_vel=0;
-	IsHD=1;
 	orientation=positive_x;
 	position_x=0;
 	position_y=2;
-	target_position_x=1;
-	target_position_y=2;
+	target_position_x=0;
+	target_position_y=1;
+	IsHD=1;
 	if(target_position_x!=position_x||target_position_y!=position_y)
 		path_cal();
 }
@@ -532,25 +532,19 @@ void patrol(void)
 	switch(patrolStatus)
 	{
 		case 1:
-			target_position_x=1;
-			target_position_y=3;
+			target_position_x=3;
+			target_position_y=1;
 			path_cal();
 			patrolStatus=2;
 			break;
 		case 2:
-			if(IsMoveFinsh&&orientation!=positive_y)
+			if(IsMoveFinsh&&orientation!=positive_x)
 			{
 				ROTATE(1);
 			}
-			else if(Distance<=100&&IsMoveFinsh&&orientation==positive_y)
+			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_x)
 			{
-				Obstacle=6;
-				path_Init();
-				patrolStatus=3;
-			}
-			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_y)
-			{
-				Obstacle=5;
+				Obstacle=1;
 				path_Init();
 				patrolStatus=3;
 			}
@@ -558,115 +552,74 @@ void patrol(void)
 				patrolStatus=3;
 			break;
 		case 3:
-			target_position_x=3;
-			target_position_y=8;
+			target_position_x=4;
+			target_position_y=2;
 			path_cal();
 			patrolStatus=4;
 			break;
 		case 4:
-			if(Distance<=100&&IsMoveFinsh&&orientation==positive_x)
+			if(IsMoveFinsh&&orientation!=positive_x)
 			{
-				Obstacle=4;
-				path_Init();
-				patrolStatus=5;
-			}
-			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_x)
-			{
-				Obstacle=3;
-				path_Init();
-				patrolStatus=5;
+				ROTATE(1);
 			}
 			else if(IsMoveFinsh)
+			{
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=5;
+			}
 			break;
 		case 5:
-			target_position_x=3;
-			target_position_y=9;
+			target_position_x=7;
+			target_position_y=4;
 			path_cal();
 			patrolStatus=6;
 			break;
 		case 6:
-			if(IsMoveFinsh)
+			if(IsMoveFinsh&&orientation!=positive_y)
+			{
+				ROTATE(1);
+			}
+			else if(IsMoveFinsh)
+			{
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=7;
+			}
 			break;
 		case 7:
-			target_position_x=4;
-			target_position_y=9;
+			target_position_x=5;
+			target_position_y=7;
 			path_cal();
 			patrolStatus=8;
 			break;
 		case 8:
-			if(IsMoveFinsh)
+			if(IsMoveFinsh&&orientation!=negative_x)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				ROTATE(1);
+			}
+			else if(IsMoveFinsh)
+			{
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=9;
 			}
 			break;
 		case 9:
-			target_position_x=5;
-			target_position_y=9;
+			target_position_x=2;
+			target_position_y=5;
 			path_cal();
 			patrolStatus=10;
 			break;
 		case 10:
-			if(IsMoveFinsh)
+			if(IsMoveFinsh&&orientation!=negative_y)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				ROTATE(1);
+			}
+			else if(IsMoveFinsh)
+			{
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=11;
 			}
 			break;
-		case 11:
-			target_position_x=6;
-			target_position_y=9;
-			path_cal();
-			patrolStatus=12;
-			break;
-		case 12:
-			if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=13;
-			}
-			break;
-		case 13:
-			target_position_x=7;
-			target_position_y=9;
-			path_cal();
-			patrolStatus=14;
-			break;
-		case 14:
-			if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=15;
-			}
-			break;
-		case 15:
-			target_position_x=8;
-			target_position_y=9;
-			path_cal();
-			patrolStatus=16;
-			break;
-		case 16:
-			if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=9;
-			}
-		break;
-		case 17:
-			target_position_x=9;
-			target_position_y=9;
-			path_cal();
-			patrolStatus=18;
-			break;
-		case 18:
-			if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=19;
-			}
-		break;
+		
 	}
 	
 }
