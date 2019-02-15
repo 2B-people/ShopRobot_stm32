@@ -49,18 +49,26 @@ int main()
 			begin();
 			OLED_SHOW_MANU();
 			TIM6_Int_Init(359, 9999);  //10HZ		路径规划，确定nextx,nexty
-			if(position_x==0&&position_y==0)//到达初始位置
+			while(1)
 			{
+				waitingStop();	
+				if(!stopping&&!IsRemote)
+					 MOVE(nextx,nexty);
+				if(position_x==0&&position_y==1)
+					break;
+			}
+			target_position_x=1;
+			target_position_y=2;
+			path_cal();
 			 while(1)
 			 {
 					//remoteAction();						//遥控器指令，调试用
 				 waitingStop();								//OLED菜单显示、等待上方传送停止指令
-				 if(patrolStatus!=15)					//巡视场地，找障碍物
-					 patrol();
+//				 if(patrolStatus!=11)					//巡视场地，找障碍物
+//					 patrol();
 				 if(!stopping&&!IsRemote)
 					 MOVE(nextx,nexty);
 			 }
-		 }
 }
 
 

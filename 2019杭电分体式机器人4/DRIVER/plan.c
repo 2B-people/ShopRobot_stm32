@@ -507,7 +507,6 @@ void move_base()
 		IsMoveFinsh=1;
 		nextx=target_position_x;
 		nexty=target_position_y;
-		required_vel=0;
 	}
 	else
 		IsMoveFinsh=0;
@@ -523,7 +522,7 @@ void begin(void)
 	position_x=0;
 	position_y=2;
 	target_position_x=0;
-	target_position_y=0;
+	target_position_y=1;
 	IsHD=1;
 	if(target_position_x!=position_x||target_position_y!=position_y)
 		path_cal();
@@ -533,40 +532,45 @@ void patrol(void)
 	switch(patrolStatus)
 	{
 		case 1:
-			target_position_x=9;
-			target_position_y=0;
+			target_position_x=3;
+			target_position_y=1;
 			path_cal();
 			patrolStatus=2;
 			break;
 		case 2:
-			if(IsMoveFinsh&&orientation!=positive_y)
+			if(IsMoveFinsh&&orientation!=positive_x)
 			{
 				ROTATE(1);
 			}
-			else if(IsMoveFinsh)
+			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_x)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				Obstacle=1;
+				path_Init();
 				patrolStatus=3;
 			}
+			else if(IsMoveFinsh)
+				patrolStatus=3;
+			break;
 		case 3:
-			target_position_x=9;
-			target_position_y=1;
+			target_position_x=4;
+			target_position_y=2;
 			path_cal();
 			patrolStatus=4;
 			break;
 		case 4:
-			if(IsMoveFinsh&&orientation!=positive_y)
+			if(IsMoveFinsh&&orientation!=positive_x)
 			{
 				ROTATE(1);
 			}
 			else if(IsMoveFinsh)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=5;
 			}
+			break;
 		case 5:
-			target_position_x=9;
-			target_position_y=2;
+			target_position_x=7;
+			target_position_y=4;
 			path_cal();
 			patrolStatus=6;
 			break;
@@ -577,77 +581,45 @@ void patrol(void)
 			}
 			else if(IsMoveFinsh)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=7;
 			}
+			break;
 		case 7:
-			target_position_x=9;
-			target_position_y=3;
+			target_position_x=5;
+			target_position_y=7;
 			path_cal();
 			patrolStatus=8;
 			break;
 		case 8:
-			if(IsMoveFinsh&&orientation!=positive_y)
+			if(IsMoveFinsh&&orientation!=negative_x)
 			{
 				ROTATE(1);
 			}
 			else if(IsMoveFinsh)
 			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				/******Í¼ÏñÊ¶±ð****/
 				patrolStatus=9;
 			}
+			break;
 		case 9:
-			target_position_x=9;
-			target_position_y=4;
+			target_position_x=2;
+			target_position_y=5;
 			path_cal();
 			patrolStatus=10;
 			break;
 		case 10:
-			if(IsMoveFinsh&&orientation!=positive_y)
-			{
-				ROTATE(1);
-			}
-			else if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=11;
-			}
-		case 11:
-			target_position_x=9;
-			target_position_y=5;
-			path_cal();
-			patrolStatus=12;
-			break;
-		case 12:
-			if(IsMoveFinsh&&orientation!=positive_y)
-			{
-				ROTATE(1);
-			}
-			else if(IsMoveFinsh)
-			{
-				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				patrolStatus=13;
-			}
-		case 13:
-			target_position_x=8;
-			target_position_y=6;
-			path_cal();
-			patrolStatus=14;
-			break;
-		case 14:
 			if(IsMoveFinsh&&orientation!=negative_y)
 			{
 				ROTATE(1);
 			}
-			else if(IsMoveFinsh&&orientation==negative_y&&Distance<=100)
-			{
-				Obstacle=2;
-				path_Init();
-				patrolStatus=15;
-			}
 			else if(IsMoveFinsh)
-				patrolStatus=15;
-	
+			{
+				/******Í¼ÏñÊ¶±ð****/
+				patrolStatus=11;
+			}
+			break;
+		
 	}
 	
 }
