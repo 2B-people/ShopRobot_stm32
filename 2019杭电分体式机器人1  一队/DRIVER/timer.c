@@ -80,7 +80,7 @@ void TIM5_IRQHandler(void)   //TIM3中断
 	 if (TIM_GetITStatus(TIM5, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM5, TIM_IT_Update  );  
-			CMControl();		
+			CMControl();					//PID调速
 		}
 }
 
@@ -89,8 +89,8 @@ void TIM6_IRQHandler(void)   //TIM3中断
 	 if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM6, TIM_IT_Update  );  
-			ChangeCoordinate();
-			move_base();
+			ChangeCoordinate();		//更新坐标
+			move_base();					//确定下一个坐标位置
 		}
 }
 
@@ -99,6 +99,6 @@ void TIM7_IRQHandler(void)   //TIM3中断
 	 if (TIM_GetITStatus(TIM7, TIM_IT_Update) != RESET)  
 		{
 			TIM_ClearITPendingBit(TIM7, TIM_IT_Update  );  
-			decideSpeed();
+			decideSpeed();				//确定电机速度
 		}
 }

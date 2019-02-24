@@ -330,6 +330,9 @@ void path_Init(void)
 		case 6:graph[1][5]='#';break;
 	}
 	
+	
+	graph[4][8]='#'		;					//学校场地限制处。最后一定要注释掉
+	
 }
 
 
@@ -507,7 +510,6 @@ void move_base()
 		IsMoveFinsh=1;
 		nextx=target_position_x;
 		nexty=target_position_y;
-		required_vel=0;
 	}
 	else
 		IsMoveFinsh=0;
@@ -543,17 +545,25 @@ void patrol(void)
 		case 2:
 			if(IsMoveFinsh&&orientation!=positive_y)
 			{
-				ROTATE(1);
+				switch(orientation)
+				{
+					case positive_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
 			}
 			else if(Distance<=100&&IsMoveFinsh&&orientation==positive_y)
 			{
 				Obstacle=6;
+				nextx=position_x;
+				nexty=position_y;
 				path_Init();
 				patrolStatus=3;
 			}
 			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_y)
 			{
 				Obstacle=5;
+				nextx=position_x;
+				nexty=position_y;
 				path_Init();
 				patrolStatus=3;
 			}
@@ -569,17 +579,25 @@ void patrol(void)
 		case 4:
 			if(IsMoveFinsh&&orientation!=positive_x)
 			{
-				ROTATE(1);
+				switch(orientation)
+				{
+					case negative_y:ROTATE(0);break;
+					default:ROTATE(1);
+				}
 			}
 			else if(Distance<=100&&IsMoveFinsh&&orientation==positive_x)
 			{
 				Obstacle=4;
+				nextx=position_x;
+				nexty=position_y;
 				path_Init();
 				patrolStatus=5;
 			}
 			else if(Distance<=220&&IsMoveFinsh&&orientation==positive_x)
 			{
 				Obstacle=3;
+				nextx=position_x;
+				nexty=position_y;
 				path_Init();
 				patrolStatus=5;
 			}
@@ -604,10 +622,18 @@ void patrol(void)
 			break;
 		case 8:
 			if(IsMoveFinsh&&orientation!=positive_x)
-				ROTATE(1);
+				switch(orientation)
+				{
+					case negative_y:ROTATE(0);break;
+					default:ROTATE(1);
+				}
 			else if(IsMoveFinsh)
 			{
 				/***********补充货架障碍物程序**********/
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[0]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[1]=1;
 				patrolStatus=9;
 			}
 			break;
@@ -621,6 +647,10 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********补充货架障碍物程序**********/
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[2]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[3]=1;
 				patrolStatus=11;
 			}
 			break;
@@ -635,6 +665,10 @@ void patrol(void)
 			{
 				/***********补充货架障碍物程序**********/
 				patrolStatus=13;
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[4]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[5]=1;
 			}
 			break;
 		case 13:
@@ -648,6 +682,10 @@ void patrol(void)
 			{
 				/***********补充货架障碍物程序**********/
 				patrolStatus=15;
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[6]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[7]=1;
 			}
 			break;
 		case 15:
@@ -660,6 +698,10 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********补充货架障碍物程序**********/
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[8]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[9]=1;
 				patrolStatus=17;
 			}
 		break;
@@ -673,6 +715,10 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********补充货架障碍物程序**********/
+				if(ADC_JIHE[2]>Dis_Vel)
+					shelves[10]=1;
+				if(ADC_JIHE[3]>Dis_Vel)
+					shelves[11]=1;
 				patrolStatus=19;
 			}
 		break;

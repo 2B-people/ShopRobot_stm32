@@ -18,11 +18,12 @@ uint8_t position_y = 0;			  //当前纵坐标
 uint8_t orientation=positive_y ; //当前车的朝向，默认开始为y正方向。
 uint8_t target_position_x = 0;	//目标横坐标
 uint8_t target_position_y = 0;	//目标纵坐标
-uint8_t IsHD=0;                                                                                                                                                                                                                                                                                                                                                                                                 ;									//是否使用模拟灰度。
+uint8_t IsHD=0;                                               ;                                                                                                                                                                                                                                                                                                                                                                                                 ;									//是否使用模拟灰度。
 uint8_t Obstacle=0;						//障碍物位置
 uint16_t Distance=0;					//激光雷达测距结果
 uint8_t stopping=0;				  //车身是否停止
 uint8_t mode=0;
+uint8_t shelves[12];				//C货架
 void begin(void);
 int main()
 {
@@ -30,7 +31,7 @@ int main()
 		GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 		SystemInit();
 		initialise();
-		
+		memset(shelves,0,sizeof(shelves));
 			NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);			
 			usart1_Init(115200);
 			CAN_Mode_Init();
@@ -46,9 +47,23 @@ int main()
 			path_Init();	
 			TIM5_Int_Init(35, 999); //1000HZ		PID调速
 			TIM7_Int_Init(35,999);	//1000HZ,    确定速度		
+			LED1=0;
+			delay(500);
+			LED1=1;
+			delay(500);
+			LED1=0;
 			begin();
 			OLED_SHOW_MANU();
-			TIM6_Int_Init(359, 9999);  //10HZ		路径规划，确定nextx,nexty
+			TIM6_Int_Init(35, 999);  //10HZ		路径规划，确定nextx,nexty
+			LED1=1;
+			
+			
+//			position_x=5;
+//			position_y=2;
+//			orientation=positive_y ;		//测试抓取
+//			toFetch();
+//			
+			 
 			mode=1;
 			while(1)								//开始
 			{

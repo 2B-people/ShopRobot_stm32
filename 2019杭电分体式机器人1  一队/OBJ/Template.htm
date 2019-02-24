@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sun Feb 17 21:17:56 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Sun Feb 24 21:21:15 2019
 <BR><P>
 <H3>Maximum Stack Usage =        184 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -103,8 +103,8 @@ Function Pointers
 Global Symbols
 </H3>
 <P><STRONG><a name="[4d]"></a>__main</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, __main.o(!!!main))
-<BR><BR>[Calls]<UL><LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<BR><BR>[Calls]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
+<LI><a href="#[4f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
 <P><STRONG><a name="[4f]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
@@ -651,7 +651,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM5_IRQHandler
 </UL>
 
-<P><STRONG><a name="[8a]"></a>ChangeCoordinate</STRONG> (Thumb, 362 bytes, Stack size 8 bytes, bottom_sensor.o(i.ChangeCoordinate))
+<P><STRONG><a name="[8a]"></a>ChangeCoordinate</STRONG> (Thumb, 490 bytes, Stack size 8 bytes, bottom_sensor.o(i.ChangeCoordinate))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = ChangeCoordinate &rArr; __aeabi_cdcmple
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
@@ -849,7 +849,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[9b]"></a>MOVE</STRONG> (Thumb, 1562 bytes, Stack size 16 bytes, plan.o(i.MOVE))
+<P><STRONG><a name="[9b]"></a>MOVE</STRONG> (Thumb, 1538 bytes, Stack size 16 bytes, plan.o(i.MOVE))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = MOVE &rArr; ROTATE &rArr; get_RPM &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROTATE
@@ -901,7 +901,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a1]"></a>OLED_SHOW_MANU</STRONG> (Thumb, 2110 bytes, Stack size 24 bytes, oled.o(i.OLED_SHOW_MANU))
+<P><STRONG><a name="[a1]"></a>OLED_SHOW_MANU</STRONG> (Thumb, 2114 bytes, Stack size 24 bytes, oled.o(i.OLED_SHOW_MANU))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Clear
@@ -918,6 +918,7 @@ Global Symbols
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dadd
 </UL>
 <BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toFetch
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1017,7 +1018,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[9d]"></a>ROTATE</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, bottom_sensor.o(i.ROTATE))
+<P><STRONG><a name="[9d]"></a>ROTATE</STRONG> (Thumb, 270 bytes, Stack size 16 bytes, bottom_sensor.o(i.ROTATE))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = ROTATE &rArr; get_RPM &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
@@ -1037,7 +1038,7 @@ Global Symbols
 <P><STRONG><a name="[a]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f10x_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[89]"></a>Set_CM_Speed</STRONG> (Thumb, 76 bytes, Stack size 40 bytes, motor.o(i.Set_CM_Speed))
+<P><STRONG><a name="[89]"></a>Set_CM_Speed</STRONG> (Thumb, 72 bytes, Stack size 40 bytes, motor.o(i.Set_CM_Speed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Set_CM_Speed &rArr; CAN_Transmit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CAN_Transmit
@@ -1277,7 +1278,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bfs
 </UL>
 
-<P><STRONG><a name="[b5]"></a>decideSpeed</STRONG> (Thumb, 190 bytes, Stack size 16 bytes, kinematics.o(i.decideSpeed))
+<P><STRONG><a name="[b5]"></a>decideSpeed</STRONG> (Thumb, 326 bytes, Stack size 16 bytes, kinematics.o(i.decideSpeed))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = decideSpeed &rArr; HuiduPidCalcuation &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;adcjihe
@@ -1294,6 +1295,7 @@ Global Symbols
 <P><STRONG><a name="[98]"></a>delay</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, millisecondtimer.o(i.delay))
 <BR><BR>[Called By]<UL><LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toFetch
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_Init
+<LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;KEY_Scan
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROTATE
 </UL>
@@ -1304,8 +1306,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initQueue
 </UL>
 <BR>[Called By]<UL><LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bfs
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 </UL>
 
 <P><STRONG><a name="[a9]"></a>get_RPM</STRONG> (Thumb, 66 bytes, Stack size 40 bytes, kinematics.o(i.get_RPM))
@@ -1375,7 +1377,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DMA1_Channel3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[57]"></a>main</STRONG> (Thumb, 318 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[57]"></a>main</STRONG> (Thumb, 366 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
 <LI>Call Chain = main &rArr; waitingStop &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
@@ -1388,6 +1390,7 @@ Global Symbols
 <LI><a href="#[d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;initialise
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;infrared_Init
 <LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;huiductrlinit
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM7_Int_Init
 <LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_Int_Init
@@ -1408,7 +1411,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[b3]"></a>move_base</STRONG> (Thumb, 924 bytes, Stack size 0 bytes, plan.o(i.move_base))
+<P><STRONG><a name="[b3]"></a>move_base</STRONG> (Thumb, 916 bytes, Stack size 0 bytes, plan.o(i.move_base))
 <BR><BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM6_IRQHandler
 </UL>
 
@@ -1418,7 +1421,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNum
 </UL>
 
-<P><STRONG><a name="[d9]"></a>path_Init</STRONG> (Thumb, 280 bytes, Stack size 8 bytes, plan.o(i.path_Init))
+<P><STRONG><a name="[d9]"></a>path_Init</STRONG> (Thumb, 288 bytes, Stack size 8 bytes, plan.o(i.path_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20 + Unknown Stack Size
 <LI>Call Chain = path_Init &rArr; strcpy
 </UL>
@@ -1441,17 +1444,19 @@ Global Symbols
 <LI><a href="#[df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bfs
 </UL>
-<BR>[Called By]<UL><LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patrol
+<BR>[Called By]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;waitingStop
+<LI><a href="#[dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;toFetch
+<LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patrol
 <LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;begin
 </UL>
 
-<P><STRONG><a name="[db]"></a>patrol</STRONG> (Thumb, 606 bytes, Stack size 8 bytes, plan.o(i.patrol))
+<P><STRONG><a name="[db]"></a>patrol</STRONG> (Thumb, 942 bytes, Stack size 8 bytes, plan.o(i.patrol))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = patrol &rArr; ROTATE &rArr; get_RPM &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_Init
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROTATE
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1467,12 +1472,15 @@ Global Symbols
 <LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 </UL>
 
-<P><STRONG><a name="[dc]"></a>toFetch</STRONG> (Thumb, 164 bytes, Stack size 8 bytes, bottom_sensor.o(i.toFetch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = toFetch &rArr; ROTATE &rArr; get_RPM &rArr; __aeabi_dmul
+<P><STRONG><a name="[dc]"></a>toFetch</STRONG> (Thumb, 1624 bytes, Stack size 8 bytes, bottom_sensor.o(i.toFetch))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
+<LI>Call Chain = toFetch &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay
+<LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROTATE
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1490,10 +1498,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[da]"></a>waitingStop</STRONG> (Thumb, 62 bytes, Stack size 8 bytes, kinematics.o(i.waitingStop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = waitingStop &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
+<P><STRONG><a name="[da]"></a>waitingStop</STRONG> (Thumb, 174 bytes, Stack size 8 bytes, kinematics.o(i.waitingStop))
+<BR><BR>[Stack]<UL><LI>Max Depth = 184 + Unknown Stack Size
+<LI>Call Chain = waitingStop &rArr; OLED_SHOW_MANU &rArr; OLED_ShowNum &rArr; OLED_ShowChar &rArr; OLED_Set_Pos &rArr; OLED_WR_Byte &rArr; Write_IIC_Data &rArr; Write_IIC_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_SHOW_MANU
+<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;path_cal
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmpeq
 </UL>
 <BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
