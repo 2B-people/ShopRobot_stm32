@@ -23,7 +23,7 @@ void  adcjihe(void);
 //还有一个main函数里的ADC_ConvertedValueLocal[]
 extern u16  ADC_JIHE[NOFCHANEL]; //0为左边，1为右路；
 
-
+extern u16 ADC_ConvertedValue[NOFCHANEL];
 #endif
 
 

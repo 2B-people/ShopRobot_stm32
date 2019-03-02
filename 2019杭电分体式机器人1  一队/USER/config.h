@@ -15,23 +15,23 @@
 #define PI 3.1415926
 
 #define K_P 2.475  // P constant
-#define K_I 0.035 // I constant
-#define K_D 0.02  // D constant
+#define K_I 0.045 // I constant
+#define K_D 0  // D constant
 
 
 #define C610R		
 
-#define hK_P 1.15  // P constant
-#define hK_I 0.015 // I constant
-#define hK_D 0.058  // D constant
+#define hK_P 0.85  // P constant
+#define hK_I 0 // I constant
+#define hK_D 0.13 // D constant
 
 
-#define MaxVel (0.65)
+#define MaxVel (0.67)
 
 
-#define fast_vel (0.55)		//一般情况下车速
-#define slow_vel (0.27)		//车子还在运行状态的最低车速
-#define down_vel (0.015)	//达到最后一格时，每个周期减下的速度
+#define fast_vel (0.67)		//一般情况下车速
+#define slow_vel (0.25)		//车子还在运行状态的最低车速
+#define down_vel (0.03)	//达到最后一格时，每个周期减下的速度
 
 
 #define BLACK 0

@@ -236,8 +236,6 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				break;
 		}
 	}
-	else
-		required_vel=0;
 	if(position_x==target_position_x&&position_y==target_position_y)
 	{
 		required_vel=0;
@@ -518,29 +516,39 @@ void move_base()
 
 void begin(void)
 {
-	required_vel=0.3;
+	required_vel=slow_vel;
 	while((infrared1==BLACK&&infrared2==BLACK)||(infrared3==BLACK&&infrared4==BLACK))
 	{
 		OLED_SHOW_MANU();
 	}
 	required_vel=0;
-	orientation=positive_x;
-	position_x=0;
-	position_y=2;
+	Arm_run();
+	required_vel=slow_vel;
+	while((infrared1==BLACK&&infrared2==BLACK)||(infrared3==BLACK&&infrared4==BLACK))
+	{
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	ROTATE(0);
+	required_vel=slow_vel;
+	while((infrared1==BLACK&&infrared2==BLACK)||(infrared3==BLACK&&infrared4==BLACK))
+	{
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	
+	orientation=positive_y;
+	position_x=1;
+	position_y=3;
 	target_position_x=1;
-	target_position_y=2;
-	if(target_position_x!=position_x||target_position_y!=position_y)
-		path_cal();
+	target_position_y=3;
+	IsMoveFinsh=1;
 }
 void patrol(void)
 {
 	switch(patrolStatus)
 	{
-		case 1:
-			target_position_x=1;
-			target_position_y=3;
-			path_cal();
-			patrolStatus=2;
+		case 1:		
 			break;
 		case 2:
 			if(IsMoveFinsh&&orientation!=positive_y)

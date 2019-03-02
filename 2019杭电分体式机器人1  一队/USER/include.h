@@ -47,5 +47,6 @@ extern uint8_t stopping;
 extern uint8_t IsFetch;
 extern uint8_t mode;
 extern uint8_t shelves[12];
+extern uint8_t Goods_num;
 #endif
 

@@ -1,4 +1,5 @@
 #include "bottom_sensor.h"
+uint32_t TIM6_counter=0;
 uint8_t LsRotate=0;
 void infrared_Init(void)
 {
@@ -31,37 +32,77 @@ void infrared_Init(void)
 }
 void ChangeCoordinate()
 {
-	static uint8_t flag=0;
-	if(IsRotate)
-		flag=0;
-	else if(!IsRotate&&!IsFetch)
+//	static uint8_t flag=0;
+	
+	
+//	if(required_vel<=slow_vel)
+//	{
+//		TIM6_counter=0;
+//		if(IsRotate)
+//			flag=0;
+//		else if(!IsRotate&&!IsFetch)
+//		{
+//			if(flag==0&&infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+//			{
+//				if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+//				{
+//					if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+//					{
+//						Beep_On_Off(False);
+//						flag=1;
+//					}
+//				}
+//			}
+//			if(flag==1&&((infrared1==WHITE&&infrared3==WHITE)||(infrared2==WHITE&&infrared4==WHITE)))
+//			{
+//				Beep_On_Off(True);
+//				switch(orientation)
+//				{
+//					case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
+//					case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
+//					case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
+//					case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
+//				}		
+//				flag=0;
+//				LED2=!LED2;
+//			}
+//		}
+//	}
+
+
+
+	TIM6_counter++;
+	if(TIM6_counter*required_vel>=400)
 	{
-		if(flag==0&&infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
-		{
-			if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
-			{
-				if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
-				{
-					Beep_On_Off(False);
-					flag=1;
-				}
-			}
-		}
-		if(flag==1&&((infrared1==WHITE&&infrared3==WHITE)||(infrared2==WHITE&&infrared4==WHITE)))
-		{
-			Beep_On_Off(True);
-			switch(orientation)
+		TIM6_counter=0;
+		switch(orientation)
 			{
 				case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
 				case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
 				case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
 				case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
-			}		
-			flag=0;
-			LED2=!LED2;
-		}
+			}
 	}
+	
+	
+//	else
+//	{
+//		TIM6_counter++;
+//		if(TIM6_counter>=597)
+//		{
+//			TIM6_counter=0;
+//			switch(orientation)
+//			{
+//				case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
+//				case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
+//				case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
+//				case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
+//			}
+//		}
+//	}
+	
 }
+
 
 void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 {
@@ -73,7 +114,7 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 		case 0:
 			motor1.target_speed=-get_RPM(0.2);
 			motor2.target_speed=get_RPM(0.2);
-			delay(690);
+			delay(710);
 		break;
 		case 1:
 			motor1.target_speed=get_RPM(0.2);
@@ -99,11 +140,10 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 	motor1.target_speed=get_RPM(required_vel);
 	motor2.target_speed=get_RPM(required_vel);
 	IsRotate=0;
-	delay(30);
 	LED2=1;
 	LsRotate=1;
 }
-void toFetch(void)			//抓取程序
+void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 {
 	uint8_t IsInline=1;
 	IsHD=1;
@@ -336,21 +376,38 @@ void toFetch(void)			//抓取程序
 		IsHD=0;
 	}
 	
+	required_vel=0;
 	
-	
+	switch(Floor)
+	{
+		case 0:Goods_floor(0);break;
+		case 1:Goods_floor(1);break;
+	}
+	delay(1000);
 	required_vel=slow_vel;
 	
-	delay(1500);
+	delay(1700);
 	OLED_SHOW_MANU();
 	required_vel=0;
 	OLED_SHOW_MANU();
 	delay(1000);
 	OLED_SHOW_MANU();
+	
+	
+	switch(IsGet)
+	{
+		case 100:	Give_goods();break;
+		default:Get_goods(IsGet);break;
+	}
+	
+	
+	
+	
 	required_vel=-slow_vel;
 	OLED_SHOW_MANU();
 	delay(300);
 	OLED_SHOW_MANU();
-	while(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+	while(infrared2==BLACK||infrared4==BLACK)
 	{
 		OLED_SHOW_MANU();
 	}

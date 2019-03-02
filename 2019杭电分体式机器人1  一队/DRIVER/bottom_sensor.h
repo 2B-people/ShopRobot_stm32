@@ -10,6 +10,7 @@
 void infrared_Init(void);
 void ChangeCoordinate(void);
 void ROTATE(uint8_t Clockwise);//ClockwiseÎª1Ë³Ê±Õë
-void toFetch(void);
+void toFetch(uint8_t IsGet,uint8_t Floor);
 extern uint8_t LsRotate;
+extern uint32_t TIM6_counter;
 #endif

@@ -24,7 +24,7 @@ void PID_init()
 void HuiduPidCalcuation()
 {
 	int16_t derror, error_sum_out;
-	huidu_PID.error_now = ADC_JIHE[0] - ADC_JIHE[1];
+	huidu_PID.error_now = ADC_ConvertedValue[0] - ADC_ConvertedValue[1];
 	huidu_PID.error_sum += huidu_PID.error_now;
 	error_sum_out = huidu_PID.error_sum;
 
@@ -78,6 +78,16 @@ void CM2speedPID_Calculation()
 
 void CMControl()
 {
+	if(IsHD&&IsRotate==0)
+	{
+			HuiduPidCalcuation();						//根据adc数值
+			if(required_vel>0)
+			{
+				motor1.target_speed += huidu_PID.pid_out;
+				motor2.target_speed -= huidu_PID.pid_out;				
+			}
+	}
+	
 		CM1speedPID_Calculation();
 		CM2speedPID_Calculation();
 		Set_CM_Speed(CAN1, s_PIDcm1.pid_out, s_PIDcm2.pid_out);

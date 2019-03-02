@@ -24,6 +24,7 @@ uint16_t Distance=0;					//激光雷达测距结果
 uint8_t stopping=0;				  //车身是否停止
 uint8_t mode=0;
 uint8_t shelves[12];				//C货架
+uint8_t Goods_num;
 void begin(void);
 int main()
 {
@@ -31,20 +32,22 @@ int main()
 		GPIO_PinRemapConfig(GPIO_Remap_SWJ_JTAGDisable, ENABLE);
 		SystemInit();
 		initialise();
+		delay(1000);
 		memset(shelves,0,sizeof(shelves));
 			NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);			
 			usart1_Init(115200);
-			CAN_Mode_Init();
-			Ledbeep_init();
-			//RC_Init();
-			OLED_Init(); 
-			las_Init();
-			PID_init();
-			huiductrlinit();
-			infrared_Init();
-			KEY_Init();
-			OLED_Clear();
-			path_Init();	
+			Arm_Init(7199,199);
+			CAN_Mode_Init();			//初始化CAN总线
+			Ledbeep_init();				//初始化LED灯、蜂鸣器
+			//RC_Init();	
+			OLED_Init(); 					//初始化OLED
+			las_Init();						//初始化测距模块
+			PID_init();						//初始化PID参数
+			huiductrlinit();			//初始化模拟灰度
+			infrared_Init();			//初始化底层红外传感器
+			KEY_Init();						//初始化按键
+			OLED_Clear();					//清空OLED屏
+			path_Init();					//初始化路径规划函数
 			TIM5_Int_Init(35, 999); //1000HZ		PID调速
 			TIM7_Int_Init(35,999);	//1000HZ,    确定速度		
 			LED1=0;
@@ -52,32 +55,17 @@ int main()
 			LED1=1;
 			delay(500);
 			LED1=0;
-			begin();
+
+			
+			begin();								//将车从红色框区开出
 			OLED_SHOW_MANU();
-			TIM6_Int_Init(35, 999);  //10HZ		路径规划，确定nextx,nexty
+			TIM6_Int_Init(71, 999);  //1000HZ		路径规划，确定nextx,nexty 72m
 			LED1=1;
-			
-			
-//			position_x=5;
-//			position_y=2;
-//			orientation=positive_y ;		//测试抓取
-//			toFetch();
-//			
-			 
-			mode=1;
-			while(1)								//开始
-			{
-				waitingStop();
-				if(!stopping&&!IsRemote&&!IsFetch)
-					 MOVE(nextx,nexty);
-				if(position_x==1&&position_y==2)
-					break;
-			}
+
+			mode=1;	
 			IsHD=1;
-			mode=2;
 			 while(1)									//巡视
-			 {
-					//remoteAction();						//遥控器指令，调试用
+			 {				
 				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
 				 patrol(); 										 //巡视场地，找障碍物
 				 if(!stopping&&!IsRemote&&!IsFetch)
@@ -85,15 +73,35 @@ int main()
 				 if(patrolStatus==19)
 					 break;
 			 }
-			 mode=3;
+			 mode=3;		
+
+/********************************************************/			 
+			 toFetch(100,1);
+			 target_position_x=5;
+			 target_position_y=7;
+			 path_cal();			 
 			 while(1)									//常规
+			 {					
+				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
+				 if(!stopping&&!IsRemote&&!IsFetch)
+					 MOVE(nextx,nexty);
+				 if(position_x==5&&position_y==7)
+					 break;
+			 }
+			 toFetch(0,0);
+			 while(1)
 			 {
-				 	//remoteAction();						//遥控器指令，调试用
+				 OLED_SHOW_MANU();
+			 }
+			 
+/**********************************************************/	 
+			 while(1)									//常规
+			 {					
 				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
 				 if(!stopping&&!IsRemote&&!IsFetch)
 					 MOVE(nextx,nexty);
 				 else if(IsFetch&&!stopping&&!IsRemote)
-					 toFetch();
+					 toFetch(Goods_num,1);									//抓取
 			 }
 }
 

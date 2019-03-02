@@ -16,7 +16,7 @@ void waitingStop()
 			}		 		
 			if (IsStop)											//接收到停止信号
 			{
-				switch(orientation)						//改变车身朝向
+				switch(orientation)
 				{
 					case positive_x:
 						target_position_x=position_x+1;
@@ -48,7 +48,7 @@ void waitingStop()
 }
 void decideSpeed(void)
 {
-	static uint8_t lsx;							
+static uint8_t lsx;
 	static uint8_t lsy;
 	
 
@@ -66,46 +66,32 @@ void decideSpeed(void)
 	{
 		required_vel=-MaxVel;
 	}	
-	if(required_vel>=fast_vel)					//速度快时启用另一套PID
+	if(required_vel>=fast_vel)
 	{
 		huidu_PID.Kp=hK_P;
 		huidu_PID.Ki=hK_I;
 		huidu_PID.Kd=hK_D;
-		s_PIDcm1.error_sum=0;							//将积分置零
-		s_PIDcm2.error_sum=0;			
 	}
 	else
 	{
 		huidu_PID.Kp=0.55;
 		huidu_PID.Ki=0;
 		huidu_PID.Kd=0.02;
-		s_PIDcm1.error_sum=0;							//积分置零
-		s_PIDcm2.error_sum=0;			
 	}
 	if(IsRotate==0)
 	{
 		
-		if(LsRotate&&position_x==lsx&&position_y==lsy)			//完成转向走的第一格低速行进
+		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch)
 		{
 			required_vel=slow_vel;	
 		}
-		else if(LsRotate)																		
+		else if(LsRotate)
 			LsRotate=0;
-		lsx=position_x;																			
-		lsy=position_y;																			//更新上一个坐标位置
+		lsx=position_x;
+		lsy=position_y;
 		
 		motor1.target_speed = get_RPM(required_vel);
 		motor2.target_speed = get_RPM(required_vel);
-	}
-	if(IsHD&&IsRotate==0)																	
-	{
-			adcjihe();											//adc采样量化
-			HuiduPidCalcuation();						//根据adc数值
-			if(required_vel>0)
-			{
-				motor1.target_speed += huidu_PID.pid_out;
-				motor2.target_speed -= huidu_PID.pid_out;				
-			}
 	}
 	
 	

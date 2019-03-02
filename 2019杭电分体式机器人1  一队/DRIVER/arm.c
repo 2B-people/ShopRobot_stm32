@@ -3,19 +3,22 @@
 int16_t up_dowm_1=0;												//角度加减标志					
 int16_t up_dowm_3=0;
 
-int16_t now_angle_[3]={7010,6325,6390};			//角度初始化，舵机1~3
+int16_t now_angle_[3]={7030,6650,6280};			//角度初始化，舵机1~3
 
-int16_t floor_[2]={6410,6890};							//货物1，2层参数
+int16_t p=6320;
 
-int16_t rid_speed=4;												//舵机速度
+int16_t floor_[2]={6430,6910};							//货物1，2层参数
 
-int16_t goods[12]={6430,6430,6430}; 				//抓货物
-								 //雪花 红牛 ....
+int16_t rid_speed=3;												//舵机速度
 
-int16_t give_goods=6570;										//放货物
+int16_t goods[12]={6330,6430,6415,6415,6325,6405,6395,6430,6430,6415,6415,6415}; 				//抓货物
+								// 雪花 红牛 网球 爽歪 魔方 娃哈 养乐 乐虎 特仑 方块 方块 方块
+
+int16_t give_goods=6500;										//放货物
 
 
 
+					//      7199    199    50hz
 void Arm_Init(u16 arr,u16 psc)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -65,6 +68,107 @@ void Arm_Init(u16 arr,u16 psc)
 }
 
 
+
+void Arm_run()
+{
+	if((give_goods-now_angle_[2])>0)
+		up_dowm_3=1;
+	else
+		up_dowm_3=-1;
+	
+	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
+	{
+		delay(rid_speed);
+		TIM_SetCompare3(TIM2,now_angle_[2]);																			//打开机械臂
+	}	
+	
+	for(;now_angle_[1]!=p;now_angle_[1]-=1)
+	{
+		delay(rid_speed);
+		TIM_SetCompare2(TIM2,now_angle_[1]);															
+	}	
+	
+	if((floor_[0]-now_angle_[0])>0)
+		up_dowm_1=1;
+
+	else
+		up_dowm_1=-1;
+
+	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	{
+		delay(rid_speed);
+		TIM_SetCompare1(TIM2,now_angle_[0]);
+		TIM_SetCompare2(TIM2,now_angle_[1]);																			//到第一层
+	}	
+}
+
+
+void Com_run()
+{
+	if((give_goods-now_angle_[2])>0)
+		up_dowm_3=1;
+	else
+		up_dowm_3=-1;
+	
+	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
+	{
+		delay(rid_speed);
+		TIM_SetCompare3(TIM2,now_angle_[2]);																			//打开机械臂
+	}	
+	
+	if((floor_[0]-now_angle_[0])>0)
+		up_dowm_1=1;
+
+	else
+		up_dowm_1=-1;
+
+	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	{
+		delay(rid_speed);
+		TIM_SetCompare1(TIM2,now_angle_[0]);
+		TIM_SetCompare2(TIM2,now_angle_[1]);																			//到第一层
+	}	
+}
+
+
+
+void Get_goods(int16_t goods_num)
+{
+											
+	if((goods[goods_num]-now_angle_[2])>0)
+		up_dowm_3=1;
+	else
+		up_dowm_3=-1;
+	
+	for(;now_angle_[2]!=goods[goods_num];now_angle_[2]+=up_dowm_3)
+	{
+		delay(rid_speed);
+		TIM_SetCompare3(TIM2,now_angle_[2]);
+	}																																						//抓取指定货物0~11
+																
+}
+
+
+
+void Goods_floor(int16_t floor_num)
+{
+	if((floor_[floor_num]-now_angle_[0])>0)
+		up_dowm_1=1;
+
+	else
+		up_dowm_1=-1;
+
+	for(;now_angle_[0]!=floor_[floor_num];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	{
+		delay(rid_speed);
+		TIM_SetCompare1(TIM2,now_angle_[0]);
+		TIM_SetCompare2(TIM2,now_angle_[1]);
+	}																																						//放置在哪层0~1
+}
+
+
+
+
 void Give_goods()
 {
 	if((give_goods-now_angle_[2])>0)
@@ -80,61 +184,9 @@ void Give_goods()
 }
 
 
-void Get_goods(int16_t goods_num)
-{
-	
-	if((give_goods-now_angle_[2])>0)
-		up_dowm_3=1;
-	else
-		up_dowm_3=-1;
-	
-	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
-	{
-		delay(rid_speed);
-		TIM_SetCompare3(TIM2,now_angle_[2]);
-	}																																						//打开机械爪
-	
-	
-	
-	if((floor_[0]-now_angle_[0])>0)
-		up_dowm_1=1;
 
-	else
-		up_dowm_1=-1;
 
-	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
-	{
-		delay(rid_speed);
-		TIM_SetCompare1(TIM2,now_angle_[0]);
-		TIM_SetCompare2(TIM2,now_angle_[1]);
-	}																																						//到货物位置
-																
-	
-	
-	if((goods[goods_num]-now_angle_[2])>0)
-		up_dowm_3=1;
-	else
-		up_dowm_3=-1;
-	
-	for(;now_angle_[2]!=goods[goods_num];now_angle_[2]+=up_dowm_3)
-	{
-		delay(rid_speed);
-		TIM_SetCompare3(TIM2,now_angle_[2]);
-	}																																						//抓取指定货物
-																
-	
-		
-	if((floor_[1]-now_angle_[0])>0)
-		up_dowm_1=1;
 
-	else
-		up_dowm_1=-1;
 
-	for(;now_angle_[0]!=floor_[1];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
-	{
-		delay(rid_speed);
-		TIM_SetCompare1(TIM2,now_angle_[0]);
-		TIM_SetCompare2(TIM2,now_angle_[1]);
-	}																																						//到达指定层数
-}
+
 
