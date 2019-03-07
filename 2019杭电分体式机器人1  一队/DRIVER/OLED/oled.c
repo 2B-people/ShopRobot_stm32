@@ -12,7 +12,7 @@
 #include "millisecondtimer.h"
 void OLED_SHOW_MANU()
 {
-	static uint8_t manu=1;
+	static uint8_t manu=5;
 	static uint8_t key;
 	
 	switch(manu)
@@ -25,12 +25,8 @@ void OLED_SHOW_MANU()
 		OLED_ShowNum(16,2,position_y,3,16);		//Y坐标
 		OLED_ShowString(0, 4, "D", 16);	
 		OLED_ShowNum(16,4,Distance,3,16);				
-		OLED_ShowString(0, 6, "V", 16);	
-		if(required_vel<0)
-			OLED_ShowChar(10,6,'-',16);
-		else
-			OLED_ShowChar(10,6,' ',16);
-		OLED_ShowNum(16,6,(abs)(required_vel*100),3,16);	
+		OLED_ShowString(0, 6, "B", 16);	
+		OLED_ShowNum(16,6,Obstacle,1,16);	
 		OLED_ShowString(50, 0, "M1", 16);
 		if(motor1.target_speed<0)
 			OLED_ShowChar(70,0,'-',16);
@@ -44,9 +40,9 @@ void OLED_SHOW_MANU()
 			OLED_ShowChar(70,2,' ',16);
 		OLED_ShowNum(76,2,(abs)(motor2.now_speed),4,16);//电机2速度
 		OLED_ShowString(50, 4, "H1", 16);
-		OLED_ShowNum(76,4, ADC_JIHE[0],4,16);			//灰度1值
+		OLED_ShowNum(76,4, ADC_ConvertedValue[0],4,16);			//灰度1值
 		OLED_ShowString(50, 6, "H2", 16);
-		OLED_ShowNum(76,6, ADC_JIHE[1],4,16);			//灰度2值
+		OLED_ShowNum(76,6, ADC_ConvertedValue[1],4,16);			//灰度2值
 		key=KEY_Scan(0);
 		switch(key)
 		{
@@ -100,8 +96,8 @@ void OLED_SHOW_MANU()
 		OLED_ShowNum(120,0,IsRemote,1,16);
 		OLED_ShowString(70, 2, "Fetc", 16);
 		OLED_ShowNum(120,2,IsFetch,1,16);
-		OLED_ShowString(70, 4, "Mode", 16);
-		OLED_ShowNum(120,4,mode,1,16);
+		OLED_ShowString(70, 4, "Mod", 16);
+		OLED_ShowNum(100,4,mode,2,16);
 		OLED_ShowString(70, 6, "Pat", 16);
 		OLED_ShowNum(100,6,patrolStatus,2,16);
 		key=KEY_Scan(0);
@@ -128,13 +124,13 @@ void OLED_SHOW_MANU()
 		 OLED_ShowString(0, 6, "B4", 16);
 		 OLED_ShowNum(35,6,infrared4,1,16);
 		 OLED_ShowString(50, 0, "H1", 16);
-		 OLED_ShowNum(76,0, ADC_JIHE[0],4,16);			//灰度1值
+		 OLED_ShowNum(76,0, ADC_ConvertedValue[0],4,16);			//灰度1值
 		 OLED_ShowString(50, 2, "H2", 16);
-		 OLED_ShowNum(76,2, ADC_JIHE[1],4,16);			//灰度2值
+		 OLED_ShowNum(76,2, ADC_ConvertedValue[1],4,16);			//灰度2值
 		 OLED_ShowString(50, 4, "H3", 16);
-		 OLED_ShowNum(76,4, ADC_JIHE[2],4,16);			//灰度1值
+		 OLED_ShowNum(76,4, ADC_ConvertedValue[2],4,16);			//灰度1值
 		 OLED_ShowString(50, 6, "H4", 16);
-		 OLED_ShowNum(76,6, ADC_JIHE[3],4,16);			//灰度2值		 
+		 OLED_ShowNum(76,6, ADC_ConvertedValue[3],4,16);			//灰度2值		 
 		 key=KEY_Scan(0);
 			switch(key)
 			{
@@ -162,8 +158,8 @@ void OLED_SHOW_MANU()
 		 OLED_ShowNum(76,0, nextx,4,16);			
 		 OLED_ShowString(50, 2, "NY", 16);
 		 OLED_ShowNum(76,2, nexty,4,16);			
-		 OLED_ShowString(50, 4, "Ob", 16);
-		 OLED_ShowNum(76,4, Obstacle,4,16);			
+		 OLED_ShowString(50, 4, "Tr", 16);
+		 OLED_ShowNum(76,4, target_orientation,4,16);			
 		 OLED_ShowString(50, 6, "Or", 16);
 		 OLED_ShowNum(76,6, orientation,4,16);			
 		 	key=KEY_Scan(0);

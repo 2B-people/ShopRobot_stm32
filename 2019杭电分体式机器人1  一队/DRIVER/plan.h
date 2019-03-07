@@ -12,10 +12,12 @@ void path_Init(void);
 void move_base(void);
 void begin(void);
 void patrol(void);
-extern int8_t nextx;
-extern int8_t nexty;
+void toCoordinate(uint8_t x,uint8_t y);
+extern uint8_t nextx;
+extern uint8_t nexty;
 extern uint8_t patrolStatus;
 extern int8_t next_x[11];
 extern int8_t next_y[11];
+extern uint8_t IsPathCalFinish;
 #endif
 

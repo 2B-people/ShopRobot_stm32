@@ -164,3 +164,4 @@ void Set_CM_Speed(CAN_TypeDef *CANx, int16_t cm1_iq, int16_t cm2_iq) //…Ë÷√µÁª˙À
 	CAN_Transmit(CANx, &tx_message);
 }
 #endif
+

@@ -76,14 +76,14 @@ static uint8_t lsx;
 	{
 		huidu_PID.Kp=0.55;
 		huidu_PID.Ki=0;
-		huidu_PID.Kd=0.02;
+		huidu_PID.Kd=0.01;
 	}
 	if(IsRotate==0)
 	{
 		
-		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch)
+		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&position_x&&position_x!=target_position_x&&position_y!=target_position_y)
 		{
-			required_vel=slow_vel;	
+			required_vel=slow_vel-0.05;	
 		}
 		else if(LsRotate)
 			LsRotate=0;

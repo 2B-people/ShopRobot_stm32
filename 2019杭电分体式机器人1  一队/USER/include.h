@@ -38,6 +38,7 @@ extern uint8_t position_x;
 extern uint8_t position_y;
 extern uint8_t target_position_x;
 extern uint8_t target_position_y;
+extern uint8_t target_orientation;
 extern uint8_t orientation;
 extern uint8_t IsHD;
 extern uint8_t Obstacle;
@@ -48,5 +49,7 @@ extern uint8_t IsFetch;
 extern uint8_t mode;
 extern uint8_t shelves[12];
 extern uint8_t Goods_num;
+void mainNOCAMERA(void);
+void mainCAMERA(void);
 #endif
 

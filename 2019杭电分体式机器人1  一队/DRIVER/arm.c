@@ -7,11 +7,13 @@ int16_t now_angle_[3]={7030,6650,6280};			//角度初始化，舵机1~3
 
 int16_t p=6320;
 
+int16_t b=6440;									
+
 int16_t floor_[2]={6430,6910};							//货物1，2层参数
 
 int16_t rid_speed=3;												//舵机速度
 
-int16_t goods[12]={6330,6430,6415,6415,6325,6405,6395,6430,6430,6415,6415,6415}; 				//抓货物
+int16_t goods[12]={6325,6320,6315,6315,6340,6298,6290,6330,6325,6320,6320,6320}; 		 				//抓货物
 								// 雪花 红牛 网球 爽歪 魔方 娃哈 养乐 乐虎 特仑 方块 方块 方块
 
 int16_t give_goods=6500;										//放货物
@@ -102,7 +104,6 @@ void Arm_run()
 	}	
 }
 
-
 void Com_run()
 {
 	if((give_goods-now_angle_[2])>0)
@@ -131,7 +132,6 @@ void Com_run()
 }
 
 
-
 void Get_goods(int16_t goods_num)
 {
 											
@@ -157,13 +157,20 @@ void Goods_floor(int16_t floor_num)
 
 	else
 		up_dowm_1=-1;
-
-	for(;now_angle_[0]!=floor_[floor_num];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	if(floor_num==1)
 	{
-		delay(rid_speed);
-		TIM_SetCompare1(TIM2,now_angle_[0]);
-		TIM_SetCompare2(TIM2,now_angle_[1]);
-	}																																						//放置在哪层0~1
+		for(;now_angle_[0]!=floor_[floor_num];now_angle_[0]+=up_dowm_1)
+		{
+			delay(rid_speed);
+			TIM_SetCompare1(TIM2,now_angle_[0]);
+		}										
+		for(;now_angle_[1]!=b;now_angle_[1]-=up_dowm_1)
+		{
+			delay(rid_speed);
+			TIM_SetCompare2(TIM2,now_angle_[1]);
+		}						
+																													//放置在哪层0~1
+	}
 }
 
 
