@@ -30,8 +30,8 @@ void begin(void);
 
 int main()
 {
-	mainCAMERA();				//摄像头车  初始坐标(1,2) 初始方向+y
-	//mainNOCAMERA();			//非摄像头车 
+	//mainCAMERA();				//摄像头车  初始坐标(1,2) 初始方向+y
+	mainNOCAMERA();			//非摄像头车 
 }
 
 
@@ -66,9 +66,9 @@ void mainNOCAMERA(void)
 			LED1=0;
 
 			
-			begin();								//将车从红色框区开出
+			begin1();								//将车从红色框区开出
 			OLED_SHOW_MANU();
-			TIM6_Int_Init(71, 99);  //1000HZ		路径规划，确定nextx,nexty 72m
+			TIM6_Int_Init(71, 49);  //1000HZ		路径规划，确定nextx,nexty 72m
 			LED1=1;
 
 			mode=1;	
@@ -76,44 +76,44 @@ void mainNOCAMERA(void)
 			 while(1)									//巡视
 			 {				
 				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
-				 patrol(); 										 //巡视场地，找障碍物
+				 patrol1(); 										 //巡视场地，找障碍物
 				 if(!stopping&&!IsFetch&&!IsMoveFinsh)
 				 {
 					 MOVE(nextx,nexty);
 				 }
-				 if(patrolStatus==19)
+				 if(patrolStatus==100)
 					 break;
 			 }
 			 mode=3;		
 			 
 			 /******************************************/
-				toCoordinate(5,7);	
-			  while(1)									//巡视
-			 {				
-				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
-				 if(!stopping&&!IsFetch)
-				 {
-					 MOVE(nextx,nexty);
-						OLED_SHOW_MANU();
-				 }
-				 if(position_x==5&&position_y==7)
-					 break;
-			 }
-			 toFetch(0,0);
-			 toCoordinate(5,9);
-			 while(1)									//巡视
-			 {				
-				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
-				 if(!stopping&&!IsFetch)
-				 {
-					 MOVE(nextx,nexty);
-						OLED_SHOW_MANU();
-				 }
-				 if(position_x==5&&position_y==9)
-					 break;
-			 }
-			 toFetch(100,1);
-			  Com_run();
+//				toCoordinate(5,7);	
+//			  while(1)									
+//			 {				
+//				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
+//				 if(!stopping&&!IsFetch)
+//				 {
+//					 MOVE(nextx,nexty);
+//						OLED_SHOW_MANU();
+//				 }
+//				 if(position_x==5&&position_y==7)
+//					 break;
+//			 }
+//			 toFetch(0,0);
+//			 toCoordinate(5,9);
+//			 while(1)									
+//			 {				
+//				 waitingStop();								//OLED菜单显示、等待上方传送停止指令				
+//				 if(!stopping&&!IsFetch)
+//				 {
+//					 MOVE(nextx,nexty);
+//						OLED_SHOW_MANU();
+//				 }
+//				 if(position_x==5&&position_y==9)
+//					 break;
+//			 }
+//			 toFetch(100,1);
+//			  Com_run();
 			 /*******************************/
 			 while(1)									//常规
 			 {					
@@ -201,7 +201,7 @@ void mainCAMERA(void)
 			LED1=0;
 
 			
-			begin();								//将车从红色框区开出
+			begin1();								//将车从红色框区开出
 			position_x=1;
 			position_y=2;
 			target_position_x=1;
@@ -210,7 +210,7 @@ void mainCAMERA(void)
 			nexty=2;
 			toCoordinate(1,2);
 			OLED_SHOW_MANU();
-			TIM6_Int_Init(71, 99);  //1000HZ		路径规划，确定nextx,nexty 72m
+			TIM6_Int_Init(71, 49);  //1000HZ		路径规划，确定nextx,nexty 72m
 			LED1=1;
 
 			mode=1;	

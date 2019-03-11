@@ -74,23 +74,23 @@ static uint8_t lsx;
 	}
 	else
 	{
-		huidu_PID.Kp=0.55;
+		huidu_PID.Kp=0.65;
 		huidu_PID.Ki=0;
-		huidu_PID.Kd=0.01;
+		huidu_PID.Kd=0.02;
 	}
-	if(IsRotate==0)
+	if(IsRotate==0)		//旋转结束
 	{
 		
-		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&position_x&&position_x!=target_position_x&&position_y!=target_position_y)
+		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&position_x&&position_x!=target_position_x&&position_y!=target_position_y)//如果是旋转结束后走的第一格
 		{
 			required_vel=slow_vel-0.05;	
 		}
-		else if(LsRotate)
+		else if(LsRotate)//旋转结束后走完第一格					
 			LsRotate=0;
-		lsx=position_x;
+		lsx=position_x;		//检查有无走完旋转后的第一格
 		lsy=position_y;
 		
-		motor1.target_speed = get_RPM(required_vel);
+		motor1.target_speed = get_RPM(required_vel);	
 		motor2.target_speed = get_RPM(required_vel);
 	}
 	

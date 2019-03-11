@@ -12,7 +12,7 @@
 #include "millisecondtimer.h"
 void OLED_SHOW_MANU()
 {
-	static uint8_t manu=5;
+	static uint8_t manu=1;
 	static uint8_t key;
 	
 	switch(manu)
@@ -158,8 +158,8 @@ void OLED_SHOW_MANU()
 		 OLED_ShowNum(76,0, nextx,4,16);			
 		 OLED_ShowString(50, 2, "NY", 16);
 		 OLED_ShowNum(76,2, nexty,4,16);			
-		 OLED_ShowString(50, 4, "Tr", 16);
-		 OLED_ShowNum(76,4, target_orientation,4,16);			
+		 OLED_ShowString(50, 4, "Ob", 16);
+		 OLED_ShowNum(76,4, Obstacle,4,16);			
 		 OLED_ShowString(50, 6, "Or", 16);
 		 OLED_ShowNum(76,6, orientation,4,16);			
 		 	key=KEY_Scan(0);

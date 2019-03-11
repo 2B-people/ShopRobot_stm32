@@ -653,7 +653,7 @@ void move_base()
 
 }
 
-void begin(void)
+void begin1(void)
 {
 	while(required_vel<slow_vel)
 		required_vel+=down_vel;
@@ -700,7 +700,86 @@ void begin(void)
 	nexty=3;
 	IsMoveFinsh=1;
 }
-void patrol(void)
+void begin2(void)
+{
+	while(required_vel<slow_vel)
+		required_vel+=down_vel;
+	required_vel=slow_vel;
+	while(1)
+	{
+		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+			break;
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	Arm_run();
+	ROTATE(1);
+	IsHD=1;
+	while(required_vel<slow_vel)
+		required_vel+=down_vel;
+	required_vel=slow_vel;
+	delay(800);
+	while(1)
+	{
+		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+			break;
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	
+	orientation=negative_y;
+	position_x=0;
+	position_y=1;
+	target_position_x=0;
+	target_position_y=1;
+	nextx=0;
+	nexty=1;
+	IsMoveFinsh=1;
+}
+
+void begin3(void)
+{
+	while(required_vel<slow_vel)
+		required_vel+=down_vel;
+	required_vel=slow_vel;
+	while(1)
+	{
+		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+			break;
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	Arm_run();
+	ROTATE(0);
+	IsHD=1;
+	while(required_vel<slow_vel)
+		required_vel+=down_vel;
+	required_vel=slow_vel;
+	delay(800);
+	while(1)
+	{
+		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+			break;
+		OLED_SHOW_MANU();
+	}
+	required_vel=0;
+	
+	orientation=negative_y;
+	position_x=0;
+	position_y=3;
+	target_position_x=0;
+	target_position_y=3;
+	nextx=0;
+	nexty=3;
+	IsMoveFinsh=1;
+}
+
+void begin4(void)
+{
+	
+}
+
+void patrol1(void)			//Ñ²ÊÓ1´úÂë
 {
 	switch(patrolStatus)
 	{
@@ -734,6 +813,7 @@ void patrol(void)
 			}
 			else if(IsMoveFinsh)
 			{
+				LED3=0;
 				nextx=position_x;
 				nexty=position_y;
 				patrolStatus=3;
@@ -797,9 +877,9 @@ void patrol(void)
 			else if(IsMoveFinsh)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[0]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[1]=1;
 				patrolStatus=9;
 			}
@@ -812,9 +892,9 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[2]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[3]=1;
 				patrolStatus=11;
 			}
@@ -828,9 +908,9 @@ void patrol(void)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
 				patrolStatus=13;
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[4]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[5]=1;
 			}
 			break;
@@ -843,9 +923,9 @@ void patrol(void)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
 				patrolStatus=15;
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[6]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[7]=1;
 			}
 			break;
@@ -857,9 +937,9 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[8]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[9]=1;
 				patrolStatus=17;
 			}
@@ -872,15 +952,311 @@ void patrol(void)
 			if(IsMoveFinsh)
 			{
 				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
-				if(ADC_JIHE[2]>Dis_Vel)
+				if(ADC_ConvertedValue[2]>Dis_Vel)
 					shelves[10]=1;
-				if(ADC_JIHE[3]>Dis_Vel)
+				if(ADC_ConvertedValue[3]>Dis_Vel)
 					shelves[11]=1;
-				patrolStatus=19;
+				patrolStatus=100;
 			}
 		break;
 	}	
 }
+
+void patrol2(void)			//Ñ²ÊÓ2´úÂë
+{
+	switch(patrolStatus)
+	{
+		case 1:
+			toCoordinate(6,1);
+			patrolStatus=2;
+			break;
+		case 2:
+			if(IsMoveFinsh&&orientation!=positive_x)
+			{
+				switch(orientation)
+				{
+					case negative_y:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			}
+			else if(Distance<=100&&IsMoveFinsh&&orientation==positive_x)
+			{
+				Obstacle=1;
+				nextx=position_x;
+				nexty=position_y;
+				path_Init();
+				patrolStatus=3;
+			}
+			else if(IsMoveFinsh)
+			{
+				nextx=position_x;
+				nexty=position_y;
+				patrolStatus=3;
+			}
+			break;	
+		case 3:
+			toCoordinate(9,0);
+			patrolStatus=4;
+			break;
+		case 4:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[0]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[1]=1;
+				patrolStatus=5;
+			}
+			break;
+		case 5:
+			toCoordinate(9,1);
+			patrolStatus=6;
+			break;
+		case 6:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[2]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[3]=1;
+				patrolStatus=7;
+			}
+			break;
+		case 7:
+			toCoordinate(9,2);
+			patrolStatus=8;
+			break;
+		case 8:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[4]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[5]=1;
+				patrolStatus=9;
+			}
+			break;
+		case 9:
+			toCoordinate(9,3);
+			patrolStatus=10;
+			break;
+		case 10:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[6]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[7]=1;
+				patrolStatus=11;
+			}
+			break;
+		case 11:
+			toCoordinate(9,4);
+			patrolStatus=12;
+			break;
+		case 12:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[8]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[9]=1;
+				patrolStatus=13;
+			}
+			break;
+		case 13:
+			toCoordinate(9,5);
+			patrolStatus=14;
+			break;
+		case 14:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[10]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[11]=1;
+				patrolStatus=100;
+			}
+			break;
+	}
+}
+
+void patrol3(void)			//Ñ²ÊÓ3´úÂë
+{
+	switch(patrolStatus)
+	{
+		case 1:
+			toCoordinate(0,4);
+			patrolStatus=2;
+			break;
+		case 2:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[0]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[1]=1;
+				patrolStatus=3;
+			}
+			break;
+		case 3:
+			toCoordinate(0,5);
+			patrolStatus=4;
+			break;
+		case 4:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[2]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[3]=1;
+				patrolStatus=5;
+			}
+			break;
+		case 5:
+			toCoordinate(0,6);
+			patrolStatus=6;
+			break;
+		case 6:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[4]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[5]=1;
+				patrolStatus=7;
+			}
+			break;
+		case 7:
+			toCoordinate(0,7);
+			patrolStatus=8;
+			break;
+		case 8:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[6]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[7]=1;
+				patrolStatus=9;
+			}
+			break;
+		case 9:
+			toCoordinate(0,8);
+			patrolStatus=10;
+			break;
+		case 10:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[8]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[9]=1;
+				patrolStatus=11;
+			}
+			break;
+		case 11:
+			toCoordinate(0,9);
+			patrolStatus=12;
+			break;
+		case 12:
+			if(IsMoveFinsh&&orientation!=positive_y)
+				switch(orientation)
+				{
+					case negative_x:ROTATE(0);break;
+					default:ROTATE(1);
+				}
+			else if(IsMoveFinsh)
+			{
+				/***********²¹³ä»õ¼ÜÕÏ°­Îï³ÌÐò**********/
+				if(ADC_ConvertedValue[2]>Dis_Vel)
+					shelves[10]=1;
+				if(ADC_ConvertedValue[3]>Dis_Vel)
+					shelves[11]=1;
+				patrolStatus=100;
+			}
+			break;
+	}
+}
+
+
 
 void toCoordinate(uint8_t x,uint8_t y)
 {

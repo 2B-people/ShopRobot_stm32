@@ -37,11 +37,11 @@ void ChangeCoordinate()
 	
 	if(!IsRotate&&!IsFetch)
 	{
-		dis+=(required_vel/10);
+		dis+=(required_vel/20);			//确定行走距离
 	}
 	if(required_vel<=slow_vel)
 	{
-		if(dis>=440)
+		if(dis>=460)								//如果走了一段较长距离还未检测到白线，则认为已经记到白线，减小计数模块出错带来的负面影响
 		{
 			switch(orientation)
 					{
@@ -54,7 +54,7 @@ void ChangeCoordinate()
 			flag=0;
 			LED2=!LED2;
 		}
-		else if(dis>=300)
+		else if(dis>=300)						//必须在经过上一条白线之后走过一段距离才能开始检测下一条白线，避免多次计数
 		{
 			if(IsRotate)
 				flag=0;
@@ -92,7 +92,7 @@ void ChangeCoordinate()
 
 
 
-	else if(required_vel==fast_vel)
+	else if(required_vel==fast_vel)				//高速状态下不用考虑每一次走的是否到达确切位置，因此直接使用计算的距离当作真实距离
 	{
 		if(dis >= 400)
 		{
@@ -145,7 +145,7 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 			delay(525);
 		break;
 	}
-	switch(Clockwise)
+	switch(Clockwise)					//旋转完之后，改变车的朝向
 	{
 		case 0:
 		if(orientation!=0)
@@ -160,11 +160,11 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 			orientation=0;	
 		break;
 	}
-	required_vel=0;
+	required_vel=0;						
 	delay(100);
-	IsRotate=0;
+	IsRotate=0;								//旋转标志置0
 	LED2=1;
-	LsRotate=1;
+	LsRotate=1;								//直到旋转后走完第一格，该标志才置0
 	dis=0;
 }
 void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序

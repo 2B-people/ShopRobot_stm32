@@ -91,7 +91,7 @@ void TIM6_IRQHandler(void)   //TIM3中断
 			
 			TIM_ClearITPendingBit(TIM6, TIM_IT_Update  );  
 			ChangeCoordinate();		//更新坐标
-			move_base();					//确定下一个坐标位置
+			move_base();					//确定下一个目标坐标
 		}
 }
 

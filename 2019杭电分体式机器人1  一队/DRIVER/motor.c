@@ -80,7 +80,7 @@ void USB_LP_CAN1_RX0_IRQHandler(void) //该函数用于接受CAN总线数据并转换为电机RPM
 		{
 		case 0x201:
 		{
-			motor1.now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);
+			motor1.now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);			
 		}
 		break;
 		case 0x202:
