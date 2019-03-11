@@ -774,10 +774,7 @@ void begin3(void)
 	IsMoveFinsh=1;
 }
 
-void begin4(void)
-{
-	
-}
+
 
 void patrol1(void)			//ัฒสำ1ด๚ย๋
 {

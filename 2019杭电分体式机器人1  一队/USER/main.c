@@ -18,7 +18,7 @@ uint8_t position_y = 0;			  //当前纵坐标
 uint8_t orientation=positive_y ; //当前车的朝向，默认开始为y正方向。
 uint8_t target_position_x = 0;	//目标横坐标
 uint8_t target_position_y = 0;	//目标纵坐标
-uint8_t target_orientation=positive_x;
+uint8_t target_orientation=positive_y;
 uint8_t IsHD=0;                                               ;                                                                                                                                                                                                                                                                                                                                                                                                 ;									//是否使用模拟灰度。
 uint8_t Obstacle=0;						//障碍物位置
 uint16_t Distance=0;					//激光雷达测距结果
@@ -208,7 +208,6 @@ void mainCAMERA(void)
 			target_position_y=2;
 			nextx=1;
 			nexty=2;
-			toCoordinate(1,2);
 			OLED_SHOW_MANU();
 			TIM6_Int_Init(71, 49);  //1000HZ		路径规划，确定nextx,nexty 72m
 			LED1=1;
