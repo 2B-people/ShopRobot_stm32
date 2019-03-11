@@ -60,18 +60,18 @@ void ChangeCoordinate()
 				flag=0;
 			else if(!IsRotate&&!IsFetch)
 			{
-				if(flag==0&&infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+				if(flag==0&&infrared1==BLACK&&infrared2==BLACK)
 				{
-					if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+					if(infrared1==BLACK&&infrared2==BLACK)
 					{
-						if(infrared1==BLACK&&infrared2==BLACK&&infrared3==BLACK&&infrared4==BLACK)
+						if(infrared1==BLACK&&infrared2==BLACK)
 						{
 							Beep_On_Off(False);
 							flag=1;
 						}
 					}
 				}
-				if(flag==1&&((infrared1==WHITE&&infrared3==WHITE)||(infrared2==WHITE&&infrared4==WHITE)))
+				if(flag==1&&infrared1==WHITE&&infrared2==WHITE)
 				{
 					Beep_On_Off(True);
 					switch(orientation)

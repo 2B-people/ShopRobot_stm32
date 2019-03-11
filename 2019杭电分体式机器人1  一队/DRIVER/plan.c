@@ -660,7 +660,7 @@ void begin1(void)
 	required_vel=slow_vel;
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -672,7 +672,7 @@ void begin1(void)
 	delay(800);
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -682,10 +682,10 @@ void begin1(void)
 	while(required_vel<slow_vel)
 		required_vel+=down_vel;
 	required_vel=slow_vel;
-	delay(800);
+	delay(300);
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -707,7 +707,7 @@ void begin2(void)
 	required_vel=slow_vel;
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -721,7 +721,7 @@ void begin2(void)
 	delay(800);
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -744,7 +744,7 @@ void begin3(void)
 	required_vel=slow_vel;
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -758,7 +758,7 @@ void begin3(void)
 	delay(800);
 	while(1)
 	{
-		if((infrared2==WHITE&&infrared4==WHITE)||(infrared1==WHITE&&infrared3==WHITE))
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}

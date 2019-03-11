@@ -84,6 +84,7 @@ static uint8_t lsx;
 		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&position_x&&position_x!=target_position_x&&position_y!=target_position_y)//如果是旋转结束后走的第一格
 		{
 			required_vel=slow_vel-0.05;	
+			LED3=0;
 		}
 		else if(LsRotate)//旋转结束后走完第一格					
 			LsRotate=0;
