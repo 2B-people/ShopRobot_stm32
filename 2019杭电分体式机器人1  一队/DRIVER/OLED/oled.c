@@ -28,17 +28,17 @@ void OLED_SHOW_MANU()
 		OLED_ShowString(0, 6, "B", 16);	
 		OLED_ShowNum(16,6,Obstacle,1,16);	
 		OLED_ShowString(50, 0, "M1", 16);
-		if(motor1.target_speed<0)
+		if(motor1->target_speed<0)
 			OLED_ShowChar(70,0,'-',16);
 		else
 			OLED_ShowChar(70,0,' ',16);
-		OLED_ShowNum(76,0,(abs)(motor1.now_speed),4,16);//电机1速度
+		OLED_ShowNum(76,0,(abs)(motor1->now_speed),4,16);//电机1速度
 		OLED_ShowString(50, 2, "M2", 16);
-		if(motor2.target_speed<0)
+		if(motor2->target_speed<0)
 			OLED_ShowChar(70,2,'-',16);
 		else
 			OLED_ShowChar(70,2,' ',16);
-		OLED_ShowNum(76,2,(abs)(motor2.now_speed),4,16);//电机2速度
+		OLED_ShowNum(76,2,(abs)(motor2->now_speed),4,16);//电机2速度
 		OLED_ShowString(50, 4, "H1", 16);
 		OLED_ShowNum(76,4, ADC_ConvertedValue[0],4,16);			//灰度1值
 		OLED_ShowString(50, 6, "H2", 16);

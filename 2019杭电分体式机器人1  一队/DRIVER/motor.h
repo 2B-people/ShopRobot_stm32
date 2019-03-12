@@ -13,8 +13,8 @@ typedef struct
 	int16_t target_speed;		//目标转速
 }Motor;//speed单位RPM
 
-extern Motor motor1;
-extern Motor motor2;
+extern Motor* motor1;
+extern Motor* motor2;
 extern Motor motor3;
 extern Motor motor4;
 extern Motor yt_motor1;

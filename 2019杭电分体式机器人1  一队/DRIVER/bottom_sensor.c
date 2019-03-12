@@ -135,13 +135,13 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 	switch(Clockwise)
 	{
 		case 0:
-			motor1.target_speed=-get_RPM(0.2);
-			motor2.target_speed=get_RPM(0.2);
+			motor1->target_speed=-get_RPM(0.2);
+			motor2->target_speed=get_RPM(0.2);
 			delay(625);
 		break;
 		case 1:
-			motor1.target_speed=get_RPM(0.2);
-			motor2.target_speed=-get_RPM(0.2);
+			motor1->target_speed=get_RPM(0.2);
+			motor2->target_speed=-get_RPM(0.2);
 			delay(525);
 		break;
 	}

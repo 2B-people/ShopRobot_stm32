@@ -810,7 +810,6 @@ void patrol1(void)			//ัฒสำ1ด๚ย๋
 			}
 			else if(IsMoveFinsh)
 			{
-				LED3=0;
 				nextx=position_x;
 				nexty=position_y;
 				patrolStatus=3;

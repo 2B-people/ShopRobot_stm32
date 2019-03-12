@@ -1,6 +1,6 @@
 #include "motor.h"
-Motor motor1;
-Motor motor2;
+Motor* motor1;
+Motor* motor2;
 Motor motor3;
 Motor motor4;
 Motor yt_motor1;
@@ -129,12 +129,12 @@ void USB_LP_CAN1_RX0_IRQHandler(void) //该函数用于接受CAN总线数据并转换为电机RPM
 		{
 		case 0x201:
 		{
-			motor1.now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);
+			motor1->now_speed = ((rx_message.Data[2] << 8) | rx_message.Data[3]);
 		}
 		break;
 		case 0x202:
 		{
-			motor2.now_speed = -((rx_message.Data[2] << 8) | rx_message.Data[3]);
+			motor2->now_speed = -((rx_message.Data[2] << 8) | rx_message.Data[3]);
 		}
 		break;
 		}
