@@ -15,10 +15,10 @@ uint8_t IsStop=0;					  //是否接到急停状态信号的标志
 uint8_t IsFetch=0;
 uint8_t position_x = 0;			  //当前横坐标
 uint8_t position_y = 0;			  //当前纵坐标
-uint8_t orientation=positive_x ; //当前车的朝向，默认开始为y正方向。
+uint8_t orientation=positive_y ; //当前车的朝向，默认开始为y正方向。
 uint8_t target_position_x = 0;	//目标横坐标
 uint8_t target_position_y = 0;	//目标纵坐标
-uint8_t target_orientation=positive_x;
+uint8_t target_orientation=positive_y;
 uint8_t IsHD=0;                                               ;                                                                                                                                                                                                                                                                                                                                                                                                 ;									//是否使用模拟灰度。
 uint8_t Obstacle=0;						//障碍物位置
 uint16_t Distance=0;					//激光雷达测距结果
@@ -30,8 +30,8 @@ void begin(void);
 
 int main()
 {
-	mainCAMERA();				//摄像头车  初始坐标(1,2) 初始方向+y
-	//mainNOCAMERA();			//非摄像头车 
+	//mainCAMERA();				//摄像头车  初始坐标(1,2) 初始方向+y
+	mainNOCAMERA();			//非摄像头车 
 }
 
 
