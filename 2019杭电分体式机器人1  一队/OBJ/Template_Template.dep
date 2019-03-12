@@ -980,9 +980,12 @@ I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 <<<<<<< HEAD
+<<<<<<< HEAD
 F (..\DRIVER\Kinematics.c)(0x5C87720F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
 I (..\DRIVER\kinematics.h)(0x5C877160)
 =======
+=======
+>>>>>>> parent of 36fea05... 3.11
 F (..\DRIVER\Kinematics.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
 I (..\DRIVER\kinematics.h)(0x5C864F02)
 >>>>>>> parent of 36fea05... 3.11
@@ -1255,7 +1258,11 @@ I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 <<<<<<< HEAD
+<<<<<<< HEAD
 F (..\DRIVER\bottom_sensor.c)(0x5C876D49)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\bottom_sensor.o --omf_browse ..\obj\bottom_sensor.crf --depend ..\obj\bottom_sensor.d)
+=======
+F (..\DRIVER\bottom_sensor.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\bottom_sensor.o --omf_browse ..\obj\bottom_sensor.crf --depend ..\obj\bottom_sensor.d)
+>>>>>>> parent of 36fea05... 3.11
 =======
 F (..\DRIVER\bottom_sensor.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\bottom_sensor.o --omf_browse ..\obj\bottom_sensor.crf --depend ..\obj\bottom_sensor.d)
 >>>>>>> parent of 36fea05... 3.11
@@ -1422,7 +1429,11 @@ I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 <<<<<<< HEAD
+<<<<<<< HEAD
 F (..\DRIVER\plan.c)(0x5C87720F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
+=======
+F (..\DRIVER\plan.c)(0x5C8660DE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
+>>>>>>> parent of 36fea05... 3.11
 =======
 F (..\DRIVER\plan.c)(0x5C8660DE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
 >>>>>>> parent of 36fea05... 3.11
