@@ -1,7 +1,8 @@
 #include "bottom_sensor.h"
-#define NOLINETIME 600
+#define NOLINETIME 900
+#define NOLINETIMEBACK 700
 uint8_t LsRotate=0;
-double dis;
+float dis;
 void infrared_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStructure;
@@ -33,15 +34,15 @@ void infrared_Init(void)
 }
 void ChangeCoordinate()
 {
-	static uint8_t flag=0;
+static uint8_t flag=0;
 	
 	if(!IsRotate&&!IsFetch)
 	{
-		dis+=(required_vel/20);			//确定行走距离
+		dis+=(required_vel/10);			//确定行走距离
 	}
 	if(required_vel<=slow_vel)
 	{
-		if(dis>=460)								//如果走了一段较长距离还未检测到白线，则认为已经记到白线，减小计数模块出错带来的负面影响
+		if(dis>=550)								//如果走了一段较长距离还未检测到白线，则认为已经记到白线，减小计数模块出错带来的负面影响
 		{
 			switch(orientation)
 					{
@@ -51,39 +52,36 @@ void ChangeCoordinate()
 						case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
 					}		
 			dis=0;
-			flag=0;
+			flag=1;
 			LED2=!LED2;
 		}
-		else if(dis>=330)						//必须在经过上一条白线之后走过一段距离才能开始检测下一条白线，避免多次计数
+		else if(dis>=350)						//必须在经过上一条白线之后走过一段距离才能开始检测下一条白线，避免多次计数
 		{
 			if(IsRotate)
 				flag=0;
 			else if(!IsRotate&&!IsFetch)
 			{
-				if(flag==0&&infrared1==BLACK&&infrared2==BLACK)
+				if(flag==0&&infrared1==WHITE&&infrared2==BLACK)
 				{
 					if(infrared1==BLACK&&infrared2==BLACK)
 					{
-						if(infrared1==BLACK&&infrared2==BLACK)
-						{
 							Beep_On_Off(False);
 							flag=1;
-						}
 					}
 				}
 				if(flag==1&&infrared1==WHITE&&infrared2==WHITE)
 				{
-					Beep_On_Off(True);
-					switch(orientation)
-					{
-						case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
-						case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
-						case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
-						case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
-					}		
-					dis=0;
-					flag=0;
-					LED2=!LED2;
+						Beep_On_Off(True);
+						switch(orientation)
+						{
+							case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
+							case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
+							case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
+							case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
+						}		
+						dis=0;
+						flag=0;
+						LED2=!LED2;
 				}
 			}
 		}
@@ -92,7 +90,7 @@ void ChangeCoordinate()
 
 
 
-	else if(required_vel==fast_vel)				//高速状态下不用考虑每一次走的是否到达确切位置，因此直接使用计算的距离当作真实距离
+	else if(required_vel>=fast_vel)				//高速状态下不用考虑每一次走的是否到达确切位置，因此直接使用计算的距离当作真实距离
 	{
 		if(dis >= 400)
 		{
@@ -106,43 +104,40 @@ void ChangeCoordinate()
 				}
 		}
 	}
-	
-	
-//	else
-//	{
-//		TIM6_counter++;
-//		if(TIM6_counter>=597)
-//		{
-//			TIM6_counter=0;
-//			switch(orientation)
-//			{
-//				case positive_x:if(required_vel>0) position_x+=1;else if(required_vel<0)position_x-=1;break;
-//				case positive_y:if(required_vel>0) position_y+=1;else if(required_vel<0)position_y-=1;break;
-//				case negative_x:if(required_vel>0) position_x-=1;else if(required_vel<0)position_x+=1;break;
-//				case negative_y:if(required_vel>0) position_y-=1;else if(required_vel<0)position_y+=1;break;
-//			}
-//		}
-//	}
-	
+	if(position_x==nextx&&position_y==nexty&&!IsFetch)
+		required_vel=0;
 }
 
 
 void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 {
 	LED2=0;
+	delay(200);
 	required_vel=0;
+	lsx=position_x;		//检查有无走完旋转后的第一格
+	lsy=position_y;
 	IsRotate=1;	
 	switch(Clockwise)
 	{
 		case 0:
-			motor1.target_speed=-get_RPM(0.2);
-			motor2.target_speed=get_RPM(0.2);
-			delay(595);
+			motor1.target_speed=-get_RPM(0.15);
+			motor2.target_speed=get_RPM(0.15);
+			delay(705);
 		break;
 		case 1:
-			motor1.target_speed=get_RPM(0.2);
-			motor2.target_speed=-get_RPM(0.2);
-			delay(495);
+			motor1.target_speed=get_RPM(0.15);
+			motor2.target_speed=-get_RPM(0.15);
+			delay(615);
+		break;
+		case 2:
+			motor1.target_speed=-get_RPM(0.15);
+			motor2.target_speed=get_RPM(0.15);
+			delay(1230);
+		break;
+		case 3:
+			motor1.target_speed=get_RPM(0.15);
+			motor2.target_speed=-get_RPM(0.15);
+			delay(1430);
 		break;
 	}
 	switch(Clockwise)					//旋转完之后，改变车的朝向
@@ -159,15 +154,43 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 		else
 			orientation=0;	
 		break;
+		case 2:
+			if(orientation!=0)
+			orientation--;
+		else
+			orientation=3;
+		if(orientation!=0)
+			orientation--;
+		else
+			orientation=3;
+		break;
+		case 3:
+			if(orientation!=3)
+			orientation++;
+		else
+			orientation=0;	
+		if(orientation!=3)
+			orientation++;
+		else
+			orientation=0;	
+		break;
+			
 	}
 	required_vel=0;						
-	delay(100);
+	delay(200);
+	HuiduPidCalcuation();						//根据adc数值
+	while(!IsFetch&&abs(ADC_ConvertedValue[0] - ADC_ConvertedValue[1])>100)
+	{
+		motor1.target_speed = huidu_PID.pid_out;
+		motor2.target_speed = -huidu_PID.pid_out;
+		HuiduPidCalcuation();
+	}
 	IsRotate=0;								//旋转标志置0
 	LED2=1;
 	LsRotate=1;								//直到旋转后走完第一格，该标志才置0
 	dis=0;
 }
-void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
+void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序		拿东西的时候第一个参数代表拿的东西序号，第二个参数填2， 放东西的时候第一个参数写100，第二个参数填放的层数
 {
 	uint8_t IsInline=1;
 	IsHD=1;
@@ -181,6 +204,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 			switch(orientation)
 				{
 					case positive_y:ROTATE(0);break;
+				case positive_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 		}
@@ -192,6 +216,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 			switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
+					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 		}
@@ -203,6 +228,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 			switch(orientation)
 				{
 					case positive_x:ROTATE(0);break;
+					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 		}
@@ -214,6 +240,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 			switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
+					case positive_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 		}
@@ -227,6 +254,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
+					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -243,6 +271,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
+					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -254,6 +283,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
+					case positive_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -270,6 +300,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case positive_x:ROTATE(0);break;
+					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -286,6 +317,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case positive_y:ROTATE(0);break;
+					case positive_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -297,6 +329,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
+					case positive_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -313,6 +346,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
+					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -329,6 +363,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case positive_x:ROTATE(0);break;
+					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -340,6 +375,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case positive_y:ROTATE(0);break;
+					case positive_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -356,6 +392,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
+					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -372,6 +409,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
+					case positive_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -383,6 +421,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 				switch(orientation)
 				{
 					case positive_y:ROTATE(0);break;
+					case positive_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -406,6 +445,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 	{
 		case 0:Goods_floor(0);break;
 		case 1:Goods_floor(1);break;
+		default:Goods_floor(2);break;
 	}
 	delay(1000);
 	required_vel=slow_vel;
@@ -436,9 +476,10 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		OLED_SHOW_MANU();
 	}
 	required_vel=0;
-	
+	if(IsGet==100)
+		IsFetch=0;
 	IsHD=1;
-	IsFetch=0;
+	
 	
 	if(!IsInline)			//回到整点位置
 	{
@@ -446,6 +487,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(1);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -457,6 +499,13 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		else if(position_x==2&&position_y==6)
 		{
 			ROTATE(0);
+			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
+			while(infrared2==BLACK||infrared4==BLACK)
+			{
+				OLED_SHOW_MANU();
+			}
+			required_vel=0;
 			position_x=2;
 			position_y=6;		
 		}
@@ -464,6 +513,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(0);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -476,6 +526,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(1);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -488,6 +539,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(0);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -500,6 +552,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(1);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -512,6 +565,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(1);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -524,6 +578,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		{
 			ROTATE(0);
 			required_vel=slow_vel;
+			delay(NOLINETIMEBACK);
 			while(infrared2==BLACK||infrared4==BLACK)
 			{
 				OLED_SHOW_MANU();
@@ -534,7 +589,7 @@ void toFetch(uint8_t IsGet,uint8_t Floor)			//抓取程序
 		}
 	}
 	dis=0;
-	
+	IsFetch=0;
 	
 }
 

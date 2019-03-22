@@ -1,22 +1,21 @@
 #include "arm.h"
 
-int16_t up_dowm_1=0;												//角度加减标志					
-int16_t up_dowm_3=0;
+int16_t up_dowm=0;												//角度加减标志					
 
-int16_t now_angle_[3]={7030,6650,6280};			//角度初始化，舵机1~3
+int16_t now_angle_[3]={7030,6646,6280};			//角度初始化，舵机1~3
 
-int16_t p=6320;
+int16_t init=6316;															//now_angle_[1]-330
 
-int16_t b=6440;									
+int16_t taitou=6660;														//floor_[0]+240
 
-int16_t floor_[2]={6430,6910};							//货物1，2层参数
+int16_t floor_[2]={6420,6900};							//货物1，2层参数
 
 int16_t rid_speed=3;												//舵机速度
 
-int16_t goods[12]={6325,6320,6315,6315,6340,6298,6290,6330,6325,6320,6320,6320}; 		 				//抓货物
-								// 雪花 红牛 网球 爽歪 魔方 娃哈 养乐 乐虎 特仑 方块 方块 方块
+int16_t goods[12]={6320,6320,6320,6310,6290,6298,6325,6320,6320,6315,6340,6325}; 		 				//抓货物
+								// 方块 方块 方块 爽歪 养乐 AD钙 雪花 红牛 乐虎 网球 魔方 特仑苏
 
-int16_t give_goods=6500;										//放货物
+int16_t give_goods=6650;										//放货物
 
 
 
@@ -74,29 +73,29 @@ void Arm_Init(u16 arr,u16 psc)
 void Arm_run()
 {
 	if((give_goods-now_angle_[2])>0)
-		up_dowm_3=1;
+		up_dowm=1;
 	else
-		up_dowm_3=-1;
+		up_dowm=-1;
 	
-	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
+	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm)		
 	{
 		delay(rid_speed);
 		TIM_SetCompare3(TIM2,now_angle_[2]);																			//打开机械臂
 	}	
 	
-	for(;now_angle_[1]!=p;now_angle_[1]-=1)
+	for(;now_angle_[1]!=init;now_angle_[1]-=1)
 	{
 		delay(rid_speed);
 		TIM_SetCompare2(TIM2,now_angle_[1]);															
 	}	
 	
 	if((floor_[0]-now_angle_[0])>0)
-		up_dowm_1=1;
+		up_dowm=1;
 
 	else
-		up_dowm_1=-1;
+		up_dowm=-1;
 
-	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm,now_angle_[1]-=up_dowm)
 	{
 		delay(rid_speed);
 		TIM_SetCompare1(TIM2,now_angle_[0]);
@@ -104,26 +103,27 @@ void Arm_run()
 	}	
 }
 
+
 void Com_run()
 {
 	if((give_goods-now_angle_[2])>0)
-		up_dowm_3=1;
+		up_dowm=1;
 	else
-		up_dowm_3=-1;
+		up_dowm=-1;
 	
-	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
+	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm)		
 	{
 		delay(rid_speed);
 		TIM_SetCompare3(TIM2,now_angle_[2]);																			//打开机械臂
 	}	
 	
 	if((floor_[0]-now_angle_[0])>0)
-		up_dowm_1=1;
+		up_dowm=1;
 
 	else
-		up_dowm_1=-1;
+		up_dowm=-1;
 
-	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm_1,now_angle_[1]-=up_dowm_1)
+	for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm,now_angle_[1]-=up_dowm)
 	{
 		delay(rid_speed);
 		TIM_SetCompare1(TIM2,now_angle_[0]);
@@ -136,11 +136,11 @@ void Get_goods(int16_t goods_num)
 {
 											
 	if((goods[goods_num]-now_angle_[2])>0)
-		up_dowm_3=1;
+		up_dowm=1;
 	else
-		up_dowm_3=-1;
+		up_dowm=-1;
 	
-	for(;now_angle_[2]!=goods[goods_num];now_angle_[2]+=up_dowm_3)
+	for(;now_angle_[2]!=goods[goods_num];now_angle_[2]+=up_dowm)
 	{
 		delay(rid_speed);
 		TIM_SetCompare3(TIM2,now_angle_[2]);
@@ -152,24 +152,59 @@ void Get_goods(int16_t goods_num)
 
 void Goods_floor(int16_t floor_num)
 {
-	if((floor_[floor_num]-now_angle_[0])>0)
-		up_dowm_1=1;
-
-	else
-		up_dowm_1=-1;
-	if(floor_num==1)
+	int16_t i=0;
+	if(floor_num==0)
 	{
-		for(;now_angle_[0]!=floor_[floor_num];now_angle_[0]+=up_dowm_1)
+		for(;now_angle_[0]!=floor_[0]+10;now_angle_[0]+=1,now_angle_[1]-=1)
 		{
 			delay(rid_speed);
 			TIM_SetCompare1(TIM2,now_angle_[0]);
-		}										
-		for(;now_angle_[1]!=b;now_angle_[1]-=up_dowm_1)
-		{
-			delay(rid_speed);
 			TIM_SetCompare2(TIM2,now_angle_[1]);
-		}						
-																													//放置在哪层0~1
+		}
+	}
+	else
+	{
+		if(floor_num ==1)
+		{
+			if((floor_[1]-now_angle_[0])>0)
+				up_dowm=1;
+
+			else
+				up_dowm=-1;
+
+			for(;now_angle_[0]!=(floor_[1]+floor_[0])/2;now_angle_[0]+=up_dowm)
+			{
+				delay(rid_speed);
+				TIM_SetCompare1(TIM2,now_angle_[0]);
+			}											
+																													//到达指定层数
+			for(;now_angle_[0]!=floor_[1];now_angle_[0]+=up_dowm,now_angle_[1]-=up_dowm)
+			{
+				delay(rid_speed);
+				TIM_SetCompare1(TIM2,now_angle_[0]);
+				TIM_SetCompare2(TIM2,now_angle_[1]);
+			}																											//放置在哪层0~1
+			for(i=0;i!=(floor_[1]-floor_[0])/2;i++,now_angle_[1]-=up_dowm)
+			{
+				delay(rid_speed);
+				TIM_SetCompare2(TIM2,now_angle_[1]);
+			}
+		}
+		else
+		{
+			if((floor_[0]-now_angle_[0])>0)
+				up_dowm=1;
+
+			else
+				up_dowm=-1;
+
+			for(;now_angle_[0]!=floor_[0];now_angle_[0]+=up_dowm,now_angle_[1]-=up_dowm)
+			{
+				delay(rid_speed);
+				TIM_SetCompare1(TIM2,now_angle_[0]);
+				TIM_SetCompare2(TIM2,now_angle_[1]);																			//到第一层
+			}	
+		}
 	}
 }
 
@@ -179,18 +214,16 @@ void Goods_floor(int16_t floor_num)
 void Give_goods()
 {
 	if((give_goods-now_angle_[2])>0)
-		up_dowm_3=1;
+		up_dowm=1;
 	else
-		up_dowm_3=-1;
+		up_dowm=-1;
 	
-	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm_3)		
+	for(;now_angle_[2]!=give_goods;now_angle_[2]+=up_dowm)		
 	{
 		delay(rid_speed);
 		TIM_SetCompare3(TIM2,now_angle_[2]);
 	}																																						//放开货物
 }
-
-
 
 
 

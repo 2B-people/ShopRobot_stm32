@@ -12,7 +12,7 @@
 #include "millisecondtimer.h"
 void OLED_SHOW_MANU()
 {
-	static uint8_t manu=4;
+	static uint8_t manu=5;
 	static uint8_t key;
 	
 	switch(manu)
@@ -32,13 +32,13 @@ void OLED_SHOW_MANU()
 			OLED_ShowChar(70,0,'-',16);
 		else
 			OLED_ShowChar(70,0,' ',16);
-		OLED_ShowNum(76,0,(abs)(motor1.now_speed),4,16);//电机1速度
+		OLED_ShowNum(76,0,(abs)(motor1.target_speed),4,16);//电机1速度
 		OLED_ShowString(50, 2, "M2", 16);
 		if(motor2.target_speed<0)
 			OLED_ShowChar(70,2,'-',16);
 		else
 			OLED_ShowChar(70,2,' ',16);
-		OLED_ShowNum(76,2,(abs)(motor2.now_speed),4,16);//电机2速度
+		OLED_ShowNum(76,2,(abs)(motor2.target_speed),4,16);//电机2速度
 		OLED_ShowString(50, 4, "H1", 16);
 		OLED_ShowNum(76,4, ADC_ConvertedValue[0],4,16);			//灰度1值
 		OLED_ShowString(50, 6, "H2", 16);
@@ -77,7 +77,7 @@ void OLED_SHOW_MANU()
 			case KEY3_PRES:required_vel-=0.1;break;
 			case KEY2_PRES:OLED_Clear();manu=1;break;
 			case KEY4_PRES:OLED_Clear();manu=3;break;
-			case KEY6_PRES:ROTATE(1);break;
+			case KEY6_PRES:ROTATE(0);break;
 		}
 		break;
 	 }
@@ -108,7 +108,7 @@ void OLED_SHOW_MANU()
 			case KEY3_PRES:required_vel-=0.1;break;
 			case KEY2_PRES:OLED_Clear();manu=2;break;
 			case KEY4_PRES:OLED_Clear();manu=4;break;
-			case KEY6_PRES:ROTATE(1);break;
+			case KEY6_PRES:ROTATE(0);break;
 		}
 		break;
 	 }
@@ -139,7 +139,7 @@ void OLED_SHOW_MANU()
 				case KEY3_PRES:required_vel-=0.1;break;
 				case KEY2_PRES:OLED_Clear();manu=3;break;
 				case KEY4_PRES:OLED_Clear();manu=5;break;
-				case KEY6_PRES:ROTATE(1);break;
+				case KEY6_PRES:ROTATE(0);break;
 			}
 			break;
 	 }
@@ -170,10 +170,40 @@ void OLED_SHOW_MANU()
 				case KEY3_PRES:position_y-=1;break;
 				case KEY2_PRES:position_x-=1;break;
 				case KEY4_PRES:position_x+=1;break;
-				case KEY6_PRES:ROTATE(1);break;
+				case KEY6_PRES:ROTATE(0);break;
 			}
 			break;
 	 }
+		case 6:
+		{
+			OLED_ShowString(0, 0, "X", 16);
+		 OLED_ShowNum(35,0,position_x,1,16);
+		 OLED_ShowString(0, 2, "Y", 16);
+	   OLED_ShowNum(35,2,position_y,1,16);
+		 OLED_ShowString(0, 4, "V", 16);
+		 OLED_ShowNum(35,4,required_vel*100,1,16);
+		 OLED_ShowString(0, 6, "DI", 16);
+		 OLED_ShowNum(35,6,lsy,1,16);
+		 OLED_ShowString(50, 0, "NX", 16);
+		 OLED_ShowNum(76,0, nextx,4,16);			
+		 OLED_ShowString(50, 2, "NY", 16);
+		 OLED_ShowNum(76,2, nexty,4,16);			
+		 OLED_ShowString(50, 4, "di", 16);
+		 OLED_ShowNum(76,4, dis,4,16);			
+		 OLED_ShowString(50, 6, "Or", 16);
+		 OLED_ShowNum(76,6, orientation,4,16);			
+		 	key=KEY_Scan(0);
+			switch(key)
+			{
+				case KEY1_PRES:OLED_Clear();manu=4;break;
+				case KEY5_PRES:position_y+=1;break;
+				case KEY3_PRES:position_y-=1;break;
+				case KEY2_PRES:position_x-=1;break;
+				case KEY4_PRES:position_x+=1;break;
+				case KEY6_PRES:ROTATE(0);break;
+			}
+			break;
+		}
  }
 }
 

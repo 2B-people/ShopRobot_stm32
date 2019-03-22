@@ -5,7 +5,7 @@ extern "C" {
 #define _MILLISECONDTIMER_H_
 #include "stm32f10x.h"
 
-void initialise(void);
+// void initialise(void);
 void delay(uint32_t millis_);
 uint32_t millis(void);
 void reset(void);
