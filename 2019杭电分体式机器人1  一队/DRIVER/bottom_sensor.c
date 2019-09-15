@@ -120,6 +120,7 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 	switch(Clockwise)
 	{
 		case 0:
+<<<<<<< HEAD
 			motor1.target_speed=-get_RPM(0.15);
 			motor2.target_speed=get_RPM(0.15);
 			delay(705);
@@ -138,6 +139,16 @@ void ROTATE(uint8_t Clockwise)//旋转车  ,1 是顺时针
 			motor1.target_speed=get_RPM(0.15);
 			motor2.target_speed=-get_RPM(0.15);
 			delay(1430);
+=======
+			motor1.target_speed=-get_RPM(0.2);
+			motor2.target_speed=get_RPM(0.2);
+			delay(625);
+		break;
+		case 1:
+			motor1.target_speed=get_RPM(0.2);
+			motor2.target_speed=-get_RPM(0.2);
+			delay(525);
+>>>>>>> parent of d5d07e5... 3.12
 		break;
 	}
 	switch(Clockwise)					//旋转完之后，改变车的朝向

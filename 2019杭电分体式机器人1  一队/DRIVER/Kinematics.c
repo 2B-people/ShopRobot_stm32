@@ -65,7 +65,11 @@ void decideSpeed(void)
 	}	
 	if(required_vel>=fast_vel)
 	{
+<<<<<<< HEAD
 		huidu_PID.Kd=hK_P;
+=======
+		huidu_PID.Kp=hK_P;
+>>>>>>> parent of d5d07e5... 3.12
 		huidu_PID.Ki=hK_I;
 		huidu_PID.Kd=hK_D;
 	}
@@ -80,14 +84,22 @@ void decideSpeed(void)
 		
 		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&(position_x!=target_position_x||position_y!=target_position_y))//如果是旋转结束后走的第一格
 		{
+<<<<<<< HEAD
 			required_vel=slow_vel;	
+=======
+			required_vel=slow_vel-0.05;	
+			LED3=0;
+>>>>>>> parent of d5d07e5... 3.12
 		}
 		else if(LsRotate)//旋转结束后走完第一格					
 			LsRotate=0;
 		
+<<<<<<< HEAD
 		
 
 		
+=======
+>>>>>>> parent of d5d07e5... 3.12
 		motor1.target_speed = get_RPM(required_vel);	
 		motor2.target_speed = get_RPM(required_vel);
 	}

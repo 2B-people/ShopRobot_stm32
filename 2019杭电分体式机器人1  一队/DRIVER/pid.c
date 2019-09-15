@@ -4,9 +4,14 @@
 
 
 
+<<<<<<< HEAD
 PID_member s_PIDcm1	;
 PID_member s_PIDcm2;
 PID_member huidu_PID;
+=======
+struct PID_member s_PIDcm1, s_PIDcm2, huidu_PID;
+
+>>>>>>> parent of d5d07e5... 3.12
 void PID_init()
 {
 	s_PIDcm1.Kp = K_P;

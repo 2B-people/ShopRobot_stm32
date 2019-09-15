@@ -2,7 +2,8 @@
 #define _pid_h
 #include "include.h"
 
-typedef struct 
+extern struct PID_member s_PIDcm1, s_PIDcm2, huidu_PID;
+struct PID_member
 {
 	float Kp;
 	float Ki;
@@ -14,11 +15,15 @@ typedef struct
 	int16_t pid_out;
 	int16_t pid_out_last;
 	int16_t pid_out_inter;
+<<<<<<< HEAD
 }PID_member;
 
 extern PID_member s_PIDcm1;
 extern PID_member s_PIDcm2;
 extern PID_member huidu_PID;
+=======
+};
+>>>>>>> parent of d5d07e5... 3.12
 void PID_init(void);
 
 void HuiduPidCalcuation(void);
