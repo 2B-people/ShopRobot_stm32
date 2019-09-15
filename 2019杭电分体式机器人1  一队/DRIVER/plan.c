@@ -57,7 +57,8 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 					}
 					break;
 				case negative_x:
-					ROTATE(3);
+					ROTATE(1);
+					ROTATE(1);
 					if(_target_position_x-position_x>1)
 					{
 						if(required_vel<fast_vel)
@@ -114,7 +115,8 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 		switch(orientation)
 		{
 			case positive_x:
-				ROTATE(3);
+				ROTATE(1);
+				ROTATE(1);
 				if(position_x-_target_position_x>1)
 				{
 					if(required_vel<fast_vel)
@@ -237,7 +239,8 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case negative_y:
-				ROTATE(3);
+				ROTATE(1);
+				ROTATE(1);
 				if(_target_position_y-position_y>1)
 				{
 					if(required_vel<fast_vel)
@@ -294,7 +297,8 @@ void MOVE(uint8_t _target_position_x,uint8_t _target_position_y)//移动车到指定坐
 				}
 				break;
 			case positive_y:
-				ROTATE(3);
+				ROTATE(1);
+				ROTATE(1);
 				if(position_y-_target_position_y>1)
 				{
 					if(required_vel<fast_vel)
@@ -668,7 +672,7 @@ void begin1(void)
 	delay(800);
 	while(1)
 	{
-		if(infrared2==WHITE)
+		if(infrared1==WHITE&&infrared2==WHITE)
 			break;
 		OLED_SHOW_MANU();
 	}
@@ -695,7 +699,6 @@ void begin1(void)
 	nextx=1;
 	nexty=3;
 	IsMoveFinsh=1;
-	dis=0;
 }
 void begin2(void)
 {
@@ -823,7 +826,6 @@ void patrol1(void)			//巡视1代码
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
-					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -867,7 +869,6 @@ void patrol1(void)			//巡视1代码
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
-					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -972,7 +973,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_y:ROTATE(0);break;
-					case negative_x:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			}
@@ -1000,7 +1000,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1022,7 +1021,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1044,7 +1042,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1066,7 +1063,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1088,7 +1084,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1110,7 +1105,6 @@ void patrol2(void)			//巡视2代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1139,7 +1133,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1161,7 +1154,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1183,7 +1175,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1205,7 +1196,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1227,7 +1217,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)
@@ -1249,7 +1238,6 @@ void patrol3(void)			//巡视3代码
 				switch(orientation)
 				{
 					case negative_x:ROTATE(0);break;
-					case negative_y:ROTATE(3);break;
 					default:ROTATE(1);
 				}
 			else if(IsMoveFinsh)

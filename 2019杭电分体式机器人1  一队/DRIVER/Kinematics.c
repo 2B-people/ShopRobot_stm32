@@ -1,7 +1,5 @@
 #include "kinematics.h"
-uint8_t lsx;
-uint8_t lsy;
-float get_RPM(float liner_vel_in)
+double get_RPM(double liner_vel_in)
 {
 		float circumference_=PI*WHEEL_DIAMETER;
 		float liner_vel = liner_vel_in * 60;		//将速度转为m/min
@@ -12,8 +10,11 @@ float get_RPM(float liner_vel_in)
 void waitingStop()
 {
 
-			OLED_SHOW_MANU();	 		
-			if (IsStop&&!stopping)											//接收到停止信号
+	if((!stopping)||required_vel==0)
+			{
+				OLED_SHOW_MANU();
+			}		 		
+			if (IsStop)											//接收到停止信号
 			{
 				switch(orientation)
 				{
@@ -38,18 +39,20 @@ void waitingStop()
 						path_cal();
 						break;
 				}
-				LED3=0;
 				stopping = 1;
 			}
-			else if(!IsStop&&stopping)								//接收到开始信号
+			else if(stopping)								//接收到开始信号
 			{
-				LED3=0;
-				dis=0;
-				stopping = 0;									
+					stopping = 0;									
 			}						
 }
 void decideSpeed(void)
-{	
+{
+static uint8_t lsx;
+	static uint8_t lsy;
+	
+
+	
 	if(required_vel==0)
 	{
 		s_PIDcm1.error_sum=0;							//速度为0时将积分置零
@@ -82,7 +85,7 @@ void decideSpeed(void)
 	if(IsRotate==0)		//旋转结束
 	{
 		
-		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&(position_x!=target_position_x||position_y!=target_position_y))//如果是旋转结束后走的第一格
+		if(LsRotate&&position_x==lsx&&position_y==lsy&&!IsFetch&&position_x&&position_x!=target_position_x&&position_y!=target_position_y)//如果是旋转结束后走的第一格
 		{
 <<<<<<< HEAD
 			required_vel=slow_vel;	
@@ -93,10 +96,15 @@ void decideSpeed(void)
 		}
 		else if(LsRotate)//旋转结束后走完第一格					
 			LsRotate=0;
+<<<<<<< HEAD
 		
 <<<<<<< HEAD
 		
 
+=======
+		lsx=position_x;		//检查有无走完旋转后的第一格
+		lsy=position_y;
+>>>>>>> parent of 2f256fc... 1
 		
 =======
 >>>>>>> parent of d5d07e5... 3.12

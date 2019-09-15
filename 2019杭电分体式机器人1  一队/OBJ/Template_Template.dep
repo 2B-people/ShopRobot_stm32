@@ -1,6 +1,11 @@
 Dependencies for Project 'Template', Target 'Template': (DO NOT MODIFY !)
+<<<<<<< HEAD
 F (.\main.c)(0x5C8660DE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (include.h)(0x5C865E09)
+=======
+F (.\main.c)(0x5C87781A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+I (include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (stm32f10x.h)(0x5C864F02)
@@ -38,11 +43,19 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\USER\include.h)(0x5C865E09)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\USER\include.h)(0x5C8779D9)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -817,9 +830,15 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_tim.h)(0x5C864F02)
 I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5C864F02)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5C864F02)
 F (..\README.TXT)(0x5C864F02)()
+<<<<<<< HEAD
 F (..\DRIVER\motor.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\motor.o --omf_browse ..\obj\motor.crf --depend ..\obj\motor.d)
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\motor.c)(0x5C877C6D)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\motor.o --omf_browse ..\obj\motor.crf --depend ..\obj\motor.d)
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -857,8 +876,13 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (..\DRIVER\led.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -873,7 +897,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\led.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\led.o --omf_browse ..\obj\led.crf --depend ..\obj\led.d)
 I (..\DRIVER\led.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -910,9 +938,15 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -925,9 +959,15 @@ I (..\DRIVER\huidu.h)(0x5C864F02)
 I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 F (..\DRIVER\pid.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\pid.c)(0x5C877C89)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\pid.o --omf_browse ..\obj\pid.crf --depend ..\obj\pid.d)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -964,9 +1004,15 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -979,6 +1025,7 @@ I (..\DRIVER\huidu.h)(0x5C864F02)
 I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 F (..\DRIVER\Kinematics.c)(0x5C87720F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
@@ -992,6 +1039,11 @@ F (..\DRIVER\Kinematics.c)(0x5C866876)(-c --cpu Cortex-M3 -g -O0 --apcs=interwor
 I (..\DRIVER\kinematics.h)(0x5C864F02)
 >>>>>>> parent of d5d07e5... 3.12
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\Kinematics.c)(0x5C877DFB)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\kinematics.o --omf_browse ..\obj\kinematics.crf --depend ..\obj\kinematics.d)
+I (..\DRIVER\kinematics.h)(0x5C877160)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1028,8 +1080,13 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
@@ -1045,7 +1102,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\timer.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
 I (..\DRIVER\timer.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1082,10 +1143,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
 I (..\DRIVER\usart1.h)(0x5C864F02)
@@ -1097,9 +1165,15 @@ I (..\DRIVER\huidu.h)(0x5C864F02)
 I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 F (..\DRIVER\remote.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\remote.o --omf_browse ..\obj\remote.crf --depend ..\obj\remote.d)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\remote.c)(0x5C877C79)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\remote.o --omf_browse ..\obj\remote.crf --depend ..\obj\remote.d)
+I (..\DRIVER\remote.h)(0x5C864F02)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1136,10 +1210,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
 I (..\DRIVER\usart1.h)(0x5C864F02)
@@ -1153,7 +1234,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\las_masure.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\las_masure.o --omf_browse ..\obj\las_masure.crf --depend ..\obj\las_masure.d)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1190,10 +1275,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\usart1.h)(0x5C864F02)
@@ -1207,7 +1299,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\usart1.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\usart1.o --omf_browse ..\obj\usart1.crf --depend ..\obj\usart1.d)
 I (..\DRIVER\usart1.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1244,10 +1340,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1259,6 +1362,7 @@ I (..\DRIVER\huidu.h)(0x5C864F02)
 I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 F (..\DRIVER\bottom_sensor.c)(0x5C876D49)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\bottom_sensor.o --omf_browse ..\obj\bottom_sensor.crf --depend ..\obj\bottom_sensor.d)
@@ -1270,6 +1374,11 @@ F (..\DRIVER\bottom_sensor.c)(0x5C866542)(-c --cpu Cortex-M3 -g -O0 --apcs=inter
 >>>>>>> parent of d5d07e5... 3.12
 I (..\DRIVER\bottom_sensor.h)(0x5C864F02)
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\bottom_sensor.c)(0x5C8780BA)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\bottom_sensor.o --omf_browse ..\obj\bottom_sensor.crf --depend ..\obj\bottom_sensor.d)
+I (..\DRIVER\bottom_sensor.h)(0x5C864F02)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1306,10 +1415,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1321,7 +1437,11 @@ I (..\DRIVER\huidu.h)(0x5C864F02)
 I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 F (..\DRIVER\OLED\oled.c)(0x5C8660F6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\oled.o --omf_browse ..\obj\oled.crf --depend ..\obj\oled.d)
+=======
+F (..\DRIVER\OLED\oled.c)(0x5C877C50)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\oled.o --omf_browse ..\obj\oled.crf --depend ..\obj\oled.d)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\OLED\oled.h)(0x5C864F02)
 I (..\SYSTEM\sys\sys.h)(0x5C864F02)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1353,7 +1473,11 @@ I (..\STM32F10x_FWLib\inc\stm32f10x_usart.h)(0x5C864F02)
 I (..\STM32F10x_FWLib\inc\stm32f10x_wwdg.h)(0x5C864F02)
 I (..\STM32F10x_FWLib\inc\misc.h)(0x5C864F02)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (..\SYSTEM\millisecondtimer.h)(0x5C865E09)
 I (..\USER\config.h)(0x5C865E09)
@@ -1361,10 +1485,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1377,7 +1508,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 I (..\DRIVER\OLED\oledfont.h)(0x5C864F02)
 F (..\DRIVER\huidu.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\huidu.o --omf_browse ..\obj\huidu.crf --depend ..\obj\huidu.d)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1414,10 +1549,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1432,6 +1574,7 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 F (..\DRIVER\plan.c)(0x5C87720F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
 =======
 F (..\DRIVER\plan.c)(0x5C8660DE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
@@ -1441,6 +1584,11 @@ F (..\DRIVER\plan.c)(0x5C866CAE)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --sp
 >>>>>>> parent of d5d07e5... 3.12
 I (..\DRIVER\plan.h)(0x5C865E09)
 I (..\USER\include.h)(0x5C865E09)
+=======
+F (..\DRIVER\plan.c)(0x5C87720F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\plan.o --omf_browse ..\obj\plan.crf --depend ..\obj\plan.d)
+I (..\DRIVER\plan.h)(0x5C865E09)
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1477,10 +1625,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1494,7 +1649,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\key.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
 I (..\DRIVER\key.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1531,10 +1690,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1548,7 +1714,11 @@ I (..\DRIVER\queue.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\queue.c)(0x5C864F02)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\queue.o --omf_browse ..\obj\queue.crf --depend ..\obj\queue.d)
 I (..\DRIVER\queue.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1585,10 +1755,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)
@@ -1602,7 +1779,11 @@ I (..\DRIVER\key.h)(0x5C864F02)
 I (..\DRIVER\arm.h)(0x5C864F02)
 F (..\DRIVER\arm.c)(0x5C865E09)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections -I ..\USER -I ..\CORE -I ..\STM32F10x_FWLib\inc -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\SYSTEM -I ..\DRIVER -I ..\DRIVER\OLED -I ..\DRIVER-I "C:\Users\Tongw\Desktop\github\ShopRobot_stm32\2019杭电分体式机器人1  一队\USER\RTE"-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="520" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER-o ..\obj\arm.o --omf_browse ..\obj\arm.crf --depend ..\obj\arm.d)
 I (..\DRIVER\arm.h)(0x5C864F02)
+<<<<<<< HEAD
 I (..\USER\include.h)(0x5C865E09)
+=======
+I (..\USER\include.h)(0x5C8779D9)
+>>>>>>> parent of 2f256fc... 1
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5475F300)
 I (..\USER\stm32f10x.h)(0x5C864F02)
@@ -1639,10 +1820,17 @@ I (C:\Keil_v5\ARM\ARMCC\include\errno.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5475F2FA)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5475F300)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5475F2FE)
+<<<<<<< HEAD
 I (..\DRIVER\motor.h)(0x5C864F02)
 I (..\DRIVER\pid.h)(0x5C864F02)
 I (..\DRIVER\led.h)(0x5C864F02)
 I (..\DRIVER\Kinematics.h)(0x5C864F02)
+=======
+I (..\DRIVER\motor.h)(0x5C877C1B)
+I (..\DRIVER\pid.h)(0x5C877C1B)
+I (..\DRIVER\led.h)(0x5C864F02)
+I (..\DRIVER\Kinematics.h)(0x5C877160)
+>>>>>>> parent of 2f256fc... 1
 I (..\DRIVER\timer.h)(0x5C864F02)
 I (..\DRIVER\remote.h)(0x5C864F02)
 I (..\DRIVER\las_masure.h)(0x5C864F02)

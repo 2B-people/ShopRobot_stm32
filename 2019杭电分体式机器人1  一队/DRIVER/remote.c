@@ -36,6 +36,7 @@ void remoteAction()
 	{
 		IsRemote=1;
 <<<<<<< HEAD
+<<<<<<< HEAD
 		required_vel=(float)(RC_CtrlData.ch1 -1024)*0.00092;	
 		motor1.target_speed=get_RPM(required_vel);
 		motor2.target_speed=get_RPM(required_vel);
@@ -48,6 +49,13 @@ void remoteAction()
 		motor1.target_speed+=(double)(RC_CtrlData.ch0 -1024)*0.00092;
 		motor2.target_speed-=(double)(RC_CtrlData.ch0 -1024)*0.00092;
 >>>>>>> parent of d5d07e5... 3.12
+=======
+		required_vel=(double)(RC_CtrlData.ch1 -1024)*0.00092;	
+		motor1.target_speed=get_RPM(required_vel);
+		motor2.target_speed=get_RPM(required_vel);
+		motor1.target_speed+=(double)(RC_CtrlData.ch0 -1024)*0.00092;
+		motor2.target_speed-=(double)(RC_CtrlData.ch0 -1024)*0.00092;
+>>>>>>> parent of 2f256fc... 1
 		if(RC_CtrlData.s1==3)
 		{
 			ROTATE(1);

@@ -1343,6 +1343,7 @@ Removing Unused input sections from the image.
     Removing huidu.o(i.adcjihe), (324 bytes).
     Removing huidu.o(.bss), (160 bytes).
 <<<<<<< HEAD
+<<<<<<< HEAD
     Removing plan.o(i.begin2), (308 bytes).
     Removing plan.o(i.begin3), (312 bytes).
 <<<<<<< HEAD
@@ -1354,10 +1355,15 @@ Removing Unused input sections from the image.
 =======
     Removing plan.o(i.patrol1), (916 bytes).
 >>>>>>> parent of d5d07e5... 3.12
+=======
+    Removing plan.o(i.begin2), (308 bytes).
+    Removing plan.o(i.begin3), (312 bytes).
+>>>>>>> parent of 2f256fc... 1
     Removing plan.o(i.patrol2), (840 bytes).
     Removing plan.o(i.patrol3), (668 bytes).
     Removing arm.o(i.Com_run), (244 bytes).
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 441 unused section(s) (total 20076 bytes) removed from the image.
@@ -1367,6 +1373,9 @@ Removing Unused input sections from the image.
 =======
 441 unused section(s) (total 20072 bytes) removed from the image.
 >>>>>>> parent of d5d07e5... 3.12
+=======
+439 unused section(s) (total 19092 bytes) removed from the image.
+>>>>>>> parent of 2f256fc... 1
 
 ==============================================================================
 
@@ -1648,6 +1657,7 @@ Image Symbol Table
     i.CAN_Receive                            0x08000dac   Section        0  stm32f10x_can.o(i.CAN_Receive)
     i.CAN_Transmit                           0x08000e9c   Section        0  stm32f10x_can.o(i.CAN_Transmit)
     i.CM1speedPID_Calculation                0x08000fc4   Section        0  pid.o(i.CM1speedPID_Calculation)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     i.CM2speedPID_Calculation                0x080010f4   Section        0  pid.o(i.CM2speedPID_Calculation)
@@ -1945,6 +1955,8 @@ Image Symbol Table
     x$fpl$usenofp                            0x08006f84   Section        0  usenofp.o(x$fpl$usenofp)
 >>>>>>> parent of 36fea05... 3.11
 =======
+=======
+>>>>>>> parent of 2f256fc... 1
     i.CM2speedPID_Calculation                0x080010c0   Section        0  pid.o(i.CM2speedPID_Calculation)
     i.CMControl                              0x080011bc   Section        0  pid.o(i.CMControl)
     i.ChangeCoordinate                       0x0800123c   Section        0  bottom_sensor.o(i.ChangeCoordinate)
@@ -2046,6 +2058,7 @@ Image Symbol Table
     i.check                                  0x08004394   Section        0  plan.o(i.check)
     i.deQueue                                0x080043fc   Section        0  queue.o(i.deQueue)
     i.decideSpeed                            0x08004410   Section        0  kinematics.o(i.decideSpeed)
+<<<<<<< HEAD
     i.delay                                  0x08004588   Section        0  millisecondtimer.o(i.delay)
     i.enQueue                                0x080045a0   Section        0  queue.o(i.enQueue)
     i.get_RPM                                0x080045d4   Section        0  kinematics.o(i.get_RPM)
@@ -2091,6 +2104,54 @@ Image Symbol Table
     .constdata                               0x08006b18   Section     2072  oled.o(.constdata)
     x$fpl$usenofp                            0x08006b18   Section        0  usenofp.o(x$fpl$usenofp)
 >>>>>>> parent of d5d07e5... 3.12
+=======
+    i.delay                                  0x08004580   Section        0  millisecondtimer.o(i.delay)
+    i.enQueue                                0x08004598   Section        0  queue.o(i.enQueue)
+    i.get_RPM                                0x080045cc   Section        0  kinematics.o(i.get_RPM)
+    i.huiductrlinit                          0x0800461c   Section        0  huidu.o(i.huiductrlinit)
+    i.infrared_Init                          0x08004628   Section        0  bottom_sensor.o(i.infrared_Init)
+    i.initQueue                              0x080046bc   Section        0  queue.o(i.initQueue)
+    i.initialise                             0x080046c4   Section        0  millisecondtimer.o(i.initialise)
+    i.las_Init                               0x08004730   Section        0  las_masure.o(i.las_Init)
+    i.las_measure                            0x0800484c   Section        0  las_masure.o(i.las_measure)
+    i.main                                   0x080048d0   Section        0  main.o(i.main)
+    i.mainNOCAMERA                           0x080048d4   Section        0  main.o(i.mainNOCAMERA)
+    i.move_base                              0x08004af0   Section        0  plan.o(i.move_base)
+    i.oled_pow                               0x08004ff4   Section        0  oled.o(i.oled_pow)
+    i.path_Init                              0x0800500c   Section        0  plan.o(i.path_Init)
+    i.path_cal                               0x08005174   Section        0  plan.o(i.path_cal)
+    i.patrol1                                0x0800536c   Section        0  plan.o(i.patrol1)
+    i.show                                   0x080056f8   Section        0  plan.o(i.show)
+    i.toCoordinate                           0x08005748   Section        0  plan.o(i.toCoordinate)
+    i.toFetch                                0x08005770   Section        0  bottom_sensor.o(i.toFetch)
+    i.usart1_Init                            0x08005f94   Section        0  usart1.o(i.usart1_Init)
+    i.waitingStop                            0x08006034   Section        0  kinematics.o(i.waitingStop)
+    x$fpl$d2f                                0x08006104   Section       98  d2f.o(x$fpl$d2f)
+    x$fpl$dadd                               0x08006168   Section      336  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x08006179   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dcmpinf                            0x080062b8   Section       24  dcmpi.o(x$fpl$dcmpinf)
+    x$fpl$ddiv                               0x080062d0   Section      688  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x080062d7   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$deqf                               0x08006580   Section      120  deqf.o(x$fpl$deqf)
+    x$fpl$dfix                               0x080065f8   Section       94  dfix.o(x$fpl$dfix)
+    x$fpl$dflt                               0x08006656   Section       46  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dleqf                              0x08006684   Section      120  dleqf.o(x$fpl$dleqf)
+    x$fpl$dmul                               0x080066fc   Section      340  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x08006850   Section      156  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x080068ec   Section       12  dretinf.o(x$fpl$dretinf)
+    x$fpl$drleqf                             0x080068f8   Section      108  drleqf.o(x$fpl$drleqf)
+    x$fpl$dsub                               0x08006964   Section      468  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x08006975   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$f2d                                0x08006b38   Section       86  f2d.o(x$fpl$f2d)
+    x$fpl$fdiv                               0x08006b90   Section      388  fdiv.o(x$fpl$fdiv)
+    _fdiv1                                   0x08006b91   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    x$fpl$fflt                               0x08006d14   Section       48  fflt_clz.o(x$fpl$fflt)
+    x$fpl$fmul                               0x08006d44   Section      258  fmul.o(x$fpl$fmul)
+    x$fpl$fnaninf                            0x08006e46   Section      140  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fretinf                            0x08006ed2   Section       10  fretinf.o(x$fpl$fretinf)
+    .constdata                               0x08006edc   Section     2072  oled.o(.constdata)
+    x$fpl$usenofp                            0x08006edc   Section        0  usenofp.o(x$fpl$usenofp)
+>>>>>>> parent of 2f256fc... 1
     .data                                    0x20000000   Section       25  main.o(.data)
     .data                                    0x2000001c   Section       20  system_stm32f10x.o(.data)
     .data                                    0x20000030   Section        4  millisecondtimer.o(.data)
@@ -2314,6 +2375,7 @@ Image Symbol Table
     CAN_Mode_Init                            0x08000c9d   Thumb Code   262  motor.o(i.CAN_Mode_Init)
     CAN_Receive                              0x08000dad   Thumb Code   240  stm32f10x_can.o(i.CAN_Receive)
     CAN_Transmit                             0x08000e9d   Thumb Code   294  stm32f10x_can.o(i.CAN_Transmit)
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     CM1speedPID_Calculation                  0x08000fc5   Thumb Code   290  pid.o(i.CM1speedPID_Calculation)
@@ -2629,6 +2691,8 @@ Image Symbol Table
     Region$$Table$$Limit                     0x080077bc   Number         0  anon$$obj.o(Region$$Table)
 >>>>>>> parent of 36fea05... 3.11
 =======
+=======
+>>>>>>> parent of 2f256fc... 1
     CM1speedPID_Calculation                  0x08000fc5   Thumb Code   240  pid.o(i.CM1speedPID_Calculation)
     CM2speedPID_Calculation                  0x080010c1   Thumb Code   240  pid.o(i.CM2speedPID_Calculation)
     CMControl                                0x080011bd   Thumb Code    92  pid.o(i.CMControl)
@@ -2724,6 +2788,7 @@ Image Symbol Table
     bfs                                      0x08004295   Thumb Code   216  plan.o(i.bfs)
     check                                    0x08004395   Thumb Code    88  plan.o(i.check)
     deQueue                                  0x080043fd   Thumb Code    20  queue.o(i.deQueue)
+<<<<<<< HEAD
     decideSpeed                              0x08004411   Thumb Code   282  kinematics.o(i.decideSpeed)
     delay                                    0x08004589   Thumb Code    18  millisecondtimer.o(i.delay)
     enQueue                                  0x080045a1   Thumb Code    50  queue.o(i.enQueue)
@@ -2784,6 +2849,69 @@ Image Symbol Table
     Region$$Table$$Base                      0x08007330   Number         0  anon$$obj.o(Region$$Table)
     Region$$Table$$Limit                     0x08007350   Number         0  anon$$obj.o(Region$$Table)
 >>>>>>> parent of d5d07e5... 3.12
+=======
+    decideSpeed                              0x08004411   Thumb Code   278  kinematics.o(i.decideSpeed)
+    delay                                    0x08004581   Thumb Code    18  millisecondtimer.o(i.delay)
+    enQueue                                  0x08004599   Thumb Code    50  queue.o(i.enQueue)
+    get_RPM                                  0x080045cd   Thumb Code    66  kinematics.o(i.get_RPM)
+    huiductrlinit                            0x0800461d   Thumb Code    12  huidu.o(i.huiductrlinit)
+    infrared_Init                            0x08004629   Thumb Code   144  bottom_sensor.o(i.infrared_Init)
+    initQueue                                0x080046bd   Thumb Code     8  queue.o(i.initQueue)
+    initialise                               0x080046c5   Thumb Code    90  millisecondtimer.o(i.initialise)
+    las_Init                                 0x08004731   Thumb Code   268  las_masure.o(i.las_Init)
+    las_measure                              0x0800484d   Thumb Code   118  las_masure.o(i.las_measure)
+    main                                     0x080048d1   Thumb Code     4  main.o(i.main)
+    mainNOCAMERA                             0x080048d5   Thumb Code   478  main.o(i.mainNOCAMERA)
+    move_base                                0x08004af1   Thumb Code  1242  plan.o(i.move_base)
+    oled_pow                                 0x08004ff5   Thumb Code    22  oled.o(i.oled_pow)
+    path_Init                                0x0800500d   Thumb Code   276  plan.o(i.path_Init)
+    path_cal                                 0x08005175   Thumb Code   426  plan.o(i.path_cal)
+    patrol1                                  0x0800536d   Thumb Code   862  plan.o(i.patrol1)
+    show                                     0x080056f9   Thumb Code    64  plan.o(i.show)
+    toCoordinate                             0x08005749   Thumb Code    26  plan.o(i.toCoordinate)
+    toFetch                                  0x08005771   Thumb Code  2042  bottom_sensor.o(i.toFetch)
+    usart1_Init                              0x08005f95   Thumb Code   152  usart1.o(i.usart1_Init)
+    waitingStop                              0x08006035   Thumb Code   174  kinematics.o(i.waitingStop)
+    __aeabi_d2f                              0x08006105   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x08006105   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __aeabi_dadd                             0x08006169   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x08006169   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __fpl_dcmp_Inf                           0x080062b9   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
+    __aeabi_ddiv                             0x080062d1   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x080062d1   Thumb Code   552  ddiv.o(x$fpl$ddiv)
+    __aeabi_cdcmpeq                          0x08006581   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x08006581   Thumb Code   120  deqf.o(x$fpl$deqf)
+    __aeabi_d2iz                             0x080065f9   Thumb Code     0  dfix.o(x$fpl$dfix)
+    _dfix                                    0x080065f9   Thumb Code    94  dfix.o(x$fpl$dfix)
+    __aeabi_i2d                              0x08006657   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x08006657   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_cdcmple                          0x08006685   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    _dcmple                                  0x08006685   Thumb Code   120  dleqf.o(x$fpl$dleqf)
+    __fpl_dcmple_InfNaN                      0x080066e7   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    __aeabi_dmul                             0x080066fd   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x080066fd   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x08006851   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x080068ed   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_cdrcmple                         0x080068f9   Thumb Code     0  drleqf.o(x$fpl$drleqf)
+    _drcmple                                 0x080068f9   Thumb Code   108  drleqf.o(x$fpl$drleqf)
+    __aeabi_dsub                             0x08006965   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x08006965   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    __aeabi_f2d                              0x08006b39   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x08006b39   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __aeabi_fdiv                             0x08006b91   Thumb Code     0  fdiv.o(x$fpl$fdiv)
+    _fdiv                                    0x08006b91   Thumb Code   384  fdiv.o(x$fpl$fdiv)
+    __aeabi_i2f                              0x08006d15   Thumb Code     0  fflt_clz.o(x$fpl$fflt)
+    _fflt                                    0x08006d15   Thumb Code    48  fflt_clz.o(x$fpl$fflt)
+    __aeabi_fmul                             0x08006d45   Thumb Code     0  fmul.o(x$fpl$fmul)
+    _fmul                                    0x08006d45   Thumb Code   258  fmul.o(x$fpl$fmul)
+    __fpl_fnaninf                            0x08006e47   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    __fpl_fretinf                            0x08006ed3   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    F6x8                                     0x08006edc   Data         552  oled.o(.constdata)
+    __I$use$fp                               0x08006edc   Number         0  usenofp.o(x$fpl$usenofp)
+    F8X16                                    0x08007104   Data        1520  oled.o(.constdata)
+    Region$$Table$$Base                      0x080076f4   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08007714   Number         0  anon$$obj.o(Region$$Table)
+>>>>>>> parent of 2f256fc... 1
     required_vel                             0x20000000   Data           8  main.o(.data)
     IsControlFinsh                           0x20000008   Data           1  main.o(.data)
     IsStop                                   0x20000009   Data           1  main.o(.data)
@@ -2875,6 +3003,7 @@ Memory Map of the image
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   Load Region LR_1 (Base: 0x08000000, Size: 0x000078b8, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000075f8])
 
     Execution Region ER_RO (Base: 0x08000000, Size: 0x0000743c, Max: 0xffffffff, ABSOLUTE)
@@ -2888,6 +3017,11 @@ Memory Map of the image
 
     Execution Region ER_RO (Base: 0x08000000, Size: 0x00007350, Max: 0xffffffff, ABSOLUTE)
 >>>>>>> parent of d5d07e5... 3.12
+=======
+  Load Region LR_1 (Base: 0x08000000, Size: 0x00007b80, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000078d0])
+
+    Execution Region ER_RO (Base: 0x08000000, Size: 0x00007714, Max: 0xffffffff, ABSOLUTE)
+>>>>>>> parent of 2f256fc... 1
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2978,6 +3112,7 @@ Memory Map of the image
     0x08000dac   0x000000f0   Code   RO          731    i.CAN_Receive       stm32f10x_can.o
     0x08000e9c   0x00000126   Code   RO          736    i.CAN_Transmit      stm32f10x_can.o
     0x08000fc2   0x00000002   PAD
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     0x08000fc4   0x00000130   Code   RO         3417    i.CM1speedPID_Calculation  pid.o
@@ -3299,6 +3434,8 @@ Memory Map of the image
     0x0800779c   0x00000020   Data   RO         4438    Region$$Table       anon$$obj.o
 >>>>>>> parent of 36fea05... 3.11
 =======
+=======
+>>>>>>> parent of 2f256fc... 1
     0x08000fc4   0x000000fc   Code   RO         3417    i.CM1speedPID_Calculation  pid.o
     0x080010c0   0x000000fc   Code   RO         3418    i.CM2speedPID_Calculation  pid.o
     0x080011bc   0x00000080   Code   RO         3419    i.CMControl         pid.o
@@ -3410,6 +3547,7 @@ Memory Map of the image
     0x08004294   0x00000100   Code   RO         3874    i.bfs               plan.o
     0x08004394   0x00000068   Code   RO         3875    i.check             plan.o
     0x080043fc   0x00000014   Code   RO         3986    i.deQueue           queue.o
+<<<<<<< HEAD
     0x08004410   0x00000178   Code   RO         3459    i.decideSpeed       kinematics.o
     0x08004588   0x00000018   Code   RO          293    i.delay             millisecondtimer.o
     0x080045a0   0x00000032   Code   RO         3987    i.enQueue           queue.o
@@ -3457,6 +3595,56 @@ Memory Map of the image
     0x08006b18   0x00000818   Data   RO         3695    .constdata          oled.o
     0x08007330   0x00000020   Data   RO         4438    Region$$Table       anon$$obj.o
 >>>>>>> parent of d5d07e5... 3.12
+=======
+    0x08004410   0x00000170   Code   RO         3459    i.decideSpeed       kinematics.o
+    0x08004580   0x00000018   Code   RO          293    i.delay             millisecondtimer.o
+    0x08004598   0x00000032   Code   RO         3987    i.enQueue           queue.o
+    0x080045ca   0x00000002   PAD
+    0x080045cc   0x00000050   Code   RO         3460    i.get_RPM           kinematics.o
+    0x0800461c   0x0000000c   Code   RO         3836    i.huiductrlinit     huidu.o
+    0x08004628   0x00000094   Code   RO         3638    i.infrared_Init     bottom_sensor.o
+    0x080046bc   0x00000008   Code   RO         3988    i.initQueue         queue.o
+    0x080046c4   0x0000006c   Code   RO          294    i.initialise        millisecondtimer.o
+    0x08004730   0x0000011c   Code   RO         3570    i.las_Init          las_masure.o
+    0x0800484c   0x00000084   Code   RO         3571    i.las_measure       las_masure.o
+    0x080048d0   0x00000004   Code   RO            1    i.main              main.o
+    0x080048d4   0x0000021c   Code   RO            3    i.mainNOCAMERA      main.o
+    0x08004af0   0x00000504   Code   RO         3876    i.move_base         plan.o
+    0x08004ff4   0x00000016   Code   RO         3694    i.oled_pow          oled.o
+    0x0800500a   0x00000002   PAD
+    0x0800500c   0x00000168   Code   RO         3877    i.path_Init         plan.o
+    0x08005174   0x000001f8   Code   RO         3878    i.path_cal          plan.o
+    0x0800536c   0x0000038c   Code   RO         3879    i.patrol1           plan.o
+    0x080056f8   0x00000050   Code   RO         3882    i.show              plan.o
+    0x08005748   0x00000028   Code   RO         3883    i.toCoordinate      plan.o
+    0x08005770   0x00000824   Code   RO         3639    i.toFetch           bottom_sensor.o
+    0x08005f94   0x000000a0   Code   RO         3599    i.usart1_Init       usart1.o
+    0x08006034   0x000000d0   Code   RO         3461    i.waitingStop       kinematics.o
+    0x08006104   0x00000062   Code   RO         4071    x$fpl$d2f           fz_ws.l(d2f.o)
+    0x08006166   0x00000002   PAD
+    0x08006168   0x00000150   Code   RO         4073    x$fpl$dadd          fz_ws.l(daddsub_clz.o)
+    0x080062b8   0x00000018   Code   RO         4213    x$fpl$dcmpinf       fz_ws.l(dcmpi.o)
+    0x080062d0   0x000002b0   Code   RO         4080    x$fpl$ddiv          fz_ws.l(ddiv.o)
+    0x08006580   0x00000078   Code   RO         4083    x$fpl$deqf          fz_ws.l(deqf.o)
+    0x080065f8   0x0000005e   Code   RO         4085    x$fpl$dfix          fz_ws.l(dfix.o)
+    0x08006656   0x0000002e   Code   RO         4094    x$fpl$dflt          fz_ws.l(dflt_clz.o)
+    0x08006684   0x00000078   Code   RO         4099    x$fpl$dleqf         fz_ws.l(dleqf.o)
+    0x080066fc   0x00000154   Code   RO         4101    x$fpl$dmul          fz_ws.l(dmul.o)
+    0x08006850   0x0000009c   Code   RO         4215    x$fpl$dnaninf       fz_ws.l(dnaninf.o)
+    0x080068ec   0x0000000c   Code   RO         4217    x$fpl$dretinf       fz_ws.l(dretinf.o)
+    0x080068f8   0x0000006c   Code   RO         4103    x$fpl$drleqf        fz_ws.l(drleqf.o)
+    0x08006964   0x000001d4   Code   RO         4075    x$fpl$dsub          fz_ws.l(daddsub_clz.o)
+    0x08006b38   0x00000056   Code   RO         4105    x$fpl$f2d           fz_ws.l(f2d.o)
+    0x08006b8e   0x00000002   PAD
+    0x08006b90   0x00000184   Code   RO         4108    x$fpl$fdiv          fz_ws.l(fdiv.o)
+    0x08006d14   0x00000030   Code   RO         4112    x$fpl$fflt          fz_ws.l(fflt_clz.o)
+    0x08006d44   0x00000102   Code   RO         4117    x$fpl$fmul          fz_ws.l(fmul.o)
+    0x08006e46   0x0000008c   Code   RO         4219    x$fpl$fnaninf       fz_ws.l(fnaninf.o)
+    0x08006ed2   0x0000000a   Code   RO         4221    x$fpl$fretinf       fz_ws.l(fretinf.o)
+    0x08006edc   0x00000000   Code   RO         4225    x$fpl$usenofp       fz_ws.l(usenofp.o)
+    0x08006edc   0x00000818   Data   RO         3695    .constdata          oled.o
+    0x080076f4   0x00000020   Data   RO         4438    Region$$Table       anon$$obj.o
+>>>>>>> parent of 2f256fc... 1
 
 
     Execution Region ER_RW (Base: 0x20000000, Size: 0x0000046c, Max: 0xffffffff, ABSOLUTE, COMPRESSED[0x000001bc])
@@ -3507,6 +3695,7 @@ Image component sizes
        940         90          0         46          0       3747   arm.o
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       3636        204          0         17          0       4809   bottom_sensor.o
          0          0          0          0          0         32   core_cm3.o
        320         16          0         18          0       2389   huidu.o
@@ -3520,17 +3709,24 @@ Image component sizes
        652        136          0          2          0       1870   kinematics.o
 >>>>>>> parent of 36fea05... 3.11
 =======
+=======
+>>>>>>> parent of 2f256fc... 1
       3628        204          0         17          0       4809   bottom_sensor.o
          0          0          0          0          0         32   core_cm3.o
        320         16          0         18          0       2389   huidu.o
        312         16          0          1          0       1218   key.o
+<<<<<<< HEAD
        664        142          0          2          0       1874   kinematics.o
 >>>>>>> parent of d5d07e5... 3.12
+=======
+       656        138          0          2          0       1870   kinematics.o
+>>>>>>> parent of 2f256fc... 1
        448         34          0         28          0       2691   las_masure.o
        256         28          0          0          0       1642   led.o
        544         62          0         25         12      60827   main.o
        148         28          0          4          0     239541   millisecondtimer.o
        132         22          0          0          0       1599   misc.o
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
        484         30          0         24          0       3618   motor.o
@@ -3548,6 +3744,12 @@ Image component sizes
        952         98          0          0         84       3742   pid.o
       6160        538          0         20       4539       9485   plan.o
 >>>>>>> parent of 36fea05... 3.11
+=======
+       480         30          0         24          0       3610   motor.o
+      3206        382       2072        898          0      10773   oled.o
+       952         98          0          0         84       3750   pid.o
+      6080        536          0         20       4539       9445   plan.o
+>>>>>>> parent of 2f256fc... 1
         78          0          0          0          0       1792   queue.o
        136          8          0          1         72       2335   remote.o
         64         26        304          0       1536        820   startup_stm32f10x_hd.o
@@ -3566,6 +3768,7 @@ Image component sizes
     ----------------------------------------------------------------------
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      23234       1952       2408       1148       6160     407651   Object Totals
 =======
      24130       2016       2408       1132       6244     409122   Object Totals
@@ -3573,6 +3776,9 @@ Image component sizes
 =======
      22998       1950       2408       1132       6244     407327   Object Totals
 >>>>>>> parent of d5d07e5... 3.12
+=======
+     23962       2016       2408       1132       6244     409038   Object Totals
+>>>>>>> parent of 2f256fc... 1
          0          0         32          0          0          0   (incl. Generated)
         38          0          0          8          1          0   (incl. Padding)
 
@@ -3647,6 +3853,7 @@ Image component sizes
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
      27348       2244       2408       1148       6260     401855   Grand Totals
      27348       2244       2408        444       6260     401855   ELF Image Totals (compressed)
      27348       2244       2408        444          0          0   ROM Totals
@@ -3678,6 +3885,17 @@ Image component sizes
     Total RW  Size (RW Data + ZI Data)              7472 (   7.30kB)
     Total ROM Size (Code + RO Data + RW Data)      29964 (  29.26kB)
 >>>>>>> parent of d5d07e5... 3.12
+=======
+     28076       2308       2408       1132       6340     403138   Grand Totals
+     28076       2308       2408        444       6340     403138   ELF Image Totals (compressed)
+     28076       2308       2408        444          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                30484 (  29.77kB)
+    Total RW  Size (RW Data + ZI Data)              7472 (   7.30kB)
+    Total ROM Size (Code + RO Data + RW Data)      30928 (  30.20kB)
+>>>>>>> parent of 2f256fc... 1
 
 ==============================================================================
 

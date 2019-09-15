@@ -4,9 +4,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
 #include "stm32f10x.h"
 #include "millisecondtimer.h"
-#include "delay.h"
 #include "config.h"
 #include "motor.h"
 #include "led.h"
@@ -24,14 +24,7 @@
 #include "queue.h"
 #include "arm.h"
 #include "stdlib.h"
-#include "M8266WIFIDrv.h"
-#include "M8266WIFI_ops.h"
-#include "brd_cfg.h"
-#include "M8266HostIf.h"
-#include "m8266wifi.h"
-#include "inv_mpu.h"
-#include "inv_mpu_dmp_motion_driver.h" 
-#include "mpu6050.h"
+
 typedef enum
 {
 	positive_x,
@@ -40,7 +33,7 @@ typedef enum
 	positive_y
 }ORIENTATION;		
 
-extern float required_vel ;
+extern double required_vel ;
 extern uint8_t IsControlFinsh;
 extern uint8_t position_x;
 extern uint8_t position_y;
@@ -57,7 +50,6 @@ extern uint8_t IsFetch;
 extern uint8_t mode;
 extern uint8_t shelves[12];
 extern uint8_t Goods_num;
-extern float pitch,roll,yaw; 		//Å·À­½Ç
 void mainNOCAMERA(void);
 void mainCAMERA(void);
 #endif
