@@ -24,8 +24,7 @@ class Motor {
 		long prev_encoder_ticks_; 
 	 	unsigned long prev_update_time_; 
 
-		void motor_pwm1_init(); 
-		void motor_pwm2_init(); 
+		void motor_pwm_init(); 
 };
 
 #endif //_MOTOR_H_
